@@ -18,7 +18,10 @@ repositories {
     mavenCentral()
 }
 
+
 val supportedPlatforms = listOf("linux", "mac", "win") // All required for OOP
+
+
 val jUnitVersion = "5.7.1"
 
 dependencies {
@@ -31,23 +34,22 @@ dependencies {
     testRuntimeOnly("org.junit.jupiter:junit-jupiter-engine:$jUnitVersion")
 }
 
+tasks.withType<JavaCompile> {
+    options.encoding = "UTF-8"
+}
+
+tasks.withType<Test> {
+    // Enables JUnit 5 Jupiter module
+    useJUnitPlatform()
+}
+
+
 application {
-    // Define the main class for the application.
+    // Define the main class for the application
     mainClass.set("it.aren.App")
 }
 
 java {
     sourceCompatibility = JavaVersion.VERSION_11
     targetCompatibility = JavaVersion.VERSION_11
-}
-
-tasks {
-    withType<JavaCompile> {
-        options.encoding = "UTF-8"
-    }
-
-    withType<Test> {
-        // Enables JUnit 5 Jupiter module
-        useJUnitPlatform()
-    }
 }
