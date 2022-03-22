@@ -4,15 +4,19 @@
 package it.aren.model;
 
 import it.aren.common.Point2D;
+import it.aren.event.Event;
+import it.aren.event.NullEvent;
 
 /**
  * 
  */
 public class Block extends Entity {
 
+    private Event event;
+
     public Block(final Point2D position, final boolean drawable) {
         super(position, drawable);
-        // TODO when events are implemented
+        this.event = new NullEvent();
     }
 
     @Override
@@ -20,5 +24,21 @@ public class Block extends Entity {
         // TODO when graphic is implemented
 
     }
+
+    /**
+     * @return the event
+     */
+    public Event getEvent() {
+        return event;
+    }
+
+    /**
+     * @param event the event to set
+     */
+    public void setEvent(final Event event) {
+        this.event = event;
+    }
+
+    
 
 }
