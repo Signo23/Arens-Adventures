@@ -7,6 +7,8 @@ import java.util.ArrayList;
 import java.util.List;
 
 import it.aren.common.Point2D;
+import it.aren.graphic.GraphicController;
+import it.aren.graphic.PlayerGraphicComponent;
 
 /**
  * 
@@ -17,15 +19,15 @@ public class Player extends Entity {
     private Point2D lastDirection;
     private List<GameObject> backPack;
 
-    public Player(final Point2D position) {
-        super(position, true);
+    public Player(final Point2D position, final PlayerGraphicComponent g) {
+        super(position, true, g);
         this.lastDirection = new Point2D();
         this.backPack = new ArrayList<>();
     }
     
     @Override
-    public void updateGraphic() {
-        // TODO when graphic is implemented
+    public void updateGraphic(final GraphicController g) {
+        this.graphic.update(this, g);
     }
 
     /**

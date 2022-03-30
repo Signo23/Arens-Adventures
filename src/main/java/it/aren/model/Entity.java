@@ -4,19 +4,21 @@
 package it.aren.model;
 
 import it.aren.common.Point2D;
+import it.aren.graphic.GraphicComponent;
+import it.aren.graphic.GraphicController;
 
 public abstract class Entity {
     private Point2D position;
     private boolean drawable;
-    //private GraphicComponent graphic;
+    protected GraphicComponent graphic;
     /**
      * @param position
      * @param drawble
      */
-    public Entity(final Point2D position, final boolean drawable) {
-        super();
+    public Entity(final Point2D position, final boolean drawable, final GraphicComponent graphic) {
         this.position = position;
         this.drawable = drawable;
+        this.graphic = graphic;
     }
     /**
      * @return the position
@@ -33,17 +35,32 @@ public abstract class Entity {
     /**
      * @return the drawable
      */
-    public boolean isDrawble() {
+    public boolean isDrawable() {
         return drawable;
     }
     /**
-     * @param drawble the drawable to set
+     * @param drawable the drawable to set
      */
-    public void setDrawble(final boolean drawable) {
+    public void setDrawable(final boolean drawable) {
         this.drawable = drawable;
     }
-    
-    public abstract void updateGraphic();
+    /**
+     * @return the graphic
+     */
+    public GraphicComponent getGraphic() {
+        return graphic;
+    }
+    /**
+     * @param graphic the graphic to set
+     */
+    public void setGraphic(final GraphicComponent graphic) {
+        this.graphic = graphic;
+    }
+    /**
+     * 
+     * @param g GraphicController that update the entity
+     */
+    public abstract void updateGraphic(GraphicController g);
     
     
 
