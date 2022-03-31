@@ -14,11 +14,11 @@ import it.aren.graphic.View;
 public class GameEngine {
     private View view;
 
-    void setup() {
+    public void setup() {
         this.view = new SwingView();
     }
 
-    void loop() {
+    public void loop() {
         final long current = System.currentTimeMillis();
         this.processInput();
         this.updateGame();
