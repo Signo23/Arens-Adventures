@@ -4,6 +4,10 @@
 package it.aren.model;
 
 import it.aren.common.Point2D;
+import it.aren.graphic.GraphicComponent;
+import it.aren.graphic.GraphicController;
+import it.aren.input.InputComponent;
+import it.aren.input.InputController;
 
 /**
  * 
@@ -13,16 +17,21 @@ public class GameObject extends Entity {
 
     private String id;
 
-    public GameObject(final Point2D position, final boolean drawable, final String id) {
-        super(position, drawable);
+    public GameObject(final Point2D position, final boolean drawable, final GraphicComponent graphic, final InputComponent input, final String id) {
+        super(position, drawable, graphic, input);
         this.id = id;
     }
 
     @Override
-    public void updateGraphic() {
-        // TODO when graphic is implemented
+    public void updateGraphic(final GraphicController g) {
+        this.graphic.update(this, g);
     }
-    
+
+    @Override
+    public void updateInput(final InputController i) {
+        this.input.update(this, i);
+    }
+
     /**
      * @return the id
      */
@@ -40,5 +49,6 @@ public class GameObject extends Entity {
     public String toString() {
         return "GameObject [id=" + id + "]";
     }
+
 
 }

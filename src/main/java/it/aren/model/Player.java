@@ -7,8 +7,10 @@ import java.util.ArrayList;
 import java.util.List;
 
 import it.aren.common.Point2D;
+import it.aren.graphic.GraphicComponent;
 import it.aren.graphic.GraphicController;
-import it.aren.graphic.PlayerGraphicComponent;
+import it.aren.input.InputComponent;
+import it.aren.input.InputController;
 
 /**
  * 
@@ -19,8 +21,8 @@ public class Player extends Entity {
     private Point2D lastDirection;
     private List<GameObject> backPack;
 
-    public Player(final Point2D position, final PlayerGraphicComponent g) {
-        super(position, true, g);
+    public Player(final Point2D position, final GraphicComponent graphic, final InputComponent input) {
+        super(position, true, graphic, input);
         this.lastDirection = new Point2D();
         this.backPack = new ArrayList<>();
     }
@@ -28,6 +30,11 @@ public class Player extends Entity {
     @Override
     public void updateGraphic(final GraphicController g) {
         this.graphic.update(this, g);
+    }
+
+    @Override
+    public void updateInput(final InputController i) {
+        this.input.update(this, i);
     }
 
     /**
@@ -57,6 +64,7 @@ public class Player extends Entity {
     public void setBackPack(final List<GameObject> backPack) {
         this.backPack = backPack;
     }
+
     
 
 }

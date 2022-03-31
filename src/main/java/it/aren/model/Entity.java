@@ -7,6 +7,7 @@ import it.aren.common.Point2D;
 import it.aren.graphic.GraphicComponent;
 import it.aren.graphic.GraphicController;
 import it.aren.input.InputComponent;
+import it.aren.input.InputController;
 
 public abstract class Entity {
     private Point2D position;
@@ -76,6 +77,7 @@ public abstract class Entity {
      * @param g GraphicController that update the entity
      */
     public abstract void updateGraphic(GraphicController g);
+    public abstract void updateInput(InputController i);
     
     
 
