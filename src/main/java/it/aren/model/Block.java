@@ -6,8 +6,10 @@ package it.aren.model;
 import it.aren.common.Point2D;
 import it.aren.event.Event;
 import it.aren.event.NullEvent;
-import it.aren.graphic.BlockGraphicComponent;
+import it.aren.graphic.GraphicComponent;
 import it.aren.graphic.GraphicController;
+import it.aren.input.InputComponent;
+import it.aren.input.InputController;
 
 /**
  * 
@@ -16,14 +18,19 @@ public class Block extends Entity {
 
     private Event event;
 
-    public Block(final Point2D position, final boolean drawable, final BlockGraphicComponent graphic) {
-        super(position, drawable, graphic);
+    public Block(final Point2D position, final boolean drawable, final GraphicComponent graphic, final InputComponent input) {
+        super(position, drawable, graphic, input);
         this.event = new NullEvent();
     }
 
     @Override
     public void updateGraphic(final GraphicController g) {
         this.graphic.update(this, g);
+    }
+
+    @Override
+    public void updateInput(final InputController i) {
+        this.input.update(this, i);
     }
 
     /**
@@ -39,6 +46,7 @@ public class Block extends Entity {
     public void setEvent(final Event event) {
         this.event = event;
     }
+
 
     
 
