@@ -1,5 +1,5 @@
 # OOP21-aren-adv
-Aren's Adventures is a RPG game inspired by [The Legend of Zelda].(https://en.wikipedia.org/wiki/The_Legend_of_Zelda)
+Aren's Adventures is a RPG game inspired by [The Legend of Zelda](https://en.wikipedia.org/wiki/The_Legend_of_Zelda).
 
 ## Built with
 [Java](https://www.oracle.com/it/java/)
