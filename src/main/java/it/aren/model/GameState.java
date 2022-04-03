@@ -5,10 +5,10 @@ import it.aren.core.GameFactory;
 
 public class GameState {
 
-    private World world;
+    private final World world;
 
     public GameState() {
-        GameFactory factory = GameFactory.getInstance();
+        final GameFactory factory = GameFactory.getInstance();
         world = new World();
         world.setPlayer(factory.createPlayer(new Point2D(0, 1)));
         //world.getMap().setBlocks();

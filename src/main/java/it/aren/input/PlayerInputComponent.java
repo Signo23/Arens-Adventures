@@ -1,7 +1,7 @@
 package it.aren.input;
 
 import it.aren.common.Point2D;
-import it.aren.model.*;
+import it.aren.model.Player;
 
 public class PlayerInputComponent implements InputComponent {
 

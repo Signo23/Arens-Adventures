@@ -1,7 +1,8 @@
 package it.aren.core;
 
 import it.aren.common.Point2D;
-import it.aren.model.*;
+import it.aren.model.Block;
+import it.aren.model.Player;
 
 public class GameFactory {
 
