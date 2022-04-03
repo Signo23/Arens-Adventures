@@ -1,9 +1,16 @@
 package it.aren.model;
 
+import java.util.ArrayList;
+import java.util.List;
+
 public class World {
 
     private Player player;
-    private GameMap map;
+    private final List<GameMap> maps;
+
+    public World() {
+        maps = new ArrayList<>();
+    }
 
     /**
      * 
@@ -16,19 +23,15 @@ public class World {
     public final void setPlayer(final Player player) {
         this.player = player;
     }
-    /**
-     * 
-     * @return the map to view
-     */
-    public final GameMap getMap() {
-        return map;
-    }
-
-    public final void setMap(final GameMap map) {
-        this.map = map;
-    }
 
     public void updateState() {
         //TO DO when physic is implemented
     }
+
+    //selectMap
+
+    public final void addMap(final GameMap map) {
+        maps.add(map);
+    }
+
 }
