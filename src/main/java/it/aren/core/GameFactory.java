@@ -1,23 +1,20 @@
 package it.aren.core;
 
 import it.aren.common.Point2D;
-import it.aren.model.Block;
+import it.aren.input.PlayerInputComponent;
+import it.aren.model.GameMap;
 import it.aren.model.Player;
+import it.aren.graphic.PlayerGraphicComponent;
 
-public class GameFactory {
+public final class GameFactory {
 
-    private static GameFactory instance;
+    private GameFactory() {
 
-    public static GameFactory getInstance() {
-        if (instance == null) {
-            instance = new GameFactory();
-        }
-        return instance;
     }
-    public final Player createPlayer(final Point2D position) {
-        return new Player(position);
+    public static Player createPlayer() {
+        return new Player(new Point2D(0, 1), new PlayerGraphicComponent(), new PlayerInputComponent());
     }
-    public final Block createBlock(final Point2D position, final boolean drawable) {
-        return new Block(position, drawable);
+    public static GameMap loadMaps() {
+        return new GameMap();
     }
 }

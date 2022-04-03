@@ -1,6 +1,5 @@
 package it.aren.model;
 
-import it.aren.common.Point2D;
 import it.aren.core.GameFactory;
 
 public class GameState {
@@ -8,10 +7,9 @@ public class GameState {
     private final World world;
 
     public GameState() {
-        final GameFactory factory = GameFactory.getInstance();
         world = new World();
-        world.setPlayer(factory.createPlayer(new Point2D(0, 1)));
-        //world.getMap().setBlocks();
+        world.setPlayer(GameFactory.createPlayer());
+        //world.addMap()
     }
     public final World getWorld() {
         return world;
