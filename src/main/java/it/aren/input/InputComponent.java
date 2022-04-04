@@ -1,7 +1,7 @@
 package it.aren.input;
 
-import it.aren.model.Player;
+import it.aren.model.Entity;
 
 public interface InputComponent {
-    void update(Player player, InputController controller);
+    void update(Entity entity, InputController controller);
 }
