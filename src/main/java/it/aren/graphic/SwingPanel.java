@@ -6,13 +6,17 @@ import java.awt.RenderingHints;
 
 import javax.swing.JPanel;
 
+import it.aren.model.World;
+
 public class SwingPanel extends JPanel {
 
 
     private static final long serialVersionUID = 1L;
+    private final World world;
 
-    public SwingPanel(final int w, final int h){
+    public SwingPanel(final int w, final int h, final World world){
         setSize(w,h);
+        this.world = world;
         setFocusable(true);
         setFocusTraversalKeysEnabled(false);
         requestFocusInWindow(); 
@@ -29,6 +33,8 @@ public class SwingPanel extends JPanel {
             g2.clearRect(0,0,this.getWidth(),this.getHeight());
         
             /* TODO graphic and input */
+            final GraphicController controller = new SwingGraphic(g2);
+            this.world.getPlayer().updateGraphic( controller);
     }
     
 }
