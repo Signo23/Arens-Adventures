@@ -7,6 +7,8 @@ import java.awt.Dimension;
 import java.awt.Toolkit;
 
 import javax.swing.JFrame;
+
+import it.aren.model.World;
 /**
  * @author lory4
  *
@@ -14,10 +16,10 @@ import javax.swing.JFrame;
 public class SwingView implements View {
     final private JFrame frame;
     
-    public SwingView() {
+    public SwingView(final World world) {
         frame = new JFrame("Aren's Adventure");
         frame.setSize(512, 512);
-        frame.getContentPane().add(new SwingPanel(512, 512));
+        frame.getContentPane().add(new SwingPanel(512, 512, world));
         frame.setResizable(false);
         final Dimension dimension = Toolkit.getDefaultToolkit().getScreenSize();
         final int x = (int) ((dimension.getWidth() - frame.getWidth()) / 2);
