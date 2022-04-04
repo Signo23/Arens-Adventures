@@ -4,7 +4,7 @@
 package it.aren.common;
 
 /**
- * @author lory4
+ *
  *
  */
 public class Constant {
@@ -14,4 +14,8 @@ public class Constant {
     public final static String HOME = System.getProperty("user.home");
     public final static String SEP = System.getProperty("file.separator");
     public final static String MAIN_FOLDER = HOME +  SEP + ".aren";
+    public final static Point2D LEFT = new Point2D(-1, 0);
+    public final static Point2D RIGHT = new Point2D(0, -1);
+    public final static Point2D UP = new Point2D(0, 1);
+    public final static Point2D DOWN = new Point2D(0, -1);
 }
