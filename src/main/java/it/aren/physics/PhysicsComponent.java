@@ -4,9 +4,9 @@
 package it.aren.physics;
 
 /**
- * @author giuliamontini
+ *
  *
  */
 public interface PhysicsComponent {
-
+  void update(Entity entity);
 }
