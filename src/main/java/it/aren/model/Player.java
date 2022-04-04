@@ -20,11 +20,13 @@ public class Player extends Entity {
 
     private Point2D lastDirection;
     private List<GameObject> backPack;
+    private boolean idle;
 
     public Player(final Point2D position, final GraphicComponent graphic, final InputComponent input) {
         super(position, true, graphic, input);
         this.lastDirection = new Point2D();
         this.backPack = new ArrayList<>();
+        this.idle = false;
     }
     
     @Override
@@ -64,6 +66,21 @@ public class Player extends Entity {
     public void setBackPack(final List<GameObject> backPack) {
         this.backPack = backPack;
     }
+
+    /**
+     * @return the idle
+     */
+    public boolean isIdle() {
+        return idle;
+    }
+
+    /**
+     * @param idle the idle to set
+     */
+    public void setIdle(final boolean idle) {
+        this.idle = idle;
+    }
+    
 
     
 
