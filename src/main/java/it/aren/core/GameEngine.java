@@ -6,6 +6,7 @@ package it.aren.core;
 import it.aren.common.Constant;
 import it.aren.graphic.SwingView;
 import it.aren.graphic.View;
+import it.aren.model.GameState;
 
 /**
  * 
@@ -13,9 +14,11 @@ import it.aren.graphic.View;
  */
 public class GameEngine {
     private View view;
+    private GameState state;
 
     public void setup() {
-        this.view = new SwingView();
+        this.state = new GameState();
+        this.view = new SwingView(this.state.getWorld());
     }
 
     public void loop() {
@@ -27,6 +30,7 @@ public class GameEngine {
     }
 
     private void processInput() {
+        //this.state.getWorld().nowMap()
         // TODO
     }
 
