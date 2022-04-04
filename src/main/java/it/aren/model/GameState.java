@@ -9,7 +9,8 @@ public class GameState {
     public GameState() {
         world = new World();
         world.setPlayer(GameFactory.createPlayer());
-        //world.addMap()
+        world.addMap(GameFactory.loadMaps());
+        world.setCurrentMap(0);
     }
     public final World getWorld() {
         return world;
