@@ -6,6 +6,8 @@ package it.aren.core;
 import it.aren.common.Constant;
 import it.aren.graphic.SwingView;
 import it.aren.graphic.View;
+import it.aren.input.InputController;
+import it.aren.input.KeyboardInputController;
 import it.aren.model.GameState;
 
 /**
@@ -15,27 +17,31 @@ import it.aren.model.GameState;
 public class GameEngine {
     private View view;
     private GameState state;
-
+    private InputController controller;
+    
     public void setup() {
         this.state = new GameState();
-        this.view = new SwingView(this.state.getWorld());
+        this.controller = new KeyboardInputController();
+        this.view = new SwingView(this.state.getWorld(), this.controller);
     }
 
     public void loop() {
-        final long current = System.currentTimeMillis();
-        this.processInput();
-        this.updateGame();
-        this.render();
-        this.waitNextFrame(current);
+        while(true) {
+            final long current = System.currentTimeMillis();
+            this.processInput();
+            this.updateGame();
+            this.render();
+            this.waitNextFrame(current);
+        }
     }
 
     private void processInput() {
-        //this.state.getWorld().nowMap()
-        // TODO
+        this.state.getWorld().getCurrentMap().getBlocks().forEach(b -> b.updateInput(this.controller));
+        this.state.getWorld().getPlayer().updateInput(this.controller);
     }
 
     private void updateGame() {
-        // TODO updates events
+        this.state.getWorld().getPlayer().updateState();
     }
 
     private void render() {
