@@ -11,6 +11,7 @@ import it.aren.graphic.GraphicComponent;
 import it.aren.graphic.GraphicController;
 import it.aren.input.InputComponent;
 import it.aren.input.InputController;
+import it.aren.physics.PhysicsComponent;
 
 /**
  * 
@@ -21,12 +22,19 @@ public class Player extends Entity {
     private Point2D lastDirection;
     private List<GameObject> backPack;
     private boolean idle;
+    private PhysicsComponent physic;
 
-    public Player(final Point2D position, final GraphicComponent graphic, final InputComponent input) {
+    public Player(final Point2D position, final GraphicComponent graphic, final InputComponent input, final PhysicsComponent phy) {
         super(position, true, graphic, input);
         this.lastDirection = new Point2D();
         this.backPack = new ArrayList<>();
         this.idle = false;
+        this.physic = phy;
+    }
+
+    @Deprecated
+    public Player(final Point2D position, final GraphicComponent graphic, final InputComponent input) {
+        this(position, true, graphic, input, null);
     }
     
     @Override
@@ -80,8 +88,18 @@ public class Player extends Entity {
     public void setIdle(final boolean idle) {
         this.idle = idle;
     }
-    
 
-    
+    /**
+     * @return the Physic component
+     */
+    public PhysicsComponent getPhysic() {
+        return idle;
+    }
 
+    /**
+     * @param the physic to set
+     */
+    public void setPhysic(final PhysicsComponent physic) {
+        this.physic = physic;
+    }
 }
