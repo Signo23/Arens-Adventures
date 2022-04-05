@@ -8,6 +8,7 @@ import java.awt.Toolkit;
 
 import javax.swing.JFrame;
 
+import it.aren.input.InputController;
 import it.aren.model.World;
 /**
  * @author lory4
@@ -16,10 +17,10 @@ import it.aren.model.World;
 public class SwingView implements View {
     final private JFrame frame;
     
-    public SwingView(final World world) {
+    public SwingView(final World world, final InputController controller) {
         frame = new JFrame("Aren's Adventure");
         frame.setSize(512, 512);
-        frame.getContentPane().add(new SwingPanel(512, 512, world));
+        frame.getContentPane().add(new SwingPanel(512, 512, world, controller));
         frame.setResizable(false);
         final Dimension dimension = Toolkit.getDefaultToolkit().getScreenSize();
         final int x = (int) ((dimension.getWidth() - frame.getWidth()) / 2);

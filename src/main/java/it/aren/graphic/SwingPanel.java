@@ -6,6 +6,8 @@ import java.awt.RenderingHints;
 
 import javax.swing.JPanel;
 
+import it.aren.input.InputController;
+import it.aren.input.KeyboardInputController;
 import it.aren.model.World;
 
 public class SwingPanel extends JPanel {
@@ -14,9 +16,10 @@ public class SwingPanel extends JPanel {
     private static final long serialVersionUID = 1L;
     private final World world;
 
-    public SwingPanel(final int w, final int h, final World world){
+    public SwingPanel(final int w, final int h, final World world, final InputController inputController){
         setSize(w,h);
         this.world = world;
+        addKeyListener(new KeyListenerImpl((KeyboardInputController)inputController));
         setFocusable(true);
         setFocusTraversalKeysEnabled(false);
         requestFocusInWindow(); 
@@ -34,7 +37,7 @@ public class SwingPanel extends JPanel {
         
             /* TODO graphic and input */
             final GraphicController controller = new SwingGraphic(g2);
-            this.world.getPlayer().updateGraphic( controller);
+            this.world.getPlayer().updateGraphic(controller);
     }
     
 }
