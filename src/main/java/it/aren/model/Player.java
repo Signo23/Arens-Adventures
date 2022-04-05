@@ -12,6 +12,7 @@ import it.aren.graphic.GraphicController;
 import it.aren.input.InputComponent;
 import it.aren.input.InputController;
 import it.aren.physics.PhysicsComponent;
+import it.aren.physics.PlayerPhysicsComponenent;
 
 /**
  * 
@@ -22,19 +23,23 @@ public class Player extends Entity {
     private Point2D lastDirection;
     private List<GameObject> backPack;
     private boolean idle;
-    private PhysicsComponent physic;
+    private PhysicsComponent phy;
 
     public Player(final Point2D position, final GraphicComponent graphic, final InputComponent input, final PhysicsComponent phy) {
         super(position, true, graphic, input);
         this.lastDirection = new Point2D();
         this.backPack = new ArrayList<>();
         this.idle = false;
-        this.physic = phy;
+        this.phy = phy;
     }
 
+    /**
+     * 
+     * @deprecated use {@link #new(Point2D, GraphicComponent, InputComponent, PhysicsComponent)} instead.
+     */
     @Deprecated
     public Player(final Point2D position, final GraphicComponent graphic, final InputComponent input) {
-        this(position, true, graphic, input, null);
+        this(position, graphic, input, new PlayerPhysicsComponenent());
     }
     
     @Override
@@ -45,6 +50,10 @@ public class Player extends Entity {
     @Override
     public void updateInput(final InputController i) {
         this.input.update(this, i);
+    }
+
+    public void updateState() {
+        this.phy.update(this);
     }
 
     /**
@@ -93,13 +102,13 @@ public class Player extends Entity {
      * @return the Physic component
      */
     public PhysicsComponent getPhysic() {
-        return idle;
+        return phy;
     }
 
     /**
      * @param the physic to set
      */
     public void setPhysic(final PhysicsComponent physic) {
-        this.physic = physic;
+        this.phy = physic;
     }
 }
