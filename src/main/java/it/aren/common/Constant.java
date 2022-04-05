@@ -19,4 +19,8 @@ public class Constant {
     public final static Point2D UP = new Point2D(0, 1);
     public final static Point2D DOWN = new Point2D(0, -1);
     public final static int DEFAULT_VEL = 10;
+    public final static int VK_W = 87;
+    public final static int VK_S = 83;
+    public final static int VK_A = 65;
+    public final static int VK_D = 68;
 }
