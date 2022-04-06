@@ -15,13 +15,13 @@ public class KeyListenerImpl implements KeyListener {
 
     @Override
     public final void keyTyped(final KeyEvent e) {
-        if (e.getKeyCode() == Constant.VK_W) {
+        if (e.getKeyCode() == KeyEvent.VK_W) {
             controller.notifyMoveUp();
-        } else if (e.getKeyCode() == Constant.VK_S) {
+        } else if (e.getKeyCode() == KeyEvent.VK_S) {
             controller.notifyMoveDown();
-        } else if (e.getKeyCode() == Constant.VK_A) {
+        } else if (e.getKeyCode() == KeyEvent.VK_A) {
             controller.notifyMoveLeft();
-        } else if (e.getKeyCode() == Constant.VK_D) {
+        } else if (e.getKeyCode() == KeyEvent.VK_D) {
             controller.notifyMoveRight();
         }
     }
@@ -31,13 +31,13 @@ public class KeyListenerImpl implements KeyListener {
 
     @Override
     public final void keyReleased(final KeyEvent e) {
-        if (e.getKeyCode() == Constant.VK_W) {
+        if (e.getKeyCode() == KeyEvent.VK_W) {
             controller.notifyNoMoreMoveUp();
-        } else if (e.getKeyCode() == Constant.VK_S) {
+        } else if (e.getKeyCode() == KeyEvent.VK_S) {
             controller.notifyNoMoreMoveDown();
-        } else if (e.getKeyCode() == Constant.VK_A) {
+        } else if (e.getKeyCode() == KeyEvent.VK_A) {
             controller.notifyNoMoreMoveLeft();
-        } else if (e.getKeyCode() == Constant.VK_D) {
+        } else if (e.getKeyCode() == KeyEvent.VK_D) {
             controller.notifyNoMoreMoveRight();
         }
     }
