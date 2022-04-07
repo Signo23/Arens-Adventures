@@ -12,7 +12,7 @@ import it.aren.graphic.GraphicController;
 import it.aren.input.InputComponent;
 import it.aren.input.InputController;
 import it.aren.physics.PhysicsComponent;
-import it.aren.physics.PlayerPhysicsComponenent;
+import it.aren.physics.PlayerPhysicsComponent;
 
 /**
  * 
@@ -39,7 +39,7 @@ public class Player extends Entity {
      */
     @Deprecated
     public Player(final Point2D position, final GraphicComponent graphic, final InputComponent input) {
-        this(position, graphic, input, new PlayerPhysicsComponenent());
+        this(position, graphic, input, new PlayerPhysicsComponent());
     }
     
     @Override
