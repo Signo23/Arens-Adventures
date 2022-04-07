@@ -14,7 +14,7 @@ import it.aren.model.Player;
  */
 public class PlayerPhysicsComponent implements PhysicsComponent {
 
-    public void update(Entity player) {
+    public void update(final Entity player) {
         final Player pl = (Player)player;
         if(!pl.isIdle()) {
             final Point2D pos = pl.getLastDirection();
