@@ -12,13 +12,13 @@ import it.aren.model.Player;
  *
  *
  */
-public class PlayerPhysicsComponenent implements PhysicsComponent {
+public class PlayerPhysicsComponent implements PhysicsComponent {
 
-    public void update(Entity player) {
-        Player pl = (Player)player;
+    public void update(final Entity player) {
+        final Player pl = (Player)player;
         if(!pl.isIdle()) {
-            Point2D pos = pl.getLastDirection();
-            Point2D currentPos = pl.getPosition();
+            final Point2D pos = pl.getLastDirection();
+            final Point2D currentPos = pl.getPosition();
             if(pos.equals(Constant.LEFT)) {
                 pl.setPosition(new Point2D(currentPos.getX() - Constant.DEFAULT_VEL, currentPos.getY()));
             }

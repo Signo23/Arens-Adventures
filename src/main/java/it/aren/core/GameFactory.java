@@ -4,7 +4,7 @@ import it.aren.common.Point2D;
 import it.aren.input.PlayerInputComponent;
 import it.aren.model.GameMap;
 import it.aren.model.Player;
-import it.aren.physics.PlayerPhysicsComponenent;
+import it.aren.physics.PlayerPhysicsComponent;
 import it.aren.graphic.PlayerGraphicComponent;
 
 public final class GameFactory {
@@ -16,7 +16,7 @@ public final class GameFactory {
         return new Player(new Point2D(0, 1),
                 new PlayerGraphicComponent(),
                 new PlayerInputComponent(),
-                new PlayerPhysicsComponenent());
+                new PlayerPhysicsComponent());
     }
     public static GameMap loadMaps() {
         return new GameMap();
