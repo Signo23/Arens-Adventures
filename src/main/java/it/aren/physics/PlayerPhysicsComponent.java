@@ -26,10 +26,10 @@ public class PlayerPhysicsComponent implements PhysicsComponent {
                 pl.setPosition(new Point2D(currentPos.getX() + Constant.DEFAULT_VEL, currentPos.getY()));
             }
             if(pos.equals(Constant.UP)) {
-                pl.setPosition(new Point2D(currentPos.getX(), currentPos.getY() + Constant.DEFAULT_VEL));
+                pl.setPosition(new Point2D(currentPos.getX(), currentPos.getY() - Constant.DEFAULT_VEL));
             }
             if(pos.equals(Constant.DOWN)) {
-                pl.setPosition(new Point2D(currentPos.getX(), currentPos.getY() - Constant.DEFAULT_VEL));
+                pl.setPosition(new Point2D(currentPos.getX(), currentPos.getY() + Constant.DEFAULT_VEL));
             }
         }
     }
