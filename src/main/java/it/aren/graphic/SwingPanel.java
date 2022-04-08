@@ -7,6 +7,7 @@ import java.awt.RenderingHints;
 import javax.swing.JPanel;
 
 import it.aren.input.InputController;
+import it.aren.input.KeyListenerImpl;
 import it.aren.input.KeyboardInputController;
 import it.aren.model.World;
 
