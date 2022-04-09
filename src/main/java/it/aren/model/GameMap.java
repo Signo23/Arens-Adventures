@@ -9,7 +9,7 @@ import java.util.List;
 import it.aren.common.Constant;
 
 /**
- * 
+ * The map of the block
  *
  */
 public class GameMap {
@@ -18,16 +18,30 @@ public class GameMap {
     private int height;
     private List<Block> blocks;
 
+    /**
+     * Create a map.
+     * @param width of the map
+     * @param height of the map
+     * @param blocks to add in the map
+     */
     public GameMap(final int width, final int height, final List<Block> blocks) {
         this.width = width;
         this.height = height;
         this.blocks = blocks;
     }
     
+    /**
+     * Create a map without block
+     * @param width of the map
+     * @param height of the map
+     */
     public GameMap(final int width, final int height) {
         this(width, height, new ArrayList<>());
     }
     
+    /**
+     * Create a map without block and default {@link Constant}.
+     */
     public GameMap() {
         this(Constant.DEFAULT_MAP_DIMENSION, Constant.DEFAULT_MAP_DIMENSION, new ArrayList<>());
     }

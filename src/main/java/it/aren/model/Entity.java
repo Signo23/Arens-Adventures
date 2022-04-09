@@ -8,13 +8,17 @@ import it.aren.graphic.GraphicComponent;
 import it.aren.graphic.GraphicController;
 import it.aren.input.InputComponent;
 import it.aren.input.InputController;
-
+/**
+ * The main model of the game.
+ *
+ */
 public abstract class Entity {
     private Point2D position;
     private boolean drawable;
     protected GraphicComponent graphic;
     protected InputComponent input;
     /**
+     * Create an Entity.
      * @param position
      * @param drawble
      */

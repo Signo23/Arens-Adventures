@@ -12,17 +12,24 @@ import it.aren.model.Block;
 import it.aren.model.Player;
 
 /**
- * 
- *
+ * Class for draw entities with Swing.
+ * Implements {@link GraphicController}.
  */
 public class SwingGraphic implements GraphicController {
 
     final private Graphics2D g2;
+    /**
+     * Create a SwingGraphic.
+     * @param g2 for draw
+     */
     public SwingGraphic(final Graphics2D g2) {
         this.g2 = g2;
     }
     
     @Override
+    /**
+     * {@inheritDoc}
+     */
     public void drawPlayer(final Player player) {
         final int playerX = Math.round(player.getPosition().getX());
         final int playerY = Math.round(player.getPosition().getY());
@@ -32,6 +39,9 @@ public class SwingGraphic implements GraphicController {
     }
 
     @Override
+    /**
+     * {@inheritDoc}
+     */
     public void drawBlock(final Block block) {
         if(block.isDrawable()) {
             final int playerX = Math.round(block.getPosition().getX());

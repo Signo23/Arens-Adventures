@@ -12,23 +12,37 @@ import it.aren.input.InputComponent;
 import it.aren.input.InputController;
 
 /**
- * 
+ * Model for every block.
+ * Extends {@link Entity}
  */
 public class Block extends Entity {
 
     private Event event;
 
+    /**
+     * Create a Block
+     * @param position where block is
+     * @param drawable, if false the block will not be drawn
+     * @param graphic for draw the block
+     * @param input for listen the input
+     */
     public Block(final Point2D position, final boolean drawable, final GraphicComponent graphic, final InputComponent input) {
         super(position, drawable, graphic, input);
         this.event = new NullEvent();
     }
 
     @Override
+    /**
+     * {@inheritDoc}
+     */
     public void updateGraphic(final GraphicController g) {
         this.graphic.update(this, g);
     }
 
     @Override
+    /**
+     * {@inheritDoc}
+     */
     public void updateInput(final InputController i) {
         this.input.update(this, i);
     }

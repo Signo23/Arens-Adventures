@@ -10,7 +10,8 @@ import it.aren.input.InputComponent;
 import it.aren.input.InputController;
 
 /**
- * 
+ * Model for game object.
+ * Extends {@link Entity} 
  *
  */
 public class GameObject extends Entity {

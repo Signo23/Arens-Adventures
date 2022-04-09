@@ -15,7 +15,8 @@ import it.aren.physics.PhysicsComponent;
 import it.aren.physics.PlayerPhysicsComponent;
 
 /**
- * 
+ * Model for the player.
+ * Extends {@link Entity}
  *
  */
 public class Player extends Entity {
@@ -25,6 +26,13 @@ public class Player extends Entity {
     private boolean idle;
     private PhysicsComponent phy;
 
+    /**
+     * Create a player.
+     * @param position where the player have to set
+     * @param graphic for draw the player
+     * @param input for listen the input for player
+     * @param phy for update position of player
+     */
     public Player(final Point2D position, final GraphicComponent graphic, final InputComponent input, final PhysicsComponent phy) {
         super(position, true, graphic, input);
         this.lastDirection = new Point2D();
@@ -43,15 +51,24 @@ public class Player extends Entity {
     }
     
     @Override
+    /**
+     * {@inheritDoc}
+     */
     public void updateGraphic(final GraphicController g) {
         this.graphic.update(this, g);
     }
 
     @Override
+    /**
+     * {@inheritDoc}
+     */
     public void updateInput(final InputController i) {
         this.input.update(this, i);
     }
 
+    /**
+     * Update the player position utilizing the physic.
+     */
     public void updateState() {
         this.phy.update(this);
     }
