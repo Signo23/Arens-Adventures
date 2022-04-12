@@ -18,16 +18,16 @@ public class SwingView implements View {
     final private JFrame frame;
     
     public SwingView(final World world, final InputController controller) {
-        frame = new JFrame("Aren's Adventure");
+        this.frame = new JFrame("Aren's Adventure");
         frame.setSize(512, 512);
-        frame.getContentPane().add(new SwingPanel(512, 512, world, controller));
+        frame.getContentPane().add(new SwingPanel(512, 512, world, controller, new Texture()));
         frame.setResizable(false);
         final Dimension dimension = Toolkit.getDefaultToolkit().getScreenSize();
         final int x = (int) ((dimension.getWidth() - frame.getWidth()) / 2);
         final int y = (int) ((dimension.getHeight() - frame.getHeight()) / 2);
         frame.setLocation(x, y);
         frame.setAutoRequestFocus(true);
-        frame.setDefaultCloseOperation(JFrame.DISPOSE_ON_CLOSE);
+        frame.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
         frame.setVisible(true);
     }
 

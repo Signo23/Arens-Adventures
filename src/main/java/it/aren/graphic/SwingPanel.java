@@ -16,10 +16,12 @@ public class SwingPanel extends JPanel {
 
     private static final long serialVersionUID = 1L;
     private final World world;
+    private final Texture tex;
 
-    public SwingPanel(final int w, final int h, final World world, final InputController inputController){
+    public SwingPanel(final int w, final int h, final World world, final InputController inputController, final Texture texture){
         setSize(w,h);
         this.world = world;
+        this.tex = texture;
         addKeyListener(new KeyListenerImpl((KeyboardInputController)inputController));
         setFocusable(true);
         setFocusTraversalKeysEnabled(false);
@@ -37,8 +39,10 @@ public class SwingPanel extends JPanel {
             g2.clearRect(0,0,this.getWidth(),this.getHeight());
         
             /* TODO graphic and input */
-            final GraphicController controller = new SwingGraphic(g2);
+            final GraphicController controller = new SwingGraphic(g2, this, this.tex);
+            this.world.getCurrentMap().updateGraphic(controller);
             this.world.getPlayer().updateGraphic(controller);
+
     }
     
 }

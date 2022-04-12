@@ -30,7 +30,9 @@ public class Block extends Entity {
 
     @Override
     public void updateInput(final InputController i) {
-        this.input.update(this, i);
+        if(this.input != null) {
+            this.input.update(this, i);
+        }
     }
 
     /**
