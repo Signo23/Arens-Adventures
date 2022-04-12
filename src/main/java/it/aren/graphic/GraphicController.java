@@ -4,6 +4,7 @@
 package it.aren.graphic;
 
 import it.aren.model.Block;
+import it.aren.model.GameMap;
 import it.aren.model.Player;
 
 /**
@@ -23,4 +24,5 @@ public interface GraphicController {
      * @param block to draw
      */
     void drawBlock(Block block);
+    void drawGameMap(GameMap gameMap);
 }
