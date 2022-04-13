@@ -1,11 +1,21 @@
+/**
+ * 
+ */
 package it.aren.input;
 
 import it.aren.model.Entity;
 import it.aren.model.Player;
 import it.aren.common.Constant;
-
+/**
+ * The input component for the player.
+ * Implements {@link InputComponent}
+ */
 public class PlayerInputComponent implements InputComponent {
 
+    @Override
+    /**
+     * {@inheritDoc}
+     */
     public final void update(final Entity entity, final InputController controller) {
         if (controller.isMoveUp()) {
             //Aren si muove verso l'alto

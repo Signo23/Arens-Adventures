@@ -1,33 +1,49 @@
+/**
+ * 
+ */
 package it.aren.input;
 
 import java.awt.event.KeyEvent;
 import java.awt.event.KeyListener;
-
+/**
+ * The listener for the keyboard.
+ * Implements {@link KeyListener}
+ */
 public class KeyListenerImpl implements KeyListener {
 
     private final KeyboardInputController controller;
 
+    /**
+     * Set the controller received from the keyboard.
+     * @param controller the controller to set
+     */
     public KeyListenerImpl(final KeyboardInputController controller) {
         this.controller = controller;
     }
 
     @Override
+    /**
+     * {@inheritDoc}
+     */
     public final void keyTyped(final KeyEvent e) { }
 
     @Override
+    /**
+     * {@inheritDoc}
+     */
     public final void keyPressed(final KeyEvent e) {
         switch (e.getKeyCode()) {
             case KeyEvent.VK_W:
-                controller.notifyMoveUp();
+                this.controller.notifyMoveUp();
                 break;
             case KeyEvent.VK_S:
-                controller.notifyMoveDown();
+                this.controller.notifyMoveDown();
                 break;
             case KeyEvent.VK_A:
-                controller.notifyMoveLeft();
+                this.controller.notifyMoveLeft();
                 break;
             case KeyEvent.VK_D:
-                controller.notifyMoveRight();
+                this.controller.notifyMoveRight();
                 break;
             default:
                 break;
@@ -35,19 +51,22 @@ public class KeyListenerImpl implements KeyListener {
     }
 
     @Override
+    /**
+     * {@inheritDoc}
+     */
     public final void keyReleased(final KeyEvent e) {
         switch (e.getKeyCode()) {
             case KeyEvent.VK_W:
-                controller.notifyNoMoreMoveUp();
+                this.controller.notifyNoMoreMoveUp();
                 break;
             case KeyEvent.VK_S:
-                controller.notifyNoMoreMoveDown();
+                this.controller.notifyNoMoreMoveDown();
                 break;
             case KeyEvent.VK_A:
-                controller.notifyNoMoreMoveLeft();
+                this.controller.notifyNoMoreMoveLeft();
                 break;
             case KeyEvent.VK_D:
-                controller.notifyNoMoreMoveRight();
+                this.controller.notifyNoMoreMoveRight();
                 break;
             default:
                 break;

@@ -1,5 +1,10 @@
+/**
+ * 
+ */
 package it.aren.input;
-
+/**
+ * The controller for the input.
+ */
 public interface InputController {
 
     boolean isMoveUp();
