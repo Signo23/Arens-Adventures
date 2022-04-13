@@ -29,15 +29,18 @@ public class SwingPanel extends JPanel {
      * @param inputController for listen the input
      */
     public SwingPanel(final int w, final int h, final World world, final InputController inputController){
-        setSize(w,h);
+        this.setSize(w,h);
         this.world = world;
-        addKeyListener(new KeyListenerImpl((KeyboardInputController)inputController));
-        setFocusable(true);
-        setFocusTraversalKeysEnabled(false);
-        requestFocusInWindow(); 
+        this.addKeyListener(new KeyListenerImpl((KeyboardInputController)inputController));
+        this.setFocusable(true);
+        this.setFocusTraversalKeysEnabled(false);
+        this.requestFocusInWindow(); 
         
     }
     
+    /**
+     * {@inheritDoc}
+     */
     public void paint(final Graphics g){
             final Graphics2D g2 = (Graphics2D) g;
             

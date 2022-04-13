@@ -11,5 +11,10 @@ import it.aren.model.Entity;
  */
 public interface GraphicComponent {
 
+    /**
+     * Draw the {@link Entity}'s graphic state.
+     * @param ent {@link Entity} to draw
+     * @param w {@link GraphicController} for draw
+     */
     void update( Entity ent, GraphicController w);
 }

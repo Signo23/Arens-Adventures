@@ -20,9 +20,9 @@ public class Block extends Entity {
     private Event event;
 
     /**
-     * Create a Block
+     * Create a Block.
      * @param position where block is
-     * @param drawable, if false the block will not be drawn
+     * @param drawable set if the block will be drawn
      * @param graphic for draw the block
      * @param input for listen the input
      */
@@ -48,13 +48,15 @@ public class Block extends Entity {
     }
 
     /**
+     * Get the block's {@link Event}.
      * @return the event
      */
     public Event getEvent() {
-        return event;
+        return this.event;
     }
 
     /**
+     * Set the block's {@link Event}.
      * @param event the event to set
      */
     public void setEvent(final Event event) {

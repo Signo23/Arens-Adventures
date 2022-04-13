@@ -47,13 +47,15 @@ public class GameMap {
     }
 
     /**
+     * Get GameMap's width.
      * @return the width
      */
     public int getWidth() {
-        return width;
+        return this.width;
     }
 
     /**
+     * Set GameMap's width.
      * @param width the width to set
      */
     public void setWidth(final int width) {
@@ -61,13 +63,15 @@ public class GameMap {
     }
 
     /**
+     * Get GameMap's height.
      * @return the height
      */
     public int getHeight() {
-        return height;
+        return this.height;
     }
 
     /**
+     * Set GameMap's height.
      * @param height the height to set
      */
     public void setHeight(final int height) {
@@ -75,13 +79,15 @@ public class GameMap {
     }
 
     /**
+     * Get GameMap's list of {@link Block}.
      * @return the blocks
      */
     public List<Block> getBlocks() {
-        return blocks;
+        return this.blocks;
     }
 
     /**
+     * Set GameMap's list of {@link Block}.
      * @param blocks the blocks to set
      */
     public void setBlocks(final List<Block> blocks) {

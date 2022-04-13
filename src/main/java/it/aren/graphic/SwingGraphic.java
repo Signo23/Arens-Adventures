@@ -33,9 +33,9 @@ public class SwingGraphic implements GraphicController {
     public void drawPlayer(final Player player) {
         final int playerX = Math.round(player.getPosition().getX());
         final int playerY = Math.round(player.getPosition().getY());
-        g2.setColor(Color.BLUE);
-        g2.setStroke(new BasicStroke(4f));
-        g2.drawRect(playerX, playerY, Constant.DEFAULT_HITBOX_DIMENSION, Constant.DEFAULT_HITBOX_DIMENSION);
+        this.g2.setColor(Color.BLUE);
+        this.g2.setStroke(new BasicStroke(4f));
+        this.g2.drawRect(playerX, playerY, Constant.DEFAULT_HITBOX_DIMENSION, Constant.DEFAULT_HITBOX_DIMENSION);
     }
 
     @Override
@@ -46,9 +46,9 @@ public class SwingGraphic implements GraphicController {
         if(block.isDrawable()) {
             final int playerX = Math.round(block.getPosition().getX());
             final int playerY = Math.round(block.getPosition().getY());
-            g2.setColor(Color.YELLOW);
-            g2.setStroke(new BasicStroke(4f));
-            g2.drawRect(playerX, playerY, Constant.DEFAULT_HITBOX_DIMENSION, Constant.DEFAULT_HITBOX_DIMENSION);   
+            this.g2.setColor(Color.YELLOW);
+            this.g2.setStroke(new BasicStroke(4f));
+            this.g2.drawRect(playerX, playerY, Constant.DEFAULT_HITBOX_DIMENSION, Constant.DEFAULT_HITBOX_DIMENSION);   
         }
     }
 
