@@ -10,23 +10,37 @@ import it.aren.input.InputController;
 import it.aren.input.KeyListenerImpl;
 import it.aren.input.KeyboardInputController;
 import it.aren.model.World;
-
+/**
+ * This is an extension of JPanel.
+ * Every {@link it.aren.model.Entity} is rendered there
+ *
+ */
 public class SwingPanel extends JPanel {
 
 
     private static final long serialVersionUID = 1L;
     private final World world;
 
+    /**
+     * Initialize the panel.
+     * @param w weight of panel
+     * @param h height of panel
+     * @param world to render
+     * @param inputController for listen the input
+     */
     public SwingPanel(final int w, final int h, final World world, final InputController inputController){
-        setSize(w,h);
+        this.setSize(w,h);
         this.world = world;
-        addKeyListener(new KeyListenerImpl((KeyboardInputController)inputController));
-        setFocusable(true);
-        setFocusTraversalKeysEnabled(false);
-        requestFocusInWindow(); 
+        this.addKeyListener(new KeyListenerImpl((KeyboardInputController)inputController));
+        this.setFocusable(true);
+        this.setFocusTraversalKeysEnabled(false);
+        this.requestFocusInWindow(); 
         
     }
     
+    /**
+     * {@inheritDoc}
+     */
     public void paint(final Graphics g){
             final Graphics2D g2 = (Graphics2D) g;
             

@@ -7,7 +7,7 @@ import it.aren.model.Block;
 import it.aren.model.Player;
 
 /**
- * 
+ * Interface for drawing entities.
  *
  */
 public interface GraphicController {

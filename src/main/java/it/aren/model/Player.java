@@ -12,10 +12,10 @@ import it.aren.graphic.GraphicController;
 import it.aren.input.InputComponent;
 import it.aren.input.InputController;
 import it.aren.physics.PhysicsComponent;
-import it.aren.physics.PlayerPhysicsComponent;
 
 /**
- * 
+ * Model for the player.
+ * Extends {@link Entity}
  *
  */
 public class Player extends Entity {
@@ -25,6 +25,13 @@ public class Player extends Entity {
     private boolean idle;
     private PhysicsComponent phy;
 
+    /**
+     * Create a player.
+     * @param position where the player have to set
+     * @param graphic for draw the player
+     * @param input for listen the input for player
+     * @param phy for update position of player
+     */
     public Player(final Point2D position, final GraphicComponent graphic, final InputComponent input, final PhysicsComponent phy) {
         super(position, true, graphic, input);
         this.lastDirection = new Point2D();
@@ -32,38 +39,40 @@ public class Player extends Entity {
         this.idle = false;
         this.phy = phy;
     }
-
-    /**
-     * 
-     * @deprecated use {@link #new(Point2D, GraphicComponent, InputComponent, PhysicsComponent)} instead.
-     */
-    @Deprecated
-    public Player(final Point2D position, final GraphicComponent graphic, final InputComponent input) {
-        this(position, graphic, input, new PlayerPhysicsComponent());
-    }
     
     @Override
+    /**
+     * {@inheritDoc}
+     */
     public void updateGraphic(final GraphicController g) {
         this.graphic.update(this, g);
     }
 
     @Override
+    /**
+     * {@inheritDoc}
+     */
     public void updateInput(final InputController i) {
         this.input.update(this, i);
     }
 
+    /**
+     * Update the Entity's {@link PhysicsComponent}.
+     */
     public void updateState() {
         this.phy.update(this);
     }
 
     /**
+     * Get Player's last direction.
      * @return the lastDirection
      */
     public Point2D getLastDirection() {
-        return lastDirection;
+        return this.lastDirection;
     }
 
     /**
+     * Set Player's last direction.
      * @param lastDirection the lastDirection to set
      */
     public void setLastDirection(final Point2D lastDirection) {
@@ -71,13 +80,15 @@ public class Player extends Entity {
     }
 
     /**
+     * Get Player's backpack.
      * @return the backPack
      */
     public List<GameObject> getBackPack() {
-        return backPack;
+        return this.backPack;
     }
 
     /**
+     * Set Player's backpack.
      * @param backPack the backPack to set
      */
     public void setBackPack(final List<GameObject> backPack) {
@@ -85,13 +96,15 @@ public class Player extends Entity {
     }
 
     /**
+     * Check if Player is idle.
      * @return the idle
      */
     public boolean isIdle() {
-        return idle;
+        return this.idle;
     }
 
     /**
+     * Set if the Player is idle.
      * @param idle the idle to set
      */
     public void setIdle(final boolean idle) {
@@ -99,14 +112,16 @@ public class Player extends Entity {
     }
 
     /**
+     * Get Player's PhysicComponent.
      * @return the Physic component
      */
     public PhysicsComponent getPhysic() {
-        return phy;
+        return this.phy;
     }
 
     /**
-     * @param the physic to set
+     * Set Player's PhysicComponent.
+     * @param physic the physic to set
      */
     public void setPhysic(final PhysicsComponent physic) {
         this.phy = physic;
