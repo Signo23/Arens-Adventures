@@ -8,7 +8,7 @@ import it.aren.model.Player;
 
 /**
  * Graphic for {@link Player}.
- *
+ * Implements {@link GraphicComponent}
  */
 public class PlayerGraphicComponent implements GraphicComponent {
 

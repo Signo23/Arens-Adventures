@@ -100,6 +100,9 @@ public class GameMap extends Entity {
     }
 
     @Override
+    /**
+     * {@inheritDoc}
+     */
     public void updateGraphic(final GraphicController g) {
         this.graphic.update(this, g);
         this.blocks.forEach(b -> b.updateGraphic(g));
@@ -107,6 +110,9 @@ public class GameMap extends Entity {
     }
 
     @Override
+    /**
+     * {@inheritDoc}
+     */
     public void updateInput(final InputController i) {
         
     }

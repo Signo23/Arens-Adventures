@@ -14,15 +14,20 @@ import it.aren.model.Player;
 public interface GraphicController {
 
     /**
-     * Draw the player.
-     * @param player to draw
+     * Draw {@link Player}
+     * @param player the {@link Player} to draw
      */
     void drawPlayer(Player player);
 
     /**
-     * Draw the block.
-     * @param block to draw
+     * Draw {@link Block}
+     * @param block the {@link Block} to draw
      */
     void drawBlock(Block block);
+
+    /**
+     * Draw {@link GameMap}
+     * @param gameMap the {@link GameMap} to draw
+     */
     void drawGameMap(GameMap gameMap);
 }

@@ -35,7 +35,7 @@ public class Constant {
     /**
      * Game's textures directory
      */
-    public final static String TEXTURES_FOLDER = "/assets/textures";
+    public final static String TEXTURES_FOLDER = "/assets/textures/";
     /**
      * The {@link Point2D} for left
      */
