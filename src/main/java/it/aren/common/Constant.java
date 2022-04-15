@@ -19,7 +19,7 @@ public class Constant {
     /**
      * Default FPS
      */
-    public static final long DEFAULT_FPS = 33; // =~ 30 frames per second
+    public static final long DEFAULT_FPS = 16; // 33 =~ 30 frames per second
     /**
      * User's home directory
      */
@@ -55,5 +55,5 @@ public class Constant {
     /**
      * Default velocity
      */
-    public final static int DEFAULT_VEL = 10;
+    public final static int DEFAULT_VEL = 2;
 }
