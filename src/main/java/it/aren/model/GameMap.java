@@ -7,12 +7,16 @@ import java.util.ArrayList;
 import java.util.List;
 
 import it.aren.common.Constant;
+import it.aren.common.Point2D;
+import it.aren.graphic.GameMapGraphicComponent;
+import it.aren.graphic.GraphicController;
+import it.aren.input.InputController;
 
 /**
  * The map of the block
  *
  */
-public class GameMap {
+public class GameMap extends Entity {
 
     private int width;
     private int height;
@@ -25,6 +29,7 @@ public class GameMap {
      * @param blocks to add in the map
      */
     public GameMap(final int width, final int height, final List<Block> blocks) {
+        super(new Point2D(), true, new GameMapGraphicComponent(), null);
         this.width = width;
         this.height = height;
         this.blocks = blocks;
@@ -92,6 +97,24 @@ public class GameMap {
      */
     public void setBlocks(final List<Block> blocks) {
         this.blocks = blocks;
+    }
+
+    @Override
+    /**
+     * {@inheritDoc}
+     */
+    public void updateGraphic(final GraphicController g) {
+        this.graphic.update(this, g);
+        this.blocks.forEach(b -> b.updateGraphic(g));
+        
+    }
+
+    @Override
+    /**
+     * {@inheritDoc}
+     */
+    public void updateInput(final InputController i) {
+        
     }
     
 }

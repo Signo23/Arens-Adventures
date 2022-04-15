@@ -1,24 +1,19 @@
-/**
- * 
- */
 package it.aren.graphic;
 
-import it.aren.model.Block;
 import it.aren.model.Entity;
-
+import it.aren.model.GameMap;
 /**
- * Graphic for {@link Block}.
+ * Graphic for {@link GameMap}.
  * Implements {@link GraphicComponent}
  */
-public class BlockGraphicComponent implements GraphicComponent {
+public class GameMapGraphicComponent implements GraphicComponent {
 
     @Override
     /**
      * {@inheritDoc}
      */
     public void update(final Entity ent, final GraphicController w) {
-        w.drawBlock((Block)ent);
-
+        w.drawGameMap((GameMap)ent);
     }
 
 }
