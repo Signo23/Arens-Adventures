@@ -26,7 +26,7 @@ public class Texture {
 
     /**
      * Get {@link BufferedImage} for player.
-     * @return the player
+     * @return {@link BufferedImage} of player
      */
     public BufferedImage getPlayer() {
         return this.player;
@@ -34,7 +34,7 @@ public class Texture {
 
     /**
      * Get {@link BufferedImage} for chest.
-     * @return the chest
+     * @return {@link BufferedImage} of chest
      */
     public BufferedImage getChest() {
         return chest;
@@ -42,7 +42,7 @@ public class Texture {
 
     /**
      * Get {@link BufferedImage} for first level.
-     * @return the levelOne
+     * @return {@link BufferedImage} of levelOne
      */
     public BufferedImage getLevelOne() {
         return levelOne;

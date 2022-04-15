@@ -7,8 +7,8 @@ import it.aren.model.Block;
 import it.aren.model.Entity;
 
 /**
- * Graphic for {@link Block}
- *
+ * Graphic for {@link Block}.
+ * Implements {@link GraphicComponent}
  */
 public class BlockGraphicComponent implements GraphicComponent {
 
