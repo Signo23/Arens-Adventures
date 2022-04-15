@@ -9,11 +9,15 @@ import it.aren.model.Entity;
 import it.aren.model.Player;
 
 /**
- *
- *
+ * The physics component for {@link Player}.
+ * Implements {@link PhysicsComponent}
  */
 public class PlayerPhysicsComponent implements PhysicsComponent {
-
+    
+    @Override
+    /**
+     * {@inheritDoc}
+     */
     public void update(final Entity player) {
         final Player pl = (Player)player;
         if(!pl.isIdle()) {

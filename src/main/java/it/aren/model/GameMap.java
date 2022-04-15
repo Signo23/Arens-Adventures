@@ -13,7 +13,7 @@ import it.aren.graphic.GraphicController;
 import it.aren.input.InputController;
 
 /**
- * 
+ * The map of the block
  *
  */
 public class GameMap extends Entity {
@@ -22,6 +22,12 @@ public class GameMap extends Entity {
     private int height;
     private List<Block> blocks;
 
+    /**
+     * Create a map.
+     * @param width of the map
+     * @param height of the map
+     * @param blocks to add in the map
+     */
     public GameMap(final int width, final int height, final List<Block> blocks) {
         super(new Point2D(), true, new GameMapGraphicComponent(), null);
         this.width = width;
@@ -29,22 +35,32 @@ public class GameMap extends Entity {
         this.blocks = blocks;
     }
     
+    /**
+     * Create a map without block
+     * @param width of the map
+     * @param height of the map
+     */
     public GameMap(final int width, final int height) {
         this(width, height, new ArrayList<>());
     }
     
+    /**
+     * Create a map without block and default {@link Constant}.
+     */
     public GameMap() {
         this(Constant.DEFAULT_MAP_DIMENSION, Constant.DEFAULT_MAP_DIMENSION, new ArrayList<>());
     }
 
     /**
+     * Get GameMap's width.
      * @return the width
      */
     public int getWidth() {
-        return width;
+        return this.width;
     }
 
     /**
+     * Set GameMap's width.
      * @param width the width to set
      */
     public void setWidth(final int width) {
@@ -52,13 +68,15 @@ public class GameMap extends Entity {
     }
 
     /**
+     * Get GameMap's height.
      * @return the height
      */
     public int getHeight() {
-        return height;
+        return this.height;
     }
 
     /**
+     * Set GameMap's height.
      * @param height the height to set
      */
     public void setHeight(final int height) {
@@ -66,13 +84,15 @@ public class GameMap extends Entity {
     }
 
     /**
+     * Get GameMap's list of {@link Block}.
      * @return the blocks
      */
     public List<Block> getBlocks() {
-        return blocks;
+        return this.blocks;
     }
 
     /**
+     * Set GameMap's list of {@link Block}.
      * @param blocks the blocks to set
      */
     public void setBlocks(final List<Block> blocks) {

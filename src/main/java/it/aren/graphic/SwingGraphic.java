@@ -11,14 +11,18 @@ import it.aren.model.GameMap;
 import it.aren.model.Player;
 
 /**
- * 
- *
+ * Class for draw entities with Swing.
+ * Implements {@link GraphicController}.
  */
 public class SwingGraphic implements GraphicController {
 
     final private Graphics2D g2;
     final private ImageObserver io;
     final Texture tex;
+      /**
+     * Create a SwingGraphic.
+     * @param g2 for draw
+     */
     public SwingGraphic(final Graphics2D g2, final ImageObserver io, final Texture tex) {
         this.g2 = g2;
         this.io = io;
@@ -26,11 +30,17 @@ public class SwingGraphic implements GraphicController {
     }
     
     @Override
+    /**
+     * {@inheritDoc}
+     */
     public void drawPlayer(final Player player) {
         g2.drawImage(this.tex.getPlayer(), (int) player.getPosition().getX(), (int) player.getPosition().getY(), this.io);
     }
 
     @Override
+    /**
+     * {@inheritDoc}
+     */
     public void drawBlock(final Block block) {
         if(block.isDrawable()) {
             g2.drawImage(this.tex.getChest(), (int)block.getPosition().getX(), (int)block.getPosition().getY(), this.io);

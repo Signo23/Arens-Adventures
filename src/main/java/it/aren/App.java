@@ -4,7 +4,10 @@ import java.io.File;
 
 import it.aren.common.Constant;
 import it.aren.core.GameEngine;
-
+/**
+ * The main class of the game. This starts the game
+ *
+ */
 public final class App {
     private App() {
         // the constructor will never be called directly.

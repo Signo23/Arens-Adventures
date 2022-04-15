@@ -10,7 +10,11 @@ import it.aren.input.InputController;
 import it.aren.input.KeyListenerImpl;
 import it.aren.input.KeyboardInputController;
 import it.aren.model.World;
-
+/**
+ * This is an extension of JPanel.
+ * Every {@link it.aren.model.Entity} is rendered there
+ *
+ */
 public class SwingPanel extends JPanel {
 
 
@@ -18,6 +22,13 @@ public class SwingPanel extends JPanel {
     private final World world;
     private final Texture tex;
 
+      /**
+     * Initialize the panel.
+     * @param w weight of panel
+     * @param h height of panel
+     * @param world to render
+     * @param inputController for listen the input
+     */
     public SwingPanel(final int w, final int h, final World world, final InputController inputController, final Texture texture){
         setSize(w,h);
         this.world = world;
@@ -29,6 +40,9 @@ public class SwingPanel extends JPanel {
         
     }
     
+    /**
+     * {@inheritDoc}
+     */
     public void paint(final Graphics g){
             final Graphics2D g2 = (Graphics2D) g;
             

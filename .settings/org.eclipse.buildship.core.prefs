@@ -1,4 +1,4 @@
-arguments=--stacktrace --warning-mode all
+arguments=--warning-mode all
 auto.sync=false
 build.scans.enabled=false
 connection.gradle.distribution=GRADLE_DISTRIBUTION(VERSION(7.4.1))

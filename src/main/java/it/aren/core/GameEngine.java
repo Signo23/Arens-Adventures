@@ -11,7 +11,8 @@ import it.aren.input.KeyboardInputController;
 import it.aren.model.GameState;
 
 /**
- * 
+ * This class contain the main loop.
+ * This is the main controller
  *
  */
 public class GameEngine {
@@ -19,12 +20,19 @@ public class GameEngine {
     private GameState state;
     private InputController controller;
     
+    /**
+     * Setup the game.
+     */
     public void setup() {
         this.state = new GameState();
         this.controller = new KeyboardInputController();
         this.view = new SwingView(this.state.getWorld(), this.controller);
     }
 
+    /**
+     * The main loop of the game.
+     * Call {@link setup()} before this.
+     */
     public void loop() {
         while(true) {
             final long current = System.currentTimeMillis();

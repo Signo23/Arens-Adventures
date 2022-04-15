@@ -8,7 +8,7 @@ import it.aren.model.GameMap;
 import it.aren.model.Player;
 
 /**
- * 
+ * Interface for drawing entities.
  *
  */
 public interface GraphicController {

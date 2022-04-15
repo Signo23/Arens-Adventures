@@ -1,5 +1,11 @@
+/**
+ * 
+ */
 package it.aren.input;
-
+/**
+ * The input controller for the keyboard.
+ * Implements {@link InputController}
+ */
 public class KeyboardInputController implements InputController {
 
     private boolean isMoveUp;
@@ -8,63 +14,90 @@ public class KeyboardInputController implements InputController {
     private boolean isMoveRight;
 
     /**
+     * Return isMoveUp. 
      * @return isMoveUp
      */
     public final boolean isMoveUp() {
-        return isMoveUp;
+        return this.isMoveUp;
     }
 
     /**
+     * Return isMoveDown.
      * @return isMoveDown
      */
     public final boolean isMoveDown() {
-        return isMoveDown;
+        return this.isMoveDown;
     }
 
     /**
+     * Return isMoveLeft.
      * @return isMoveLeft
      */
     public final boolean isMoveLeft() {
-        return isMoveLeft;
+        return this.isMoveLeft;
     }
 
     /**
+     * Return isMoveRiight.
      * @return isMoveRight
      */
     public final boolean isMoveRight() {
-        return isMoveRight;
+        return this.isMoveRight;
     }
 
-
+    /**
+     * Set isMoveUp to true.
+     */
     public final void notifyMoveUp() {
-        isMoveUp = true;
+        this.isMoveUp = true;
     }
 
+    /**
+     * Set isMoveUp to false.
+     */
     public final void notifyNoMoreMoveUp() {
-        isMoveUp = false;
+        this.isMoveUp = false;
     }
 
+    /**
+     * Set isMoveDown to true.
+     */
     public final void notifyMoveDown() {
-        isMoveDown = true;
+        this.isMoveDown = true;
     }
 
+    /**
+     * Set isMoveDown to false.
+     */
     public final void notifyNoMoreMoveDown() {
-        isMoveDown = false;
+        this.isMoveDown = false;
     }
 
+    /**
+     * Set isMoveLeft to true.
+     */
     public final void notifyMoveLeft() {
-        isMoveLeft = true;
+        this.isMoveLeft = true;
     }
 
+    /**
+     * Set isMoveLeft to false.
+     */
     public final void notifyNoMoreMoveLeft() {
-        isMoveLeft = false;
+        this.isMoveLeft = false;
     }
 
+    /**
+     * Set isMoveRight to true.
+     */
     public final void notifyMoveRight() {
-        isMoveRight = true;
+        this.isMoveRight = true;
     }
 
+    /**
+     * Set isMoveRight to false.
+     */
     public final void notifyNoMoreMoveRight() {
-        isMoveRight = false;
+        this.isMoveRight = false;
     }
 }
