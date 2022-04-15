@@ -33,6 +33,10 @@ public class Constant {
      */
     public final static String MAIN_FOLDER = HOME +  SEP + ".aren";
     /**
+     * Game's textures directory
+     */
+    public final static String TEXTURES_FOLDER = "/assets/textures";
+    /**
      * The {@link Point2D} for left
      */
     public final static Point2D LEFT = new Point2D(-1, 0);
