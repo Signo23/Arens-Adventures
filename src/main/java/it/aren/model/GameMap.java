@@ -48,7 +48,7 @@ public class GameMap extends Entity {
      * Create a map without block and default {@link Constant}.
      */
     public GameMap() {
-        this(Constant.DEFAULT_MAP_DIMENSION, Constant.DEFAULT_MAP_DIMENSION, new ArrayList<>());
+        this(Constant.DEAFULT_MAP_HEIGHT, Constant.DEFAULT_MAP_WIDTH, new ArrayList<>());
     }
 
     /**
