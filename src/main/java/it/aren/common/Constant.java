@@ -37,18 +37,22 @@ public class Constant {
      */
     public final static String TEXTURES_FOLDER = "/assets/textures/";
     /**
+     * @deprecated use {@link Direction}
      * The {@link Point2D} for left
      */
     public final static Point2D LEFT = new Point2D(-1, 0);
     /**
+     * @deprecated use {@link Direction}
      * The {@link Point2D} for right
      */
     public final static Point2D RIGHT = new Point2D(1, 0);
     /**
+     * @deprecated use {@link Direction}
      * The {@link Point2D} for up
      */
     public final static Point2D UP = new Point2D(0, -1);
     /**
+     * @deprecated use {@link Direction}
      * The {@link Point2D} for down
      */
     public final static Point2D DOWN = new Point2D(0, 1);
