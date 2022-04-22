@@ -29,4 +29,12 @@ public enum Direction {
     Direction(final int x, final int y) {
         this.vector = new Point2D(x, y);
     }
+    
+    public static Direction valueOfPoint2D(final Point2D point) {
+        final int x = (int) point.getX();
+        final int y = (int) point.getY();
+        final int xAbs = Math.abs(x);
+        final int yAbs = Math.abs(y);
+        return xAbs > yAbs ? x > 0 ? RIGHT : LEFT : y > 0 ? DOWN : UP;
+    }
 }
