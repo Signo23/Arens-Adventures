@@ -3,6 +3,9 @@
  */
 package it.aren.graphic;
 
+import java.awt.image.BufferedImage;
+
+import it.aren.common.Point2D;
 import it.aren.model.Block;
 import it.aren.model.GameMap;
 import it.aren.model.Player;
@@ -14,6 +17,7 @@ import it.aren.model.Player;
 public interface GraphicController {
 
     /**
+     * @deprecated
      * Draw {@link Player}
      * @param player the {@link Player} to draw
      */
@@ -30,4 +34,6 @@ public interface GraphicController {
      * @param gameMap the {@link GameMap} to draw
      */
     void drawGameMap(GameMap gameMap);
+
+    void drawPlayer(Point2D playerPosition, BufferedImage sprite);
 }
