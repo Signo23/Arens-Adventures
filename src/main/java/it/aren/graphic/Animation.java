@@ -8,8 +8,6 @@ import java.util.Map;
 import it.aren.common.Constant;
 import it.aren.common.Direction;
 import it.aren.common.Point2D;
-import it.aren.model.Entity;
-import it.aren.model.Player;
 
 /**
  * Contain the {@link BufferedImage}s for animation.
@@ -24,7 +22,7 @@ public class Animation {
      * Main constructor.
      * Load all the sprite.
      */
-    public Animation(final Class<? extends Entity> entClass, final Texture texture) {
+    public Animation(final Texture texture) {
         this.idleSprite = new HashMap<>();
         this.walkSprite = new HashMap<>();
         
@@ -38,35 +36,32 @@ public class Animation {
         this.walkSprite.put(Direction.LEFT, new LinkedList<>());
         this.walkSprite.put(Direction.RIGHT, new LinkedList<>());
         
-        if(entClass.equals(Player.class)) {
-            final BufferedImage idle = texture.getPlayerIdle();
-            final BufferedImage walk = texture.getPlayerWalk();
-            for(int i = 0; i < 4; i++) {
-                for(int j = 0; j < 4; j++) {
-                    switch(i) {
-                        case 0:
-                            this.idleSprite.get(Direction.DOWN).add(crop(idle, j, i));
-                            this.walkSprite.get(Direction.DOWN).add(crop(walk, j, i));
-                            break;
-                        case 1:
-                            this.idleSprite.get(Direction.LEFT).add(crop(idle, j, i));
-                            this.walkSprite.get(Direction.LEFT).add(crop(walk, j, i));
-                            break;
-                        case 2:
-                            this.idleSprite.get(Direction.RIGHT).add(crop(idle, j, i));
-                            this.walkSprite.get(Direction.RIGHT).add(crop(walk, j, i));
-                            break;
-                        case 3:
-                            this.idleSprite.get(Direction.UP).add(crop(idle, j, i));
-                            this.walkSprite.get(Direction.UP).add(crop(walk, j, i));
-                            break;
-                        default:
-                            break;
-                    }
+        final BufferedImage idle = texture.getPlayerIdle();
+        final BufferedImage walk = texture.getPlayerWalk();
+        for(int i = 0; i < 4; i++) {
+            for(int j = 0; j < 4; j++) {
+                switch(i) {
+                    case 0:
+                        this.idleSprite.get(Direction.DOWN).add(crop(idle, j, i));
+                        this.walkSprite.get(Direction.DOWN).add(crop(walk, j, i));
+                        break;
+                    case 1:
+                        this.idleSprite.get(Direction.LEFT).add(crop(idle, j, i));
+                        this.walkSprite.get(Direction.LEFT).add(crop(walk, j, i));
+                        break;
+                    case 2:
+                        this.idleSprite.get(Direction.RIGHT).add(crop(idle, j, i));
+                        this.walkSprite.get(Direction.RIGHT).add(crop(walk, j, i));
+                        break;
+                    case 3:
+                        this.idleSprite.get(Direction.UP).add(crop(idle, j, i));
+                        this.walkSprite.get(Direction.UP).add(crop(walk, j, i));
+                        break;
+                    default:
+                        break;
                 }
             }
-            
-        } //TODO load block's textures
+        }
         this.time = System.currentTimeMillis();
     }
 

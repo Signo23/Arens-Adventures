@@ -24,13 +24,13 @@ public class SwingView implements View {
      * @param controller for listen the input
      */
     public SwingView(final World world, final InputController controller) {
-        this.frame = new JFrame("Aren's Adventure");
-        frame.setSize(512, 512);
-        frame.getContentPane().add(new SwingPanel(512, 512, world, controller, new Texture()));
+        this.frame = new JFrame("Aren's Adventures");
+        frame.setSize(512, 384);
+        frame.getContentPane().add(new SwingPanel(512, 384, world, controller, new Texture()));
         frame.setResizable(false);
-        final Dimension dimension = Toolkit.getDefaultToolkit().getScreenSize();
-        final int x = (int) ((dimension.getWidth() - frame.getWidth()) / 2);
-        final int y = (int) ((dimension.getHeight() - frame.getHeight()) / 2);
+        final Dimension userScreenDimension = Toolkit.getDefaultToolkit().getScreenSize();
+        final int x = (int) ((userScreenDimension.getWidth() - frame.getWidth()) / 2);
+        final int y = (int) ((userScreenDimension.getHeight() - frame.getHeight()) / 2);
         frame.setLocation(x, y);
         frame.setAutoRequestFocus(true);
         frame.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);

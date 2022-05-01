@@ -16,7 +16,7 @@ public class PlayerGraphicComponent implements GraphicComponent {
     private final Animation animation;
     
     public PlayerGraphicComponent(final Texture texture) {
-        this.animation = new Animation(Player.class, texture);
+        this.animation = new Animation(texture);
     }
 
     @Override
