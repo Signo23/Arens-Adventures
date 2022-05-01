@@ -6,6 +6,7 @@ import java.awt.Dimension;
  */
 public class Settings {
     private boolean antialiasingOn;
+    private boolean renderQuality;
     private Dimension screenSize;
     
     /**
@@ -13,6 +14,7 @@ public class Settings {
      */
     public Settings() {
         this.antialiasingOn = false;
+        this.renderQuality = false;
         this.screenSize = Constant.DEFAULT_SCREEN_DIMENSION;
     }
 
@@ -63,6 +65,22 @@ public class Settings {
      */
     public void setScreenSize(final Dimension screenSize) {
         this.screenSize = screenSize;
+    }
+
+    /**
+     * Get the status of quality of rendering.
+     * @return the renderQuality
+     */
+    public boolean isRenderQuality() {
+        return renderQuality;
+    }
+
+    /**
+     * Get the status of quality of rendering.
+     * @param renderQuality the renderQuality to set
+     */
+    public void setRenderQuality(final boolean renderQuality) {
+        this.renderQuality = renderQuality;
     }
     
 }
