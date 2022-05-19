@@ -5,6 +5,10 @@ package it.aren.model;
 
 import java.util.ArrayList;
 import java.util.List;
+import java.util.stream.Collectors;
+
+import it.aren.common.Constant;
+import it.aren.common.Point2D;
 /**
  * The class that manage the game's world.
  */
@@ -60,6 +64,39 @@ public class World {
      * Update the world's state.
      */
     public void updateState() {
-        //TO DO when physic is implemented
+        if(! this.isPlayerColliding()) {
+            this.player.updateState();
+        }
+    }
+    
+    private boolean isPlayerColliding() {
+        final Point2D playerPos = this.player.getLastDirection();
+        List<Block> control = new ArrayList<>();
+        if(playerPos.equals(Constant.UP)) {
+            control = this.currentMap.getBlocks().stream()
+                    .filter(b -> b.getPosition().getY() <= player.getPosition().getY())
+                    .collect(Collectors.toList());
+        }
+        if(playerPos.equals(Constant.DOWN)) {
+            control = this.currentMap.getBlocks().stream()
+                    .filter(b -> b.getPosition().getY() <= player.getPosition().getY())
+                    .collect(Collectors.toList());
+        }
+        if(playerPos.equals(Constant.LEFT)) {
+            control = this.currentMap.getBlocks().stream()
+                    .filter(b -> b.getPosition().getX() <= player.getPosition().getX())
+                    .collect(Collectors.toList());
+        }
+        if(playerPos.equals(Constant.RIGHT)) {
+            control = this.currentMap.getBlocks().stream()
+                    .filter(b -> b.getPosition().getX() <= player.getPosition().getX())
+                    .collect(Collectors.toList());
+        }
+        for(final Block b : control) {
+            if(this.player.getHitBox().intersects(b.getHitBox())) {
+                return true;
+            }
+        }
+        return false;
     }
 }

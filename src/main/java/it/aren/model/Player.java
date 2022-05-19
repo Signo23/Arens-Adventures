@@ -6,6 +6,7 @@ package it.aren.model;
 import java.util.ArrayList;
 import java.util.List;
 
+import it.aren.common.Constant;
 import it.aren.common.Point2D;
 import it.aren.graphic.GraphicComponent;
 import it.aren.graphic.GraphicController;
@@ -33,7 +34,24 @@ public class Player extends Entity {
      * @param phy for update position of player
      */
     public Player(final Point2D position, final GraphicComponent graphic, final InputComponent input, final PhysicsComponent phy) {
-        super(position, true, graphic, input);
+        super(position, true, graphic, input, Constant.DEFAULT_HITBOX_DIMENSION);
+        this.lastDirection = new Point2D();
+        this.backPack = new ArrayList<>();
+        this.idle = false;
+        this.phy = phy;
+    }
+    
+    /**
+     * Create a player.
+     * @param position where the player have to set
+     * @param graphic for draw the player
+     * @param input for listen the input for player
+     * @param phy for update position of player
+     * @param hitboxDimension dimension of hibox
+     */
+    public Player(final Point2D position, final GraphicComponent graphic, final InputComponent input, final PhysicsComponent phy,
+            final int hitboxDimension) {
+        super(position, true, graphic, input, hitboxDimension);
         this.lastDirection = new Point2D();
         this.backPack = new ArrayList<>();
         this.idle = false;

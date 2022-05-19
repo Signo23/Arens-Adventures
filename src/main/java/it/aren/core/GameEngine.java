@@ -3,7 +3,12 @@
  */
 package it.aren.core;
 
+import java.util.LinkedList;
+import java.util.List;
+
 import it.aren.common.Constant;
+import it.aren.event.Event;
+import it.aren.event.EventListener;
 import it.aren.graphic.SwingView;
 import it.aren.graphic.View;
 import it.aren.input.InputController;
@@ -12,13 +17,23 @@ import it.aren.model.GameState;
 
 /**
  * This class contain the main loop.
- * This is the main controller
+ * This is the main controller.
+ * Implements {@link EventListener}
  *
  */
-public class GameEngine {
+public class GameEngine implements EventListener{
     private View view;
     private GameState state;
     private InputController controller;
+    
+    private final List<Event> eventList;
+    
+    /**
+     * Constructor for GameEngine.
+     */
+    public GameEngine() {
+        this.eventList = new LinkedList<>();
+    }
     
     /**
      * Setup the game.
@@ -49,7 +64,13 @@ public class GameEngine {
     }
 
     private void updateGame() {
-        this.state.getWorld().getPlayer().updateState();
+        this.state.getWorld().updateState();
+        this.launchEvent();
+    }
+
+    private void launchEvent() {
+        this.eventList.stream().forEach(e -> e.launch(this.state.getWorld()));
+        this.eventList.clear();
     }
 
     private void render() {
@@ -65,5 +86,13 @@ public class GameEngine {
                 e.printStackTrace();
             }
         }
+    }
+
+    @Override
+    /**
+     * {@inheritDoc}
+     */
+    public void notifyEvent(final Event event) {
+        this.eventList.add(event);
     }
 }

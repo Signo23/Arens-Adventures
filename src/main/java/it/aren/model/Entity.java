@@ -3,6 +3,8 @@
  */
 package it.aren.model;
 
+import java.awt.Rectangle;
+
 import it.aren.common.Point2D;
 import it.aren.graphic.GraphicComponent;
 import it.aren.graphic.GraphicController;
@@ -15,6 +17,7 @@ import it.aren.input.InputController;
 public abstract class Entity {
     private Point2D position;
     private boolean drawable;
+    private Rectangle hitBox;
     protected GraphicComponent graphic;
     protected InputComponent input;
     /**
@@ -23,12 +26,14 @@ public abstract class Entity {
      * @param drawable set if the block will be drawn
      * @param graphic for render the block
      * @param input for listen the block's input
+     * @param size hitbox's {@link Rectangle} px size for sides
      */
-    public Entity(final Point2D position, final boolean drawable, final GraphicComponent graphic, final InputComponent input) {
+    public Entity(final Point2D position, final boolean drawable, final GraphicComponent graphic, final InputComponent input, final int size) {
         this.position = position;
         this.drawable = drawable;
         this.graphic = graphic;
         this.input = input;
+        this.hitBox = new Rectangle(size, size);
     }
     /**
      * Get Entity's position.
@@ -85,6 +90,20 @@ public abstract class Entity {
      */
     public void setInput(final InputComponent input) {
         this.input = input;
+    }
+    /**
+     * Get Entity's {@link Rectangle} for hitbox;
+     * @return the hitBox
+     */
+    public Rectangle getHitBox() {
+        return hitBox;
+    }
+    /**
+     * Set Entity's {@link Rectangle} for hitbox.
+     * @param hitBox the Rectangle to set
+     */
+    public void setHitBox(final Rectangle hitBox) {
+        this.hitBox = hitBox;
     }
     /**
      * Update the Entity's {@link GraphicComponent}.
