@@ -64,7 +64,7 @@ public class GameEngine implements EventListener{
     }
 
     private void updateGame() {
-        this.state.getWorld().getPlayer().updateState();
+        this.state.getWorld().updateState();
         this.launchEvent();
     }
 
