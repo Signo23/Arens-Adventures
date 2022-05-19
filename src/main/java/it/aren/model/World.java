@@ -65,7 +65,7 @@ public class World {
      */
     public void updateState() {
         if(! this.isPlayerColliding()) {
-            this.player.updateState(;)
+            this.player.updateState();
         }
     }
     
