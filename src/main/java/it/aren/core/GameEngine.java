@@ -51,9 +51,17 @@ public class GameEngine implements EventListener{
     public void loop() {
         while(true) {
             final long current = System.currentTimeMillis();
-            this.processInput();
-            this.updateGame();
-            this.render();
+            switch(this.state.getState()) {
+            case BOOT:
+                break;
+            case GAME:
+                this.processInput();
+                this.updateGame();
+                this.render();
+                break;
+            default:
+                break;
+            }
             this.waitNextFrame(current);
         }
     }
