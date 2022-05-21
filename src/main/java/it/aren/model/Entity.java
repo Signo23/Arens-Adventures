@@ -34,6 +34,7 @@ public abstract class Entity {
         this.graphic = graphic;
         this.input = input;
         this.hitBox = new Rectangle(size, size);
+        this.hitBox.setLocation((int)this.position.getX(), (int)this.position.getY());
     }
     /**
      * Get Entity's position.
@@ -48,6 +49,7 @@ public abstract class Entity {
      */
     public void setPosition(final Point2D position) {
         this.position = position;
+        this.hitBox.setLocation((int)position.getX(), (int)position.getY());
     }
     /**
      * Get if Entity is drawable.
