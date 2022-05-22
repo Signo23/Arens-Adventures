@@ -3,6 +3,7 @@
  */
 package it.aren.model;
 
+import java.awt.Rectangle;
 import java.util.ArrayList;
 import java.util.List;
 import java.util.stream.Collectors;
@@ -70,30 +71,37 @@ public class World {
     }
     
     private boolean isPlayerColliding() {
-        final Point2D playerPos = this.player.getLastDirection();
+        final Point2D playerDir = this.player.getLastDirection();
+        final Point2D playerPos = this.player.getPosition();
+        final Rectangle playerHitBox = (Rectangle) this.player.getHitBox().clone();
         List<Block> control = new ArrayList<>();
-        if(playerPos.equals(Constant.UP)) {
+        if(playerDir.equals(Constant.UP)) {
             control = this.currentMap.getBlocks().stream()
-                    .filter(b -> b.getPosition().getY() <= player.getPosition().getY())
+                    .filter(b -> b.getPosition().getY() < player.getPosition().getY())
                     .collect(Collectors.toList());
+            playerHitBox.setLocation((int)playerPos.getX(), (int)playerPos.getY() - Constant.DEFAULT_VEL);
         }
-        if(playerPos.equals(Constant.DOWN)) {
+        if(playerDir.equals(Constant.DOWN)) {
             control = this.currentMap.getBlocks().stream()
-                    .filter(b -> b.getPosition().getY() <= player.getPosition().getY())
+                    .filter(b -> b.getPosition().getY() > player.getPosition().getY())
                     .collect(Collectors.toList());
+            playerHitBox.setLocation((int)playerPos.getX(), (int)playerPos.getY() + Constant.DEFAULT_VEL);
+
         }
-        if(playerPos.equals(Constant.LEFT)) {
+        if(playerDir.equals(Constant.LEFT)) {
             control = this.currentMap.getBlocks().stream()
-                    .filter(b -> b.getPosition().getX() <= player.getPosition().getX())
+                    .filter(b -> b.getPosition().getX() < player.getPosition().getX())
                     .collect(Collectors.toList());
+            playerHitBox.setLocation((int)playerPos.getX() - Constant.DEFAULT_VEL, (int)playerPos.getY());
         }
-        if(playerPos.equals(Constant.RIGHT)) {
+        if(playerDir.equals(Constant.RIGHT)) {
             control = this.currentMap.getBlocks().stream()
-                    .filter(b -> b.getPosition().getX() <= player.getPosition().getX())
+                    .filter(b -> b.getPosition().getX() > player.getPosition().getX())
                     .collect(Collectors.toList());
+            playerHitBox.setLocation((int)playerPos.getX() + Constant.DEFAULT_VEL, (int)playerPos.getY());
         }
         for(final Block b : control) {
-            if(this.player.getHitBox().intersects(b.getHitBox())) {
+            if(playerHitBox.intersects(b.getHitBox())) {
                 return true;
             }
         }
