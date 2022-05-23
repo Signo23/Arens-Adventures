@@ -52,7 +52,6 @@ public class SwingPanel extends JPanel {
                       RenderingHints.VALUE_RENDER_QUALITY);
             g2.clearRect(0,0,this.getWidth(),this.getHeight());
         
-            /* TODO graphic and input */
             final GraphicController controller = new SwingGraphic(g2, this, this.tex);
             this.world.getCurrentMap().updateGraphic(controller);
             this.world.getPlayer().updateGraphic(controller);
