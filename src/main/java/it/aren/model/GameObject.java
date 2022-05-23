@@ -3,6 +3,7 @@
  */
 package it.aren.model;
 
+import it.aren.common.Constant;
 import it.aren.common.Point2D;
 import it.aren.graphic.GraphicComponent;
 import it.aren.graphic.GraphicController;
@@ -27,7 +28,22 @@ public class GameObject extends Entity {
      * @param id GemObject's identifier
      */
     public GameObject(final Point2D position, final boolean drawable, final GraphicComponent graphic, final InputComponent input, final String id) {
-        super(position, drawable, graphic, input);
+        super(position, drawable, graphic, input, Constant.DEFAULT_HITBOX_DIMENSION);
+        this.id = id;
+    }
+    
+    /**
+     * Create a GameObject.
+     * @param position where to draw the GameObject
+     * @param drawable if GameObject is drawable
+     * @param graphic GameObject's {@link GraphicComponent}
+     * @param input GameObject's {@link InputComponent}
+     * @param id GemObject's identifier
+     * @param hitboxDimension dimension of hibox
+     */
+    public GameObject(final Point2D position, final boolean drawable, final GraphicComponent graphic, final InputComponent input, final String id,
+            final int hitboxDimension) {
+        super(position, drawable, graphic, input, hitboxDimension);
         this.id = id;
     }
 

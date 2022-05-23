@@ -3,11 +3,15 @@
  */
 package it.aren.core;
 
+import java.util.Arrays;
+
 import it.aren.common.Point2D;
 import it.aren.input.PlayerInputComponent;
+import it.aren.model.Block;
 import it.aren.model.GameMap;
 import it.aren.model.Player;
 import it.aren.physics.PlayerPhysicsComponent;
+import it.aren.graphic.BlockGraphicComponent;
 import it.aren.graphic.PlayerGraphicComponent;
 /**
  * The main factory.
@@ -35,6 +39,9 @@ public final class GameFactory {
      * @return GameMap
      */
     public static GameMap loadMaps() {
-        return new GameMap();
+        final Block blk = new Block(new Point2D(130,150), true, new BlockGraphicComponent(), null);
+        final GameMap map = new GameMap();
+        map.setBlocks(Arrays.asList(blk));
+        return map;
     }
 }

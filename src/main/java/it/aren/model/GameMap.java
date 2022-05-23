@@ -29,7 +29,21 @@ public class GameMap extends Entity {
      * @param blocks to add in the map
      */
     public GameMap(final int width, final int height, final List<Block> blocks) {
-        super(new Point2D(), true, new GameMapGraphicComponent(), null);
+        super(new Point2D(), true, new GameMapGraphicComponent(), null, Constant.DEFAULT_HITBOX_DIMENSION);
+        this.width = width;
+        this.height = height;
+        this.blocks = blocks;
+    }
+    
+    /**
+     * Create a map.
+     * @param width of the map
+     * @param height of the map
+     * @param blocks to add in the map
+     * @param hitboxDimension dimension of hibox
+     */
+    public GameMap(final int width, final int height, final List<Block> blocks, final int hitboxDimension) {
+        super(new Point2D(), true, new GameMapGraphicComponent(), null, hitboxDimension);
         this.width = width;
         this.height = height;
         this.blocks = blocks;
