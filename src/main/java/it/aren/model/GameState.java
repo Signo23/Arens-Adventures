@@ -22,7 +22,6 @@ public class GameState {
         this.world.setPlayer(GameFactory.createPlayer());
         this.world.addMap(GameFactory.loadMaps());
         this.world.setCurrentMap(0);
-        state = ApplicationState.GAME;
     }
 
     /**
@@ -42,5 +41,9 @@ public class GameState {
     
     public ApplicationState getState() {
         return this.state;
+    }
+    
+    public void setState(final ApplicationState as) {
+        this.state = as;
     }
 }
