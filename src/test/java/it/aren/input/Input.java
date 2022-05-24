@@ -8,8 +8,9 @@ import java.util.ArrayList;
 
 import org.junit.jupiter.api.Test;
 
-import it.aren.common.Constant;
+import it.aren.common.Direction;
 import it.aren.core.GameFactory;
+import it.aren.graphic.Texture;
 import it.aren.model.GameMap;
 import it.aren.model.World;
 
@@ -19,31 +20,31 @@ public class Input {
         final World world = new World();
         final GameMap gameMap = new GameMap(16, 16, new ArrayList<>());
         final KeyboardInputController ctrl = new KeyboardInputController();
-        world.setPlayer(GameFactory.createPlayer());
+        world.setPlayer(GameFactory.createPlayer(new Texture()));
         world.addMap(gameMap);
         world.setCurrentMap(0);
 
         ctrl.notifyMoveUp();
         world.getPlayer().updateInput(ctrl);
-        assertEquals(world.getPlayer().getLastDirection(), Constant.UP);
+        assertEquals(world.getPlayer().getLastDirection(), Direction.UP);
         assertFalse(world.getPlayer().isIdle());
         ctrl.notifyNoMoreMoveUp();
 
         ctrl.notifyMoveDown();
         world.getPlayer().updateInput(ctrl);
-        assertEquals(world.getPlayer().getLastDirection(), Constant.DOWN);
+        assertEquals(world.getPlayer().getLastDirection(), Direction.DOWN);
         assertFalse(world.getPlayer().isIdle());
         ctrl.notifyNoMoreMoveDown();
 
         ctrl.notifyMoveLeft();
         world.getPlayer().updateInput(ctrl);
-        assertEquals(world.getPlayer().getLastDirection(), Constant.LEFT);
+        assertEquals(world.getPlayer().getLastDirection(), Direction.LEFT);
         assertFalse(world.getPlayer().isIdle());
         ctrl.notifyNoMoreMoveLeft();
 
         ctrl.notifyMoveRight();
         world.getPlayer().updateInput(ctrl);
-        assertEquals(world.getPlayer().getLastDirection(), Constant.RIGHT);
+        assertEquals(world.getPlayer().getLastDirection(), Direction.RIGHT);
         assertFalse(world.getPlayer().isIdle());
         ctrl.notifyNoMoreMoveRight();
 
