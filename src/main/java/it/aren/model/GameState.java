@@ -5,6 +5,7 @@ package it.aren.model;
 
 import it.aren.common.ApplicationState;
 import it.aren.core.GameFactory;
+import it.aren.graphic.Texture;
 /**
  * The class that manages the state of the game.
  */
@@ -16,10 +17,10 @@ public class GameState {
     /**
      * Creates a new world object, the player and the game map.
      */
-    public GameState() {
+    public GameState(final Texture texture) {
         state = ApplicationState.BOOT;
         this.world = new World();
-        this.world.setPlayer(GameFactory.createPlayer());
+        this.world.setPlayer(GameFactory.createPlayer(texture));
         this.world.addMap(GameFactory.loadMaps());
         this.world.setCurrentMap(0);
     }

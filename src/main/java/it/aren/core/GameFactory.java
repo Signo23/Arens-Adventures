@@ -13,6 +13,7 @@ import it.aren.model.Player;
 import it.aren.physics.PlayerPhysicsComponent;
 import it.aren.graphic.BlockGraphicComponent;
 import it.aren.graphic.PlayerGraphicComponent;
+import it.aren.graphic.Texture;
 /**
  * The main factory.
  */
@@ -28,9 +29,9 @@ public final class GameFactory {
      * Creates a new player.
      * @return player
      */
-    public static Player createPlayer() {
+    public static Player createPlayer(final Texture texture) {
         return new Player(new Point2D(0, 1),
-                new PlayerGraphicComponent(),
+                new PlayerGraphicComponent(texture),
                 new PlayerInputComponent(),
                 new PlayerPhysicsComponent());
     }
