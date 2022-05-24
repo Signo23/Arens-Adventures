@@ -3,6 +3,7 @@
  */
 package it.aren.model;
 
+import it.aren.common.Constant;
 import it.aren.common.Point2D;
 import it.aren.event.Event;
 import it.aren.event.NullEvent;
@@ -27,7 +28,20 @@ public class Block extends Entity {
      * @param input for listen the input
      */
     public Block(final Point2D position, final boolean drawable, final GraphicComponent graphic, final InputComponent input) {
-        super(position, drawable, graphic, input);
+        super(position, drawable, graphic, input, Constant.DEFAULT_HITBOX_DIMENSION);
+        this.event = new NullEvent();
+    }
+    
+    /**
+     * Create a Block.
+     * @param position where block is
+     * @param drawable set if the block will be drawn
+     * @param graphic for draw the block
+     * @param input for listen the input
+     * @param hitboxDimension dimension of hibox
+     */
+    public Block(final Point2D position, final boolean drawable, final GraphicComponent graphic, final InputComponent input, final int hitboxDimension) {
+        super(position, drawable, graphic, input, hitboxDimension);
         this.event = new NullEvent();
     }
 

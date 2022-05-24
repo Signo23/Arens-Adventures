@@ -4,8 +4,11 @@
 package it.aren.graphic;
 
 import java.awt.Graphics2D;
+import java.awt.image.BufferedImage;
 import java.awt.image.ImageObserver;
 
+import it.aren.common.Point2D;
+import it.aren.common.Constant;
 import it.aren.model.Block;
 import it.aren.model.GameMap;
 import it.aren.model.Player;
@@ -30,11 +33,14 @@ public class SwingGraphic implements GraphicController {
     }
     
     @Override
+    public void drawPlayer(final Player player) {        
+    }
+    @Override
     /**
      * {@inheritDoc}
      */
-    public void drawPlayer(final Player player) {
-        g2.drawImage(this.tex.getPlayer(), (int) player.getPosition().getX(), (int) player.getPosition().getY(), this.io);
+    public void drawPlayer(final Point2D playerPosition, final BufferedImage sprite) {
+        g2.drawImage(sprite, (int) playerPosition.getX(), (int) playerPosition.getY(), this.io);
     }
 
     @Override
@@ -44,6 +50,8 @@ public class SwingGraphic implements GraphicController {
     public void drawBlock(final Block block) {
         if(block.isDrawable()) {
             g2.drawImage(this.tex.getChest(), (int)block.getPosition().getX(), (int)block.getPosition().getY(), this.io);
+            g2.drawRect((int) block.getHitBox().getX(), (int) block.getHitBox().getY(),
+                    Constant.DEFAULT_HITBOX_DIMENSION, Constant.DEFAULT_HITBOX_DIMENSION);
         }
     }
 

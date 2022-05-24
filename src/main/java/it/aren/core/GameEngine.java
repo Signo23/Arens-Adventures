@@ -6,6 +6,7 @@ package it.aren.core;
 import java.util.LinkedList;
 import java.util.List;
 
+import it.aren.common.ApplicationState;
 import it.aren.common.Constant;
 import it.aren.event.Event;
 import it.aren.event.EventListener;
@@ -51,9 +52,18 @@ public class GameEngine implements EventListener{
     public void loop() {
         while(true) {
             final long current = System.currentTimeMillis();
-            this.processInput();
-            this.updateGame();
-            this.render();
+            switch(this.state.getState()) {
+            case BOOT:
+                this.state.setState(ApplicationState.GAME);
+                break;
+            case GAME:
+                this.processInput();
+                this.updateGame();
+                this.render();
+                break;
+            default:
+                break;
+            }
             this.waitNextFrame(current);
         }
     }
@@ -64,7 +74,7 @@ public class GameEngine implements EventListener{
     }
 
     private void updateGame() {
-        this.state.getWorld().getPlayer().updateState();
+        this.state.getWorld().updateState();
         this.launchEvent();
     }
 
