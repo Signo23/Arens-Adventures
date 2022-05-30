@@ -55,7 +55,9 @@ public class SwingPanel extends JPanel {
             final GraphicController controller = new SwingGraphic(g2, this, this.tex);
             this.world.getCurrentMap().updateGraphic(controller);
             this.world.getPlayer().updateGraphic(controller);
-
+            if (this.world.getDialog() != null) {
+                this.world.getDialog().updateGraphic(controller);
+            }
     }
     
 }
