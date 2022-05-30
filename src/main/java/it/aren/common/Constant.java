@@ -60,4 +60,19 @@ public class Constant {
      * Default velocity
      */
     public final static int DEFAULT_VEL = 2;
+    
+    /**
+     * Default Dialog position.
+     */
+    public final static Point2D DEFAULT_DIALOG_POSITION = new Point2D(160, 128);
+    
+    /**
+     * Default Text dimension.
+     */
+    public final static int DEFAULT_TEXT_DIMENSION = 20;
+    
+    /**
+     * Default Dialog size.
+     */
+    public final static int DEFAULT_DIALOG_SIZE = 160;
 }
