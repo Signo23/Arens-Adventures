@@ -10,11 +10,13 @@ import it.aren.common.ApplicationState;
 import it.aren.common.Constant;
 import it.aren.event.Event;
 import it.aren.event.EventListener;
+import it.aren.graphic.DialogGraphicComponent;
 import it.aren.graphic.SwingView;
 import it.aren.graphic.Texture;
 import it.aren.graphic.View;
 import it.aren.input.InputController;
 import it.aren.input.KeyboardInputController;
+import it.aren.model.Dialog;
 import it.aren.model.GameState;
 
 /**
@@ -51,12 +53,11 @@ public class GameEngine implements EventListener{
      * Call {@link setup()} before this.
      */
     public void loop() {
-        while(true) {
+        while (true) {
             final long current = System.currentTimeMillis();
-            switch(this.state.getState()) {
+            switch (this.state.getState()) {
             case BOOT:
                 this.state.setState(ApplicationState.GAME);
-                this.view.state(this.state.getState());
                 break;
             case GAME:
                 this.processInput();
@@ -64,6 +65,9 @@ public class GameEngine implements EventListener{
                 this.render();
                 break;
             case GAME_DIALOG:
+                this.processInputHUD();
+                this.updateHUD();
+                this.render();
                 break;
             default:
                 break;
@@ -84,11 +88,25 @@ public class GameEngine implements EventListener{
     private void launchEvent() {
         this.eventList.stream().forEach(e -> e.launch(this.state));
         this.eventList.clear();
-        this.state.setState(ApplicationState.GAME);
     }
 
     private void render() {
         this.view.render();
+    }
+
+    private void processInputHUD() {
+        if (this.state.getWorld().getDialog() != null) {
+            this.state.getWorld().getDialog().updateInput(this.controller);
+        }        
+    }
+
+    private void updateHUD() {
+        if (this.controller.isInteract()) {
+            //TODO
+        } else if (this.controller.isOnClose()) {
+            this.state.getWorld().setDialog(null);
+            this.state.setState(ApplicationState.GAME);
+        }
     }
 
     private void waitNextFrame(final long current) {

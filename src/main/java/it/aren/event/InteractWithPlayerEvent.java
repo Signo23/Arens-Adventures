@@ -15,6 +15,7 @@ public class InteractWithPlayerEvent implements Event {
     private final String dialog;
     private Optional<GameObject> requirement;
     private final String alternativeDialog;    
+    private boolean isAlreadyLunch;
     /**
      * Constructor for InteractWithPlayerEvent.
      * @param object the {@link GameObject} to give to {@link Player}
@@ -37,6 +38,7 @@ public class InteractWithPlayerEvent implements Event {
         this.dialog = dialog;
         this.requirement = requirement == null ? Optional.empty() : Optional.of(requirement);
         this.alternativeDialog = alterantiveDialog;
+        this.isAlreadyLunch = false;
     }
 
     @Override
@@ -48,7 +50,7 @@ public class InteractWithPlayerEvent implements Event {
             if(state.getWorld().getPlayer().getBackPack().contains(this.requirement.get())) {
                 launchMainEvent(state);
             } else {
-                //TODO
+                state.addDialog(this.alternativeDialog);
             }
         } else {
             launchMainEvent(state);
@@ -56,8 +58,14 @@ public class InteractWithPlayerEvent implements Event {
     }
 
     private void launchMainEvent(final GameState state) {
-        //TODO
+        this.isAlreadyLunch = true;
+        state.addDialog(this.dialog);
         state.getWorld().getPlayer().getBackPack().add(this.object);
+    }
+
+    @Override
+    public boolean isAlreadyLunch() {
+        return this.isAlreadyLunch;
     }
 
 }
