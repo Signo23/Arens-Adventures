@@ -3,17 +3,22 @@
  */
 package it.aren.core;
 
-import java.util.Arrays;
+import java.util.ArrayList;
+import java.util.List;
 
+import it.aren.common.Constant;
 import it.aren.common.Point2D;
+import it.aren.event.InteractWithPlayerEvent;
 import it.aren.input.PlayerInputComponent;
 import it.aren.model.Block;
 import it.aren.model.GameMap;
+import it.aren.model.GameObject;
 import it.aren.model.Player;
 import it.aren.physics.PlayerPhysicsComponent;
 import it.aren.graphic.BlockGraphicComponent;
 import it.aren.graphic.PlayerGraphicComponent;
 import it.aren.graphic.Texture;
+import it.aren.graphic.View;
 /**
  * The main factory.
  */
@@ -39,10 +44,26 @@ public final class GameFactory {
      * Loads the game maps.
      * @return GameMap
      */
-    public static GameMap loadMaps() {
-        final Block blk = new Block(new Point2D(130,150), true, new BlockGraphicComponent(), null);
+    public static GameMap loadMaps(final View view) {
+        final List<Block> z = new ArrayList<>();
+        z.add( new Block(new InteractWithPlayerEvent(view, new GameObject(new Point2D(12*Constant.DEFAULT_HITBOX_DIMENSION, 1*Constant.DEFAULT_HITBOX_DIMENSION), true,
+                new BlockGraphicComponent(), null, null), "Ciaoo"),
+                new Point2D(4*Constant.DEFAULT_HITBOX_DIMENSION, 5*Constant.DEFAULT_HITBOX_DIMENSION), true, new BlockGraphicComponent()));
+        
+        z.add( new Block(new Point2D(8*Constant.DEFAULT_HITBOX_DIMENSION, 0*Constant.DEFAULT_HITBOX_DIMENSION), false, new BlockGraphicComponent()));
+        z.add( new Block(new Point2D(8*Constant.DEFAULT_HITBOX_DIMENSION, 1*Constant.DEFAULT_HITBOX_DIMENSION), false, new BlockGraphicComponent()));
+        z.add( new Block(new Point2D(8*Constant.DEFAULT_HITBOX_DIMENSION, 2*Constant.DEFAULT_HITBOX_DIMENSION), false, new BlockGraphicComponent()));
+        
+        z.add( new Block(new Point2D(9*Constant.DEFAULT_HITBOX_DIMENSION, 3*Constant.DEFAULT_HITBOX_DIMENSION), false, new BlockGraphicComponent()));
+        z.add( new Block(new Point2D(10*Constant.DEFAULT_HITBOX_DIMENSION, 3*Constant.DEFAULT_HITBOX_DIMENSION), false, new BlockGraphicComponent()));
+        z.add( new Block(new Point2D(11*Constant.DEFAULT_HITBOX_DIMENSION, 3*Constant.DEFAULT_HITBOX_DIMENSION), false, new BlockGraphicComponent()));
+        z.add( new Block(new Point2D(12*Constant.DEFAULT_HITBOX_DIMENSION, 3*Constant.DEFAULT_HITBOX_DIMENSION), false, new BlockGraphicComponent()));
+        z.add( new Block(new Point2D(13*Constant.DEFAULT_HITBOX_DIMENSION, 3*Constant.DEFAULT_HITBOX_DIMENSION), false, new BlockGraphicComponent()));
+        z.add( new Block(new Point2D(14*Constant.DEFAULT_HITBOX_DIMENSION, 3*Constant.DEFAULT_HITBOX_DIMENSION), false, new BlockGraphicComponent()));
+        z.add( new Block(new Point2D(15*Constant.DEFAULT_HITBOX_DIMENSION, 3*Constant.DEFAULT_HITBOX_DIMENSION), false, new BlockGraphicComponent()));
+
         final GameMap map = new GameMap();
-        map.setBlocks(Arrays.asList(blk));
+        map.setBlocks(z);
         return map;
     }
 }
