@@ -8,14 +8,17 @@ import java.util.List;
 
 import it.aren.common.Constant;
 import it.aren.common.Point2D;
+import it.aren.input.DialogInputComponent;
 import it.aren.event.InteractWithPlayerEvent;
 import it.aren.input.PlayerInputComponent;
 import it.aren.model.Block;
+import it.aren.model.Dialog;
 import it.aren.model.GameMap;
 import it.aren.model.GameObject;
 import it.aren.model.Player;
 import it.aren.physics.PlayerPhysicsComponent;
 import it.aren.graphic.BlockGraphicComponent;
+import it.aren.graphic.DialogGraphicComponent;
 import it.aren.graphic.PlayerGraphicComponent;
 import it.aren.graphic.Texture;
 import it.aren.graphic.View;
@@ -65,5 +68,9 @@ public final class GameFactory {
         final GameMap map = new GameMap();
         map.setBlocks(z);
         return map;
+    }
+    //Da modificare
+    public static Dialog createDialog() {
+        return new Dialog(Constant.DEFAULT_DIALOG_POSITION, true, new DialogGraphicComponent(), new DialogInputComponent(), Constant.DEFAULT_DIALOG_SIZE, "prova");
     }
 }

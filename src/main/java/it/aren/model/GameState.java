@@ -66,5 +66,7 @@ public class GameState {
         world.getCurrentMap().getBlocks().forEach(b -> b.updateInput(controller));
         world.getPlayer().updateInput(controller);
         }
+    public void addDialog() {
+        this.world.setDialog(GameFactory.createDialog());
     }
 }
