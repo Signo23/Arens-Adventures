@@ -44,9 +44,9 @@ public final class GameFactory {
      * Loads the game maps.
      * @return GameMap
      */
-    public static GameMap loadMaps(final View view) {
+    public static GameMap loadMaps() {
         final List<Block> z = new ArrayList<>();
-        z.add( new Block(new InteractWithPlayerEvent(view, new GameObject(new Point2D(12*Constant.DEFAULT_HITBOX_DIMENSION, 1*Constant.DEFAULT_HITBOX_DIMENSION), true,
+        z.add( new Block(new InteractWithPlayerEvent(new GameObject(new Point2D(12*Constant.DEFAULT_HITBOX_DIMENSION, 1*Constant.DEFAULT_HITBOX_DIMENSION), true,
                 new BlockGraphicComponent(), null, null), "Ciaoo"),
                 new Point2D(4*Constant.DEFAULT_HITBOX_DIMENSION, 5*Constant.DEFAULT_HITBOX_DIMENSION), true, new BlockGraphicComponent()));
         

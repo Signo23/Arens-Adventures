@@ -3,6 +3,7 @@
  */
 package it.aren.event;
 
+import it.aren.model.GameState;
 import it.aren.model.World;
 
 /**
@@ -11,7 +12,7 @@ import it.aren.model.World;
 public interface Event {
     /**
      * Launch the event.
-     * @param world {@link World} to interact with
+     * @param state {@link GameState} to interact with
      */
-    void launch(World world);
+    void launch(GameState state);
 }

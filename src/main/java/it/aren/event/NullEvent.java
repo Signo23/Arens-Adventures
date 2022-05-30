@@ -3,7 +3,7 @@
  */
 package it.aren.event;
 
-import it.aren.model.World;
+import it.aren.model.GameState;
 
 /**
  * A class that don't do nothing.
@@ -16,7 +16,7 @@ public class NullEvent implements Event {
     /**
      * {@inheritDoc}
      */
-    public void launch(final World world) {
+    public void launch(final GameState state) {
     }
 
 }
