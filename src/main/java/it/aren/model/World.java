@@ -6,6 +6,7 @@ package it.aren.model;
 import java.awt.Rectangle;
 import java.util.ArrayList;
 import java.util.List;
+import java.util.Optional;
 import java.util.stream.Collectors;
 
 import it.aren.common.Constant;
@@ -80,12 +81,12 @@ public class World {
      * Update the world's state.
      */
     public void updateState() {
-        if (!this.isPlayerColliding()) {
+        if(this.playerCollide().isEmpty()) {
             this.player.updateState();
         }
     }
     
-    private boolean isPlayerColliding() {
+    public Optional<Block> playerCollide() {
         final Direction playerDir = this.player.getLastDirection();
         final Point2D playerPos = this.player.getPosition();
         final Rectangle playerHitBox = (Rectangle) this.player.getHitBox().clone();
@@ -120,9 +121,9 @@ public class World {
         }
         for(final Block b : control) {
             if(playerHitBox.intersects(b.getHitBox())) {
-                return true;
+                return Optional.of(b);
             }
         }
-        return false;
+        return Optional.empty();
     }
 }

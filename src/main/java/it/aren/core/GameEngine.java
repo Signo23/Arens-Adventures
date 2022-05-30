@@ -43,7 +43,7 @@ public class GameEngine implements EventListener{
      * Setup the game.
      */
     public void setup() {
-        this.state = new GameState(new Texture());
+        this.state = new GameState(new Texture(), this);
         this.controller = new KeyboardInputController();
         this.view = new SwingView(this.state.getWorld(), this.controller);
     }
@@ -58,6 +58,7 @@ public class GameEngine implements EventListener{
             switch (this.state.getState()) {
             case BOOT:
                 this.state.setState(ApplicationState.GAME);
+                this.view.state(this.state.getState());
                 break;
             case GAME:
                 this.processInput();
@@ -77,23 +78,18 @@ public class GameEngine implements EventListener{
     }
 
     private void processInput() {
-        this.state.getWorld().getCurrentMap().getBlocks().forEach(b -> b.updateInput(this.controller));
-        this.state.getWorld().getPlayer().updateInput(this.controller);
-        //da cancellare
-        if (this.controller.isOnClose()) {
-            this.state.setState(ApplicationState.GAME_DIALOG);
-            this.renderHUD();
-        }
+        this.state.processInput(this.controller);
     }
 
     private void updateGame() {
-        this.state.getWorld().updateState();
+        this.state.update();
         this.launchEvent();
     }
 
     private void launchEvent() {
-        this.eventList.stream().forEach(e -> e.launch(this.state.getWorld()));
+        this.eventList.stream().forEach(e -> e.launch(this.state));
         this.eventList.clear();
+        this.state.setState(ApplicationState.GAME);
     }
 
     private void render() {
