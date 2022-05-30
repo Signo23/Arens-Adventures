@@ -10,7 +10,6 @@ import it.aren.common.Constant;
 import it.aren.common.Point2D;
 import it.aren.graphic.GameMapGraphicComponent;
 import it.aren.graphic.GraphicController;
-import it.aren.input.InputController;
 
 /**
  * The map of the block
@@ -120,14 +119,6 @@ public class GameMap extends Entity {
     public void updateGraphic(final GraphicController g) {
         this.graphic.update(this, g);
         this.blocks.forEach(b -> b.updateGraphic(g));
-        
-    }
-
-    @Override
-    /**
-     * {@inheritDoc}
-     */
-    public void updateInput(final InputController i) {
         
     }
     

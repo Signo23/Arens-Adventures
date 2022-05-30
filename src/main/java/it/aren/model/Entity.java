@@ -17,7 +17,7 @@ import it.aren.input.InputController;
 public abstract class Entity {
     private Point2D position;
     private boolean drawable;
-    private Rectangle hitBox;
+    protected Rectangle hitBox;
     protected GraphicComponent graphic;
     protected InputComponent input;
     /**
@@ -94,30 +94,33 @@ public abstract class Entity {
         this.input = input;
     }
     /**
-     * Get Entity's {@link Rectangle} for hitbox;
+     * Get Entity's {@link Rectangle} for hitBox;
      * @return the hitBox
      */
     public Rectangle getHitBox() {
         return hitBox;
     }
     /**
-     * Set Entity's {@link Rectangle} for hitbox.
+     * Set Entity's {@link Rectangle} for hitBox.
      * @param hitBox the Rectangle to set
      */
     public void setHitBox(final Rectangle hitBox) {
         this.hitBox = hitBox;
     }
     /**
+     * Update the Entity's {@link InputComponent}.
+     * @param i {@link} that update the Entity
+     */
+    public void updateInput(final InputController i) {
+        if(this.input != null) {
+            this.input.update(this, i);
+        }
+    }
+    /**
      * Update the Entity's {@link GraphicComponent}.
      * @param g {@link GraphicController} that update the entity
      */
     public abstract void updateGraphic(GraphicController g);
-    /**
-     * Update the Entity's {@link InputComponent}.
-     * @param i {@link} that update the Entity
-     */
-    public abstract void updateInput(InputController i);
-    
     
 
     

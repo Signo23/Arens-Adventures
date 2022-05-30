@@ -12,7 +12,6 @@ import it.aren.common.Point2D;
 import it.aren.graphic.GraphicComponent;
 import it.aren.graphic.GraphicController;
 import it.aren.input.InputComponent;
-import it.aren.input.InputController;
 import it.aren.physics.PhysicsComponent;
 
 /**
@@ -65,14 +64,6 @@ public class Player extends Entity {
      */
     public void updateGraphic(final GraphicController g) {
         this.graphic.update(this, g);
-    }
-
-    @Override
-    /**
-     * {@inheritDoc}
-     */
-    public void updateInput(final InputController i) {
-        this.input.update(this, i);
     }
 
     /**
