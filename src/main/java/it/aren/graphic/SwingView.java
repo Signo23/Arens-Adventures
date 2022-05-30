@@ -9,6 +9,8 @@ import java.awt.Toolkit;
 import javax.swing.JFrame;
 
 import it.aren.input.InputController;
+import it.aren.input.KeyListenerImpl;
+import it.aren.input.KeyboardInputController;
 import it.aren.model.World;
 /**
  * This class is the main view of the game using Java Swing.
@@ -17,6 +19,7 @@ import it.aren.model.World;
  */
 public class SwingView implements View {
     final private JFrame frame;
+    final private SwingPanel gamePanel;
     
     /**
      * Initialize the view.
@@ -25,16 +28,19 @@ public class SwingView implements View {
      */
     public SwingView(final World world, final InputController controller) {
         this.frame = new JFrame("Aren's Adventures");
-        frame.setSize(512, 384);
-        frame.getContentPane().add(new SwingPanel(512, 384, world, controller, new Texture()));
-        frame.setResizable(false);
+        //this.frame.getContentPane().add(new SwingPanel(512, 384, world, controller, new Texture()));
+        this.gamePanel = new SwingPanel(512, 384, world, controller, new Texture());
+        this.frame.getContentPane().add(this.gamePanel);
+        this.frame.addKeyListener(new KeyListenerImpl((KeyboardInputController)controller));
+        this.frame.setResizable(false);
         final Dimension userScreenDimension = Toolkit.getDefaultToolkit().getScreenSize();
         final int x = (int) ((userScreenDimension.getWidth() - frame.getWidth()) / 2);
         final int y = (int) ((userScreenDimension.getHeight() - frame.getHeight()) / 2);
-        frame.setLocation(x, y);
-        frame.setAutoRequestFocus(true);
-        frame.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
-        frame.setVisible(true);
+        this.frame.setLocation(x, y);
+        this.frame.setAutoRequestFocus(true);
+        this.frame.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
+        this.frame.setVisible(true);
+        this.frame.pack();
 
     }
 
