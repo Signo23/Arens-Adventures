@@ -19,6 +19,7 @@ public class World {
     private Player player;
     private final List<GameMap> maps;
     private GameMap currentMap;
+    private Dialog dialog;
 
     /**
      * Creates a new ArrayList for the maps.
@@ -62,11 +63,24 @@ public class World {
     public final void setCurrentMap(final int index) {
         this.currentMap = maps.get(index);
     }
+
+    public final void setDialog(final Dialog dialog) {
+        this.dialog = dialog;
+    }
+
+    public final Dialog getDialog() {
+        return this.dialog;
+    }
+
+    public final void updateDialog() {
+        this.dialog.setText("Ciao");
+        this.dialog.setScroll(false);
+    }
     /**
      * Update the world's state.
      */
     public void updateState() {
-        if(! this.isPlayerColliding()) {
+        if (!this.isPlayerColliding()) {
             this.player.updateState();
         }
     }

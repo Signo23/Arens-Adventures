@@ -47,4 +47,8 @@ public class GameState {
     public void setState(final ApplicationState as) {
         this.state = as;
     }
+    
+    public void addDialog() {
+        this.world.setDialog(GameFactory.createDialog());
+    }
 }
