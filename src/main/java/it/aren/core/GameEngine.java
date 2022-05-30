@@ -10,11 +10,13 @@ import it.aren.common.ApplicationState;
 import it.aren.common.Constant;
 import it.aren.event.Event;
 import it.aren.event.EventListener;
+import it.aren.graphic.DialogGraphicComponent;
 import it.aren.graphic.SwingView;
 import it.aren.graphic.Texture;
 import it.aren.graphic.View;
 import it.aren.input.InputController;
 import it.aren.input.KeyboardInputController;
+import it.aren.model.Dialog;
 import it.aren.model.GameState;
 
 /**
@@ -51,15 +53,20 @@ public class GameEngine implements EventListener{
      * Call {@link setup()} before this.
      */
     public void loop() {
-        while(true) {
+        while (true) {
             final long current = System.currentTimeMillis();
-            switch(this.state.getState()) {
+            switch (this.state.getState()) {
             case BOOT:
                 this.state.setState(ApplicationState.GAME);
                 break;
             case GAME:
                 this.processInput();
                 this.updateGame();
+                this.render();
+                break;
+            case GAME_DIALOG:
+                this.processInputHUD();
+                this.updateHUD();
                 this.render();
                 break;
             default:
@@ -72,6 +79,11 @@ public class GameEngine implements EventListener{
     private void processInput() {
         this.state.getWorld().getCurrentMap().getBlocks().forEach(b -> b.updateInput(this.controller));
         this.state.getWorld().getPlayer().updateInput(this.controller);
+        //da cancellare
+        if (this.controller.isOnClose()) {
+            this.state.setState(ApplicationState.GAME_DIALOG);
+            this.renderHUD();
+        }
     }
 
     private void updateGame() {
@@ -86,6 +98,24 @@ public class GameEngine implements EventListener{
 
     private void render() {
         this.view.render();
+    }
+
+    private void processInputHUD() {
+        this.state.getWorld().getDialog().updateInput(this.controller);
+    }
+
+    private void updateHUD() {
+        if (this.controller.isInteract()) {
+            this.state.getWorld().updateDialog();
+        } else if (this.controller.isOnClose()) {
+            this.state.getWorld().setDialog(null);
+            this.state.setState(ApplicationState.GAME);
+        }
+    }
+
+    private void renderHUD() {
+        //addDialog dovrebbe essere fatto dall'evento
+        this.state.addDialog();
     }
 
     private void waitNextFrame(final long current) {
