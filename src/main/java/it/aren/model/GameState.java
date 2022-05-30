@@ -56,17 +56,19 @@ public class GameState {
     }
     
     public void processInput(final InputController controller) {
-        if(controller.isIntereact()) {
+        if(controller.isInteract()) {
             final Optional<Block> block = this.getWorld().playerCollide();
-            if(!block.isEmpty()) {
+            if(!block.isEmpty() && !block.get().getEvent().isAlreadyLunch()) {
                 this.eventListener.notifyEvent(block.get().getEvent());
+                state = ApplicationState.GAME_DIALOG;
             }
-            state = ApplicationState.GAME_DIALOG;
+            
         } else {
-        world.getCurrentMap().getBlocks().forEach(b -> b.updateInput(controller));
-        world.getPlayer().updateInput(controller);
+            world.getCurrentMap().getBlocks().forEach(b -> b.updateInput(controller));
+            world.getPlayer().updateInput(controller);
         }
-    public void addDialog() {
-        this.world.setDialog(GameFactory.createDialog());
+    }
+    public final void addDialog(final String text) {
+        this.world.setDialog(GameFactory.createDialog(text));
     }
 }

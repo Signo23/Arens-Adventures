@@ -70,7 +70,7 @@ public final class GameFactory {
         return map;
     }
     //Da modificare
-    public static Dialog createDialog() {
-        return new Dialog(Constant.DEFAULT_DIALOG_POSITION, true, new DialogGraphicComponent(), new DialogInputComponent(), Constant.DEFAULT_DIALOG_SIZE, "prova");
+    public static Dialog createDialog(String text) {
+        return new Dialog(Constant.DEFAULT_DIALOG_POSITION, true, new DialogGraphicComponent(), new DialogInputComponent(), Constant.DEFAULT_DIALOG_SIZE, text);
     }
 }

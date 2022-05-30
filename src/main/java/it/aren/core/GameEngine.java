@@ -58,7 +58,6 @@ public class GameEngine implements EventListener{
             switch (this.state.getState()) {
             case BOOT:
                 this.state.setState(ApplicationState.GAME);
-                this.view.state(this.state.getState());
                 break;
             case GAME:
                 this.processInput();
@@ -89,7 +88,6 @@ public class GameEngine implements EventListener{
     private void launchEvent() {
         this.eventList.stream().forEach(e -> e.launch(this.state));
         this.eventList.clear();
-        this.state.setState(ApplicationState.GAME);
     }
 
     private void render() {
@@ -97,21 +95,18 @@ public class GameEngine implements EventListener{
     }
 
     private void processInputHUD() {
-        this.state.getWorld().getDialog().updateInput(this.controller);
+        if (this.state.getWorld().getDialog() != null) {
+            this.state.getWorld().getDialog().updateInput(this.controller);
+        }        
     }
 
     private void updateHUD() {
         if (this.controller.isInteract()) {
-            this.state.getWorld().updateDialog();
+            //TODO
         } else if (this.controller.isOnClose()) {
             this.state.getWorld().setDialog(null);
             this.state.setState(ApplicationState.GAME);
         }
-    }
-
-    private void renderHUD() {
-        //addDialog dovrebbe essere fatto dall'evento
-        this.state.addDialog();
     }
 
     private void waitNextFrame(final long current) {
