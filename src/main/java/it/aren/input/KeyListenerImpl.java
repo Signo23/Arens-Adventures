@@ -45,6 +45,12 @@ public class KeyListenerImpl implements KeyListener {
             case KeyEvent.VK_D:
                 this.controller.notifyMoveRight();
                 break;
+            case KeyEvent.VK_SPACE:
+                this.controller.notifyInteract();
+                break;
+            case KeyEvent.VK_ENTER:
+                this.controller.notifyOnClose();
+                break;
             default:
                 break;
         }
@@ -67,6 +73,12 @@ public class KeyListenerImpl implements KeyListener {
                 break;
             case KeyEvent.VK_D:
                 this.controller.notifyNoMoreMoveRight();
+                break;
+            case KeyEvent.VK_SPACE:
+                this.controller.notifyNoMoreInteract();
+                break;
+            case KeyEvent.VK_ENTER:
+                this.controller.notifyNoMoreOnClose();
                 break;
             default:
                 break;
