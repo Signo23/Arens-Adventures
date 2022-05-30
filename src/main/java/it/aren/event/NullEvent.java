@@ -19,4 +19,9 @@ public class NullEvent implements Event {
     public void launch(final GameState state) {
     }
 
+    @Override
+    public boolean isAlreadyLunch() {
+        return false;
+    }
+
 }

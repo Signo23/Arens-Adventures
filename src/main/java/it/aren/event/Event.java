@@ -15,4 +15,5 @@ public interface Event {
      * @param state {@link GameState} to interact with
      */
     void launch(GameState state);
+    boolean isAlreadyLunch();
 }
