@@ -73,10 +73,6 @@ public class World {
         return this.dialog;
     }
 
-    public final void updateDialog() {
-        this.dialog.setText("Ciao");
-        this.dialog.setScroll(false);
-    }
     /**
      * Update the world's state.
      */
