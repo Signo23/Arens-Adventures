@@ -75,4 +75,9 @@ public class Constant {
      * Default Dialog size.
      */
     public final static int DEFAULT_DIALOG_SIZE = 160;
+    
+    /**
+     * Default ratio.
+     */
+    public static final int DEFAULT_RATIO = 1;
 }
