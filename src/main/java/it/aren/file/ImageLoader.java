@@ -28,5 +28,9 @@ public class ImageLoader implements FileLoader<BufferedImage> {
         }
         return null;
     }
-
+    
+    public static BufferedImage loadImage(final String fileName) {
+        final ImageLoader loader = new ImageLoader();
+        return loader.loadFile(fileName);
+    }
 }
