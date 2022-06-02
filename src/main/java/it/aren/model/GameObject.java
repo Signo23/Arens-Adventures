@@ -12,10 +12,10 @@ import it.aren.input.InputController;
 
 /**
  * Model for game object.
- * Extends {@link Entity} 
+ * Extends {@link BaseEntity} 
  *
  */
-public class GameObject extends Entity {
+public class GameObject extends BaseEntity {
 
     private String id;
 

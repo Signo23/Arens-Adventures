@@ -4,7 +4,7 @@
 package it.aren.graphic;
 
 import it.aren.model.Block;
-import it.aren.model.Entity;
+import it.aren.model.BaseEntity;
 
 /**
  * Graphic for {@link Block}.
@@ -16,7 +16,7 @@ public class BlockGraphicComponent implements GraphicComponent {
     /**
      * {@inheritDoc}
      */
-    public void update(final Entity ent, final GraphicController w) {
+    public void update(final BaseEntity ent, final GraphicController w) {
         w.drawBlock((Block)ent);
 
     }

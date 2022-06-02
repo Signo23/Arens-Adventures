@@ -16,10 +16,10 @@ import it.aren.physics.PhysicsComponent;
 
 /**
  * Model for the player.
- * Extends {@link Entity}
+ * Extends {@link BaseEntity}
  *
  */
-public class Player extends Entity {
+public class Player extends BaseEntity {
 
     private Direction lastDirection;
     private List<GameObject> backPack;

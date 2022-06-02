@@ -15,7 +15,7 @@ import it.aren.graphic.GraphicController;
  * The map of the block
  *
  */
-public class GameMap extends Entity {
+public class GameMap extends BaseEntity {
 
     private int width;
     private int height;

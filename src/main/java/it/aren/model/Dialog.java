@@ -6,7 +6,7 @@ import it.aren.graphic.GraphicController;
 import it.aren.input.InputComponent;
 import it.aren.input.InputController;
 
-public class Dialog extends Entity {
+public class Dialog extends BaseEntity {
 
     private String text;
     private boolean scroll;

@@ -12,9 +12,9 @@ import it.aren.graphic.GraphicController;
 
 /**
  * Model for every block.
- * Extends {@link Entity}
+ * Extends {@link BaseEntity}
  */
-public class Block extends Entity {
+public class Block extends BaseEntity {
 
     private Event event;
 

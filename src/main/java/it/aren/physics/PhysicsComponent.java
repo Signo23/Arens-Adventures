@@ -3,7 +3,7 @@
  */
 package it.aren.physics;
 
-import it.aren.model.Entity;
+import it.aren.model.BaseEntity;
 
 /**
  * A component for physics.
@@ -12,8 +12,8 @@ import it.aren.model.Entity;
 public interface PhysicsComponent {
     
     /**
-     * Update the {@link Entity}.
-     * @param entity {@link Entity} to update
+     * Update the {@link BaseEntity}.
+     * @param entity {@link BaseEntity} to update
      */
-    void update(Entity entity);
+    void update(BaseEntity entity);
 }
