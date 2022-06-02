@@ -12,6 +12,8 @@ public class KeyboardInputController implements InputController {
     private boolean isMoveDown;
     private boolean isMoveLeft;
     private boolean isMoveRight;
+    private boolean isInteract;
+    private boolean isOnClose;
 
     /**
      * Return isMoveUp. 
@@ -43,6 +45,22 @@ public class KeyboardInputController implements InputController {
      */
     public final boolean isMoveRight() {
         return this.isMoveRight;
+    }
+
+    /**
+     * Return isInteract.
+     * @return isInteract
+     */
+    public final boolean isInteract() {
+        return this.isInteract;
+    }
+
+    /**
+     * Return isOnClose.
+     * @return isOnClose
+     */
+    public final boolean isOnClose() {
+        return this.isOnClose;
     }
 
     /**
@@ -99,5 +117,33 @@ public class KeyboardInputController implements InputController {
      */
     public final void notifyNoMoreMoveRight() {
         this.isMoveRight = false;
+    }
+
+    /**
+     * Set isInteract to true.
+     */
+    public final void notifyInteract() {
+        this.isInteract = true;
+    }
+
+    /**
+     * Set isInteract to false.
+     */
+    public final void notifyNoMoreInteract() {
+        this.isInteract = false;
+    }
+
+    /**
+     * Set isOnClose to true.
+     */
+    public final void notifyOnClose() {
+        this.isOnClose = true;
+    }
+
+    /**
+     * Set isOnClose to false.
+     */
+    public final void notifyNoMoreOnClose() {
+        this.isOnClose = false;
     }
 }

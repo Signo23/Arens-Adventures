@@ -1,5 +1,6 @@
 package it.aren.graphic;
 
+import java.awt.Dimension;
 import java.awt.Graphics;
 import java.awt.Graphics2D;
 import java.awt.RenderingHints;
@@ -12,7 +13,7 @@ import it.aren.input.KeyboardInputController;
 import it.aren.model.World;
 /**
  * This is an extension of JPanel.
- * Every {@link it.aren.model.Entity} is rendered there
+ * Every {@link it.aren.model.BaseEntity} is rendered there
  *
  */
 public class SwingPanel extends JPanel {
@@ -30,13 +31,13 @@ public class SwingPanel extends JPanel {
      * @param inputController for listen the input
      */
     public SwingPanel(final int w, final int h, final World world, final InputController inputController, final Texture texture){
-        setSize(w,h);
+        this.setPreferredSize(new Dimension(w,h));
         this.world = world;
         this.tex = texture;
-        addKeyListener(new KeyListenerImpl((KeyboardInputController)inputController));
-        setFocusable(true);
-        setFocusTraversalKeysEnabled(false);
-        requestFocusInWindow(); 
+        this.addKeyListener(new KeyListenerImpl((KeyboardInputController)inputController));
+        this.setFocusable(true);
+        this.setFocusTraversalKeysEnabled(false);
+        this.requestFocusInWindow(); 
         
     }
     
@@ -52,11 +53,12 @@ public class SwingPanel extends JPanel {
                       RenderingHints.VALUE_RENDER_QUALITY);
             g2.clearRect(0,0,this.getWidth(),this.getHeight());
         
-            /* TODO graphic and input */
             final GraphicController controller = new SwingGraphic(g2, this, this.tex);
             this.world.getCurrentMap().updateGraphic(controller);
             this.world.getPlayer().updateGraphic(controller);
-
+            if (this.world.getDialog() != null) {
+                this.world.getDialog().updateGraphic(controller);
+            }
     }
     
 }

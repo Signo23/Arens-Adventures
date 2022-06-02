@@ -4,8 +4,9 @@
 package it.aren.physics;
 
 import it.aren.common.Constant;
+import it.aren.common.Direction;
 import it.aren.common.Point2D;
-import it.aren.model.Entity;
+import it.aren.model.BaseEntity;
 import it.aren.model.Player;
 
 /**
@@ -18,23 +19,27 @@ public class PlayerPhysicsComponent implements PhysicsComponent {
     /**
      * {@inheritDoc}
      */
-    public void update(final Entity player) {
+    public void update(final BaseEntity player) {
         final Player pl = (Player)player;
         if(!pl.isIdle()) {
-            final Point2D pos = pl.getLastDirection();
+            final Direction pos = pl.getLastDirection();
             final Point2D currentPos = pl.getPosition();
-            if(pos.equals(Constant.LEFT)) {
+            switch(pos) {
+            case LEFT:
                 pl.setPosition(new Point2D(currentPos.getX() - Constant.DEFAULT_VEL, currentPos.getY()));
-            }
-            if(pos.equals(Constant.RIGHT)) {
+                break;
+            case RIGHT:
                 pl.setPosition(new Point2D(currentPos.getX() + Constant.DEFAULT_VEL, currentPos.getY()));
-            }
-            if(pos.equals(Constant.UP)) {
+                break;
+            case UP:
                 pl.setPosition(new Point2D(currentPos.getX(), currentPos.getY() - Constant.DEFAULT_VEL));
-            }
-            if(pos.equals(Constant.DOWN)) {
+                break;
+            case DOWN:
                 pl.setPosition(new Point2D(currentPos.getX(), currentPos.getY() + Constant.DEFAULT_VEL));
+                break;
+            default:
+                break;
             }
-        }
+         }
     }
 }

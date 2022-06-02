@@ -1,66 +1,82 @@
-/**
- * 
- */
 package it.aren.model;
 
 import it.aren.common.Constant;
+import it.aren.common.ObjectType;
 import it.aren.common.Point2D;
 import it.aren.event.Event;
 import it.aren.event.NullEvent;
 import it.aren.graphic.GraphicComponent;
-import it.aren.graphic.GraphicController;
-import it.aren.input.InputComponent;
-import it.aren.input.InputController;
 
 /**
  * Model for every block.
- * Extends {@link Entity}
+ * Extends {@link BaseEntity}
  */
-public class Block extends Entity {
+public class Block extends GameObject {
 
     private Event event;
-
+    
     /**
      * Create a Block.
+     * @param event the {@link Event} to set in the block
      * @param position where block is
      * @param drawable set if the block will be drawn
      * @param graphic for draw the block
-     * @param input for listen the input
+     * @param ratio ratio for hiBox
      */
-    public Block(final Point2D position, final boolean drawable, final GraphicComponent graphic, final InputComponent input) {
-        super(position, drawable, graphic, input, Constant.DEFAULT_HITBOX_DIMENSION);
-        this.event = new NullEvent();
+    public Block(final ObjectType type, final Event event, final Point2D position, final boolean drawable, final GraphicComponent graphic, final int ratio) {
+        super(type, position, drawable, graphic, ratio);
+        this.event = event;
+        this.hitBox.setSize(ratio * Constant.DEFAULT_HITBOX_DIMENSION, ratio * Constant.DEFAULT_HITBOX_DIMENSION / 2);
     }
     
     /**
      * Create a Block.
+     * @param event the {@link Event} to set in the block
      * @param position where block is
      * @param drawable set if the block will be drawn
      * @param graphic for draw the block
-     * @param input for listen the input
-     * @param hitboxDimension dimension of hibox
      */
-    public Block(final Point2D position, final boolean drawable, final GraphicComponent graphic, final InputComponent input, final int hitboxDimension) {
-        super(position, drawable, graphic, input, hitboxDimension);
-        this.event = new NullEvent();
+    public Block(final ObjectType type, final Event event, final Point2D position, final boolean drawable, final GraphicComponent graphic){
+        this(type, event, position, drawable, graphic, Constant.DEFAULT_RATIO);
     }
 
-    @Override
+    @Deprecated
     /**
-     * {@inheritDoc}
+     * @deprecated
+     * Create a Block.
+     * @param position where block is
+     * @param drawable set if the block will be drawn
+     * @param graphic for draw the block
      */
-    public void updateGraphic(final GraphicController g) {
-        this.graphic.update(this, g);
+    public Block(final Point2D position, final boolean drawable, final GraphicComponent graphic) {
+        this(new NullEvent() ,position, drawable, graphic, Constant.DEFAULT_RATIO);
     }
-
-    @Override
+    
+    @Deprecated
     /**
-     * {@inheritDoc}
+     * @deprecated
+     * Create a Block.
+     * @param event the {@link Event} to set in the block
+     * @param position where block is
+     * @param drawable set if the block will be drawn
+     * @param graphic for draw the block
+     * @param ratio ratio for hiBox
      */
-    public void updateInput(final InputController i) {
-        if(this.input != null) {
-            this.input.update(this, i);
-        }
+    public Block(final Event event, final Point2D position, final boolean drawable, final GraphicComponent graphic, final int ratio) {
+        this(ObjectType.VOID, event, position, drawable, graphic, ratio);
+    }
+    
+    @Deprecated
+    /**
+     * @deprecated
+     * Create a Block.
+     * @param event the {@link Event} to set in the block
+     * @param position where block is
+     * @param drawable set if the block will be drawn
+     * @param graphic for draw the block
+     */
+    public Block(final Event event, final Point2D position, final boolean drawable, final GraphicComponent graphic){
+        this(event, position, drawable, graphic, Constant.DEFAULT_RATIO);
     }
 
     /**
@@ -78,8 +94,4 @@ public class Block extends Entity {
     public void setEvent(final Event event) {
         this.event = event;
     }
-
-
-    
-
 }

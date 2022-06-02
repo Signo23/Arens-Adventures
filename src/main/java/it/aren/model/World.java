@@ -3,11 +3,14 @@
  */
 package it.aren.model;
 
+import java.awt.Rectangle;
 import java.util.ArrayList;
 import java.util.List;
+import java.util.Optional;
 import java.util.stream.Collectors;
 
 import it.aren.common.Constant;
+import it.aren.common.Direction;
 import it.aren.common.Point2D;
 /**
  * The class that manage the game's world.
@@ -17,6 +20,7 @@ public class World {
     private Player player;
     private final List<GameMap> maps;
     private GameMap currentMap;
+    private Dialog dialog;
 
     /**
      * Creates a new ArrayList for the maps.
@@ -61,42 +65,67 @@ public class World {
         this.currentMap = maps.get(index);
     }
     /**
+     * Set the dialog.
+     * @param dialog
+     */
+    public final void setDialog(final Dialog dialog) {
+        this.dialog = dialog;
+    }
+    /**
+     * Return the dialog.
+     * @return dialog
+     */
+    public final Dialog getDialog() {
+        return this.dialog;
+    }
+
+    /**
      * Update the world's state.
      */
     public void updateState() {
-        if(! this.isPlayerColliding()) {
+        if (this.playerCollide().isEmpty()) {
             this.player.updateState();
         }
     }
-    
-    private boolean isPlayerColliding() {
-        final Point2D playerPos = this.player.getLastDirection();
+
+    public final Optional<Block> playerCollide() {
+        final Direction playerDir = this.player.getLastDirection();
+        final Point2D playerPos = this.player.getPosition();
+        final Rectangle playerHitBox = (Rectangle) this.player.getHitBox().clone();
         List<Block> control = new ArrayList<>();
-        if(playerPos.equals(Constant.UP)) {
+        switch (playerDir) {
+        case UP: 
             control = this.currentMap.getBlocks().stream()
-                    .filter(b -> b.getPosition().getY() <= player.getPosition().getY())
-                    .collect(Collectors.toList());
-        }
-        if(playerPos.equals(Constant.DOWN)) {
+            .filter(b -> b.getPosition().getY() < player.getPosition().getY())
+            .collect(Collectors.toList());
+            playerHitBox.setLocation((int) playerPos.getX(), (int) playerPos.getY() - Constant.DEFAULT_VEL);
+            break;
+        case DOWN: 
             control = this.currentMap.getBlocks().stream()
-                    .filter(b -> b.getPosition().getY() <= player.getPosition().getY())
-                    .collect(Collectors.toList());
-        }
-        if(playerPos.equals(Constant.LEFT)) {
+            .filter(b -> b.getPosition().getY() > player.getPosition().getY())
+            .collect(Collectors.toList());
+            playerHitBox.setLocation((int) playerPos.getX(), (int) playerPos.getY() + Constant.DEFAULT_VEL);
+            break;
+        case LEFT:
             control = this.currentMap.getBlocks().stream()
-                    .filter(b -> b.getPosition().getX() <= player.getPosition().getX())
-                    .collect(Collectors.toList());
-        }
-        if(playerPos.equals(Constant.RIGHT)) {
+            .filter(b -> b.getPosition().getX() < player.getPosition().getX())
+            .collect(Collectors.toList());
+            playerHitBox.setLocation((int) playerPos.getX() - Constant.DEFAULT_VEL, (int) playerPos.getY());
+            break;
+        case RIGHT: 
             control = this.currentMap.getBlocks().stream()
-                    .filter(b -> b.getPosition().getX() <= player.getPosition().getX())
-                    .collect(Collectors.toList());
+            .filter(b -> b.getPosition().getX() > player.getPosition().getX())
+            .collect(Collectors.toList());
+            playerHitBox.setLocation((int) playerPos.getX() + Constant.DEFAULT_VEL, (int) playerPos.getY());
+            break;
+        default: 
+            break;
         }
-        for(final Block b : control) {
-            if(this.player.getHitBox().intersects(b.getHitBox())) {
-                return true;
+        for (final Block b : control) {
+            if (playerHitBox.intersects(b.getHitBox())) {
+                return Optional.of(b);
             }
         }
-        return false;
+        return Optional.empty();
     }
 }

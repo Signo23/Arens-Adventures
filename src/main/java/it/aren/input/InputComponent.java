@@ -3,7 +3,7 @@
  */
 package it.aren.input;
 
-import it.aren.model.Entity;
+import it.aren.model.BaseEntity;
 /**
  * The input component interface to update the input.
  */
@@ -13,5 +13,5 @@ public interface InputComponent {
      * @param entity to update
      * @param controller to use for update entity
      */
-    void update(Entity entity, InputController controller);
+    void update(BaseEntity entity, InputController controller);
 }
