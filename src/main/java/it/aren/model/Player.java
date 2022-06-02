@@ -10,8 +10,8 @@ import it.aren.common.Direction;
 import it.aren.common.Constant;
 import it.aren.common.Point2D;
 import it.aren.graphic.GraphicComponent;
-import it.aren.graphic.GraphicController;
 import it.aren.input.InputComponent;
+import it.aren.input.InputController;
 import it.aren.physics.PhysicsComponent;
 
 /**
@@ -25,6 +25,7 @@ public class Player extends BaseEntity {
     private List<GameObject> backPack;
     private boolean idle;
     private PhysicsComponent phy;
+    private InputComponent input;
 
     /**
      * Create a player.
@@ -34,11 +35,7 @@ public class Player extends BaseEntity {
      * @param phy for update position of player
      */
     public Player(final Point2D position, final GraphicComponent graphic, final InputComponent input, final PhysicsComponent phy) {
-        super(position, true, graphic, input, Constant.DEFAULT_HITBOX_DIMENSION);
-        this.lastDirection =  Direction.DOWN;
-        this.backPack = new ArrayList<>();
-        this.idle = false;
-        this.phy = phy;
+        this(position, graphic, input, phy, Constant.DEFAULT_RATIO);
     }
     
     /**
@@ -47,23 +44,23 @@ public class Player extends BaseEntity {
      * @param graphic for draw the player
      * @param input for listen the input for player
      * @param phy for update position of player
-     * @param hitboxDimension dimension of hibox
+     * @param ratio ratio for hitBox
      */
     public Player(final Point2D position, final GraphicComponent graphic, final InputComponent input, final PhysicsComponent phy,
-            final int hitboxDimension) {
-        super(position, true, graphic, input, hitboxDimension);
+            final int ratio) {
+        super(position, true, graphic, ratio);
         this.lastDirection =  Direction.DOWN;
         this.backPack = new ArrayList<>();
         this.idle = false;
         this.phy = phy;
+        this.input = input;
     }
     
-    @Override
     /**
      * {@inheritDoc}
      */
-    public void updateGraphic(final GraphicController g) {
-        this.graphic.update(this, g);
+    public void updateInput(final InputController i) {
+        this.input.update(this, i);
     }
 
     /**
@@ -141,5 +138,21 @@ public class Player extends BaseEntity {
      */
     public void setPhysic(final PhysicsComponent physic) {
         this.phy = physic;
+    }
+
+    /**
+     * Set Player's InputComponent.
+     * @return the input
+     */
+    public final InputComponent getInput() {
+        return input;
+    }
+
+    /**
+     * Get Player's InputComponent.
+     * @param input the input to set
+     */
+    public final void setInput(final InputComponent input) {
+        this.input = input;
     }
 }

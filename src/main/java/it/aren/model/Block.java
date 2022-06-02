@@ -1,6 +1,3 @@
-/**
- * 
- */
 package it.aren.model;
 
 import it.aren.common.Constant;
@@ -8,7 +5,6 @@ import it.aren.common.Point2D;
 import it.aren.event.Event;
 import it.aren.event.NullEvent;
 import it.aren.graphic.GraphicComponent;
-import it.aren.graphic.GraphicController;
 
 /**
  * Model for every block.
@@ -25,7 +21,7 @@ public class Block extends BaseEntity {
      * @param graphic for draw the block
      */
     public Block(final Point2D position, final boolean drawable, final GraphicComponent graphic) {
-        this(new NullEvent() ,position, drawable, graphic, Constant.DEFAULT_HITBOX_DIMENSION);
+        this(new NullEvent() ,position, drawable, graphic, Constant.DEFAULT_RATIO);
     }
     
     /**
@@ -34,12 +30,12 @@ public class Block extends BaseEntity {
      * @param position where block is
      * @param drawable set if the block will be drawn
      * @param graphic for draw the block
-     * @param hitboxDimension dimension of hiBox
+     * @param ratio ratio for hiBox
      */
-    public Block(final Event event, final Point2D position, final boolean drawable, final GraphicComponent graphic, final int hitboxDimension) {
-        super(position, drawable, graphic, null, hitboxDimension);
+    public Block(final Event event, final Point2D position, final boolean drawable, final GraphicComponent graphic, final int ratio) {
+        super(position, drawable, graphic, ratio);
         this.event = event;
-        this.hitBox.setSize(hitboxDimension, hitboxDimension / 2);
+        this.hitBox.setSize(ratio * Constant.DEFAULT_HITBOX_DIMENSION, ratio * Constant.DEFAULT_HITBOX_DIMENSION / 2);
     }
     
     /**
@@ -50,17 +46,7 @@ public class Block extends BaseEntity {
      * @param graphic for draw the block
      */
     public Block(final Event event, final Point2D position, final boolean drawable, final GraphicComponent graphic){
-        this(event, position, drawable, graphic, Constant.DEFAULT_HITBOX_DIMENSION);
-    }
-
-    @Override
-    /**
-     * {@inheritDoc}
-     */
-    public void updateGraphic(final GraphicController g) {
-        if(this.isDrawable()) {
-            this.graphic.update(this, g);   
-        }
+        this(event, position, drawable, graphic, Constant.DEFAULT_RATIO);
     }
 
     /**
@@ -78,8 +64,4 @@ public class Block extends BaseEntity {
     public void setEvent(final Event event) {
         this.event = event;
     }
-
-
-    
-
 }

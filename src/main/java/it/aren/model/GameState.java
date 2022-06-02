@@ -64,7 +64,6 @@ public class GameState {
             }
             
         } else {
-            world.getCurrentMap().getBlocks().forEach(b -> b.updateInput(controller));
             world.getPlayer().updateInput(controller);
         }
     }

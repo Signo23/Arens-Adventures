@@ -5,6 +5,7 @@ package it.aren.model;
 
 import java.awt.Rectangle;
 
+import it.aren.common.Constant;
 import it.aren.common.Point2D;
 import it.aren.graphic.GraphicComponent;
 import it.aren.graphic.GraphicController;
@@ -49,7 +50,7 @@ public class BaseEntity {
         this.position = position;
         this.drawable = drawable;
         this.graphic = graphic;
-        this.hitBox = new Rectangle(size, size);
+        this.hitBox = new Rectangle(size * Constant.DEFAULT_HITBOX_DIMENSION, size * Constant.DEFAULT_HITBOX_DIMENSION);
         this.hitBox.setLocation((int)this.position.getX(), (int)this.position.getY());
     }
     

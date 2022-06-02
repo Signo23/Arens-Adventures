@@ -6,9 +6,7 @@ package it.aren.model;
 import it.aren.common.Constant;
 import it.aren.common.Point2D;
 import it.aren.graphic.GraphicComponent;
-import it.aren.graphic.GraphicController;
 import it.aren.input.InputComponent;
-import it.aren.input.InputController;
 
 /**
  * Model for game object.
@@ -18,8 +16,35 @@ import it.aren.input.InputController;
 public class GameObject extends BaseEntity {
 
     private String id;
-
+    
     /**
+     * Create a GameObject.
+     * @param id GemObject's identifier
+     * @param position where to draw the GameObject
+     * @param drawable if GameObject is drawable
+     * @param graphic GameObject's {@link GraphicComponent}
+     */
+    public GameObject(final String id, final Point2D position, final boolean drawable, final GraphicComponent graphic){
+        this(id, position, drawable, graphic, Constant.DEFAULT_RATIO);
+    }
+    
+    /**
+     * Create a GameObject.
+     * @param id GemObject's identifier
+     * @param position where to draw the GameObject
+     * @param drawable if GameObject is drawable
+     * @param graphic GameObject's {@link GraphicComponent}
+     * @param ratio ratio for hitBox
+
+     */
+    public GameObject(final String id, final Point2D position, final boolean drawable, final GraphicComponent graphic, final int ratio){
+        super(position, drawable, graphic, ratio);
+        this.id = id;
+    }
+
+    @Deprecated
+    /**
+     * @deprecated
      * Create a GameObject.
      * @param position where to draw the GameObject
      * @param drawable if GameObject is drawable
@@ -28,11 +53,12 @@ public class GameObject extends BaseEntity {
      * @param id GemObject's identifier
      */
     public GameObject(final Point2D position, final boolean drawable, final GraphicComponent graphic, final InputComponent input, final String id) {
-        super(position, drawable, graphic, input, Constant.DEFAULT_HITBOX_DIMENSION);
-        this.id = id;
+        this(id, position, drawable, graphic);
     }
     
+    @Deprecated
     /**
+     * @deprecated
      * Create a GameObject.
      * @param position where to draw the GameObject
      * @param drawable if GameObject is drawable
@@ -43,24 +69,7 @@ public class GameObject extends BaseEntity {
      */
     public GameObject(final Point2D position, final boolean drawable, final GraphicComponent graphic, final InputComponent input, final String id,
             final int hitboxDimension) {
-        super(position, drawable, graphic, input, hitboxDimension);
-        this.id = id;
-    }
-
-    @Override
-    /**
-     * {@inheritDoc}
-     */
-    public void updateGraphic(final GraphicController g) {
-        this.graphic.update(this, g);
-    }
-
-    @Override
-    /**
-     * {@inheritDoc}
-     */
-    public void updateInput(final InputController i) {
-        this.input.update(this, i);
+        this(id, position, drawable, graphic, hitboxDimension);
     }
 
     /**
