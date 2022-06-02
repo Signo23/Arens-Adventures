@@ -8,6 +8,7 @@ import java.awt.Toolkit;
 
 import javax.swing.JFrame;
 
+import it.aren.common.Settings;
 import it.aren.input.InputController;
 import it.aren.input.KeyListenerImpl;
 import it.aren.input.KeyboardInputController;
@@ -25,11 +26,11 @@ public class SwingView implements View {
      * Initialize the view.
      * @param world to render
      * @param controller for listen the input
+     * @param settings 
      */
-    public SwingView(final World world, final InputController controller) {
+    public SwingView(final World world, final InputController controller, final Settings settings) {
         this.frame = new JFrame("Aren's Adventures");
-        //this.frame.getContentPane().add(new SwingPanel(512, 384, world, controller, new Texture()));
-        this.gamePanel = new SwingPanel(512, 384, world, controller, new Texture());
+        this.gamePanel = new SwingPanel(settings, world, controller, new Texture());
         this.frame.getContentPane().add(this.gamePanel);
         this.frame.addKeyListener(new KeyListenerImpl((KeyboardInputController)controller));
         this.frame.setResizable(false);
