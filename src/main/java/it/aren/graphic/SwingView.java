@@ -30,8 +30,7 @@ public class SwingView implements View {
      */
     public SwingView(final World world, final InputController controller, final Settings settings) {
         this.frame = new JFrame("Aren's Adventures");
-        //this.frame.getContentPane().add(new SwingPanel(512, 384, world, controller, new Texture()));
-        this.gamePanel = new SwingPanel(512, 384, world, controller, new Texture());
+        this.gamePanel = new SwingPanel(settings, world, controller, new Texture());
         this.frame.getContentPane().add(this.gamePanel);
         this.frame.addKeyListener(new KeyListenerImpl((KeyboardInputController)controller));
         this.frame.setResizable(false);
