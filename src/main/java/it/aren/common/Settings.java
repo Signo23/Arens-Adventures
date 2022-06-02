@@ -5,7 +5,7 @@ import java.awt.Dimension;
  * Manage settings of the game.
  */
 public class Settings {
-    private boolean antialiasingOn;
+    private boolean antiAliasingOn;
     private boolean renderQuality;
     private Dimension screenSize;
     
@@ -13,13 +13,13 @@ public class Settings {
      * Load default settings from {@link Constant}
      */
     public Settings() {
-        this.antialiasingOn = false;
+        this.antiAliasingOn = false;
         this.renderQuality = false;
         this.screenSize = Constant.DEFAULT_SCREEN_DIMENSION;
     }
 
     /**
-     * Calculate the dimension of hitbox.
+     * Calculate the dimension of hitBox.
      * @return hitbox's {@link Dimension}
      */
     public Dimension hitboxDimension() {
@@ -31,7 +31,7 @@ public class Settings {
      * Calculate the scale for correct sprite load.
      * @return the correct scale for sprite
      */
-    public int spriteScale() {
+    public int scale() {
         return this.hitboxDimension().height / Constant.DEFAULT_HITBOX_DIMENSION;
     }
     
@@ -39,16 +39,16 @@ public class Settings {
      * Get the status for antialiasing's setting
      * @return the antialiasingOn
      */
-    public boolean isAntialiasingOn() {
-        return antialiasingOn;
+    public boolean isAntiAliasingOn() {
+        return antiAliasingOn;
     }
 
     /**
-     * Set the antialiasing.
+     * Set the antiAliasing.
      * @param antialiasingOn the antialiasingOn to set
      */
-    public void setAntialiasingOn(final boolean antialiasingOn) {
-        this.antialiasingOn = antialiasingOn;
+    public void setAntiAliasingOn(final boolean antialiasingOn) {
+        this.antiAliasingOn = antialiasingOn;
     }
 
     /**
