@@ -3,9 +3,6 @@
  */
 package it.aren.graphic;
 
-import java.awt.Dimension;
-import java.awt.Toolkit;
-
 import javax.swing.JFrame;
 
 import it.aren.common.Settings;
@@ -30,18 +27,15 @@ public class SwingView implements View {
      */
     public SwingView(final World world, final InputController controller, final Settings settings) {
         this.frame = new JFrame("Aren's Adventures");
-        this.gamePanel = new SwingPanel(settings, world, controller, new Texture());
+        this.gamePanel = new SwingPanel(settings, world, controller, new Texture(settings.scale()));
         this.frame.getContentPane().add(this.gamePanel);
         this.frame.addKeyListener(new KeyListenerImpl((KeyboardInputController)controller));
         this.frame.setResizable(false);
-        final Dimension userScreenDimension = Toolkit.getDefaultToolkit().getScreenSize();
-        final int x = (int) ((userScreenDimension.getWidth() - frame.getWidth()) / 2);
-        final int y = (int) ((userScreenDimension.getHeight() - frame.getHeight()) / 2);
-        this.frame.setLocation(x, y);
         this.frame.setAutoRequestFocus(true);
         this.frame.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
-        this.frame.setVisible(true);
         this.frame.pack();
+        this.frame.setLocationRelativeTo(null);
+        this.frame.setVisible(true);
 
     }
 
