@@ -1,5 +1,4 @@
 package it.aren.graphic;
-
 import java.awt.image.BufferedImage;
 
 import it.aren.file.ImageLoader;
@@ -14,17 +13,16 @@ public class Texture {
     private final BufferedImage playerWalk;
     private final BufferedImage chest;
     private final BufferedImage levelOne;
-    private final ImageLoader il = new ImageLoader();
     
     /**
      * 
      * Load all the texture using {@link ImageLoader}.
      */
-    public Texture() {
-        this.playerIdle = il.loadFile("player-idle.png");
-        this.playerWalk = il.loadFile("player-walk.png");
-        this.chest = il.loadFile("chest.png");
-        this.levelOne = il.loadFile("level-one.png");
+    public Texture(final int ratio) {
+        this.playerIdle = ImageLoader.loadImage("player-idle.png", ratio);
+        this.playerWalk = ImageLoader.loadImage("player-walk.png", ratio);
+        this.chest = ImageLoader.loadImage("chest.png", ratio);
+        this.levelOne = ImageLoader.loadImage("level-one.png", ratio);
     }
 
     /**

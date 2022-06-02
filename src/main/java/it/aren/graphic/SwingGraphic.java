@@ -13,6 +13,7 @@ import java.awt.image.ImageObserver;
 import java.io.IOException;
 
 import it.aren.common.Point2D;
+import it.aren.file.SettingsLoader;
 import it.aren.common.Constant;
 import it.aren.model.Block;
 import it.aren.model.Dialog;
@@ -59,7 +60,7 @@ public class SwingGraphic implements GraphicController {
         if (block.isDrawable()) {
             g2.drawImage(block.getType().texture, (int) block.getPosition().getX(), (int) block.getPosition().getY(), this.io);
             g2.drawRect((int) block.getHitBox().getX(), (int) block.getHitBox().getY(),
-                    Constant.DEFAULT_HITBOX_DIMENSION, Constant.DEFAULT_HITBOX_DIMENSION);
+                    block.getHitBox().width, block.getHitBox().height);
         }
     }
 
@@ -75,6 +76,7 @@ public class SwingGraphic implements GraphicController {
 
     @Override
     public final void drawDialog(final Dialog dialog) {
+        final int ratio = SettingsLoader.loadSettings().scale();
         g2.setColor(Color.white);
         g2.fillRect((int) dialog.getPosition().getX(), (int) dialog.getPosition().getY(), 
                 dialog.getHitBox().width, dialog.getHitBox().height - 11 * Constant.DEFAULT_HITBOX_DIMENSION);
@@ -82,7 +84,7 @@ public class SwingGraphic implements GraphicController {
         try {
             Font customFont = Font.createFont(Font.TRUETYPE_FONT, this.getClass().getResourceAsStream(Constant.FONT_FOLDER + "Minecraft.ttf"));
             final GraphicsEnvironment ge = GraphicsEnvironment.getLocalGraphicsEnvironment();
-            customFont = customFont.deriveFont(Font.PLAIN, 24);
+            customFont = customFont.deriveFont(Font.PLAIN, 24 * ratio);
             ge.registerFont(customFont);
             g2.setFont(customFont);
         } catch (IOException e) {
@@ -91,6 +93,6 @@ public class SwingGraphic implements GraphicController {
             e.printStackTrace();
         }
         g2.setColor(Color.black);
-        g2.drawString(dialog.getText(), (int) dialog.getPosition().getX() + 16, (int) dialog.getPosition().getY() + 32);
+        g2.drawString(dialog.getText(), (int) dialog.getPosition().getX() + 16 * ratio, (int) dialog.getPosition().getY() + 32 * ratio);
     }
 }

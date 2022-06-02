@@ -11,6 +11,8 @@ import it.aren.common.Constant;
 import it.aren.common.Settings;
 import it.aren.event.Event;
 import it.aren.event.EventListener;
+import it.aren.file.SettingsLoader;
+import it.aren.file.SettingsSaver;
 import it.aren.graphic.DialogGraphicComponent;
 import it.aren.graphic.SwingView;
 import it.aren.graphic.Texture;
@@ -44,9 +46,10 @@ public class GameEngine implements EventListener {
      * Setup the game.
      */
     public void setup() {
-        this.state = new GameState(new Texture(), this);
+        final Settings settings = SettingsLoader.loadSettings();
+        this.state = new GameState(new Texture(settings.scale()), this);
         this.controller = new KeyboardInputController();
-        this.view = new SwingView(this.state.getWorld(), this.controller, new Settings());
+        this.view = new SwingView(this.state.getWorld(), this.controller, settings);
     }
 
     /**
