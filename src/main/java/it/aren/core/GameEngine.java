@@ -25,20 +25,20 @@ import it.aren.model.GameState;
  * Implements {@link EventListener}
  *
  */
-public class GameEngine implements EventListener{
+public class GameEngine implements EventListener {
     private View view;
     private GameState state;
     private InputController controller;
-    
+
     private final List<Event> eventList;
-    
+
     /**
      * Constructor for GameEngine.
      */
     public GameEngine() {
         this.eventList = new LinkedList<>();
     }
-    
+
     /**
      * Setup the game.
      */
@@ -65,7 +65,6 @@ public class GameEngine implements EventListener{
                 this.render();
                 break;
             case GAME_DIALOG:
-                this.processInputHUD();
                 this.updateHUD();
                 this.render();
                 break;
@@ -94,16 +93,8 @@ public class GameEngine implements EventListener{
         this.view.render();
     }
 
-    private void processInputHUD() {
-        if (this.state.getWorld().getDialog() != null) {
-            this.state.getWorld().getDialog().updateInput(this.controller);
-        }        
-    }
-
     private void updateHUD() {
-        if (this.controller.isInteract()) {
-            //TODO
-        } else if (this.controller.isOnClose()) {
+        if (this.controller.isOnClose()) {
             this.state.getWorld().setDialog(null);
             this.state.setState(ApplicationState.GAME);
         }
@@ -120,11 +111,12 @@ public class GameEngine implements EventListener{
         }
     }
 
-    @Override
+
     /**
      * {@inheritDoc}
      */
-    public void notifyEvent(final Event event) {
+    @Override
+    public final void notifyEvent(final Event event) {
         this.eventList.add(event);
     }
 }
