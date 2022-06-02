@@ -39,7 +39,7 @@ public class Constant {
     /**
      * Game's font directory.
      */
-    public static final String FONT_FOLDER = "/assets/fonts";
+    public static final String FONT_FOLDER = "/assets/fonts/";
     /**
      * @deprecated use {@link Direction}
      * The {@link Point2D} for left
@@ -78,7 +78,7 @@ public class Constant {
     /**
      * Default Dialog size.
      */
-    public static final int DEFAULT_DIALOG_SIZE = 14 * DEFAULT_HITBOX_DIMENSION;
+    public static final int DEFAULT_DIALOG_SIZE = 14;
 
     /**
      * Default ratio.
