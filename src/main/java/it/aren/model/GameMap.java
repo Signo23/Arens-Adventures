@@ -9,6 +9,7 @@ import java.util.List;
 import it.aren.common.Constant;
 import it.aren.common.Point2D;
 import it.aren.graphic.GameMapGraphicComponent;
+import it.aren.graphic.GraphicController;
 
 /**
  * The map of the block
@@ -58,6 +59,14 @@ public class GameMap extends BaseEntity {
      */
     public GameMap() {
         this(Constant.DEFAULT_MAP_DIMENSION, Constant.DEFAULT_MAP_DIMENSION, new ArrayList<>());
+    }
+    @Override
+    /**
+     * 
+     */
+    public void updateGraphic(final GraphicController g) {
+        super.updateGraphic(g);
+        this.blocks.forEach(b -> b.updateGraphic(g));
     }
 
     /**

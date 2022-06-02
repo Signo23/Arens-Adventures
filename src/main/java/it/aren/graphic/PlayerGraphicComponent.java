@@ -27,6 +27,7 @@ public class PlayerGraphicComponent implements GraphicComponent {
         final Player tmpPlayer = (Player)player;
         g.drawPlayer(player.getPosition(), tmpPlayer.isIdle() ? this.animation.getNextIdle(tmpPlayer.getLastDirection())
                 : this.animation.getNextWalk(tmpPlayer.getLastDirection()));
+        tmpPlayer.getBackPack().forEach(go -> go.updateGraphic(g));
     }
 
 }

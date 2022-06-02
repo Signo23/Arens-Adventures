@@ -53,7 +53,7 @@ public class SwingGraphic implements GraphicController {
      */
     public void drawBlock(final Block block) {
         if(block.isDrawable()) {
-            g2.drawImage(this.tex.getChest(), (int)block.getPosition().getX(), (int)block.getPosition().getY(), this.io);
+            g2.drawImage(block.getType().texture, (int)block.getPosition().getX(), (int)block.getPosition().getY(), this.io);
             g2.drawRect((int) block.getHitBox().getX(), (int) block.getHitBox().getY(),
                     Constant.DEFAULT_HITBOX_DIMENSION, Constant.DEFAULT_HITBOX_DIMENSION);
         }
@@ -67,7 +67,7 @@ public class SwingGraphic implements GraphicController {
     @Override
     public final void drawObject(final GameObject obj) {
         //Da modificare le posizioni
-        g2.drawImage(this.tex.getChest(), (int) obj.getPosition().getX(), (int) obj.getPosition().getY(), this.io);
+        g2.drawImage(obj.getType().texture, (int) obj.getPosition().getX(), (int) obj.getPosition().getY(), this.io);
     }
 
     //Da modificare
