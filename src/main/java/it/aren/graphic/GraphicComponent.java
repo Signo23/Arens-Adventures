@@ -3,7 +3,7 @@
  */
 package it.aren.graphic;
 
-import it.aren.model.Entity;
+import it.aren.model.BaseEntity;
 
 /**
  * A component for graphic.
@@ -12,9 +12,9 @@ import it.aren.model.Entity;
 public interface GraphicComponent {
 
     /**
-     * Draw the {@link Entity}'s graphic state.
-     * @param ent {@link Entity} to draw
+     * Draw the {@link BaseEntity}'s graphic state.
+     * @param ent {@link BaseEntity} to draw
      * @param w {@link GraphicController} for draw
      */
-    void update( Entity ent, GraphicController w);
+    void update( BaseEntity ent, GraphicController w);
 }

@@ -15,7 +15,7 @@ import it.aren.graphic.GraphicController;
  * The map of the block
  *
  */
-public class GameMap extends Entity {
+public class GameMap extends BaseEntity {
 
     private int width;
     private int height;
@@ -28,10 +28,7 @@ public class GameMap extends Entity {
      * @param blocks to add in the map
      */
     public GameMap(final int width, final int height, final List<Block> blocks) {
-        super(new Point2D(), true, new GameMapGraphicComponent(), null, Constant.DEFAULT_HITBOX_DIMENSION);
-        this.width = width;
-        this.height = height;
-        this.blocks = blocks;
+        this(width, height, blocks, Constant.DEFAULT_RATIO);
     }
     
     /**
@@ -39,10 +36,10 @@ public class GameMap extends Entity {
      * @param width of the map
      * @param height of the map
      * @param blocks to add in the map
-     * @param hitboxDimension dimension of hibox
+     * @param ratio ratio for hibox
      */
-    public GameMap(final int width, final int height, final List<Block> blocks, final int hitboxDimension) {
-        super(new Point2D(), true, new GameMapGraphicComponent(), null, hitboxDimension);
+    public GameMap(final int width, final int height, final List<Block> blocks, final int ratio) {
+        super(new Point2D(), true, new GameMapGraphicComponent(), ratio);
         this.width = width;
         this.height = height;
         this.blocks = blocks;
@@ -62,6 +59,14 @@ public class GameMap extends Entity {
      */
     public GameMap() {
         this(Constant.DEFAULT_MAP_DIMENSION, Constant.DEFAULT_MAP_DIMENSION, new ArrayList<>());
+    }
+    @Override
+    /**
+     * 
+     */
+    public void updateGraphic(final GraphicController g) {
+        super.updateGraphic(g);
+        this.blocks.forEach(b -> b.updateGraphic(g));
     }
 
     /**
@@ -110,16 +115,6 @@ public class GameMap extends Entity {
      */
     public void setBlocks(final List<Block> blocks) {
         this.blocks = blocks;
-    }
-
-    @Override
-    /**
-     * {@inheritDoc}
-     */
-    public void updateGraphic(final GraphicController g) {
-        this.graphic.update(this, g);
-        this.blocks.forEach(b -> b.updateGraphic(g));
-        
     }
     
 }
