@@ -11,4 +11,6 @@ public interface InputController {
     boolean isMoveDown();
     boolean isMoveLeft();
     boolean isMoveRight();
+    boolean isInteract();
+    boolean isOnClose();
 }

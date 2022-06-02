@@ -10,16 +10,19 @@ import it.aren.file.ImageLoader;
  */
 public class Texture {
 
-    private final BufferedImage player;
+    private final BufferedImage playerIdle;
+    private final BufferedImage playerWalk;
     private final BufferedImage chest;
     private final BufferedImage levelOne;
+    private final ImageLoader il = new ImageLoader();
     
     /**
+     * 
      * Load all the texture using {@link ImageLoader}.
      */
     public Texture() {
-        final ImageLoader il = new ImageLoader();
-        this.player = il.loadFile("player.png");
+        this.playerIdle = il.loadFile("player-idle.png");
+        this.playerWalk = il.loadFile("player-walk.png");
         this.chest = il.loadFile("chest.png");
         this.levelOne = il.loadFile("level-one.png");
     }
@@ -28,10 +31,13 @@ public class Texture {
      * Get {@link BufferedImage} for player.
      * @return {@link BufferedImage} of player
      */
-    public BufferedImage getPlayer() {
-        return this.player;
+    public BufferedImage getPlayerIdle() {
+        return this.playerIdle;
     }
 
+    public BufferedImage getPlayerWalk() {
+        return this.playerWalk;
+    }
     /**
      * Get {@link BufferedImage} for chest.
      * @return {@link BufferedImage} of chest
@@ -47,6 +53,7 @@ public class Texture {
     public BufferedImage getLevelOne() {
         return levelOne;
     }
+
     
     
     

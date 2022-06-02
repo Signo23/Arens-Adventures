@@ -3,6 +3,8 @@
  */
 package it.aren.model;
 
+import java.awt.Rectangle;
+
 import it.aren.common.Point2D;
 import it.aren.graphic.GraphicComponent;
 import it.aren.graphic.GraphicController;
@@ -15,6 +17,7 @@ import it.aren.input.InputController;
 public abstract class Entity {
     private Point2D position;
     private boolean drawable;
+    protected Rectangle hitBox;
     protected GraphicComponent graphic;
     protected InputComponent input;
     /**
@@ -23,12 +26,15 @@ public abstract class Entity {
      * @param drawable set if the block will be drawn
      * @param graphic for render the block
      * @param input for listen the block's input
+     * @param size hitbox's {@link Rectangle} px size for sides
      */
-    public Entity(final Point2D position, final boolean drawable, final GraphicComponent graphic, final InputComponent input) {
+    public Entity(final Point2D position, final boolean drawable, final GraphicComponent graphic, final InputComponent input, final int size) {
         this.position = position;
         this.drawable = drawable;
         this.graphic = graphic;
         this.input = input;
+        this.hitBox = new Rectangle(size, size);
+        this.hitBox.setLocation((int)this.position.getX(), (int)this.position.getY());
     }
     /**
      * Get Entity's position.
@@ -43,6 +49,7 @@ public abstract class Entity {
      */
     public void setPosition(final Point2D position) {
         this.position = position;
+        this.hitBox.setLocation((int)position.getX(), (int)position.getY());
     }
     /**
      * Get if Entity is drawable.
@@ -87,16 +94,33 @@ public abstract class Entity {
         this.input = input;
     }
     /**
-     * Update the Entity's {@link GraphicComponent}.
-     * @param g {@link GraphicController} that update the entity
+     * Get Entity's {@link Rectangle} for hitBox;
+     * @return the hitBox
      */
-    public abstract void updateGraphic(GraphicController g);
+    public Rectangle getHitBox() {
+        return hitBox;
+    }
+    /**
+     * Set Entity's {@link Rectangle} for hitBox.
+     * @param hitBox the Rectangle to set
+     */
+    public void setHitBox(final Rectangle hitBox) {
+        this.hitBox = hitBox;
+    }
     /**
      * Update the Entity's {@link InputComponent}.
      * @param i {@link} that update the Entity
      */
-    public abstract void updateInput(InputController i);
-    
+    public void updateInput(final InputController i) {
+        if(this.input != null) {
+            this.input.update(this, i);
+        }
+    }
+    /**
+     * Update the Entity's {@link GraphicComponent}.
+     * @param g {@link GraphicController} that update the entity
+     */
+    public abstract void updateGraphic(GraphicController g);
     
 
     
