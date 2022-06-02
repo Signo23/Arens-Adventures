@@ -15,69 +15,79 @@ public class Constant {
      */
     public final static int DEFAULT_MAP_WIDTH = 16;
     public final static int DEAFULT_MAP_HEIGHT = 12;
+    public static final int DEFAULT_MAP_DIMENSION = 16;
     /**
-     * Default dimension of hitbox
+     * Default dimension of hitbox.
      */
-    public final static int DEFAULT_HITBOX_DIMENSION = 32;
+    public static final int DEFAULT_HITBOX_DIMENSION = 32;
     /**
-     * Default FPS
+     * Default FPS.
      */
     public static final long DEFAULT_FPS = 16; // 33 =~ 30 frames per second
     public static final Dimension DEFAULT_SCREEN_DIMENSION  = new Dimension(
             DEFAULT_MAP_WIDTH * DEFAULT_HITBOX_DIMENSION, DEAFULT_MAP_HEIGHT * DEFAULT_HITBOX_DIMENSION);
     /**
-     * User's home directory
+     * User's home directory.
      */
-    public final static String HOME = System.getProperty("user.home");
+    public static final String HOME = System.getProperty("user.home");
     /**
-     * System's separator
+     * System's separator.
      */
-    public final static String SEP = System.getProperty("file.separator");
+    public static final String SEP = System.getProperty("file.separator");
     /**
-     * Game's main directory
+     * Game's main directory.
      */
-    public final static String MAIN_FOLDER = HOME +  SEP + ".aren";
+    public static final String MAIN_FOLDER = HOME +  SEP + ".aren";
     /**
-     * Game's textures directory
+     * Game's textures directory.
      */
-    public final static String TEXTURES_FOLDER = "/assets/textures/";
+    public static final String TEXTURES_FOLDER = "/assets/textures/";
+    /**
+     * Game's font directory.
+     */
+    public static final String FONT_FOLDER = "/assets/fonts/";
     /**
      * @deprecated use {@link Direction}
      * The {@link Point2D} for left
      */
-    public final static Point2D LEFT = new Point2D(-1, 0);
+    public static final Point2D LEFT = new Point2D(-1, 0);
     /**
      * @deprecated use {@link Direction}
      * The {@link Point2D} for right
      */
-    public final static Point2D RIGHT = new Point2D(1, 0);
+    public static final Point2D RIGHT = new Point2D(1, 0);
     /**
      * @deprecated use {@link Direction}
      * The {@link Point2D} for up
      */
-    public final static Point2D UP = new Point2D(0, -1);
+    public static final Point2D UP = new Point2D(0, -1);
     /**
      * @deprecated use {@link Direction}
      * The {@link Point2D} for down
      */
-    public final static Point2D DOWN = new Point2D(0, 1);
+    public static final Point2D DOWN = new Point2D(0, 1);
     /**
-     * Default velocity
+     * Default velocity.
      */
-    public final static int DEFAULT_VEL = 2;
-    
+    public static final int DEFAULT_VEL = 2;
+
     /**
      * Default Dialog position.
      */
-    public final static Point2D DEFAULT_DIALOG_POSITION = new Point2D(160, 128);
-    
+    public static final Point2D DEFAULT_DIALOG_POSITION = new Point2D(1 * DEFAULT_HITBOX_DIMENSION, 8 * DEFAULT_HITBOX_DIMENSION);
+
     /**
      * Default Text dimension.
      */
-    public final static int DEFAULT_TEXT_DIMENSION = 20;
-    
+    public static final int DEFAULT_TEXT_DIMENSION = 20;
+
     /**
      * Default Dialog size.
      */
-    public final static int DEFAULT_DIALOG_SIZE = 160;
+    public static final int DEFAULT_DIALOG_SIZE = 14;
+
+    /**
+     * Default ratio.
+     */
+    public static final int DEFAULT_RATIO = 1;
 }

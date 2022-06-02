@@ -6,7 +6,7 @@ package it.aren.physics;
 import it.aren.common.Constant;
 import it.aren.common.Direction;
 import it.aren.common.Point2D;
-import it.aren.model.Entity;
+import it.aren.model.BaseEntity;
 import it.aren.model.Player;
 
 /**
@@ -19,7 +19,7 @@ public class PlayerPhysicsComponent implements PhysicsComponent {
     /**
      * {@inheritDoc}
      */
-    public void update(final Entity player) {
+    public void update(final BaseEntity player) {
         final Player pl = (Player)player;
         if(!pl.isIdle()) {
             final Direction pos = pl.getLastDirection();

@@ -3,7 +3,7 @@
  */
 package it.aren.graphic;
 
-import it.aren.model.Entity;
+import it.aren.model.BaseEntity;
 import it.aren.model.Player;
 
 /**
@@ -23,10 +23,11 @@ public class PlayerGraphicComponent implements GraphicComponent {
     /**
      * {@inheritDoc}
      */
-    public void update(final Entity player, final GraphicController g) {
+    public void update(final BaseEntity player, final GraphicController g) {
         final Player tmpPlayer = (Player)player;
         g.drawPlayer(player.getPosition(), tmpPlayer.isIdle() ? this.animation.getNextIdle(tmpPlayer.getLastDirection())
                 : this.animation.getNextWalk(tmpPlayer.getLastDirection()));
+        tmpPlayer.getBackPack().forEach(go -> go.updateGraphic(g));
     }
 
 }

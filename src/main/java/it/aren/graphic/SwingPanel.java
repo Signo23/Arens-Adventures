@@ -13,7 +13,7 @@ import it.aren.input.KeyboardInputController;
 import it.aren.model.World;
 /**
  * This is an extension of JPanel.
- * Every {@link it.aren.model.Entity} is rendered there
+ * Every {@link it.aren.model.BaseEntity} is rendered there
  *
  */
 public class SwingPanel extends JPanel {

@@ -6,40 +6,25 @@ import it.aren.graphic.GraphicController;
 import it.aren.input.InputComponent;
 import it.aren.input.InputController;
 
-public class Dialog extends Entity {
+public class Dialog extends BaseEntity {
 
     private String text;
-    private boolean scroll;
-    public Dialog(final Point2D position, final boolean drawable, final GraphicComponent graphic, final InputComponent input, final int size, final String text) {
-        super(position, drawable, graphic, input, size);
+    public Dialog(final Point2D position, final boolean drawable, final GraphicComponent graphic, final int size, final String text) {
+        super(position, drawable, graphic, size);
         this.setText(text);
-        this.setScroll(false);
     }
-
-    @Override
-    public final void updateGraphic(final GraphicController g) {
-        this.graphic.update(this, g);
-    }
-
-    @Override
-    public final void updateInput(final InputController i) {
-        this.input.update(this, i);
-    }
-
+    /**
+     * Return the dialog's text.
+     * @return text
+     */
     public final String getText() {
         return text;
     }
-
+    /**
+     * Set the dialog's text.
+     * @param text
+     */
     public final void setText(final String text) {
         this.text = text;
     }
-
-    public boolean isScroll() {
-        return scroll;
-    }
-
-    public void setScroll(boolean scroll) {
-        this.scroll = scroll;
-    }
-
 }
