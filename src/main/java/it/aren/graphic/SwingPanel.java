@@ -21,7 +21,6 @@ public class SwingPanel extends JPanel {
 
     private static final long serialVersionUID = 1L;
     private final World world;
-    private final Texture tex;
     private final Settings settings;
 
       /**
@@ -31,9 +30,8 @@ public class SwingPanel extends JPanel {
      * @param world to render
      * @param inputController for listen the input
      */
-    public SwingPanel(final Settings settings, final World world, final InputController inputController, final Texture texture){
+    public SwingPanel(final Settings settings, final World world, final InputController inputController){
         this.world = world;
-        this.tex = texture;
         this.settings = settings;
         this.setPreferredSize(this.settings.getScreenSize());
         this.addKeyListener(new KeyListenerImpl((KeyboardInputController)inputController));
@@ -55,7 +53,7 @@ public class SwingPanel extends JPanel {
                       this.settings.isRenderQuality() ? RenderingHints.VALUE_RENDER_QUALITY : RenderingHints.VALUE_RENDER_SPEED);
             g2.clearRect(0,0,this.getWidth(),this.getHeight());
         
-            final GraphicController controller = new SwingGraphic(g2, this, this.tex);
+            final GraphicController controller = new SwingGraphic(g2, this);
             this.world.getCurrentMap().updateGraphic(controller);
             this.world.getPlayer().updateGraphic(controller);
             if (this.world.getDialog() != null) {

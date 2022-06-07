@@ -7,6 +7,7 @@ import java.awt.Rectangle;
 
 import it.aren.common.Constant;
 import it.aren.common.Point2D;
+import it.aren.file.SettingsLoader;
 import it.aren.graphic.GraphicComponent;
 import it.aren.graphic.GraphicController;
 import it.aren.input.InputComponent;
@@ -46,7 +47,8 @@ public class BaseEntity {
      * @param input for listen the block's input
      * @param size hitbox's {@link Rectangle} px size for sides
      */
-    protected BaseEntity(final Point2D position, final boolean drawable, final GraphicComponent graphic, final int size) {
+    protected BaseEntity(final Point2D position, final boolean drawable, final GraphicComponent graphic) {
+        final int size = SettingsLoader.loadSettings().scale();
         this.position = position;
         this.drawable = drawable;
         this.graphic = graphic;

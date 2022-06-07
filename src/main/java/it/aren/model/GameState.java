@@ -8,7 +8,6 @@ import java.util.Optional;
 import it.aren.common.ApplicationState;
 import it.aren.core.GameFactory;
 import it.aren.event.EventListener;
-import it.aren.graphic.Texture;
 import it.aren.input.InputController;
 /**
  * The class that manages the state of the game.
@@ -23,11 +22,11 @@ public class GameState {
      * Creates a new world object, the player and the game map.
      * @param texture 
      */
-    public GameState(final Texture texture, final EventListener listener){
+    public GameState(final EventListener listener){
         this.state = ApplicationState.BOOT;
         this.eventListener = listener;
         this.world = new World();
-        this.world.setPlayer(GameFactory.createPlayer(texture));
+        this.world.setPlayer(GameFactory.createPlayer());
         this.world.addMap(GameFactory.loadMaps());
         this.world.setCurrentMap(0);
     }

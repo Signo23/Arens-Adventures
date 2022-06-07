@@ -29,15 +29,13 @@ public class SwingGraphic implements GraphicController {
 
     private final Graphics2D g2;
     private final ImageObserver io;
-    private final Texture tex;
       /**
      * Create a SwingGraphic.
      * @param g2 for draw
      */
-    public SwingGraphic(final Graphics2D g2, final ImageObserver io, final Texture tex) {
+    public SwingGraphic(final Graphics2D g2, final ImageObserver io) {
         this.g2 = g2;
         this.io = io;
-        this.tex = tex;
     }
 
     @Override
@@ -58,7 +56,7 @@ public class SwingGraphic implements GraphicController {
     @Override
     public final void drawBlock(final Block block) {
         if (block.isDrawable()) {
-            g2.drawImage(block.getType().texture, (int) block.getPosition().getX(), (int) block.getPosition().getY(), this.io);
+            g2.drawImage(block.getType().getTexture(), (int) block.getPosition().getX(), (int) block.getPosition().getY(), this.io);
             g2.drawRect((int) block.getHitBox().getX(), (int) block.getHitBox().getY(),
                     block.getHitBox().width, block.getHitBox().height);
         }
@@ -66,12 +64,12 @@ public class SwingGraphic implements GraphicController {
 
     @Override
     public final void drawGameMap(final GameMap gameMap) {
-        g2.drawImage(this.tex.getLevelOne(), (int) gameMap.getPosition().getX(), (int) gameMap.getPosition().getY(), this.io);
+        g2.drawImage(gameMap.getType().getImage(), (int) gameMap.getPosition().getX(), (int) gameMap.getPosition().getY(), this.io);
     }
 
     @Override
     public final void drawObject(final GameObject obj) {
-        g2.drawImage(obj.getType().texture, (int) obj.getPosition().getX(), (int) obj.getPosition().getY(), this.io);
+        g2.drawImage(obj.getType().getTexture(), (int) obj.getPosition().getX(), (int) obj.getPosition().getY(), this.io);
     }
 
     @Override

@@ -26,17 +26,6 @@ public class Player extends BaseEntity {
     private boolean idle;
     private PhysicsComponent phy;
     private InputComponent input;
-
-    /**
-     * Create a player.
-     * @param position where the player have to set
-     * @param graphic for draw the player
-     * @param input for listen the input for player
-     * @param phy for update position of player
-     */
-    public Player(final Point2D position, final GraphicComponent graphic, final InputComponent input, final PhysicsComponent phy) {
-        this(position, graphic, input, phy, Constant.DEFAULT_RATIO);
-    }
     
     /**
      * Create a player.
@@ -46,9 +35,8 @@ public class Player extends BaseEntity {
      * @param phy for update position of player
      * @param ratio ratio for hitBox
      */
-    public Player(final Point2D position, final GraphicComponent graphic, final InputComponent input, final PhysicsComponent phy,
-            final int ratio) {
-        super(position, true, graphic, ratio);
+    public Player(final Point2D position, final GraphicComponent graphic, final InputComponent input, final PhysicsComponent phy) {
+        super(position, true, graphic);
         this.lastDirection =  Direction.DOWN;
         this.backPack = new ArrayList<>();
         this.idle = false;
