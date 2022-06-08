@@ -27,7 +27,7 @@ public class GameState {
         this.eventListener = listener;
         this.world = new World();
         this.world.setPlayer(GameFactory.createPlayer());
-        this.world.addMap(GameFactory.loadMaps());
+        this.world.addMap(GameFactory.loadMaps().get(0));
         this.world.setCurrentMap(0);
     }
 
