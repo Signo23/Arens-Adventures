@@ -6,20 +6,27 @@ import it.aren.file.ImageLoader;
 import it.aren.file.SettingsLoader;
 
 public enum BaseLevelEnum {
-    ONE("level-one.png"),
-    TWO("level-two.png"),
-    THREE("level-three.png"),
-    FOUR("level-four.png");
-    
+    ONE("one", "level-one.png"),
+    TWO("two", "level-two.png"),
+    THREE("three", "level-three.png"),
+    FOUR("four", "level-four.png");
+
     private BufferedImage image;
-    
-    BaseLevelEnum(final String levelTexture){
+    private String level;
+
+    BaseLevelEnum(final String level, final String levelTexture) {
         this.image = ImageLoader.loadImage(levelTexture, SettingsLoader.loadSettings().scale());
+        this.level = level;
     }
 
 
     public BufferedImage getImage() {
         return image;
+    }
+
+
+    public String getLevel() {
+        return level;
     }
 
 }
