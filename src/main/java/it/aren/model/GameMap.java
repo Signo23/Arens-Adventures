@@ -12,36 +12,56 @@ import it.aren.common.BaseObjectEnum;
 import it.aren.common.Point2D;
 import it.aren.common.PointRange;
 import it.aren.event.NullEvent;
+import it.aren.file.MapsLoader;
 import it.aren.file.SettingsLoader;
 import it.aren.graphic.BlockGraphicComponent;
 import it.aren.graphic.GameMapGraphicComponent;
 import it.aren.graphic.GraphicController;
 
 /**
- * The map of the block
+ * The map of the block.
  *
  */
 public class GameMap extends BaseEntity {
     private List<Block> blocks;
     private final BaseLevelEnum type;
     /**
-     * Create a map without block and default {@link Constant}.
+     * Create a map.
      */
     public GameMap(final BaseLevelEnum type) {
         super(new Point2D(), true, new GameMapGraphicComponent());
         this.blocks = new ArrayList<>();
         this.type = type;
+        MapsLoader.loadMaps(Constant.MAIN_FOLDER + Constant.SEP + "maps.json").get(type.getLevel()).forEach(p -> createLineBlock(p));
     }
 
-    public void addBlock(final Block block) {
+    private static List<Block> createLineBlock(final PointRange range) {
+        final int ratio = SettingsLoader.loadSettings().scale();
+        final int dimension = ratio * Constant.DEFAULT_HITBOX_DIMENSION;
+        final List<Block> blocks = new ArrayList<>();
+        for (int i = (int) range.getStart().getX(); i <= (int) range.getEnd().getX(); i++) {
+            for (int j = (int) range.getStart().getY(); j <= (int) range.getEnd().getY(); j++) {
+                blocks.add(createSimpleBlock(new Point2D(1 * dimension, j * dimension), ratio));
+            }
+        }
+        return blocks;
+    }
+
+    private static Block createSimpleBlock(final Point2D position, final int ratio) {
+        return new Block(BaseObjectEnum.VOID, new NullEvent(), position,
+                true, new BlockGraphicComponent());
+    }
+
+    public final void addBlock(final Block block) {
         this.blocks.add(block);
     }
 
-    @Override
+
     /**
      * 
      */
-    public void updateGraphic(final GraphicController g) {
+    @Override
+    public final void updateGraphic(final GraphicController g) {
         super.updateGraphic(g);
         this.blocks.forEach(b -> b.updateGraphic(g));
     }
@@ -62,8 +82,8 @@ public class GameMap extends BaseEntity {
         this.blocks = blocks;
     }
 
-    public BaseLevelEnum getType() {
+    public final BaseLevelEnum getType() {
         return type;
     }
-    
+
 }
