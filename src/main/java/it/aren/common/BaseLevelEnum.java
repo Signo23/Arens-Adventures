@@ -1,8 +1,10 @@
 package it.aren.common;
 
 import java.awt.image.BufferedImage;
+import java.util.List;
 
 import it.aren.file.ImageLoader;
+import it.aren.file.MapsLoader;
 import it.aren.file.SettingsLoader;
 
 public enum BaseLevelEnum {
@@ -12,11 +14,11 @@ public enum BaseLevelEnum {
     FOUR("four", "level-four.png");
 
     private BufferedImage image;
-    private String level;
+    private List<PointRange> points;
 
     BaseLevelEnum(final String level, final String levelTexture) {
         this.image = ImageLoader.loadImage(levelTexture, SettingsLoader.loadSettings().scale());
-        this.level = level;
+        setPoints(MapsLoader.loadMaps(Constant.SEP + "maps.json").get(level));
     }
 
 
@@ -24,9 +26,13 @@ public enum BaseLevelEnum {
         return image;
     }
 
+    public List<PointRange> getPoints() {
+        return points;
+    }
 
-    public String getLevel() {
-        return level;
+
+    public void setPoints(final List<PointRange> points) {
+        this.points = points;
     }
 
 }
