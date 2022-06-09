@@ -27,12 +27,13 @@ public class GameMap extends BaseEntity {
     private final BaseLevelEnum type;
     /**
      * Create a map.
+     * @param type
      */
     public GameMap(final BaseLevelEnum type) {
         super(new Point2D(), true, new GameMapGraphicComponent());
         this.blocks = new ArrayList<>();
         this.type = type;
-        MapsLoader.loadMaps(Constant.MAIN_FOLDER + Constant.SEP + "maps.json").get(type.getLevel()).forEach(p -> createLineBlock(p));
+        type.getPoints().forEach(p -> createLineBlock(p));
     }
 
     private static List<Block> createLineBlock(final PointRange range) {
@@ -41,13 +42,13 @@ public class GameMap extends BaseEntity {
         final List<Block> blocks = new ArrayList<>();
         for (int i = (int) range.getStart().getX(); i <= (int) range.getEnd().getX(); i++) {
             for (int j = (int) range.getStart().getY(); j <= (int) range.getEnd().getY(); j++) {
-                blocks.add(createSimpleBlock(new Point2D(1 * dimension, j * dimension), ratio));
+                blocks.add(createSimpleBlock(new Point2D(1 * dimension, j * dimension)));
             }
         }
         return blocks;
     }
 
-    private static Block createSimpleBlock(final Point2D position, final int ratio) {
+    private static Block createSimpleBlock(final Point2D position) {
         return new Block(BaseObjectEnum.VOID, new NullEvent(), position,
                 true, new BlockGraphicComponent());
     }
