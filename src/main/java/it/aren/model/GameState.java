@@ -20,14 +20,14 @@ public class GameState {
 
     /**
      * Creates a new world object, the player and the game map.
-     * @param texture 
+     * @param listener 
      */
-    public GameState(final EventListener listener){
+    public GameState(final EventListener listener) {
         this.state = ApplicationState.BOOT;
         this.eventListener = listener;
         this.world = new World();
         this.world.setPlayer(GameFactory.createPlayer());
-        this.world.addMap(GameFactory.loadMaps().get(0));
+        this.world.addMaps(GameFactory.loadMaps());
         this.world.setCurrentMap(0);
     }
 
