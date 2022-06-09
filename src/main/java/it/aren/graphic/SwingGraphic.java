@@ -77,7 +77,7 @@ public class SwingGraphic implements GraphicController {
         final int ratio = SettingsLoader.loadSettings().scale();
         g2.setColor(Color.white);
         g2.fillRect((int) dialog.getPosition().getX(), (int) dialog.getPosition().getY(), 
-                dialog.getHitBox().width, dialog.getHitBox().height - 11 * Constant.DEFAULT_HITBOX_DIMENSION);
+                dialog.getHitBox().width, dialog.getHitBox().height);
         //stampa del testo
         try {
             Font customFont = Font.createFont(Font.TRUETYPE_FONT, this.getClass().getResourceAsStream(Constant.FONT_FOLDER + "Minecraft.ttf"));

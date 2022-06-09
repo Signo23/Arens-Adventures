@@ -1,6 +1,8 @@
 package it.aren.model;
 
+import it.aren.common.Constant;
 import it.aren.common.Point2D;
+import it.aren.file.SettingsLoader;
 import it.aren.graphic.GraphicComponent;
 
 public class Dialog extends BaseEntity {
@@ -9,6 +11,8 @@ public class Dialog extends BaseEntity {
     public Dialog(final Point2D position, final boolean drawable, final GraphicComponent graphic, final String text) {
         super(position, drawable, graphic);
         this.setText(text);
+        final int ratio = SettingsLoader.loadSettings().scale();
+        this.hitBox.setSize(14 * ratio * Constant.DEFAULT_HITBOX_DIMENSION, 3 * ratio * Constant.DEFAULT_HITBOX_DIMENSION);
     }
     /**
      * Return the dialog's text.
