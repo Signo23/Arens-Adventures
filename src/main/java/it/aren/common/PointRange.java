@@ -6,8 +6,8 @@ public class PointRange {
     private Point2D end;
 
     public PointRange(final Point2D start, final Point2D end) {
-        this.setStart(start);
-        this.setEnd(end);
+        this.start = start;
+        this.end = end;
     }
 
     public final Point2D getStart() {
