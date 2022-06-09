@@ -41,7 +41,7 @@ public class ImageLoader implements FileLoader<BufferedImage> {
         final int h = texture.getHeight();
         BufferedImage scaled = new BufferedImage(w * ratio, h * ratio, BufferedImage.TYPE_INT_ARGB);
         final AffineTransform at = new AffineTransform();
-        at.scale(2.0, 2.0);
+        at.scale(SettingsLoader.loadSettings().scale(), SettingsLoader.loadSettings().scale());
         final AffineTransformOp ato = new AffineTransformOp(at, AffineTransformOp.TYPE_NEAREST_NEIGHBOR);
         scaled = ato.filter(texture, scaled);        
         return scaled;

@@ -10,7 +10,6 @@ import it.aren.common.BaseLevelEnum;
 import it.aren.common.Constant;
 import it.aren.common.BaseObjectEnum;
 import it.aren.common.Point2D;
-import it.aren.common.PointRange;
 import it.aren.event.NullEvent;
 import it.aren.file.MapsLoader;
 import it.aren.file.SettingsLoader;
