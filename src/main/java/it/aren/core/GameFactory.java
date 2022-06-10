@@ -39,7 +39,7 @@ public final class GameFactory {
      * @return player
      */
     public static Player createPlayer() {
-        return new Player(new Point2D(80, 1),
+        return new Player(new Point2D(0, 1),
                 new PlayerGraphicComponent(),
                 new PlayerInputComponent(),
                 new PlayerPhysicsComponent());
@@ -111,13 +111,13 @@ public final class GameFactory {
         maps.add(new GameMap(BaseLevelEnum.TWO));
         maps.add(new GameMap(BaseLevelEnum.THREE));
         maps.add(new GameMap(BaseLevelEnum.FOUR));
-        maps.get(0).setBlocks(transportL1);
+        maps.get(0).addBlocks(transportL1);
         maps.get(0).addBlock(box);
-        maps.get(1).setBlocks(transportL2);
+        maps.get(1).addBlocks(transportL2);
         maps.get(1).addBlock(chest);
-        maps.get(2).setBlocks(transportL3);
+        maps.get(2).addBlocks(transportL3);
         maps.get(2).addBlock(npc);
-        maps.get(3).setBlocks(transportL4);
+        maps.get(3).addBlocks(transportL4);
         maps.get(3).addBlock(sign);
         return maps;
     }

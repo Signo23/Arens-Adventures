@@ -33,7 +33,7 @@ public class GameMap extends BaseEntity {
         super(new Point2D(), true, new GameMapGraphicComponent());
         this.blocks = new ArrayList<>();
         this.type = type;
-        type.getPoints().forEach(p -> this.setBlocks(createLineBlock(p)));
+        type.getPoints().forEach(p -> this.addBlocks(createLineBlock(p)));
     }
 
     private static List<Block> createLineBlock(final PointRange range) {
@@ -42,7 +42,7 @@ public class GameMap extends BaseEntity {
         final List<Block> blocks = new ArrayList<>();
         for (int i = (int) range.getStart().getX(); i <= (int) range.getEnd().getX(); i++) {
             for (int j = (int) range.getStart().getY(); j <= (int) range.getEnd().getY(); j++) {
-                blocks.add(createSimpleBlock(new Point2D(1 * dimension, j * dimension)));
+                blocks.add(createSimpleBlock(new Point2D(i * dimension, j * dimension)));
             }
         }
         return blocks;
@@ -80,6 +80,10 @@ public class GameMap extends BaseEntity {
      * @param blocks the blocks to set
      */
     public void setBlocks(final List<Block> blocks) {
+        this.blocks = blocks;
+    }
+    
+    public void addBlocks (final List<Block> blocks) {
         this.blocks.addAll(blocks);
     }
 
