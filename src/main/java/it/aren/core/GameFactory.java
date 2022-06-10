@@ -11,6 +11,7 @@ import it.aren.common.Constant;
 import it.aren.common.BaseObjectEnum;
 import it.aren.common.Point2D;
 import it.aren.event.InteractWithPlayerEvent;
+import it.aren.event.TransportEvent;
 import it.aren.file.SettingsLoader;
 import it.aren.input.PlayerInputComponent;
 import it.aren.model.Block;
@@ -38,7 +39,7 @@ public final class GameFactory {
      * @return player
      */
     public static Player createPlayer() {
-        return new Player(new Point2D(0, 1),
+        return new Player(new Point2D(80, 1),
                 new PlayerGraphicComponent(),
                 new PlayerInputComponent(),
                 new PlayerPhysicsComponent());
@@ -68,14 +69,55 @@ public final class GameFactory {
         final Block sign = new Block(BaseObjectEnum.SIGN, new InteractWithPlayerEvent(key, "Ecco la chiave!", jacket, "Prima la giacca!"),
                 new Point2D(11 * dimension, 5 * dimension), true, new BlockGraphicComponent());
 
+        //Trnsport blocks
+        final List<Block> transportL1 = new ArrayList<>();
+        transportL1.add(new Block(BaseObjectEnum.VOID, new TransportEvent(new Point2D(1 * dimension, 6 * dimension), 1),
+                new Point2D(16 * dimension, 5 * dimension), false, new BlockGraphicComponent()));
+        transportL1.add(new Block(BaseObjectEnum.VOID, new TransportEvent(new Point2D(1 * dimension, 6 * dimension), 1),
+                new Point2D(16 * dimension, 6 * dimension), false, new BlockGraphicComponent()));
+        transportL1.add(new Block(BaseObjectEnum.VOID, new TransportEvent(new Point2D(1 * dimension, 6 * dimension), 1),
+                new Point2D(16 * dimension, 7 * dimension), false, new BlockGraphicComponent()));
+
+        final List<Block> transportL2 = new ArrayList<>();
+        transportL2.add(new Block(BaseObjectEnum.VOID, new TransportEvent(new Point2D(14 * dimension, 6 * dimension), 0),
+                new Point2D(-1 * dimension, 5 * dimension), false, new BlockGraphicComponent()));
+        transportL2.add(new Block(BaseObjectEnum.VOID, new TransportEvent(new Point2D(14 * dimension, 6 * dimension), 0),
+                new Point2D(-1 * dimension, 6 * dimension), false, new BlockGraphicComponent()));
+        transportL2.add(new Block(BaseObjectEnum.VOID, new TransportEvent(new Point2D(14 * dimension, 6 * dimension), 0),
+                new Point2D(-1 * dimension, 7 * dimension), false, new BlockGraphicComponent()));
+        transportL2.add(new Block(BaseObjectEnum.VOID, new TransportEvent(new Point2D(6 * dimension, 1 * dimension), 2),
+                new Point2D(6 * dimension, 12 * dimension), false, new BlockGraphicComponent()));
+        transportL2.add(new Block(BaseObjectEnum.VOID, new TransportEvent(new Point2D(6 * dimension, 1 * dimension), 2),
+                new Point2D(7 * dimension, 12 * dimension), false, new BlockGraphicComponent()));
+
+        final List<Block> transportL3 = new ArrayList<>();
+        transportL3.add(new Block(BaseObjectEnum.VOID, new TransportEvent(new Point2D(7 * dimension, 10 * dimension), 1),
+                new Point2D(6 * dimension, -1 * dimension), false, new BlockGraphicComponent()));
+        transportL3.add(new Block(BaseObjectEnum.VOID, new TransportEvent(new Point2D(7 * dimension, 10 * dimension), 1),
+                new Point2D(7 * dimension, -1 * dimension), false, new BlockGraphicComponent()));
+        transportL3.add(new Block(BaseObjectEnum.VOID, new TransportEvent(new Point2D(1 * dimension, 10 * dimension), 3),
+                new Point2D(16 * dimension, 10 * dimension), false, new BlockGraphicComponent()));
+        transportL3.add(new Block(BaseObjectEnum.VOID, new TransportEvent(new Point2D(1 * dimension, 10 * dimension), 3),
+                new Point2D(16 * dimension, 11 * dimension), false, new BlockGraphicComponent()));
+
+        final List<Block> transportL4 = new ArrayList<>();
+        transportL4.add(new Block(BaseObjectEnum.VOID, new TransportEvent(new Point2D(14 * dimension, 10 * dimension), 2),
+                new Point2D(-1 * dimension, 10 * dimension), false, new BlockGraphicComponent()));
+        transportL4.add(new Block(BaseObjectEnum.VOID, new TransportEvent(new Point2D(14 * dimension, 10 * dimension), 2),
+                new Point2D(-1 * dimension, 11 * dimension), false, new BlockGraphicComponent()));
+
         final List<GameMap> maps = new ArrayList<>();
         maps.add(new GameMap(BaseLevelEnum.ONE));
         maps.add(new GameMap(BaseLevelEnum.TWO));
         maps.add(new GameMap(BaseLevelEnum.THREE));
         maps.add(new GameMap(BaseLevelEnum.FOUR));
+        maps.get(0).setBlocks(transportL1);
         maps.get(0).addBlock(box);
+        maps.get(1).setBlocks(transportL2);
         maps.get(1).addBlock(chest);
+        maps.get(2).setBlocks(transportL3);
         maps.get(2).addBlock(npc);
+        maps.get(3).setBlocks(transportL4);
         maps.get(3).addBlock(sign);
         return maps;
     }

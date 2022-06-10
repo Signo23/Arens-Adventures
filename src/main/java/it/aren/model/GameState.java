@@ -8,6 +8,7 @@ import java.util.Optional;
 import it.aren.common.ApplicationState;
 import it.aren.core.GameFactory;
 import it.aren.event.EventListener;
+import it.aren.event.TransportEvent;
 import it.aren.input.InputController;
 /**
  * The class that manages the state of the game.
@@ -44,8 +45,13 @@ public class GameState {
      */
     public final void update() {
         this.world.updateState();
+        if (this.world.playerCollide().isPresent()) {
+            if (this.world.playerCollide().get().getEvent() instanceof TransportEvent) {
+                this.eventListener.notifyEvent(this.world.playerCollide().get().getEvent());
+            }
+        }
     }
-    
+
     public ApplicationState getState() {
         return this.state;
     }

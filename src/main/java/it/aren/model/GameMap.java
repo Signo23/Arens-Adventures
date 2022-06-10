@@ -10,6 +10,7 @@ import it.aren.common.BaseLevelEnum;
 import it.aren.common.Constant;
 import it.aren.common.BaseObjectEnum;
 import it.aren.common.Point2D;
+import it.aren.common.PointRange;
 import it.aren.event.NullEvent;
 import it.aren.file.MapsLoader;
 import it.aren.file.SettingsLoader;
@@ -32,7 +33,7 @@ public class GameMap extends BaseEntity {
         super(new Point2D(), true, new GameMapGraphicComponent());
         this.blocks = new ArrayList<>();
         this.type = type;
-        type.getPoints().forEach(p -> createLineBlock(p));
+        type.getPoints().forEach(p -> this.setBlocks(createLineBlock(p)));
     }
 
     private static List<Block> createLineBlock(final PointRange range) {
@@ -79,7 +80,7 @@ public class GameMap extends BaseEntity {
      * @param blocks the blocks to set
      */
     public void setBlocks(final List<Block> blocks) {
-        this.blocks = blocks;
+        this.blocks.addAll(blocks);
     }
 
     public final BaseLevelEnum getType() {
