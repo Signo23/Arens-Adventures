@@ -18,7 +18,7 @@ public enum BaseLevelEnum {
 
     BaseLevelEnum(final String level, final String levelTexture) {
         this.image = ImageLoader.loadImage(levelTexture, SettingsLoader.loadSettings().scale());
-        setPoints(MapsLoader.loadMaps(Constant.SEP + "maps.json").get(level));
+        points = MapsLoader.loadMaps(Constant.SEP + "maps.json").get(level);
     }
 
 
