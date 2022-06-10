@@ -5,26 +5,30 @@ import java.util.HashMap;
 import java.util.LinkedList;
 import java.util.Map;
 
+import it.aren.common.BaseObjectEnum;
 import it.aren.common.Constant;
 import it.aren.common.Direction;
 import it.aren.common.Point2D;
+import it.aren.file.SettingsLoader;
 
 /**
  * Contain the {@link BufferedImage}s for animation.
  */
-public class Animation {
+public class PlayerAnimation {
     private final Map<Direction, LinkedList<BufferedImage>> idleSprite;
     private final Map<Direction, LinkedList<BufferedImage>> walkSprite;
     private long time;
+    private int spriteDimension;
     private final static long ELAPSE = 250;
 
     /**
      * Main constructor.
      * Load all the sprite.
      */
-    public Animation(final Texture texture) {
+    public PlayerAnimation() {
         this.idleSprite = new HashMap<>();
         this.walkSprite = new HashMap<>();
+        this.spriteDimension = SettingsLoader.loadSettings().scale() * Constant.DEFAULT_HITBOX_DIMENSION;
         
         this.idleSprite.put(Direction.UP, new LinkedList<>());
         this.idleSprite.put(Direction.DOWN, new LinkedList<>());
@@ -36,8 +40,8 @@ public class Animation {
         this.walkSprite.put(Direction.LEFT, new LinkedList<>());
         this.walkSprite.put(Direction.RIGHT, new LinkedList<>());
         
-        final BufferedImage idle = texture.getPlayerIdle();
-        final BufferedImage walk = texture.getPlayerWalk();
+        final BufferedImage idle = BaseObjectEnum.PLAYER_IDLE.getTexture();
+        final BufferedImage walk = BaseObjectEnum.PLAYER_WALK.getTexture();
         for(int i = 0; i < 4; i++) {
             for(int j = 0; j < 4; j++) {
                 switch(i) {
@@ -66,8 +70,8 @@ public class Animation {
     }
 
     private BufferedImage crop(final BufferedImage spriteSheet, final int x, final int y) {
-        return spriteSheet.getSubimage(x * Constant.DEFAULT_HITBOX_DIMENSION,
-                y*Constant.DEFAULT_HITBOX_DIMENSION, Constant.DEFAULT_HITBOX_DIMENSION, Constant.DEFAULT_HITBOX_DIMENSION);
+        return spriteSheet.getSubimage(x * this.spriteDimension,
+                y * this.spriteDimension, this.spriteDimension, this.spriteDimension);
     }
 
     /**
@@ -76,7 +80,7 @@ public class Animation {
      * @return sprite's {@link BufferedImage}
      */
     public BufferedImage getNextIdle(final Direction lastDirection) {
-        if(Animation.ELAPSE > System.currentTimeMillis() - time) {
+        if(PlayerAnimation.ELAPSE > System.currentTimeMillis() - time) {
             return this.idleSprite.get(lastDirection).peek();
         }
         final BufferedImage tmpImage = this.idleSprite.get(lastDirection).poll();
@@ -91,7 +95,7 @@ public class Animation {
      * @return sprite's {@link BufferedImage}
      */
     public BufferedImage getNextWalk(final Direction direction) {
-        if(Animation.ELAPSE > System.currentTimeMillis() - time) {
+        if(PlayerAnimation.ELAPSE > System.currentTimeMillis() - time) {
             return this.walkSprite.get(direction).peek();
         }
         final BufferedImage tmpImage = this.walkSprite.get(direction).poll();

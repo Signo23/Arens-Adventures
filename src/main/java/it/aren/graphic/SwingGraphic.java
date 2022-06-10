@@ -13,6 +13,7 @@ import java.awt.image.ImageObserver;
 import java.io.IOException;
 
 import it.aren.common.Point2D;
+import it.aren.file.SettingsLoader;
 import it.aren.common.Constant;
 import it.aren.model.Block;
 import it.aren.model.Dialog;
@@ -28,15 +29,13 @@ public class SwingGraphic implements GraphicController {
 
     private final Graphics2D g2;
     private final ImageObserver io;
-    private final Texture tex;
       /**
      * Create a SwingGraphic.
      * @param g2 for draw
      */
-    public SwingGraphic(final Graphics2D g2, final ImageObserver io, final Texture tex) {
+    public SwingGraphic(final Graphics2D g2, final ImageObserver io) {
         this.g2 = g2;
         this.io = io;
-        this.tex = tex;
     }
 
     @Override
@@ -57,32 +56,33 @@ public class SwingGraphic implements GraphicController {
     @Override
     public final void drawBlock(final Block block) {
         if (block.isDrawable()) {
-            g2.drawImage(block.getType().texture, (int) block.getPosition().getX(), (int) block.getPosition().getY(), this.io);
+            g2.drawImage(block.getType().getTexture(), (int) block.getPosition().getX(), (int) block.getPosition().getY(), this.io);
             g2.drawRect((int) block.getHitBox().getX(), (int) block.getHitBox().getY(),
-                    Constant.DEFAULT_HITBOX_DIMENSION, Constant.DEFAULT_HITBOX_DIMENSION);
+                    block.getHitBox().width, block.getHitBox().height);
         }
     }
 
     @Override
     public final void drawGameMap(final GameMap gameMap) {
-        g2.drawImage(this.tex.getLevelOne(), (int) gameMap.getPosition().getX(), (int) gameMap.getPosition().getY(), this.io);
+        g2.drawImage(gameMap.getType().getImage(), (int) gameMap.getPosition().getX(), (int) gameMap.getPosition().getY(), this.io);
     }
 
     @Override
     public final void drawObject(final GameObject obj) {
-        g2.drawImage(obj.getType().texture, (int) obj.getPosition().getX(), (int) obj.getPosition().getY(), this.io);
+        g2.drawImage(obj.getType().getTexture(), (int) obj.getPosition().getX(), (int) obj.getPosition().getY(), this.io);
     }
 
     @Override
     public final void drawDialog(final Dialog dialog) {
+        final int ratio = SettingsLoader.loadSettings().scale();
         g2.setColor(Color.white);
         g2.fillRect((int) dialog.getPosition().getX(), (int) dialog.getPosition().getY(), 
-                dialog.getHitBox().width, dialog.getHitBox().height - 11 * Constant.DEFAULT_HITBOX_DIMENSION);
+                dialog.getHitBox().width, dialog.getHitBox().height);
         //stampa del testo
         try {
             Font customFont = Font.createFont(Font.TRUETYPE_FONT, this.getClass().getResourceAsStream(Constant.FONT_FOLDER + "Minecraft.ttf"));
             final GraphicsEnvironment ge = GraphicsEnvironment.getLocalGraphicsEnvironment();
-            customFont = customFont.deriveFont(Font.PLAIN, 24);
+            customFont = customFont.deriveFont(Font.PLAIN, 24 * ratio);
             ge.registerFont(customFont);
             g2.setFont(customFont);
         } catch (IOException e) {
@@ -91,6 +91,6 @@ public class SwingGraphic implements GraphicController {
             e.printStackTrace();
         }
         g2.setColor(Color.black);
-        g2.drawString(dialog.getText(), (int) dialog.getPosition().getX() + 16, (int) dialog.getPosition().getY() + 32);
+        g2.drawString(dialog.getText(), (int) dialog.getPosition().getX() + 16 * ratio, (int) dialog.getPosition().getY() + 32 * ratio);
     }
 }

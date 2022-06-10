@@ -6,99 +6,65 @@ package it.aren.model;
 import java.util.ArrayList;
 import java.util.List;
 
+import it.aren.common.BaseLevelEnum;
 import it.aren.common.Constant;
+import it.aren.common.BaseObjectEnum;
 import it.aren.common.Point2D;
+import it.aren.common.PointRange;
+import it.aren.event.NullEvent;
+import it.aren.file.MapsLoader;
+import it.aren.file.SettingsLoader;
+import it.aren.graphic.BlockGraphicComponent;
 import it.aren.graphic.GameMapGraphicComponent;
 import it.aren.graphic.GraphicController;
 
 /**
- * The map of the block
+ * The map of the block.
  *
  */
 public class GameMap extends BaseEntity {
-
-    private int width;
-    private int height;
     private List<Block> blocks;
+    private final BaseLevelEnum type;
+    /**
+     * Create a map.
+     * @param type
+     */
+    public GameMap(final BaseLevelEnum type) {
+        super(new Point2D(), true, new GameMapGraphicComponent());
+        this.blocks = new ArrayList<>();
+        this.type = type;
+        type.getPoints().forEach(p -> this.addBlocks(createLineBlock(p)));
+    }
 
-    /**
-     * Create a map.
-     * @param width of the map
-     * @param height of the map
-     * @param blocks to add in the map
-     */
-    public GameMap(final int width, final int height, final List<Block> blocks) {
-        this(width, height, blocks, Constant.DEFAULT_RATIO);
+    private static List<Block> createLineBlock(final PointRange range) {
+        final int ratio = SettingsLoader.loadSettings().scale();
+        final int dimension = ratio * Constant.DEFAULT_HITBOX_DIMENSION;
+        final List<Block> blocks = new ArrayList<>();
+        for (int i = (int) range.getStart().getX(); i <= (int) range.getEnd().getX(); i++) {
+            for (int j = (int) range.getStart().getY(); j <= (int) range.getEnd().getY(); j++) {
+                blocks.add(createSimpleBlock(new Point2D(i * dimension, j * dimension)));
+            }
+        }
+        return blocks;
     }
-    
-    /**
-     * Create a map.
-     * @param width of the map
-     * @param height of the map
-     * @param blocks to add in the map
-     * @param ratio ratio for hibox
-     */
-    public GameMap(final int width, final int height, final List<Block> blocks, final int ratio) {
-        super(new Point2D(), true, new GameMapGraphicComponent(), ratio);
-        this.width = width;
-        this.height = height;
-        this.blocks = blocks;
+
+    private static Block createSimpleBlock(final Point2D position) {
+        return new Block(BaseObjectEnum.VOID, new NullEvent(), position,
+                true, new BlockGraphicComponent());
     }
-    
-    /**
-     * Create a map without block
-     * @param width of the map
-     * @param height of the map
-     */
-    public GameMap(final int width, final int height) {
-        this(width, height, new ArrayList<>());
+
+    public final void addBlock(final Block block) {
+        this.blocks.add(block);
     }
-    
-    /**
-     * Create a map without block and default {@link Constant}.
-     */
-    public GameMap() {
-        this(Constant.DEFAULT_MAP_DIMENSION, Constant.DEFAULT_MAP_DIMENSION, new ArrayList<>());
-    }
-    @Override
+
+
     /**
      * 
      */
-    public void updateGraphic(final GraphicController g) {
+    @Override
+    public final void updateGraphic(final GraphicController g) {
         super.updateGraphic(g);
         this.blocks.forEach(b -> b.updateGraphic(g));
-    }
-
-    /**
-     * Get GameMap's width.
-     * @return the width
-     */
-    public int getWidth() {
-        return this.width;
-    }
-
-    /**
-     * Set GameMap's width.
-     * @param width the width to set
-     */
-    public void setWidth(final int width) {
-        this.width = width;
-    }
-
-    /**
-     * Get GameMap's height.
-     * @return the height
-     */
-    public int getHeight() {
-        return this.height;
-    }
-
-    /**
-     * Set GameMap's height.
-     * @param height the height to set
-     */
-    public void setHeight(final int height) {
-        this.height = height;
     }
 
     /**
@@ -117,4 +83,12 @@ public class GameMap extends BaseEntity {
         this.blocks = blocks;
     }
     
+    public void addBlocks (final List<Block> blocks) {
+        this.blocks.addAll(blocks);
+    }
+
+    public final BaseLevelEnum getType() {
+        return type;
+    }
+
 }

@@ -13,10 +13,10 @@ import it.aren.model.Player;
 public class PlayerGraphicComponent implements GraphicComponent {
 
 
-    private final Animation animation;
+    private final PlayerAnimation animation;
     
-    public PlayerGraphicComponent(final Texture texture) {
-        this.animation = new Animation(texture);
+    public PlayerGraphicComponent() {
+        this.animation = new PlayerAnimation();
     }
 
     @Override
