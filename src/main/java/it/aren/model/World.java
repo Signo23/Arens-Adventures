@@ -45,10 +45,10 @@ public class World {
     }
     /**
      * Add a new game map to the ArrayList.
-     * @param map the map to add
+     * @param maps the map to add
      */
-    public final void addMap(final GameMap map) {
-        this.maps.add(map);
+    public final void addMaps(final List<GameMap> maps) {
+        this.maps.addAll(maps);
     }
     /**
      * Return the map to view on the screen.

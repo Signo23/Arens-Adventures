@@ -8,6 +8,7 @@ import java.util.Optional;
 import it.aren.common.ApplicationState;
 import it.aren.core.GameFactory;
 import it.aren.event.EventListener;
+import it.aren.event.TransportEvent;
 import it.aren.input.InputController;
 /**
  * The class that manages the state of the game.
@@ -20,14 +21,14 @@ public class GameState {
 
     /**
      * Creates a new world object, the player and the game map.
-     * @param texture 
+     * @param listener 
      */
-    public GameState(final EventListener listener){
+    public GameState(final EventListener listener) {
         this.state = ApplicationState.BOOT;
         this.eventListener = listener;
         this.world = new World();
         this.world.setPlayer(GameFactory.createPlayer());
-        this.world.addMap(GameFactory.loadMaps());
+        this.world.addMaps(GameFactory.loadMaps());
         this.world.setCurrentMap(0);
     }
 
@@ -44,8 +45,13 @@ public class GameState {
      */
     public final void update() {
         this.world.updateState();
+        if (this.world.playerCollide().isPresent()) {
+            if (this.world.playerCollide().get().getEvent() instanceof TransportEvent) {
+                this.eventListener.notifyEvent(this.world.playerCollide().get().getEvent());
+            }
+        }
     }
-    
+
     public ApplicationState getState() {
         return this.state;
     }
