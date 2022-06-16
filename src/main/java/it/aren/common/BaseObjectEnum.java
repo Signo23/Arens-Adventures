@@ -16,8 +16,9 @@ public enum BaseObjectEnum {
     SWORD("sword.png"),
     VOID(),
     PLAYER_IDLE("player-idle.png"),
-    PLAYER_WALK("player-walk.png");
-    
+    PLAYER_WALK("player-walk.png"),
+    BACKGROUND("banner.png");
+
     private final BufferedImage texture;
     
     BaseObjectEnum(final String image){
