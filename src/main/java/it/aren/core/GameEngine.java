@@ -16,6 +16,7 @@ import it.aren.graphic.SwingView;
 import it.aren.graphic.View;
 import it.aren.input.InputController;
 import it.aren.input.KeyboardInputController;
+import it.aren.input.MenuInputController;
 import it.aren.model.GameState;
 
 /**
@@ -28,6 +29,7 @@ public class GameEngine implements EventListener {
     private View view;
     private GameState state;
     private InputController controller;
+    private MenuInputController menuController;
 
     private final List<Event> eventList;
 
@@ -45,7 +47,8 @@ public class GameEngine implements EventListener {
         final Settings settings = SettingsLoader.loadSettings();
         this.state = new GameState(this);
         this.controller = new KeyboardInputController();
-        this.view = new SwingView(this.state.getWorld(), this.controller, settings);
+        this.menuController = new MenuInputController();
+        this.view = new SwingView(this.state.getWorld(), this.controller, this.menuController, settings);
     }
 
     /**
@@ -57,7 +60,16 @@ public class GameEngine implements EventListener {
             final long current = System.currentTimeMillis();
             switch (this.state.getState()) {
             case BOOT:
-                this.state.setState(ApplicationState.GAME);
+                this.changeStates(ApplicationState.MENU);
+                break;
+            case MENU:
+                if (this.menuController.isInteract()) {
+                    this.menuController.notifyNoMoreIsInteract();
+                    this.changeStates(ApplicationState.GAME);
+                }
+                if (this.menuController.isSettings()) {
+                    this.menuController.notifyNoMoreIsSettings();
+                }
                 break;
             case GAME:
                 this.processInput();
@@ -73,6 +85,11 @@ public class GameEngine implements EventListener {
             }
             this.waitNextFrame(current);
         }
+    }
+
+    private void changeStates(final ApplicationState newState) {
+        this.state.setState(newState);
+        this.view.changeState(newState);
     }
 
     private void processInput() {
