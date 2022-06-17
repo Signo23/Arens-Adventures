@@ -33,17 +33,16 @@ public class MenuButton extends JButton {
         super(text);
         this.texture = texture;
         this.setBackground(Color.YELLOW);
+        this.setOpaque(true);
         this.setBorder(BorderFactory.createLineBorder(Color.BLACK, 2));
         try {
             Font customFont = Font.createFont(Font.TRUETYPE_FONT,
                     MenuButton.class.getResourceAsStream(Constant.FONT_FOLDER + "Minecraft.ttf"));
             final GraphicsEnvironment ge = GraphicsEnvironment.getLocalGraphicsEnvironment();
-            customFont.deriveFont(Font.PLAIN, Constant.DEFAULT_TEXT_DIMENSION * SettingsLoader.loadSettings().scale());
+            customFont = customFont.deriveFont(Font.PLAIN, Constant.DEFAULT_TEXT_DIMENSION * SettingsLoader.loadSettings().scale());
             ge.registerFont(customFont);
             this.setFont(customFont);
-        } catch (IOException e) {
-            e.printStackTrace();
-        } catch (FontFormatException e) {
+        } catch (IOException | FontFormatException e) {
             e.printStackTrace();
         }
     }
