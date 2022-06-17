@@ -4,11 +4,15 @@
 package it.aren.common;
 
 /**
- * Gmes's states
+ * Games's states
  */
 public enum ApplicationState {
     BOOT,
     MENU,
+    /**
+     * 
+     */
+    MENU_SETTINGS,
     GAME,
     GAME_DIALOG;
 }
