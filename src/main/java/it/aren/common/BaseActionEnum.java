@@ -20,7 +20,23 @@ public enum BaseActionEnum {
     /**
     * 
     */
-    SETTINGS("settings.png");
+    SETTINGS("settings.png"),
+    /**
+     * 
+     */
+    CHECK_ON("check-on.png"),
+    /**
+     * 
+     */
+    CHECK_OFF("check-off.png"),
+    /**
+     * 
+     */
+    SAVE("save.png"),
+    /**
+     * 
+     */
+    CLEAR("clear.png");
     private final BufferedImage texture;
     BaseActionEnum(final String fileName) {
         this.texture = ImageLoader.loadImage(fileName, SettingsLoader.loadSettings().scale());
