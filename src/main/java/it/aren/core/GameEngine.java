@@ -69,7 +69,16 @@ public class GameEngine implements EventListener {
                 }
                 if (this.menuController.isSettings()) {
                     this.menuController.notifyNoMoreIsSettings();
+                    this.changeStates(ApplicationState.MENU_SETTINGS);
                 }
+                this.render();
+                break;
+            case MENU_SETTINGS:
+                if (this.menuController.isInteract()) {
+                    this.menuController.notifyNoMoreIsInteract();
+                    this.changeStates(ApplicationState.MENU);
+                }
+                this.render();
                 break;
             case GAME:
                 this.processInput();
@@ -127,7 +136,6 @@ public class GameEngine implements EventListener {
             }
         }
     }
-
 
     /**
      * {@inheritDoc}
