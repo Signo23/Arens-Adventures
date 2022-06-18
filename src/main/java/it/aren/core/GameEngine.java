@@ -13,7 +13,7 @@ import it.aren.event.Event;
 import it.aren.event.EventListener;
 import it.aren.file.SettingsLoader;
 import it.aren.graphic.SwingView;
-import it.aren.graphic.View;
+import it.aren.graphic.BaseView;
 import it.aren.input.InputController;
 import it.aren.input.KeyboardInputController;
 import it.aren.input.MenuInputController;
@@ -26,7 +26,7 @@ import it.aren.model.GameState;
  *
  */
 public class GameEngine implements EventListener {
-    private View view;
+    private BaseView view;
     private GameState state;
     private InputController controller;
     private MenuInputController menuController;

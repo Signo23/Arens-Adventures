@@ -15,10 +15,10 @@ import it.aren.input.MenuInputController;
 import it.aren.model.World;
 /**
  * This class is the main view of the game using Java Swing.
- * Implements {@link View}
+ * Implements {@link BaseView}
  *
  */
-public class SwingView implements View {
+public class SwingView implements BaseView {
     private final JFrame frame;
     private final GamePanel gamePanel;
     private final MenuPanel menuPanel;

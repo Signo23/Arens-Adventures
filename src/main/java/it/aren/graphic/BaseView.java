@@ -9,7 +9,7 @@ import it.aren.common.ApplicationState;
  * Represents the main view of the game.
  *
  */
-public interface View {
+public interface BaseView {
 
     /**
      * Method to call for update the view.
