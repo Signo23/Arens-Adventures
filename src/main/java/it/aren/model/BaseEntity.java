@@ -18,9 +18,9 @@ import it.aren.input.InputComponent;
 public class BaseEntity {
     private Point2D position;
     private boolean drawable;
-    protected Rectangle hitBox;
-    protected GraphicComponent graphic;
-    
+    private Rectangle hitBox;
+    private GraphicComponent graphic;
+
     @Deprecated
     /**
      * @deprecated
