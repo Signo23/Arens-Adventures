@@ -3,6 +3,7 @@ package it.aren.graphic;
 import javax.swing.JFrame;
 
 import it.aren.common.ApplicationState;
+import it.aren.common.BaseObjectEnum;
 import it.aren.common.Settings;
 import it.aren.graphic.menu.MenuPanel;
 import it.aren.graphic.menu.MenuSettingsPanel;
@@ -35,6 +36,7 @@ public class SwingView implements View {
         this.menuPanel = new MenuPanel(menuController);
         this.settingsPanel = new MenuSettingsPanel(menuController);
         this.state = ApplicationState.BOOT;
+        this.frame.setIconImage(BaseObjectEnum.ICON.getTexture());
         this.frame.getContentPane().add(this.menuPanel);
         this.frame.addKeyListener(new KeyListenerImpl((KeyboardInputController) controller));
         this.frame.setResizable(false);
