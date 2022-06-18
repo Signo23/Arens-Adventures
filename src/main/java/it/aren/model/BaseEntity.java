@@ -10,7 +10,6 @@ import it.aren.common.Point2D;
 import it.aren.file.SettingsLoader;
 import it.aren.graphic.GraphicComponent;
 import it.aren.graphic.GraphicController;
-import it.aren.input.InputComponent;
 /**
  * The main model of the game.
  *
@@ -21,24 +20,6 @@ public class BaseEntity {
     private Rectangle hitBox;
     private GraphicComponent graphic;
 
-    @Deprecated
-    /**
-     * @deprecated
-     * Create an Entity.
-     * @param position where position have to be set
-     * @param drawable set if the block will be drawn
-     * @param graphic for render the block
-     * @param input for listen the block's input
-     * @param size hitbox's {@link Rectangle} px size for sides
-     */
-    protected BaseEntity(final Point2D position, final boolean drawable, final GraphicComponent graphic, final InputComponent input, final int size) {
-        this.position = position;
-        this.drawable = drawable;
-        this.graphic = graphic;
-        this.hitBox = new Rectangle(size, size);
-        this.hitBox.setLocation((int)this.position.getX(), (int)this.position.getY());
-    }
-    
     /**
      * Create an Entity.
      * @param position where position have to be set
@@ -53,9 +34,9 @@ public class BaseEntity {
         this.drawable = drawable;
         this.graphic = graphic;
         this.hitBox = new Rectangle(size * Constant.DEFAULT_HITBOX_DIMENSION, size * Constant.DEFAULT_HITBOX_DIMENSION);
-        this.hitBox.setLocation((int)this.position.getX(), (int)this.position.getY());
+        this.hitBox.setLocation((int) this.position.getX(), (int) this.position.getY());
     }
-    
+
     /**
      * Get Entity's position.
      * @return the position
