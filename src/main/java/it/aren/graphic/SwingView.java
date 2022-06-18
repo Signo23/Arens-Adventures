@@ -1,6 +1,3 @@
-/**
- * 
- */
 package it.aren.graphic;
 
 import javax.swing.JFrame;
@@ -49,10 +46,10 @@ public class SwingView implements View {
 
     }
 
-    @Override
     /**
      * {@inheritDoc}
      */
+    @Override
     public void render() {
         this.frame.repaint();
     }
