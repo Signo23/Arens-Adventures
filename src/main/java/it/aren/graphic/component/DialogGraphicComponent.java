@@ -1,6 +1,8 @@
-package it.aren.graphic;
+package it.aren.graphic.component;
 
 import it.aren.model.Dialog;
+import it.aren.graphic.GraphicComponent;
+import it.aren.graphic.GraphicController;
 import it.aren.model.BaseEntity;
 
 public class DialogGraphicComponent implements GraphicComponent {

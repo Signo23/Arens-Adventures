@@ -9,7 +9,7 @@ import org.junit.jupiter.api.Test;
 
 import it.aren.common.BaseObjectEnum;
 import it.aren.common.Point2D;
-import it.aren.graphic.GameObjectGraphicComponent;
+import it.aren.graphic.component.GameObjectGraphicComponent;
 import it.aren.model.Block;
 import it.aren.model.GameObject;
 import it.aren.model.GameState;

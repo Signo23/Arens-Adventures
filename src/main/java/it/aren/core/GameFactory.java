@@ -13,6 +13,10 @@ import it.aren.common.Point2D;
 import it.aren.event.InteractWithPlayerEvent;
 import it.aren.event.TransportEvent;
 import it.aren.file.SettingsLoader;
+import it.aren.graphic.component.BlockGraphicComponent;
+import it.aren.graphic.component.DialogGraphicComponent;
+import it.aren.graphic.component.GameObjectGraphicComponent;
+import it.aren.graphic.component.PlayerGraphicComponent;
 import it.aren.input.PlayerInputComponent;
 import it.aren.model.Block;
 import it.aren.model.Dialog;
@@ -20,10 +24,6 @@ import it.aren.model.GameMap;
 import it.aren.model.GameObject;
 import it.aren.model.Player;
 import it.aren.physics.PlayerPhysicsComponent;
-import it.aren.graphic.BlockGraphicComponent;
-import it.aren.graphic.DialogGraphicComponent;
-import it.aren.graphic.GameObjectGraphicComponent;
-import it.aren.graphic.PlayerGraphicComponent;
 /**
  * The main factory.
  */
