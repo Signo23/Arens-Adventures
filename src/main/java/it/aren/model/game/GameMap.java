@@ -62,7 +62,7 @@ public class GameMap extends BaseEntity {
      * Add a {@link List} of block in the map.
      * @param block the {@link Block} to add in the map
      */ 
-    void addBlocks(final List<Block> blocks) {
+    public void addBlocks(final List<Block> blocks) {
         this.blocks.addAll(blocks);
     }
 
