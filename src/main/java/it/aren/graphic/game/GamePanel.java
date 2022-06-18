@@ -17,7 +17,7 @@ import it.aren.model.World;
  * Every {@link it.aren.model.BaseEntity} is rendered there
  *
  */
-public class SwingPanel extends JPanel {
+public class GamePanel extends JPanel {
 
 
     private static final long serialVersionUID = 1L;
@@ -31,7 +31,7 @@ public class SwingPanel extends JPanel {
      * @param world to render
      * @param inputController for listen the input
      */
-    public SwingPanel(final Settings settings, final World world, final InputController inputController) {
+    public GamePanel(final Settings settings, final World world, final InputController inputController) {
         this.world = world;
         this.settings = settings;
         this.setPreferredSize(this.settings.getScreenSize());

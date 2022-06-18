@@ -5,7 +5,7 @@ import javax.swing.JFrame;
 import it.aren.common.ApplicationState;
 import it.aren.common.BaseObjectEnum;
 import it.aren.common.Settings;
-import it.aren.graphic.game.SwingPanel;
+import it.aren.graphic.game.GamePanel;
 import it.aren.graphic.menu.MenuPanel;
 import it.aren.graphic.menu.MenuSettingsPanel;
 import it.aren.input.InputController;
@@ -20,7 +20,7 @@ import it.aren.model.World;
  */
 public class SwingView implements View {
     private final JFrame frame;
-    private final SwingPanel gamePanel;
+    private final GamePanel gamePanel;
     private final MenuPanel menuPanel;
     private final MenuSettingsPanel settingsPanel;
     private ApplicationState state;
@@ -34,7 +34,7 @@ public class SwingView implements View {
      */
     public SwingView(final World world, final InputController controller, final MenuInputController menuController, final Settings settings) {
         this.frame = new JFrame("Aren's Adventures");
-        this.gamePanel = new SwingPanel(settings, world, controller);
+        this.gamePanel = new GamePanel(settings, world, controller);
         this.menuPanel = new MenuPanel(menuController);
         this.settingsPanel = new MenuSettingsPanel(menuController);
         this.state = ApplicationState.BOOT;
