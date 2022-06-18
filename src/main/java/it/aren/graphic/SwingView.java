@@ -1,11 +1,9 @@
-/**
- * 
- */
 package it.aren.graphic;
 
 import javax.swing.JFrame;
 
 import it.aren.common.ApplicationState;
+import it.aren.common.BaseObjectEnum;
 import it.aren.common.Settings;
 import it.aren.graphic.menu.MenuPanel;
 import it.aren.graphic.menu.MenuSettingsPanel;
@@ -30,7 +28,8 @@ public class SwingView implements View {
      * Initialize the view.
      * @param world to render
      * @param controller for listen the input
-     * @param settings 
+     * @param menuController the menu's controller
+     * @param settings the settings to use
      */
     public SwingView(final World world, final InputController controller, final MenuInputController menuController, final Settings settings) {
         this.frame = new JFrame("Aren's Adventures");
@@ -38,6 +37,7 @@ public class SwingView implements View {
         this.menuPanel = new MenuPanel(menuController);
         this.settingsPanel = new MenuSettingsPanel(menuController);
         this.state = ApplicationState.BOOT;
+        this.frame.setIconImage(BaseObjectEnum.ICON.getTexture());
         this.frame.getContentPane().add(this.menuPanel);
         this.frame.addKeyListener(new KeyListenerImpl((KeyboardInputController) controller));
         this.frame.setResizable(false);
@@ -49,10 +49,10 @@ public class SwingView implements View {
 
     }
 
-    @Override
     /**
      * {@inheritDoc}
      */
+    @Override
     public void render() {
         this.frame.repaint();
     }
