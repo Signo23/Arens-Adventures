@@ -18,7 +18,7 @@ import it.aren.model.World;
  * Implements {@link BaseView}
  *
  */
-public class SwingView implements BaseView {
+public class AppView implements BaseView {
     private final JFrame frame;
     private final GamePanel gamePanel;
     private final MenuPanel menuPanel;
@@ -32,7 +32,7 @@ public class SwingView implements BaseView {
      * @param menuController the menu's controller
      * @param settings the settings to use
      */
-    public SwingView(final World world, final InputController controller, final MenuInputController menuController, final Settings settings) {
+    public AppView(final World world, final InputController controller, final MenuInputController menuController, final Settings settings) {
         this.frame = new JFrame("Aren's Adventures");
         this.gamePanel = new GamePanel(settings, world, controller);
         this.menuPanel = new MenuPanel(menuController);

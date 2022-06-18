@@ -12,7 +12,7 @@ import it.aren.common.Settings;
 import it.aren.event.Event;
 import it.aren.event.EventListener;
 import it.aren.file.SettingsLoader;
-import it.aren.graphic.SwingView;
+import it.aren.graphic.AppView;
 import it.aren.graphic.BaseView;
 import it.aren.input.InputController;
 import it.aren.input.KeyboardInputController;
@@ -48,7 +48,7 @@ public class GameEngine implements EventListener {
         this.state = new GameState(this);
         this.controller = new KeyboardInputController();
         this.menuController = new MenuInputController();
-        this.view = new SwingView(this.state.getWorld(), this.controller, this.menuController, settings);
+        this.view = new AppView(this.state.getWorld(), this.controller, this.menuController, settings);
     }
 
     /**
