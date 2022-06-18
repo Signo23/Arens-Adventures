@@ -28,7 +28,8 @@ public class SwingView implements View {
      * Initialize the view.
      * @param world to render
      * @param controller for listen the input
-     * @param settings 
+     * @param menuController the menu's controller
+     * @param settings the settings to use
      */
     public SwingView(final World world, final InputController controller, final MenuInputController menuController, final Settings settings) {
         this.frame = new JFrame("Aren's Adventures");
