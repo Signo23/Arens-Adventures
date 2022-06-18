@@ -18,11 +18,11 @@ import it.aren.graphic.component.DialogGraphicComponent;
 import it.aren.graphic.component.GameObjectGraphicComponent;
 import it.aren.graphic.component.PlayerGraphicComponent;
 import it.aren.input.PlayerInputComponent;
-import it.aren.model.Block;
-import it.aren.model.Dialog;
-import it.aren.model.GameMap;
-import it.aren.model.GameObject;
-import it.aren.model.Player;
+import it.aren.model.game.Block;
+import it.aren.model.game.Dialog;
+import it.aren.model.game.GameMap;
+import it.aren.model.game.GameObject;
+import it.aren.model.game.Player;
 import it.aren.physics.PlayerPhysicsComponent;
 /**
  * The main factory.

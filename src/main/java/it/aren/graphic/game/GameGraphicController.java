@@ -12,11 +12,11 @@ import java.io.IOException;
 import it.aren.common.Point2D;
 import it.aren.file.SettingsLoader;
 import it.aren.graphic.GraphicController;
+import it.aren.model.game.Block;
+import it.aren.model.game.Dialog;
+import it.aren.model.game.GameMap;
+import it.aren.model.game.GameObject;
 import it.aren.common.Constant;
-import it.aren.model.Block;
-import it.aren.model.Dialog;
-import it.aren.model.GameMap;
-import it.aren.model.GameObject;
 
 /**
  * Class for draw entities with Swing.

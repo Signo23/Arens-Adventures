@@ -3,8 +3,8 @@ package it.aren.event;
 import java.util.Optional;
 
 import it.aren.common.ApplicationState;
-import it.aren.model.GameObject;
 import it.aren.model.GameState;
+import it.aren.model.game.GameObject;
 /**
  * A class for display a message and add an {@link GameObect} to {@link Player}'s backpack.
  * Implements {@link Event}

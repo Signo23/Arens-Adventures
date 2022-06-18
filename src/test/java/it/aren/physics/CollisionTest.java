@@ -11,9 +11,9 @@ import it.aren.common.Direction;
 import it.aren.common.Point2D;
 import it.aren.core.GameFactory;
 import it.aren.graphic.Texture;
-import it.aren.model.Block;
-import it.aren.model.GameMap;
 import it.aren.model.World;
+import it.aren.model.game.Block;
+import it.aren.model.game.GameMap;
 
 class CollisionTest {
     @Test void testPlayerCollision() {

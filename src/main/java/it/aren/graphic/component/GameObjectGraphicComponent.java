@@ -3,7 +3,7 @@ package it.aren.graphic.component;
 import it.aren.graphic.GraphicComponent;
 import it.aren.graphic.GraphicController;
 import it.aren.model.BaseEntity;
-import it.aren.model.GameObject;
+import it.aren.model.game.GameObject;
 /**
  * Graphic for {@link GameObject}.
  * Implements {@link GraphicComponent}

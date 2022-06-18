@@ -4,7 +4,7 @@ import it.aren.graphic.GraphicComponent;
 import it.aren.graphic.GraphicController;
 import it.aren.graphic.game.PlayerAnimation;
 import it.aren.model.BaseEntity;
-import it.aren.model.Player;
+import it.aren.model.game.Player;
 
 /**
  * Graphic for {@link Player}.

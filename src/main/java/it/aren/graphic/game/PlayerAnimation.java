@@ -11,7 +11,7 @@ import it.aren.common.Direction;
 import it.aren.file.SettingsLoader;
 
 /**
- * Contain the {@link BufferedImage}s for {@link it.aren.model.Player} animation.
+ * Contain the {@link BufferedImage}s for {@link it.aren.model.game.Player} animation.
  */
 public class PlayerAnimation {
     private final Map<Direction, LinkedList<BufferedImage>> idleSprite;

@@ -16,8 +16,8 @@ import it.aren.graphic.component.GameObjectGraphicComponent;
 import it.aren.input.InputController;
 import it.aren.input.KeyboardInputController;
 import it.aren.input.MenuInputController;
-import it.aren.model.GameObject;
 import it.aren.model.GameState;
+import it.aren.model.game.GameObject;
 
 /**
  * This class contain the main loop.

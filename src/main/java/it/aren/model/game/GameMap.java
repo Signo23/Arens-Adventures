@@ -1,7 +1,4 @@
-/**
- * 
- */
-package it.aren.model;
+package it.aren.model.game;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -12,14 +9,14 @@ import it.aren.common.BaseObjectEnum;
 import it.aren.common.Point2D;
 import it.aren.common.PointRange;
 import it.aren.event.NullEvent;
-import it.aren.file.MapsLoader;
 import it.aren.file.SettingsLoader;
 import it.aren.graphic.GraphicController;
 import it.aren.graphic.component.BlockGraphicComponent;
 import it.aren.graphic.component.GameMapGraphicComponent;
+import it.aren.model.BaseEntity;
 
 /**
- * The map of the block.
+ * Represent a map of game.
  *
  */
 public class GameMap extends BaseEntity {
@@ -27,7 +24,7 @@ public class GameMap extends BaseEntity {
     private final BaseLevelEnum type;
     /**
      * Create a map.
-     * @param type
+     * @param type the {@link BaseLevelEnum} type of map
      */
     public GameMap(final BaseLevelEnum type) {
         super(new Point2D(), true, new GameMapGraphicComponent());
@@ -53,13 +50,24 @@ public class GameMap extends BaseEntity {
                 true, new BlockGraphicComponent());
     }
 
+    /**
+     * Add a block in the map.
+     * @param block the {@link Block} to add in the map
+     */
     public final void addBlock(final Block block) {
         this.blocks.add(block);
     }
 
+    /**
+     * Add a {@link List} of block in the map.
+     * @param block the {@link Block} to add in the map
+     */ 
+    public void addBlocks(final List<Block> blocks) {
+        this.blocks.addAll(blocks);
+    }
 
     /**
-     * 
+     * {@inheritDoc}
      */
     @Override
     public final void updateGraphic(final GraphicController g) {
@@ -82,11 +90,11 @@ public class GameMap extends BaseEntity {
     public void setBlocks(final List<Block> blocks) {
         this.blocks = blocks;
     }
-    
-    public void addBlocks (final List<Block> blocks) {
-        this.blocks.addAll(blocks);
-    }
 
+    /**
+     * Get the type of map.
+     * @return {@link BaseLevelEnum} type of map
+     */
     public final BaseLevelEnum getType() {
         return type;
     }

@@ -1,9 +1,9 @@
 package it.aren.graphic.component;
 
-import it.aren.model.Dialog;
 import it.aren.graphic.GraphicComponent;
 import it.aren.graphic.GraphicController;
 import it.aren.model.BaseEntity;
+import it.aren.model.game.Dialog;
 /**
  * Graphic for {@link Dialog}.
  * Implements {@link GraphicComponent}
