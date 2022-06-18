@@ -17,7 +17,6 @@ import it.aren.model.Block;
 import it.aren.model.Dialog;
 import it.aren.model.GameMap;
 import it.aren.model.GameObject;
-import it.aren.model.Player;
 
 /**
  * Class for draw entities with Swing.
@@ -35,10 +34,6 @@ public class GameGraphicController implements GraphicController {
     public GameGraphicController(final Graphics2D g2, final ImageObserver io) {
         this.g2 = g2;
         this.io = io;
-    }
-
-    @Override
-    public void drawPlayer(final Player player) {
     }
 
     /**

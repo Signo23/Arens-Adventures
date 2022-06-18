@@ -7,20 +7,12 @@ import it.aren.model.Block;
 import it.aren.model.Dialog;
 import it.aren.model.GameMap;
 import it.aren.model.GameObject;
-import it.aren.model.Player;
 
 /**
  * Interface for drawing entities.
  *
  */
 public interface GraphicController {
-
-    /**
-     * @deprecated
-     * Draw {@link Player}
-     * @param player the {@link Player} to draw
-     */
-    void drawPlayer(Player player);
 
     /**
      * Draw {@link Block}.
