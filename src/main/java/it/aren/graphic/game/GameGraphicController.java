@@ -27,9 +27,11 @@ public class GameGraphicController implements GraphicController {
     private static final int FONT_DEFAULT_DIMENSION = 24;
     private final Graphics2D g2;
     private final ImageObserver io;
-      /**
+
+     /**
      * Create a SwingGraphic.
      * @param g2 for draw
+     * @param io the {@link ImageObserver} to draw
      */
     public GameGraphicController(final Graphics2D g2, final ImageObserver io) {
         this.g2 = g2;
@@ -56,16 +58,25 @@ public class GameGraphicController implements GraphicController {
         }
     }
 
+    /**
+     * {@inheritDoc}
+     */
     @Override
     public final void drawGameMap(final GameMap gameMap) {
         g2.drawImage(gameMap.getType().getImage(), (int) gameMap.getPosition().getX(), (int) gameMap.getPosition().getY(), this.io);
     }
 
+    /**
+     * {@inheritDoc}
+     */
     @Override
     public final void drawObject(final GameObject obj) {
         g2.drawImage(obj.getType().getTexture(), (int) obj.getPosition().getX(), (int) obj.getPosition().getY(), this.io);
     }
 
+    /**
+     * {@inheritDoc}
+     */
     @Override
     public final void drawDialog(final Dialog dialog) {
         final int ratio = SettingsLoader.loadSettings().scale();

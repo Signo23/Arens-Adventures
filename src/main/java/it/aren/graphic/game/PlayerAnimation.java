@@ -11,7 +11,7 @@ import it.aren.common.Direction;
 import it.aren.file.SettingsLoader;
 
 /**
- * Contain the {@link BufferedImage}s for animation.
+ * Contain the {@link BufferedImage}s for {@link it.aren.model.Player} animation.
  */
 public class PlayerAnimation {
     private final Map<Direction, LinkedList<BufferedImage>> idleSprite;
@@ -75,7 +75,7 @@ public class PlayerAnimation {
 
     /**
      * Get the next sprite of the idle's animation.
-     * @param lastDirection {@link Point2D} that indicate direction of animation
+     * @param lastDirection {@link Direction} that indicate direction of animation
      * @return sprite's {@link BufferedImage}
      */
     public BufferedImage getNextIdle(final Direction lastDirection) {
@@ -90,7 +90,7 @@ public class PlayerAnimation {
 
     /**
      * Get the next sprite of the walk's animation.
-     * @param direction {@link Point2D} that indicate direction of animation
+     * @param direction {@link Direction} that indicate direction of animation
      * @return sprite's {@link BufferedImage}
      */
     public BufferedImage getNextWalk(final Direction direction) {

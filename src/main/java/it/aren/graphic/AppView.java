@@ -27,8 +27,8 @@ public class AppView implements BaseView {
     /**
      * Initialize the view.
      * @param world to render
-     * @param controller for listen the input
-     * @param menuController the menu's controller
+     * @param controller the game's input controller
+     * @param menuController the menu's input controller
      */
     public AppView(final World world, final InputController controller, final MenuInputController menuController) {
         this.frame = new JFrame("Aren's Adventures");

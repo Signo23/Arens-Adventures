@@ -26,6 +26,11 @@ public interface GraphicController {
      */
     void drawGameMap(GameMap gameMap);
 
+    /**
+     * Draw {@link it.aren.model.Player}.
+     * @param playerPosition the player's position where to draw 
+     * @param sprite the {@link BufferedImage} to draw
+     */
     void drawPlayer(Point2D playerPosition, BufferedImage sprite);
 
     /**
@@ -34,5 +39,9 @@ public interface GraphicController {
      */
     void drawObject(GameObject obj);
 
+    /**
+     * Draw {@link Dialog}.
+     * @param dialog the {@link Dialog} to draw
+     */
     void drawDialog(Dialog dialog);
 }

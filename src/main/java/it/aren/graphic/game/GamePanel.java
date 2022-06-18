@@ -27,8 +27,6 @@ public class GamePanel extends JPanel {
 
       /**
      * Initialize the panel.
-     * @param w weight of panel
-     * @param h height of panel
      * @param world to render
      * @param inputController for listen the input
      */
@@ -46,6 +44,7 @@ public class GamePanel extends JPanel {
     /**
      * {@inheritDoc}
      */
+    @Override
     public void paint(final Graphics g) {
             final Graphics2D g2 = (Graphics2D) g;
 
