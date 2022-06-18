@@ -23,7 +23,7 @@ import it.aren.model.Player;
  * Class for draw entities with Swing.
  * Implements {@link GraphicController}.
  */
-public class SwingGraphic implements GraphicController {
+public class GameGraphicController implements GraphicController {
 
     private static final int FONT_DEFAULT_DIMENSION = 24;
     private final Graphics2D g2;
@@ -32,7 +32,7 @@ public class SwingGraphic implements GraphicController {
      * Create a SwingGraphic.
      * @param g2 for draw
      */
-    public SwingGraphic(final Graphics2D g2, final ImageObserver io) {
+    public GameGraphicController(final Graphics2D g2, final ImageObserver io) {
         this.g2 = g2;
         this.io = io;
     }

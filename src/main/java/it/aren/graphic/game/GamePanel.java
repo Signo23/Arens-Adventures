@@ -54,7 +54,7 @@ public class GamePanel extends JPanel {
                       this.settings.isRenderQuality() ? RenderingHints.VALUE_RENDER_QUALITY : RenderingHints.VALUE_RENDER_SPEED);
             g2.clearRect(0, 0, this.getWidth(), this.getHeight());
 
-            final GraphicController controller = new SwingGraphic(g2, this);
+            final GraphicController controller = new GameGraphicController(g2, this);
             this.world.getCurrentMap().updateGraphic(controller);
             this.world.getPlayer().updateGraphic(controller);
             if (this.world.getDialog() != null) {
