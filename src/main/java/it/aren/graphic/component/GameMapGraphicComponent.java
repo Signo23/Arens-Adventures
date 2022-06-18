@@ -1,5 +1,7 @@
-package it.aren.graphic;
+package it.aren.graphic.component;
 
+import it.aren.graphic.GraphicComponent;
+import it.aren.graphic.GraphicController;
 import it.aren.model.BaseEntity;
 import it.aren.model.GameMap;
 /**
@@ -8,12 +10,12 @@ import it.aren.model.GameMap;
  */
 public class GameMapGraphicComponent implements GraphicComponent {
 
-    @Override
     /**
      * {@inheritDoc}
      */
+    @Override
     public void update(final BaseEntity ent, final GraphicController w) {
-        w.drawGameMap((GameMap)ent);
+        w.drawGameMap((GameMap) ent);
     }
 
 }

@@ -14,9 +14,9 @@ import it.aren.common.PointRange;
 import it.aren.event.NullEvent;
 import it.aren.file.MapsLoader;
 import it.aren.file.SettingsLoader;
-import it.aren.graphic.BlockGraphicComponent;
-import it.aren.graphic.GameMapGraphicComponent;
 import it.aren.graphic.GraphicController;
+import it.aren.graphic.component.BlockGraphicComponent;
+import it.aren.graphic.component.GameMapGraphicComponent;
 
 /**
  * The map of the block.

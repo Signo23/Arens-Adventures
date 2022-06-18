@@ -4,7 +4,7 @@ import javax.swing.JFrame;
 
 import it.aren.common.ApplicationState;
 import it.aren.common.BaseObjectEnum;
-import it.aren.common.Settings;
+import it.aren.graphic.game.GamePanel;
 import it.aren.graphic.menu.MenuPanel;
 import it.aren.graphic.menu.MenuSettingsPanel;
 import it.aren.input.InputController;
@@ -14,12 +14,12 @@ import it.aren.input.MenuInputController;
 import it.aren.model.World;
 /**
  * This class is the main view of the game using Java Swing.
- * Implements {@link View}
+ * Implements {@link BaseView}
  *
  */
-public class SwingView implements View {
+public class AppView implements BaseView {
     private final JFrame frame;
-    private final SwingPanel gamePanel;
+    private final GamePanel gamePanel;
     private final MenuPanel menuPanel;
     private final MenuSettingsPanel settingsPanel;
     private ApplicationState state;
@@ -27,13 +27,12 @@ public class SwingView implements View {
     /**
      * Initialize the view.
      * @param world to render
-     * @param controller for listen the input
-     * @param menuController the menu's controller
-     * @param settings the settings to use
+     * @param controller the game's input controller
+     * @param menuController the menu's input controller
      */
-    public SwingView(final World world, final InputController controller, final MenuInputController menuController, final Settings settings) {
+    public AppView(final World world, final InputController controller, final MenuInputController menuController) {
         this.frame = new JFrame("Aren's Adventures");
-        this.gamePanel = new SwingPanel(settings, world, controller);
+        this.gamePanel = new GamePanel(world, controller);
         this.menuPanel = new MenuPanel(menuController);
         this.settingsPanel = new MenuSettingsPanel(menuController);
         this.state = ApplicationState.BOOT;

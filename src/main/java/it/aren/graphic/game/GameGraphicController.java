@@ -1,7 +1,4 @@
-/**
- * 
- */
-package it.aren.graphic;
+package it.aren.graphic.game;
 
 import java.awt.Color;
 import java.awt.Font;
@@ -14,32 +11,31 @@ import java.io.IOException;
 
 import it.aren.common.Point2D;
 import it.aren.file.SettingsLoader;
+import it.aren.graphic.GraphicController;
 import it.aren.common.Constant;
 import it.aren.model.Block;
 import it.aren.model.Dialog;
 import it.aren.model.GameMap;
 import it.aren.model.GameObject;
-import it.aren.model.Player;
 
 /**
  * Class for draw entities with Swing.
  * Implements {@link GraphicController}.
  */
-public class SwingGraphic implements GraphicController {
+public class GameGraphicController implements GraphicController {
 
+    private static final int FONT_DEFAULT_DIMENSION = 24;
     private final Graphics2D g2;
     private final ImageObserver io;
-      /**
+
+     /**
      * Create a SwingGraphic.
      * @param g2 for draw
+     * @param io the {@link ImageObserver} to draw
      */
-    public SwingGraphic(final Graphics2D g2, final ImageObserver io) {
+    public GameGraphicController(final Graphics2D g2, final ImageObserver io) {
         this.g2 = g2;
         this.io = io;
-    }
-
-    @Override
-    public void drawPlayer(final Player player) {
     }
 
     /**
@@ -62,16 +58,25 @@ public class SwingGraphic implements GraphicController {
         }
     }
 
+    /**
+     * {@inheritDoc}
+     */
     @Override
     public final void drawGameMap(final GameMap gameMap) {
         g2.drawImage(gameMap.getType().getImage(), (int) gameMap.getPosition().getX(), (int) gameMap.getPosition().getY(), this.io);
     }
 
+    /**
+     * {@inheritDoc}
+     */
     @Override
     public final void drawObject(final GameObject obj) {
         g2.drawImage(obj.getType().getTexture(), (int) obj.getPosition().getX(), (int) obj.getPosition().getY(), this.io);
     }
 
+    /**
+     * {@inheritDoc}
+     */
     @Override
     public final void drawDialog(final Dialog dialog) {
         final int ratio = SettingsLoader.loadSettings().scale();
@@ -82,12 +87,10 @@ public class SwingGraphic implements GraphicController {
         try {
             Font customFont = Font.createFont(Font.TRUETYPE_FONT, this.getClass().getResourceAsStream(Constant.FONT_FOLDER + "Minecraft.ttf"));
             final GraphicsEnvironment ge = GraphicsEnvironment.getLocalGraphicsEnvironment();
-            customFont = customFont.deriveFont(Font.PLAIN, 24 * ratio);
+            customFont = customFont.deriveFont(Font.PLAIN, FONT_DEFAULT_DIMENSION * ratio);
             ge.registerFont(customFont);
             g2.setFont(customFont);
-        } catch (IOException e) {
-            e.printStackTrace();
-        } catch (FontFormatException e) {
+        } catch (IOException | FontFormatException e) {
             e.printStackTrace();
         }
         g2.setColor(Color.black);
