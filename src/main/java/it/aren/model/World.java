@@ -12,6 +12,10 @@ import java.util.stream.Collectors;
 import it.aren.common.Constant;
 import it.aren.common.Direction;
 import it.aren.common.Point2D;
+import it.aren.model.game.Block;
+import it.aren.model.game.Dialog;
+import it.aren.model.game.GameMap;
+import it.aren.model.game.Player;
 /**
  * The class that manage the game's world.
  */

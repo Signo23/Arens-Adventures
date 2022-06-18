@@ -1,9 +1,10 @@
-package it.aren.model;
+package it.aren.model.game;
 
 import it.aren.common.Constant;
 import it.aren.common.Point2D;
 import it.aren.file.SettingsLoader;
 import it.aren.graphic.GraphicComponent;
+import it.aren.model.BaseEntity;
 
 public class Dialog extends BaseEntity {
 

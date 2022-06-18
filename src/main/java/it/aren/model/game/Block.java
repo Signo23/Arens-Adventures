@@ -1,4 +1,4 @@
-package it.aren.model;
+package it.aren.model.game;
 
 import it.aren.common.Constant;
 import it.aren.common.BaseObjectEnum;
@@ -7,6 +7,7 @@ import it.aren.event.Event;
 import it.aren.event.NullEvent;
 import it.aren.file.SettingsLoader;
 import it.aren.graphic.GraphicComponent;
+import it.aren.model.BaseEntity;
 
 /**
  * Model for every block.

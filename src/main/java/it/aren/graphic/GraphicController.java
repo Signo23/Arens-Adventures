@@ -3,10 +3,10 @@ package it.aren.graphic;
 import java.awt.image.BufferedImage;
 
 import it.aren.common.Point2D;
-import it.aren.model.Block;
-import it.aren.model.Dialog;
-import it.aren.model.GameMap;
-import it.aren.model.GameObject;
+import it.aren.model.game.Block;
+import it.aren.model.game.Dialog;
+import it.aren.model.game.GameMap;
+import it.aren.model.game.GameObject;
 
 /**
  * Interface for drawing entities.
@@ -27,7 +27,7 @@ public interface GraphicController {
     void drawGameMap(GameMap gameMap);
 
     /**
-     * Draw {@link it.aren.model.Player}.
+     * Draw {@link it.aren.model.game.Player}.
      * @param playerPosition the player's position where to draw 
      * @param sprite the {@link BufferedImage} to draw
      */

@@ -1,7 +1,7 @@
 /**
  * 
  */
-package it.aren.model;
+package it.aren.model.game;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -12,6 +12,7 @@ import it.aren.common.Point2D;
 import it.aren.graphic.GraphicComponent;
 import it.aren.input.InputComponent;
 import it.aren.input.InputController;
+import it.aren.model.BaseEntity;
 import it.aren.physics.PhysicsComponent;
 
 /**

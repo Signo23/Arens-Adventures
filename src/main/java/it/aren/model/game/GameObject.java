@@ -1,13 +1,14 @@
 /**
  * 
  */
-package it.aren.model;
+package it.aren.model.game;
 
 import it.aren.common.Constant;
 import it.aren.common.BaseObjectEnum;
 import it.aren.common.Point2D;
 import it.aren.graphic.GraphicComponent;
 import it.aren.input.InputComponent;
+import it.aren.model.BaseEntity;
 
 /**
  * Model for game object.

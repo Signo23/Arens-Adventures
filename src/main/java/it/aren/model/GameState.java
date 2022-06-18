@@ -10,6 +10,7 @@ import it.aren.core.GameFactory;
 import it.aren.event.EventListener;
 import it.aren.event.TransportEvent;
 import it.aren.input.InputController;
+import it.aren.model.game.Block;
 /**
  * The class that manages the state of the game.
  */

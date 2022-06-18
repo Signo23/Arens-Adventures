@@ -10,9 +10,9 @@ import org.junit.jupiter.api.Test;
 import it.aren.common.BaseObjectEnum;
 import it.aren.common.Point2D;
 import it.aren.graphic.component.GameObjectGraphicComponent;
-import it.aren.model.Block;
-import it.aren.model.GameObject;
 import it.aren.model.GameState;
+import it.aren.model.game.Block;
+import it.aren.model.game.GameObject;
 
 class Events {
 

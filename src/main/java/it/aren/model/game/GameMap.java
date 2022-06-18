@@ -1,7 +1,7 @@
 /**
  * 
  */
-package it.aren.model;
+package it.aren.model.game;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -17,6 +17,7 @@ import it.aren.file.SettingsLoader;
 import it.aren.graphic.GraphicController;
 import it.aren.graphic.component.BlockGraphicComponent;
 import it.aren.graphic.component.GameMapGraphicComponent;
+import it.aren.model.BaseEntity;
 
 /**
  * The map of the block.
