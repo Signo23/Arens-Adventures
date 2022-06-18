@@ -5,6 +5,7 @@ import javax.swing.JFrame;
 import it.aren.common.ApplicationState;
 import it.aren.common.BaseObjectEnum;
 import it.aren.common.Settings;
+import it.aren.graphic.game.SwingPanel;
 import it.aren.graphic.menu.MenuPanel;
 import it.aren.graphic.menu.MenuSettingsPanel;
 import it.aren.input.InputController;

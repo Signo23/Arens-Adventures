@@ -1,7 +1,7 @@
 /**
  * 
  */
-package it.aren.graphic;
+package it.aren.graphic.game;
 
 import java.awt.Color;
 import java.awt.Font;
@@ -14,6 +14,7 @@ import java.io.IOException;
 
 import it.aren.common.Point2D;
 import it.aren.file.SettingsLoader;
+import it.aren.graphic.GraphicController;
 import it.aren.common.Constant;
 import it.aren.model.Block;
 import it.aren.model.Dialog;

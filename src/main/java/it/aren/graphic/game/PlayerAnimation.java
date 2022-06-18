@@ -1,4 +1,4 @@
-package it.aren.graphic;
+package it.aren.graphic.game;
 
 import java.awt.image.BufferedImage;
 import java.util.HashMap;
