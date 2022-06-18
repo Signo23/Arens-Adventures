@@ -21,7 +21,7 @@ public class TransportEvent implements Event {
 
     @Override
     public final boolean isAlreadyLunch() {
-        return false;
+        return true;
     }
 
 }
