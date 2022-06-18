@@ -1,6 +1,3 @@
-/**
- * 
- */
 package it.aren.model.game;
 
 import java.util.ArrayList;
@@ -12,7 +9,6 @@ import it.aren.common.BaseObjectEnum;
 import it.aren.common.Point2D;
 import it.aren.common.PointRange;
 import it.aren.event.NullEvent;
-import it.aren.file.MapsLoader;
 import it.aren.file.SettingsLoader;
 import it.aren.graphic.GraphicController;
 import it.aren.graphic.component.BlockGraphicComponent;
@@ -83,8 +79,12 @@ public class GameMap extends BaseEntity {
     public void setBlocks(final List<Block> blocks) {
         this.blocks = blocks;
     }
-    
-    public void addBlocks (final List<Block> blocks) {
+
+    /**
+     * 
+     * @param blocks
+     */
+    public void addBlocks(final List<Block> blocks) {
         this.blocks.addAll(blocks);
     }
 

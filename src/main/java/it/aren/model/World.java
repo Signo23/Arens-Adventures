@@ -1,6 +1,3 @@
-/**
- * 
- */
 package it.aren.model;
 
 import java.awt.Rectangle;

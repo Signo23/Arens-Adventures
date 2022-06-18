@@ -1,13 +1,9 @@
-/**
- * 
- */
 package it.aren.model.game;
 
 import java.util.ArrayList;
 import java.util.List;
 
 import it.aren.common.Direction;
-import it.aren.common.Constant;
 import it.aren.common.Point2D;
 import it.aren.graphic.GraphicComponent;
 import it.aren.input.InputComponent;
@@ -27,7 +23,7 @@ public class Player extends BaseEntity {
     private boolean idle;
     private PhysicsComponent phy;
     private InputComponent input;
-    
+
     /**
      * Create a player.
      * @param position where the player have to set
@@ -44,7 +40,7 @@ public class Player extends BaseEntity {
         this.phy = phy;
         this.input = input;
     }
-    
+
     /**
      * {@inheritDoc}
      */
@@ -67,16 +63,10 @@ public class Player extends BaseEntity {
         return this.lastDirection;
     }
 
-
     /**
-     * @deprecated use setLastDirection(Direction)
      * Set Player's last direction.
      * @param lastDirection the lastDirection to set
      */
-    public void setLastDirection(final Point2D lastDirection) {
-        this.lastDirection = Direction.valueOfPoint2D(lastDirection);
-    }
-    
     public void setLastDirection(final Direction lastDirection) {
         this.lastDirection = lastDirection;
     }

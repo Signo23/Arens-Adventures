@@ -1,6 +1,3 @@
-/**
- * 
- */
 package it.aren.model;
 
 import java.awt.Rectangle;
@@ -50,7 +47,7 @@ public class BaseEntity {
      */
     public void setPosition(final Point2D position) {
         this.position = position;
-        this.hitBox.setLocation((int)position.getX(), (int)position.getY());
+        this.hitBox.setLocation((int) position.getX(), (int) position.getY());
     }
     /**
      * Get if Entity is drawable.
@@ -67,21 +64,21 @@ public class BaseEntity {
         this.drawable = drawable;
     }
     /**
-     * Get Entity's {@link GraphicComponent}
+     * Get Entity's {@link GraphicComponent}.
      * @return the graphic
      */
     public GraphicComponent getGraphic() {
         return this.graphic;
     }
     /**
-     * Set Entity's {@link GraphicComponent}
+     * Set Entity's {@link GraphicComponent}.
      * @param graphic the graphic to set
      */
     public void setGraphic(final GraphicComponent graphic) {
         this.graphic = graphic;
     }
     /**
-     * Get Entity's {@link Rectangle} for hitBox;
+     * Get Entity's {@link Rectangle} for hitBox.
      * @return the hitBox
      */
     public Rectangle getHitBox() {
@@ -99,11 +96,9 @@ public class BaseEntity {
      * @param g {@link GraphicController} that update the entity
      */
     public void updateGraphic(final GraphicController g) {
-        if(this.isDrawable()) {
+        if (this.isDrawable()) {
             this.graphic.update(this, g);
         }
     }
-    
 
-    
 }

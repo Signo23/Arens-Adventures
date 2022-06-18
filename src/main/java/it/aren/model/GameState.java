@@ -1,6 +1,3 @@
-/**
- * 
- */
 package it.aren.model;
 
 import java.util.Optional;
@@ -53,22 +50,34 @@ public class GameState {
         }
     }
 
+    /**
+     * 
+     * @return
+     */
     public ApplicationState getState() {
         return this.state;
     }
-    
+
+    /**
+     * 
+     * @param as
+     */
     public void setState(final ApplicationState as) {
         this.state = as;
     }
-    
+
+    /**
+     * 
+     * @param controller
+     */
     public void processInput(final InputController controller) {
-        if(controller.isInteract()) {
+        if (controller.isInteract()) {
             final Optional<Block> block = this.getWorld().playerCollide();
-            if(!block.isEmpty() && !block.get().getEvent().isAlreadyLunch()) {
+            if (!block.isEmpty() && !block.get().getEvent().isAlreadyLunch()) {
                 this.eventListener.notifyEvent(block.get().getEvent());
                 state = ApplicationState.GAME_DIALOG;
             }
-            
+
         } else {
             world.getPlayer().updateInput(controller);
         }
