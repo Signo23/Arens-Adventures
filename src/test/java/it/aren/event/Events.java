@@ -7,45 +7,39 @@ import java.util.List;
 
 import org.junit.jupiter.api.Test;
 
+import it.aren.common.BaseObjectEnum;
 import it.aren.common.Point2D;
-import it.aren.core.GameFactory;
+import it.aren.graphic.GameObjectGraphicComponent;
 import it.aren.model.Block;
-import it.aren.model.GameMap;
 import it.aren.model.GameObject;
-import it.aren.model.World;
+import it.aren.model.GameState;
 
 class Events {
 
     @Test void testGiveToPlayerEvent() {
-        final World w = new World();
-        final GameObject go = new GameObject(new Point2D(), false, null, null, "1");
-        final GameObject go2 = new GameObject(new Point2D(), false, null, null, "d");
+        final GameState gameState = new GameState(eventListener -> { });
+        final GameObject go = new GameObject(BaseObjectEnum.BOX, new Point2D(), false, new GameObjectGraphicComponent());
+        final GameObject go2 = new GameObject(BaseObjectEnum.BOX, new Point2D(), false, new GameObjectGraphicComponent());
         final Event ev = new InteractWithPlayerEvent(go, "Prova");
         final Event evRequirement = new InteractWithPlayerEvent(go2, "Prova requisiti", go, "Requisiti non rispettati");
-        final Block blk = new Block(new Point2D(), false, null, null);
-        final Block blkReq = new Block(new Point2D(), false, null, null);
-        final GameMap gm = new GameMap(16, 16, new ArrayList<>());
-        
-        
-        blk.setEvent(ev);
-        blkReq.setEvent(evRequirement);
-        gm.getBlocks().add(blk);
-        gm.getBlocks().add(blkReq);
-        w.setPlayer(GameFactory.createPlayer());
-        w.addMap(gm);
-        w.setCurrentMap(0);
-        
+        final Block blk = new Block(BaseObjectEnum.VOID, evRequirement, new Point2D(), false, null);
+        final Block blkReq = new Block(BaseObjectEnum.VOID, ev, new Point2D(), false, null);
         final List<Event> listEvent = new ArrayList<>();
+
+
+
+        gameState.getWorld().getCurrentMap().addBlock(blk);
+        gameState.getWorld().getCurrentMap().addBlock(blkReq);
+
+        listEvent.add(ev);
         listEvent.add(evRequirement);
-        w.getCurrentMap().getBlocks().forEach(b -> listEvent.add(b.getEvent()));
         listEvent.forEach(e -> System.out.println(e));
-        listEvent.forEach(e -> e.launch(w));
-        
+        listEvent.forEach(e -> e.launch(gameState));
         final List<GameObject> listGo = new ArrayList<>();
         listGo.add(go);
         listGo.add(go2);
-        System.out.println(w.getPlayer().getBackPack());
+        System.out.println(gameState.getWorld().getPlayer().getBackPack());
         System.out.println(go);
-        assertEquals(w.getPlayer().getBackPack(), listGo);
+        assertEquals(gameState.getWorld().getPlayer().getBackPack(), listGo);
     }
 }
