@@ -4,14 +4,19 @@ import java.util.LinkedList;
 import java.util.List;
 
 import it.aren.common.ApplicationState;
+import it.aren.common.BaseObjectEnum;
 import it.aren.common.Constant;
+import it.aren.common.Point2D;
 import it.aren.event.Event;
 import it.aren.event.EventListener;
+import it.aren.event.InteractWithPlayerEvent;
 import it.aren.graphic.AppView;
 import it.aren.graphic.BaseView;
+import it.aren.graphic.component.GameObjectGraphicComponent;
 import it.aren.input.InputController;
 import it.aren.input.KeyboardInputController;
 import it.aren.input.MenuInputController;
+import it.aren.model.GameObject;
 import it.aren.model.GameState;
 
 /**
@@ -43,6 +48,9 @@ public class GameEngine implements EventListener {
         this.controller = new KeyboardInputController();
         this.menuController = new MenuInputController();
         this.view = new AppView(this.state.getWorld(), this.controller, this.menuController);
+        this.notifyEvent(new InteractWithPlayerEvent(new GameObject(
+                BaseObjectEnum.VOID, new Point2D(), false, new GameObjectGraphicComponent()),
+                "Trova tutti gli oggetti prima di\npartire per la tua avventura"));
     }
 
     /**
