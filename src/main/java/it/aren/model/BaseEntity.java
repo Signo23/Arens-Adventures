@@ -22,8 +22,6 @@ public class BaseEntity {
      * @param position where position have to be set
      * @param drawable set if the block will be drawn
      * @param graphic for render the block
-     * @param input for listen the block's input
-     * @param size hitbox's {@link Rectangle} px size for sides
      */
     protected BaseEntity(final Point2D position, final boolean drawable, final GraphicComponent graphic) {
         final int size = SettingsLoader.loadSettings().scale();

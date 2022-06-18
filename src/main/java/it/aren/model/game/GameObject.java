@@ -15,12 +15,10 @@ public class GameObject extends BaseEntity {
     private final BaseObjectEnum type;
     /**
      * Create a GameObject.
-     * @param type GemObject's type
-     * @param position where to draw the GameObject
+     * @param type {@link BaseObjectEnum} type of GameObject
+     * @param position the {@link Point2D} where to draw the GameObject
      * @param drawable if GameObject is drawable
      * @param graphic GameObject's {@link GraphicComponent}
-     * @param ratio ratio for hitBox
-
      */
     public GameObject(final BaseObjectEnum type, final Point2D position, final boolean drawable, final GraphicComponent graphic) {
         super(position, drawable, graphic);

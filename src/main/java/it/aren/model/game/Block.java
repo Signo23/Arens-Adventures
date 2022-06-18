@@ -16,11 +16,11 @@ public class Block extends GameObject {
     private Event event;
     /**
      * Create a Block.
+     * @param type the {@link BaseObjectEnum} type of block
      * @param event the {@link Event} to set in the block
-     * @param position where block is
+     * @param position the {@link Point2D} where the block is
      * @param drawable set if the block will be drawn
      * @param graphic for draw the block
-     * @param ratio ratio for hiBox
      */
     public Block(final BaseObjectEnum type, final Event event, final Point2D position, final boolean drawable, final GraphicComponent graphic) {
         super(type, position, drawable, graphic);

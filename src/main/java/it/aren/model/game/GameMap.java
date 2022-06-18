@@ -16,7 +16,7 @@ import it.aren.graphic.component.GameMapGraphicComponent;
 import it.aren.model.BaseEntity;
 
 /**
- * The map of the block.
+ * Represent a map of game.
  *
  */
 public class GameMap extends BaseEntity {
@@ -24,7 +24,7 @@ public class GameMap extends BaseEntity {
     private final BaseLevelEnum type;
     /**
      * Create a map.
-     * @param type
+     * @param type the {@link BaseLevelEnum} type of map
      */
     public GameMap(final BaseLevelEnum type) {
         super(new Point2D(), true, new GameMapGraphicComponent());
@@ -50,13 +50,24 @@ public class GameMap extends BaseEntity {
                 true, new BlockGraphicComponent());
     }
 
+    /**
+     * Add a block in the map.
+     * @param block the {@link Block} to add in the map
+     */
     public final void addBlock(final Block block) {
         this.blocks.add(block);
     }
 
+    /**
+     * Add a {@link List} of block in the map.
+     * @param block the {@link Block} to add in the map
+     */ 
+    void addBlocks(final List<Block> blocks) {
+        this.blocks.addAll(blocks);
+    }
 
     /**
-     * 
+     * {@inheritDoc}
      */
     @Override
     public final void updateGraphic(final GraphicController g) {
@@ -81,13 +92,9 @@ public class GameMap extends BaseEntity {
     }
 
     /**
-     * 
-     * @param blocks
+     * Get the type of map.
+     * @return {@link BaseLevelEnum} type of map
      */
-    public void addBlocks(final List<Block> blocks) {
-        this.blocks.addAll(blocks);
-    }
-
     public final BaseLevelEnum getType() {
         return type;
     }
