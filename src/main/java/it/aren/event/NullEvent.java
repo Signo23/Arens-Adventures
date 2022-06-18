@@ -12,16 +12,19 @@ import it.aren.model.GameState;
  */
 public class NullEvent implements Event {
 
-    @Override
     /**
      * {@inheritDoc}
      */
+    @Override
     public void launch(final GameState state) {
     }
 
+    /**
+     * {@inheritDoc}
+     */
     @Override
     public boolean isAlreadyLunch() {
-        return false;
+        return true;
     }
 
 }
