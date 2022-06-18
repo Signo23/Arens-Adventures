@@ -1,6 +1,3 @@
-/**
- * 
- */
 package it.aren.graphic.component;
 
 import it.aren.model.Block;
@@ -14,12 +11,13 @@ import it.aren.model.BaseEntity;
  */
 public class BlockGraphicComponent implements GraphicComponent {
 
-    @Override
+
     /**
      * {@inheritDoc}
      */
+    @Override
     public void update(final BaseEntity ent, final GraphicController w) {
-        w.drawBlock((Block)ent);
+        w.drawBlock((Block) ent);
 
     }
 

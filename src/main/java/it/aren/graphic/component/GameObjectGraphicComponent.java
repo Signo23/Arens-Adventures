@@ -7,9 +7,12 @@ import it.aren.model.GameObject;
 
 public class GameObjectGraphicComponent implements GraphicComponent {
 
+    /**
+     * {@inheritDoc}
+     */
     @Override
     public void update(final BaseEntity ent, final GraphicController w) {
-        w.drawObject((GameObject)ent);
+        w.drawObject((GameObject) ent);
     }
 
 }

@@ -8,7 +8,6 @@ import java.util.Map;
 import it.aren.common.BaseObjectEnum;
 import it.aren.common.Constant;
 import it.aren.common.Direction;
-import it.aren.common.Point2D;
 import it.aren.file.SettingsLoader;
 
 /**
@@ -18,8 +17,8 @@ public class PlayerAnimation {
     private final Map<Direction, LinkedList<BufferedImage>> idleSprite;
     private final Map<Direction, LinkedList<BufferedImage>> walkSprite;
     private long time;
-    private int spriteDimension;
-    private final static long ELAPSE = 250;
+    private final int spriteDimension;
+    private static final  long ELAPSE = 250;
 
     /**
      * Main constructor.
@@ -29,22 +28,22 @@ public class PlayerAnimation {
         this.idleSprite = new HashMap<>();
         this.walkSprite = new HashMap<>();
         this.spriteDimension = SettingsLoader.loadSettings().scale() * Constant.DEFAULT_HITBOX_DIMENSION;
-        
+
         this.idleSprite.put(Direction.UP, new LinkedList<>());
         this.idleSprite.put(Direction.DOWN, new LinkedList<>());
         this.idleSprite.put(Direction.LEFT, new LinkedList<>());
         this.idleSprite.put(Direction.RIGHT, new LinkedList<>());
-        
+
         this.walkSprite.put(Direction.UP, new LinkedList<>());
         this.walkSprite.put(Direction.DOWN, new LinkedList<>());
         this.walkSprite.put(Direction.LEFT, new LinkedList<>());
         this.walkSprite.put(Direction.RIGHT, new LinkedList<>());
-        
+
         final BufferedImage idle = BaseObjectEnum.PLAYER_IDLE.getTexture();
         final BufferedImage walk = BaseObjectEnum.PLAYER_WALK.getTexture();
-        for(int i = 0; i < 4; i++) {
-            for(int j = 0; j < 4; j++) {
-                switch(i) {
+        for (int i = 0; i < 4; i++)  {
+            for (int j = 0; j < 4; j++)  {
+                switch (i) {
                     case 0:
                         this.idleSprite.get(Direction.DOWN).add(crop(idle, j, i));
                         this.walkSprite.get(Direction.DOWN).add(crop(walk, j, i));
@@ -80,7 +79,7 @@ public class PlayerAnimation {
      * @return sprite's {@link BufferedImage}
      */
     public BufferedImage getNextIdle(final Direction lastDirection) {
-        if(PlayerAnimation.ELAPSE > System.currentTimeMillis() - time) {
+        if (PlayerAnimation.ELAPSE > System.currentTimeMillis() - time) {
             return this.idleSprite.get(lastDirection).peek();
         }
         final BufferedImage tmpImage = this.idleSprite.get(lastDirection).poll();
@@ -95,7 +94,7 @@ public class PlayerAnimation {
      * @return sprite's {@link BufferedImage}
      */
     public BufferedImage getNextWalk(final Direction direction) {
-        if(PlayerAnimation.ELAPSE > System.currentTimeMillis() - time) {
+        if (PlayerAnimation.ELAPSE > System.currentTimeMillis() - time) {
             return this.walkSprite.get(direction).peek();
         }
         final BufferedImage tmpImage = this.walkSprite.get(direction).poll();

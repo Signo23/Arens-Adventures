@@ -31,29 +31,29 @@ public class SwingPanel extends JPanel {
      * @param world to render
      * @param inputController for listen the input
      */
-    public SwingPanel(final Settings settings, final World world, final InputController inputController){
+    public SwingPanel(final Settings settings, final World world, final InputController inputController) {
         this.world = world;
         this.settings = settings;
         this.setPreferredSize(this.settings.getScreenSize());
-        this.addKeyListener(new KeyListenerImpl((KeyboardInputController)inputController));
+        this.addKeyListener(new KeyListenerImpl((KeyboardInputController) inputController));
         this.setFocusable(true);
         this.setFocusTraversalKeysEnabled(false);
         this.requestFocusInWindow(); 
-        
+
     }
-    
+
     /**
      * {@inheritDoc}
      */
-    public void paint(final Graphics g){
+    public void paint(final Graphics g) {
             final Graphics2D g2 = (Graphics2D) g;
-            
+
             g2.setRenderingHint(RenderingHints.KEY_ANTIALIASING,
                       this.settings.isAntiAliasingOn() ? RenderingHints.VALUE_ANTIALIAS_ON : RenderingHints.VALUE_ANTIALIAS_OFF);
             g2.setRenderingHint(RenderingHints.KEY_RENDERING,
                       this.settings.isRenderQuality() ? RenderingHints.VALUE_RENDER_QUALITY : RenderingHints.VALUE_RENDER_SPEED);
-            g2.clearRect(0,0,this.getWidth(),this.getHeight());
-        
+            g2.clearRect(0, 0, this.getWidth(), this.getHeight());
+
             final GraphicController controller = new SwingGraphic(g2, this);
             this.world.getCurrentMap().updateGraphic(controller);
             this.world.getPlayer().updateGraphic(controller);
@@ -61,5 +61,5 @@ public class SwingPanel extends JPanel {
                 this.world.getDialog().updateGraphic(controller);
             }
     }
-    
+
 }

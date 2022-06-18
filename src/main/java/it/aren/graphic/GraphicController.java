@@ -1,6 +1,3 @@
-/**
- * 
- */
 package it.aren.graphic;
 
 import java.awt.image.BufferedImage;

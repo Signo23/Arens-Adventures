@@ -12,7 +12,7 @@ import it.aren.common.ApplicationState;
 public interface View {
 
     /**
-     * Method to call for update the view
+     * Method to call for update the view.
      */
     void render();
     void changeState(ApplicationState newState);

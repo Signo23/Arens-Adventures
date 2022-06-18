@@ -1,6 +1,3 @@
-/**
- * 
- */
 package it.aren.graphic.component;
 
 import it.aren.graphic.GraphicComponent;
@@ -17,17 +14,17 @@ public class PlayerGraphicComponent implements GraphicComponent {
 
 
     private final PlayerAnimation animation;
-    
+
     public PlayerGraphicComponent() {
         this.animation = new PlayerAnimation();
     }
 
-    @Override
     /**
      * {@inheritDoc}
      */
+    @Override
     public void update(final BaseEntity player, final GraphicController g) {
-        final Player tmpPlayer = (Player)player;
+        final Player tmpPlayer = (Player) player;
         g.drawPlayer(player.getPosition(), tmpPlayer.isIdle() ? this.animation.getNextIdle(tmpPlayer.getLastDirection())
                 : this.animation.getNextWalk(tmpPlayer.getLastDirection()));
         tmpPlayer.getBackPack().forEach(go -> go.updateGraphic(g));

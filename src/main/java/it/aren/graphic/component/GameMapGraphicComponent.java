@@ -10,12 +10,12 @@ import it.aren.model.GameMap;
  */
 public class GameMapGraphicComponent implements GraphicComponent {
 
-    @Override
     /**
      * {@inheritDoc}
      */
+    @Override
     public void update(final BaseEntity ent, final GraphicController w) {
-        w.drawGameMap((GameMap)ent);
+        w.drawGameMap((GameMap) ent);
     }
 
 }

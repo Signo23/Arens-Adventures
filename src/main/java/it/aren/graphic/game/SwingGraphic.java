@@ -1,6 +1,3 @@
-/**
- * 
- */
 package it.aren.graphic.game;
 
 import java.awt.Color;
@@ -28,6 +25,7 @@ import it.aren.model.Player;
  */
 public class SwingGraphic implements GraphicController {
 
+    private static final int FONT_DEFAULT_DIMENSION = 24;
     private final Graphics2D g2;
     private final ImageObserver io;
       /**
@@ -83,12 +81,10 @@ public class SwingGraphic implements GraphicController {
         try {
             Font customFont = Font.createFont(Font.TRUETYPE_FONT, this.getClass().getResourceAsStream(Constant.FONT_FOLDER + "Minecraft.ttf"));
             final GraphicsEnvironment ge = GraphicsEnvironment.getLocalGraphicsEnvironment();
-            customFont = customFont.deriveFont(Font.PLAIN, 24 * ratio);
+            customFont = customFont.deriveFont(Font.PLAIN, FONT_DEFAULT_DIMENSION * ratio);
             ge.registerFont(customFont);
             g2.setFont(customFont);
-        } catch (IOException e) {
-            e.printStackTrace();
-        } catch (FontFormatException e) {
+        } catch (IOException | FontFormatException e) {
             e.printStackTrace();
         }
         g2.setColor(Color.black);
