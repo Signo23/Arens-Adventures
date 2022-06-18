@@ -6,6 +6,7 @@ import it.aren.file.ImageLoader;
 import it.aren.file.SettingsLoader;
 
 public enum BaseObjectEnum {
+
     CHEST("chest.png"),
     SIGN("sign.png"),
     NPC("npc.png"),
@@ -17,15 +18,16 @@ public enum BaseObjectEnum {
     VOID(),
     PLAYER_IDLE("player-idle.png"),
     PLAYER_WALK("player-walk.png"),
-    BACKGROUND("banner.png");
+    BACKGROUND("banner.png"),
+    ICON("icon.png");
 
     private final BufferedImage texture;
-    
-    BaseObjectEnum(final String image){
+
+    BaseObjectEnum(final String image) {
         this.texture = ImageLoader.loadImage(image, SettingsLoader.loadSettings().scale());
     }
-    
-    BaseObjectEnum(){
+
+    BaseObjectEnum() {
         this.texture = new BufferedImage(1, 1, 1);
     }
 
