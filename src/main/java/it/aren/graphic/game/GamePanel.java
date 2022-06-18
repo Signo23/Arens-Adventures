@@ -7,6 +7,7 @@ import java.awt.RenderingHints;
 import javax.swing.JPanel;
 
 import it.aren.common.Settings;
+import it.aren.file.SettingsLoader;
 import it.aren.graphic.GraphicController;
 import it.aren.input.InputController;
 import it.aren.input.KeyListenerImpl;
@@ -31,9 +32,9 @@ public class GamePanel extends JPanel {
      * @param world to render
      * @param inputController for listen the input
      */
-    public GamePanel(final Settings settings, final World world, final InputController inputController) {
+    public GamePanel(final World world, final InputController inputController) {
         this.world = world;
-        this.settings = settings;
+        this.settings = SettingsLoader.loadSettings();
         this.setPreferredSize(this.settings.getScreenSize());
         this.addKeyListener(new KeyListenerImpl((KeyboardInputController) inputController));
         this.setFocusable(true);

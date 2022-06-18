@@ -1,6 +1,3 @@
-/**
- * 
- */
 package it.aren.core;
 
 import java.util.LinkedList;
@@ -8,10 +5,8 @@ import java.util.List;
 
 import it.aren.common.ApplicationState;
 import it.aren.common.Constant;
-import it.aren.common.Settings;
 import it.aren.event.Event;
 import it.aren.event.EventListener;
-import it.aren.file.SettingsLoader;
 import it.aren.graphic.AppView;
 import it.aren.graphic.BaseView;
 import it.aren.input.InputController;
@@ -44,11 +39,10 @@ public class GameEngine implements EventListener {
      * Setup the game.
      */
     public void setup() {
-        final Settings settings = SettingsLoader.loadSettings();
         this.state = new GameState(this);
         this.controller = new KeyboardInputController();
         this.menuController = new MenuInputController();
-        this.view = new AppView(this.state.getWorld(), this.controller, this.menuController, settings);
+        this.view = new AppView(this.state.getWorld(), this.controller, this.menuController);
     }
 
     /**

@@ -4,7 +4,6 @@ import javax.swing.JFrame;
 
 import it.aren.common.ApplicationState;
 import it.aren.common.BaseObjectEnum;
-import it.aren.common.Settings;
 import it.aren.graphic.game.GamePanel;
 import it.aren.graphic.menu.MenuPanel;
 import it.aren.graphic.menu.MenuSettingsPanel;
@@ -30,11 +29,10 @@ public class AppView implements BaseView {
      * @param world to render
      * @param controller for listen the input
      * @param menuController the menu's controller
-     * @param settings the settings to use
      */
-    public AppView(final World world, final InputController controller, final MenuInputController menuController, final Settings settings) {
+    public AppView(final World world, final InputController controller, final MenuInputController menuController) {
         this.frame = new JFrame("Aren's Adventures");
-        this.gamePanel = new GamePanel(settings, world, controller);
+        this.gamePanel = new GamePanel(world, controller);
         this.menuPanel = new MenuPanel(menuController);
         this.settingsPanel = new MenuSettingsPanel(menuController);
         this.state = ApplicationState.BOOT;
