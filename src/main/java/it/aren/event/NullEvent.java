@@ -7,10 +7,10 @@ import it.aren.model.GameState;
 
 /**
  * A class that don't do nothing.
- * Implements {@link Event}
+ * Implements {@link BaseEvent}
  *
  */
-public class NullEvent implements Event {
+public class NullEvent implements BaseEvent {
 
     /**
      * {@inheritDoc}

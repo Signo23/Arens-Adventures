@@ -7,7 +7,7 @@ import it.aren.common.ApplicationState;
 import it.aren.common.BaseObjectEnum;
 import it.aren.common.Constant;
 import it.aren.common.Point2D;
-import it.aren.event.Event;
+import it.aren.event.BaseEvent;
 import it.aren.event.EventListener;
 import it.aren.event.InteractWithPlayerEvent;
 import it.aren.graphic.AppView;
@@ -31,7 +31,7 @@ public class GameEngine implements EventListener {
     private InputController controller;
     private MenuInputController menuController;
 
-    private final List<Event> eventList;
+    private final List<BaseEvent> eventList;
 
     /**
      * Constructor for GameEngine.
@@ -143,7 +143,7 @@ public class GameEngine implements EventListener {
      * {@inheritDoc}
      */
     @Override
-    public final void notifyEvent(final Event event) {
+    public final void notifyEvent(final BaseEvent event) {
         this.eventList.add(event);
     }
 }

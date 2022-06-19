@@ -9,7 +9,7 @@ import it.aren.model.World;
 /**
  * Interface for create events that interact with {@link World}.
  */
-public interface Event {
+public interface BaseEvent {
     /**
      * Launch the event.
      * @param state {@link GameState} to interact with
