@@ -1,6 +1,3 @@
-/**
- * 
- */
 package it.aren.event;
 
 import it.aren.model.GameState;

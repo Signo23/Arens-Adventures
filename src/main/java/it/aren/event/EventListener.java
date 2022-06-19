@@ -1,6 +1,3 @@
-/**
- * 
- */
 package it.aren.event;
 
 /**
@@ -9,7 +6,7 @@ package it.aren.event;
 public interface EventListener {
     /**
      * Notify to the listener an {@link BaseEvent}.
-     * @param event {@link BaseEvent} to send to the listener
+     * @param event {@link BaseEvent} to notify the listener
      */
     void notifyEvent(BaseEvent event);
 }
