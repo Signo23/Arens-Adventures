@@ -3,7 +3,7 @@ package it.aren.event;
 import it.aren.common.Point2D;
 import it.aren.model.GameState;
 
-public class TransportEvent implements Event {
+public class TransportEvent implements BaseEvent {
 
     private final Point2D position;
     private final int level;

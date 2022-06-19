@@ -7,10 +7,10 @@ import it.aren.model.GameState;
 import it.aren.model.game.GameObject;
 /**
  * A class for display a message and add an {@link GameObect} to {@link Player}'s backpack.
- * Implements {@link Event}
+ * Implements {@link BaseEvent}
  *
  */
-public class InteractWithPlayerEvent implements Event {
+public class InteractWithPlayerEvent implements BaseEvent {
 
     private final GameObject object;
     private final String dialog;
