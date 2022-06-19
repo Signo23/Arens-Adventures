@@ -14,7 +14,7 @@ import it.aren.model.GameState;
 import it.aren.model.game.Block;
 import it.aren.model.game.GameObject;
 
-class Events {
+class EventsTest {
 
     @Test void testGiveToPlayerEvent() {
         final GameState gameState = new GameState(eventListener -> { });
