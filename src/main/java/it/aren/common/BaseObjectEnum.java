@@ -74,6 +74,10 @@ public enum BaseObjectEnum {
         this.texture = new BufferedImage(1, 1, 1);
     }
 
+    /**
+     * Get the texture linked to the type.
+     * @return a {@link BufferedImage} representing the type's texture
+     */
     public BufferedImage getTexture() {
         return texture;
     }
