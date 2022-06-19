@@ -94,6 +94,12 @@ public class GameGraphicController implements GraphicController {
             e.printStackTrace();
         }
         g2.setColor(Color.black);
-        g2.drawString(dialog.getText(), (int) dialog.getPosition().getX() + 16 * ratio, (int) dialog.getPosition().getY() + 32 * ratio);
+        final int lineHeight = g2.getFontMetrics().getHeight();
+        final int x = (int) dialog.getPosition().getX() + 16 * ratio;
+        int y = (int) dialog.getPosition().getY() + 32 * ratio;
+        for (final String line : dialog.getText().split("\n")) {
+            g2.drawString(line, x, y);
+            y += lineHeight;
+        }
     }
 }
