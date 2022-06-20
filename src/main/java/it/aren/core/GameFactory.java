@@ -61,13 +61,13 @@ public final class GameFactory {
                 new GameObjectGraphicComponent());
 
         final Block box = new Block(BaseObjectEnum.BOX, new InteractWithPlayerEvent(potion, "Ecco la pozione!"),
-                new Point2D(9 * dimension, 7 * dimension), true, new BlockGraphicComponent());
+                new Point2D(13 * dimension, 4 * dimension), true, new BlockGraphicComponent());
         final Block chest = new Block(BaseObjectEnum.CHEST, new InteractWithPlayerEvent(sword, "Ecco la spada!", potion, "Prima la pozione!"),
-                new Point2D(4 * dimension, 5 * dimension), true, new BlockGraphicComponent());
+                new Point2D(5 * dimension, 7 * dimension), true, new BlockGraphicComponent());
         final Block npc = new Block(BaseObjectEnum.NPC, new InteractWithPlayerEvent(jacket, "Ecco la giacca!", sword, "Prima la spada!"),
-                new Point2D(9 * dimension, 5 * dimension), true, new BlockGraphicComponent());
+                new Point2D(11 * dimension, 4 * dimension), true, new BlockGraphicComponent());
         final Block sign = new Block(BaseObjectEnum.SIGN, new InteractWithPlayerEvent(key, "Ecco la chiave!", jacket, "Prima la giacca!"),
-                new Point2D(11 * dimension, 5 * dimension), true, new BlockGraphicComponent());
+                new Point2D(9 * dimension, 7 * dimension), true, new BlockGraphicComponent());
 
         //Trnsport blocks
         final List<Block> transportL1 = new ArrayList<>();
@@ -112,13 +112,13 @@ public final class GameFactory {
         maps.add(new GameMap(BaseLevelEnum.THREE));
         maps.add(new GameMap(BaseLevelEnum.FOUR));
         maps.get(0).addBlocks(transportL1);
-        maps.get(0).addBlock(box);
+        maps.get(0).addBlock(sign);
         maps.get(1).addBlocks(transportL2);
-        maps.get(1).addBlock(chest);
+        maps.get(1).addBlock(npc);
         maps.get(2).addBlocks(transportL3);
-        maps.get(2).addBlock(npc);
+        maps.get(2).addBlock(box);
         maps.get(3).addBlocks(transportL4);
-        maps.get(3).addBlock(sign);
+        maps.get(3).addBlock(chest);
         return maps;
     }
 
