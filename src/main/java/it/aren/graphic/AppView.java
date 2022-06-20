@@ -12,6 +12,7 @@ import it.aren.input.KeyListenerImpl;
 import it.aren.input.KeyboardInputController;
 import it.aren.input.MenuInputController;
 import it.aren.model.World;
+
 /**
  * This class is the main view of the game using Java Swing.
  * Implements {@link BaseView}
@@ -45,7 +46,6 @@ public class AppView implements BaseView {
         this.frame.pack();
         this.frame.setLocationRelativeTo(null);
         this.frame.setVisible(true);
-
     }
 
     /**
@@ -73,6 +73,7 @@ public class AppView implements BaseView {
                 break;
             case MENU_SETTINGS:
                 this.frame.getContentPane().removeAll();
+                this.settingsPanel.initSettingsControll();
                 this.frame.getContentPane().add(this.settingsPanel);
                 this.frame.requestFocusInWindow();
                 this.frame.pack();
