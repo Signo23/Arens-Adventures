@@ -53,8 +53,6 @@ public class GameGraphicController implements GraphicController {
     public final void drawBlock(final Block block) {
         if (block.isDrawable()) {
             g2.drawImage(block.getType().getTexture(), (int) block.getPosition().getX(), (int) block.getPosition().getY(), this.io);
-            g2.drawRect((int) block.getHitBox().getX(), (int) block.getHitBox().getY(),
-                    block.getHitBox().width, block.getHitBox().height);
         }
     }
 
