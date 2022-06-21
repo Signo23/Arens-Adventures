@@ -4,13 +4,10 @@ import static org.junit.jupiter.api.Assertions.assertEquals;
 import static org.junit.jupiter.api.Assertions.assertFalse;
 import static org.junit.jupiter.api.Assertions.assertTrue;
 
-import java.util.ArrayList;
-
 import org.junit.jupiter.api.Test;
 
 import it.aren.common.Direction;
 import it.aren.core.GameFactory;
-import it.aren.graphic.Texture;
 import it.aren.model.World;
 import it.aren.model.game.GameMap;
 
@@ -18,10 +15,9 @@ public class Input {
 
     @Test void testGiveToPlayerInput() {
         final World world = new World();
-        final GameMap gameMap = new GameMap(16, 16, new ArrayList<>());
         final KeyboardInputController ctrl = new KeyboardInputController();
-        world.setPlayer(GameFactory.createPlayer(new Texture()));
-        world.addMap(gameMap);
+        world.setPlayer(GameFactory.createPlayer());
+        world.addMaps(GameFactory.loadMaps());
         world.setCurrentMap(0);
 
         ctrl.notifyMoveUp();

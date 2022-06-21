@@ -1,0 +1,31 @@
+package it.aren.event;
+
+import static org.junit.jupiter.api.Assertions.assertEquals;
+
+import java.util.ArrayList;
+import java.util.List;
+
+import org.junit.jupiter.api.Test;
+
+import it.aren.common.BaseLevelEnum;
+import it.aren.common.Constant;
+import it.aren.common.Point2D;
+import it.aren.core.GameFactory;
+import it.aren.file.SettingsLoader;
+import it.aren.input.KeyboardInputController;
+import it.aren.model.GameState;
+import it.aren.model.World;
+
+public class TransportEvents {
+
+    @Test void changeGampMap() {
+        final int ratio = SettingsLoader.loadSettings().scale();
+        final int dimension = ratio * Constant.DEFAULT_HITBOX_DIMENSION;
+        final GameState gs = new GameState(null);
+        final BaseEvent te = new TransportEvent(new Point2D(1 * dimension, 6 * dimension), 1);
+        
+        te.launch(gs);
+        assertEquals(gs.getWorld().getCurrentMap().getType(), BaseLevelEnum.TWO);
+        assertEquals(gs.getWorld().getPlayer().getPosition(), new Point2D(1 * dimension, 6 * dimension));
+    }
+}
