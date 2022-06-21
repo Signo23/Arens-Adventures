@@ -47,26 +47,6 @@ public class Constant {
      */
     public static final String FONT_FOLDER = "/assets/fonts/";
     /**
-     * @deprecated use {@link Direction}
-     * The {@link Point2D} for left
-     */
-    public static final Point2D LEFT = new Point2D(-1, 0);
-    /**
-     * @deprecated use {@link Direction}
-     * The {@link Point2D} for right
-     */
-    public static final Point2D RIGHT = new Point2D(1, 0);
-    /**
-     * @deprecated use {@link Direction}
-     * The {@link Point2D} for up
-     */
-    public static final Point2D UP = new Point2D(0, -1);
-    /**
-     * @deprecated use {@link Direction}
-     * The {@link Point2D} for down
-     */
-    public static final Point2D DOWN = new Point2D(0, 1);
-    /**
      * Default velocity.
      */
     public static final int DEFAULT_VEL = 2;

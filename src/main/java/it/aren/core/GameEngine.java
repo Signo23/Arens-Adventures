@@ -1,22 +1,23 @@
-/**
- * 
- */
 package it.aren.core;
 
 import java.util.LinkedList;
 import java.util.List;
 
 import it.aren.common.ApplicationState;
+import it.aren.common.BaseObjectEnum;
 import it.aren.common.Constant;
-import it.aren.common.Settings;
-import it.aren.event.Event;
+import it.aren.common.Point2D;
+import it.aren.event.BaseEvent;
 import it.aren.event.EventListener;
-import it.aren.file.SettingsLoader;
-import it.aren.graphic.SwingView;
-import it.aren.graphic.View;
+import it.aren.event.InteractWithPlayerEvent;
+import it.aren.graphic.AppView;
+import it.aren.graphic.BaseView;
+import it.aren.graphic.component.GameObjectGraphicComponent;
 import it.aren.input.InputController;
 import it.aren.input.KeyboardInputController;
+import it.aren.input.MenuInputController;
 import it.aren.model.GameState;
+import it.aren.model.game.GameObject;
 
 /**
  * This class contain the main loop.
@@ -25,11 +26,12 @@ import it.aren.model.GameState;
  *
  */
 public class GameEngine implements EventListener {
-    private View view;
+    private BaseView view;
     private GameState state;
     private InputController controller;
+    private MenuInputController menuController;
 
-    private final List<Event> eventList;
+    private final List<BaseEvent> eventList;
 
     /**
      * Constructor for GameEngine.
@@ -42,10 +44,13 @@ public class GameEngine implements EventListener {
      * Setup the game.
      */
     public void setup() {
-        final Settings settings = SettingsLoader.loadSettings();
         this.state = new GameState(this);
         this.controller = new KeyboardInputController();
-        this.view = new SwingView(this.state.getWorld(), this.controller, settings);
+        this.menuController = new MenuInputController();
+        this.view = new AppView(this.state.getWorld(), this.controller, this.menuController);
+        this.notifyEvent(new InteractWithPlayerEvent(new GameObject(
+                BaseObjectEnum.VOID, new Point2D(), false, new GameObjectGraphicComponent()),
+                "Trova tutti gli oggetti prima di\npartire per la tua avventura"));
     }
 
     /**
@@ -57,7 +62,25 @@ public class GameEngine implements EventListener {
             final long current = System.currentTimeMillis();
             switch (this.state.getState()) {
             case BOOT:
-                this.state.setState(ApplicationState.GAME);
+                this.changeStates(ApplicationState.MENU);
+                break;
+            case MENU:
+                if (this.menuController.isInteract()) {
+                    this.menuController.notifyNoMoreIsInteract();
+                    this.changeStates(ApplicationState.GAME);
+                }
+                if (this.menuController.isSettings()) {
+                    this.menuController.notifyNoMoreIsSettings();
+                    this.changeStates(ApplicationState.MENU_SETTINGS);
+                }
+                this.render();
+                break;
+            case MENU_SETTINGS:
+                if (this.menuController.isInteract()) {
+                    this.menuController.notifyNoMoreIsInteract();
+                    this.changeStates(ApplicationState.MENU);
+                }
+                this.render();
                 break;
             case GAME:
                 this.processInput();
@@ -73,6 +96,11 @@ public class GameEngine implements EventListener {
             }
             this.waitNextFrame(current);
         }
+    }
+
+    private void changeStates(final ApplicationState newState) {
+        this.state.setState(newState);
+        this.view.changeState(newState);
     }
 
     private void processInput() {
@@ -111,12 +139,11 @@ public class GameEngine implements EventListener {
         }
     }
 
-
     /**
      * {@inheritDoc}
      */
     @Override
-    public final void notifyEvent(final Event event) {
+    public final void notifyEvent(final BaseEvent event) {
         this.eventList.add(event);
     }
 }

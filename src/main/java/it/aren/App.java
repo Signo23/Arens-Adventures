@@ -1,6 +1,10 @@
 package it.aren;
 
 import java.io.File;
+import java.io.IOException;
+import java.net.URISyntaxException;
+import java.util.ArrayList;
+import java.util.List;
 
 import it.aren.common.Constant;
 import it.aren.core.GameEngine;
@@ -12,8 +16,32 @@ public final class App {
     private App() {
         // the constructor will never be called directly.
     }
+    @SuppressWarnings("PMD.DoNotTerminateVM")
+    public static void restart() {
+        final String javaBin = System.getProperty("java.home") + File.separator + "bin" + File.separator + "java";
+        File currentJar;
+        try {
+            currentJar = new File(App.class.getProtectionDomain().getCodeSource().getLocation().toURI());
 
-    public static void main(final String[] args){
+            if (!currentJar.getName().endsWith(".jar")) {
+                return;
+            }
+
+            final List<String> command = new ArrayList<>();
+            command.add(javaBin);
+            command.add("-jar");
+            command.add(currentJar.getPath());
+
+            final ProcessBuilder builder = new ProcessBuilder(command);
+            builder.start();
+            System.exit(0); //NOPMD: this is the only method we found for restart the application
+        } catch (URISyntaxException | IOException e) {
+            e.printStackTrace();
+        }
+
+    }
+
+    public static void main(final String[] args) {
         if (new File(Constant.MAIN_FOLDER).mkdirs()) {
             System.out.println("Directory created succesfully");
         }

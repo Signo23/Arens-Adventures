@@ -8,7 +8,7 @@ import it.aren.common.Direction;
 import it.aren.common.Point2D;
 import it.aren.file.SettingsLoader;
 import it.aren.model.BaseEntity;
-import it.aren.model.Player;
+import it.aren.model.game.Player;
 
 /**
  * The physics component for {@link Player}.

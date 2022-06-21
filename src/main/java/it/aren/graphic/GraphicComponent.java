@@ -1,6 +1,3 @@
-/**
- * 
- */
 package it.aren.graphic;
 
 import it.aren.model.BaseEntity;
@@ -16,5 +13,5 @@ public interface GraphicComponent {
      * @param ent {@link BaseEntity} to draw
      * @param w {@link GraphicController} for draw
      */
-    void update( BaseEntity ent, GraphicController w);
+    void update(BaseEntity ent, GraphicController w);
 }
