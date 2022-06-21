@@ -28,15 +28,17 @@ import it.aren.physics.PlayerPhysicsComponent;
  * The main factory.
  */
 public final class GameFactory {
+
     /**
      * The GameFactory constructor.
      */
     private GameFactory() {
 
     }
+
     /**
-     * Creates a new player.
-     * @return player
+     * Creates a new {@link Player}.
+     * @return the new {@link Player}
      */
     public static Player createPlayer() {
         return new Player(new Point2D(0, 1),
@@ -44,13 +46,15 @@ public final class GameFactory {
                 new PlayerInputComponent(),
                 new PlayerPhysicsComponent());
     }
+
     /**
-     * Loads the game maps.
-     * @return GameMap
+     * Loads the {@link GameMap}.
+     * @return maps a {@link List} of {@link GameMap}
      */
     public static List<GameMap> loadMaps() {
         final int ratio = SettingsLoader.loadSettings().scale();
         final int dimension = ratio * Constant.DEFAULT_HITBOX_DIMENSION;
+
         final GameObject potion = new GameObject(BaseObjectEnum.POTION, new Point2D(11 * dimension, 1 * dimension), true,
                 new GameObjectGraphicComponent());
         final GameObject sword = new GameObject(BaseObjectEnum.SWORD, new Point2D(12 * dimension, 1 * dimension), true,
@@ -69,7 +73,6 @@ public final class GameFactory {
         final Block sign = new Block(BaseObjectEnum.SIGN, new InteractWithPlayerEvent(key, "Ecco la chiave!", jacket, "Prima la giacca!"),
                 new Point2D(9 * dimension, 7 * dimension), true, new BlockGraphicComponent());
 
-        //Trnsport blocks
         final List<Block> transportL1 = new ArrayList<>();
         transportL1.add(new Block(BaseObjectEnum.VOID, new TransportEvent(new Point2D(0 * dimension, 5 * dimension), 1),
                 new Point2D(16 * dimension, 5 * dimension), false, new BlockGraphicComponent()));
@@ -122,9 +125,14 @@ public final class GameFactory {
         return maps;
     }
 
+    /**
+     * Create a {@link Dialog}
+     * @param text the message to display
+     * @return a new {@link Dialog}
+     */
     public static Dialog createDialog(final String text) {
         final int ratio = SettingsLoader.loadSettings().scale();
-        return new Dialog(new Point2D(Constant.DEFAULT_DIALOG_POSITION.getX() * ratio, Constant.DEFAULT_DIALOG_POSITION.getY() * ratio), true, new DialogGraphicComponent(),
-                text);
+        return new Dialog(new Point2D(Constant.DEFAULT_DIALOG_POSITION.getX() * ratio, Constant.DEFAULT_DIALOG_POSITION.getY() * ratio), 
+                          true, new DialogGraphicComponent(), text);
     }
 }

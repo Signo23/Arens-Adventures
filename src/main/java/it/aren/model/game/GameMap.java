@@ -22,6 +22,7 @@ import it.aren.model.BaseEntity;
 public class GameMap extends BaseEntity {
     private List<Block> blocks;
     private final BaseLevelEnum type;
+    
     /**
      * Create a map.
      * @param type the {@link BaseLevelEnum} type of map
@@ -33,6 +34,11 @@ public class GameMap extends BaseEntity {
         type.getPoints().forEach(p -> this.addBlocks(createLineBlock(p)));
     }
 
+    /**
+     * Create a range of aligned blocks.
+     * @param range the {@link PointRange} with the point of start and the point of end
+     * @return blocks the aligned blocks
+     */
     private static List<Block> createLineBlock(final PointRange range) {
         final int ratio = SettingsLoader.loadSettings().scale();
         final int dimension = ratio * Constant.DEFAULT_HITBOX_DIMENSION;
@@ -45,13 +51,18 @@ public class GameMap extends BaseEntity {
         return blocks;
     }
 
+    /**
+     * Create a new {@link Block}.
+     * @param position the {@link Point2D} where the block is
+     * @return the new {@link Block}
+     */
     private static Block createSimpleBlock(final Point2D position) {
         return new Block(BaseObjectEnum.VOID, new NullEvent(), position,
                 true, new BlockGraphicComponent());
     }
 
     /**
-     * Add a block in the map.
+     * Add a {@link Block} in the map.
      * @param block the {@link Block} to add in the map
      */
     public final void addBlock(final Block block) {
@@ -59,8 +70,8 @@ public class GameMap extends BaseEntity {
     }
 
     /**
-     * Add a {@link List} of block in the map.
-     * @param block the {@link Block} to add in the map
+     * Add a {@link List} of {@link Block} in the map.
+     * @param blocks the {@link List} of {@link Block} to add in the map
      */ 
     public void addBlocks(final List<Block> blocks) {
         this.blocks.addAll(blocks);
@@ -76,16 +87,16 @@ public class GameMap extends BaseEntity {
     }
 
     /**
-     * Get GameMap's list of {@link Block}.
-     * @return the blocks
+     * Get GameMap's {@link List} of {@link Block}.
+     * @return blocks the {@link List} of {@link Block}
      */
     public List<Block> getBlocks() {
         return this.blocks;
     }
 
     /**
-     * Set GameMap's list of {@link Block}.
-     * @param blocks the blocks to set
+     * Set GameMap's {@link List} of {@link Block}.
+     * @param blocks the {@link List} of {@link Block} to set
      */
     public void setBlocks(final List<Block> blocks) {
         this.blocks = blocks;
