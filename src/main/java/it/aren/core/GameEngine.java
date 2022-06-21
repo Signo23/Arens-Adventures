@@ -121,6 +121,9 @@ public class GameEngine implements EventListener {
         this.view.render();
     }
 
+    /**
+     * Update the {@link Dialog} state.
+     */
     private void updateHUD() {
         if (this.controller.isOnClose()) {
             this.state.getWorld().setDialog(null);

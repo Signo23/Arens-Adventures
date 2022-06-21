@@ -78,25 +78,25 @@ public class GameGraphicController implements GraphicController {
     @Override
     public final void drawDialog(final Dialog dialog) {
         final int ratio = SettingsLoader.loadSettings().scale();
-        g2.setColor(Color.white);
-        g2.fillRect((int) dialog.getPosition().getX(), (int) dialog.getPosition().getY(), 
+        this.g2.setColor(Color.white);
+        this.g2.fillRect((int) dialog.getPosition().getX(), (int) dialog.getPosition().getY(), 
                 dialog.getHitBox().width, dialog.getHitBox().height);
-        //stampa del testo
         try {
-            Font customFont = Font.createFont(Font.TRUETYPE_FONT, this.getClass().getResourceAsStream(Constant.FONT_FOLDER + "Minecraft.ttf"));
+            Font customFont = Font.createFont(Font.TRUETYPE_FONT, this.getClass()
+                                  .getResourceAsStream(Constant.FONT_FOLDER + "Minecraft.ttf"));
             final GraphicsEnvironment ge = GraphicsEnvironment.getLocalGraphicsEnvironment();
             customFont = customFont.deriveFont(Font.PLAIN, FONT_DEFAULT_DIMENSION * ratio);
             ge.registerFont(customFont);
-            g2.setFont(customFont);
+            this.g2.setFont(customFont);
         } catch (IOException | FontFormatException e) {
             e.printStackTrace();
         }
-        g2.setColor(Color.black);
-        final int lineHeight = g2.getFontMetrics().getHeight();
+        this.g2.setColor(Color.black);
+        final int lineHeight = this.g2.getFontMetrics().getHeight();
         final int x = (int) dialog.getPosition().getX() + 16 * ratio;
         int y = (int) dialog.getPosition().getY() + 32 * ratio;
         for (final String line : dialog.getText().split("\n")) {
-            g2.drawString(line, x, y);
+            this.g2.drawString(line, x, y);
             y += lineHeight;
         }
     }

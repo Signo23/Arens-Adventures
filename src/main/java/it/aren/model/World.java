@@ -24,56 +24,56 @@ public class World {
     private Dialog dialog;
 
     /**
-     * Creates a new ArrayList for the maps.
+     * Creates a new {@link List} for the {@link GameMap}.
      */
     public World() {
         this.maps = new ArrayList<>();
     }
 
     /**
-     * Return the player.
+     * Return the {@link Player}.
      * @return player
      */
     public final Player getPlayer() {
         return this.player;
     }
     /**
-     * Set the player.
+     * Set the {@link Player}.
      * @param player to set
      */
     public final void setPlayer(final Player player) {
         this.player = player;
     }
     /**
-     * Add a new game map to the ArrayList.
-     * @param maps the map to add
+     * Add all the {@link GameMap} to the {@link List}.
+     * @param maps the {@link GameMap} to add
      */
     public final void addMaps(final List<GameMap> maps) {
         this.maps.addAll(maps);
     }
     /**
-     * Return the map to view on the screen.
+     * Return the {@link GameMap} to view on the screen.
      * @return currentMap
      */
     public final GameMap getCurrentMap() {
         return this.currentMap;
     }
     /**
-     * Set the currentMap.
+     * Set the map to view on the screen.
      * @param index of the current map
      */
     public final void setCurrentMap(final int index) {
-        this.currentMap = maps.get(index);
+        this.currentMap = this.maps.get(index);
     }
     /**
-     * Set the dialog.
+     * Set the {@link Dialog}.
      * @param dialog
      */
     public final void setDialog(final Dialog dialog) {
         this.dialog = dialog;
     }
     /**
-     * Return the dialog.
+     * Return the {@link Dialog}.
      * @return dialog
      */
     public final Dialog getDialog() {
