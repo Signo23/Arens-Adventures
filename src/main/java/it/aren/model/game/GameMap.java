@@ -22,7 +22,7 @@ import it.aren.model.BaseEntity;
 public class GameMap extends BaseEntity {
     private List<Block> blocks;
     private final BaseLevelEnum type;
-    
+
     /**
      * Create a map.
      * @param type the {@link BaseLevelEnum} type of map

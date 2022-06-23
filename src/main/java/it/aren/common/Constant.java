@@ -1,6 +1,3 @@
-/**
- * 
- */
 package it.aren.common;
 
 import java.awt.Dimension;
@@ -9,12 +6,18 @@ import java.awt.Dimension;
  * Contains the game constant.
  *
  */
-public class Constant {
+public final class Constant {
     /**
-     * Default dimension of the map in hitbox.
+     * Map's default width.
      */
-    public final static int DEFAULT_MAP_WIDTH = 16;
-    public final static int DEAFULT_MAP_HEIGHT = 12;
+    public static final int DEFAULT_MAP_WIDTH = 16;
+    /**
+     * Map's default height.
+     */
+    public static final int DEAFULT_MAP_HEIGHT = 12;
+    /**
+     * Map's default dimension.
+     */
     public static final int DEFAULT_MAP_DIMENSION = 16;
     /**
      * Default dimension of hitbox.
@@ -24,6 +27,9 @@ public class Constant {
      * Default FPS.
      */
     public static final long DEFAULT_FPS = 16; // 33 =~ 30 frames per second
+    /**
+     * Default screen's dimension.
+     */
     public static final Dimension DEFAULT_SCREEN_DIMENSION  = new Dimension(
             DEFAULT_MAP_WIDTH * DEFAULT_HITBOX_DIMENSION, DEAFULT_MAP_HEIGHT * DEFAULT_HITBOX_DIMENSION);
     /**
@@ -70,4 +76,7 @@ public class Constant {
      * Default ratio.
      */
     public static final int DEFAULT_RATIO = 1;
+    private Constant() {
+
+    }
 }
