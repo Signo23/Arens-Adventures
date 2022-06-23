@@ -14,13 +14,18 @@ import it.aren.common.Constant;
 import it.aren.common.Settings;
 
 /**
- * 
- *
+ * Settings saver.
+ * Implements {@link FileSave}
  */
 public class SettingsSaver implements FileSaver<Settings> {
 
     private static Gson gson;
-    
+
+    /**
+     * Method to write a file.
+     * @param objToSave for the object to save
+     * @param fileName for the name's file.
+     */
     @Override
     public void saveFile(final Settings objToSave, final String fileName) {
         try (Writer writer = new FileWriter(Constant.MAIN_FOLDER + Constant.SEP + fileName)) {
@@ -30,7 +35,12 @@ public class SettingsSaver implements FileSaver<Settings> {
             e.printStackTrace();
         }
     }
-    
+
+    /**
+    * Create a {@link SettingsSaver} for the object to save.
+    * @param objToSave for the object to save
+    * @return the saved file
+    */
     public static void saveSettings(final Settings objToSave) {
         final SettingsSaver saver = new SettingsSaver();
         saver.saveFile(objToSave, "settings.json");

@@ -10,7 +10,7 @@ import it.aren.model.BaseEntity;
  *
  */
 public interface PhysicsComponent {
-    
+
     /**
      * Update the {@link BaseEntity}.
      * @param entity {@link BaseEntity} to update

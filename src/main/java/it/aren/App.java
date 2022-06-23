@@ -16,7 +16,11 @@ public final class App {
     private App() {
         // the constructor will never be called directly.
     }
-    @SuppressWarnings("PMD.DoNotTerminateVM")
+
+    /**
+     * Method to restart the game.
+     *
+     */
     public static void restart() {
         final String javaBin = System.getProperty("java.home") + File.separator + "bin" + File.separator + "java";
         File currentJar;

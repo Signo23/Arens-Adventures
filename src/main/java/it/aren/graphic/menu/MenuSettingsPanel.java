@@ -15,6 +15,11 @@ import it.aren.file.SettingsLoader;
 import it.aren.file.SettingsSaver;
 import it.aren.input.MenuInputController;
 
+/**
+ * Model for menu settings panel.
+ * Extends {@link JPanel} 
+ *
+ */
 public class MenuSettingsPanel extends JPanel {
 
     private static final double SAVE_START_X = 12.5;
@@ -112,7 +117,7 @@ public class MenuSettingsPanel extends JPanel {
     }
 
     /**
-     * Initialize the the value of controller.
+     * Initialize the value of controller.
      */
     public final void initSettingsControll() {
         if (this.settings.isAntiAliasingOn()) {
