@@ -45,13 +45,11 @@ public enum BaseLevelEnum {
         return image;
     }
 
+    /**
+     * Returns the {@link List} of {@link PointRange} of the {@link GameMap}'s blocks.
+     * @return points a {@link List} of {@link PointRange}
+     */
     public List<PointRange> getPoints() {
         return points;
     }
-
-
-    public void setPoints(final List<PointRange> points) {
-        this.points = points;
-    }
-
 }

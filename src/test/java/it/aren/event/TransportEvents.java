@@ -1,20 +1,13 @@
 package it.aren.event;
 
 import static org.junit.jupiter.api.Assertions.assertEquals;
-
-import java.util.ArrayList;
-import java.util.List;
-
 import org.junit.jupiter.api.Test;
 
 import it.aren.common.BaseLevelEnum;
 import it.aren.common.Constant;
 import it.aren.common.Point2D;
-import it.aren.core.GameFactory;
 import it.aren.file.SettingsLoader;
-import it.aren.input.KeyboardInputController;
 import it.aren.model.GameState;
-import it.aren.model.World;
 
 public class TransportEvents {
 

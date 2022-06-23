@@ -64,14 +64,16 @@ public final class GameFactory {
         final GameObject key = new GameObject(BaseObjectEnum.KEY, new Point2D(14 * dimension, 1 * dimension), true,
                 new GameObjectGraphicComponent());
 
-        final Block box = new Block(BaseObjectEnum.BOX, new InteractWithPlayerEvent(potion, "Ecco la pozione!"),
+        final Block box = new Block(BaseObjectEnum.BOX, new InteractWithPlayerEvent(potion, "Hai trovato la pozione!"),
                 new Point2D(13 * dimension, 4 * dimension), true, new BlockGraphicComponent());
-        final Block chest = new Block(BaseObjectEnum.CHEST, new InteractWithPlayerEvent(sword, "Ecco la spada!", potion, "Prima la pozione!"),
+        final Block chest = new Block(BaseObjectEnum.CHEST, new InteractWithPlayerEvent(sword, "Hai trovato la spada!", potion, "Non riesci ad aprire la cassa.\nForse una pozione potrebbe aiutarti!"),
                 new Point2D(5 * dimension, 7 * dimension), true, new BlockGraphicComponent());
-        final Block npc = new Block(BaseObjectEnum.NPC, new InteractWithPlayerEvent(jacket, "Ecco la giacca!", sword, "Prima la spada!"),
+        final Block npc = new Block(BaseObjectEnum.NPC, new InteractWithPlayerEvent(jacket, "Ti serve una giacca per proseguire\nla tua avventura?\nEcco puoi prendere la mia!", sword, "Mi dispiace, ma non parlo con\nnessuno che non abbia una spada"),
                 new Point2D(11 * dimension, 4 * dimension), true, new BlockGraphicComponent());
-        final Block sign = new Block(BaseObjectEnum.SIGN, new InteractWithPlayerEvent(key, "Ecco la chiave!", jacket, "Prima la giacca!"),
+        final Block sign = new Block(BaseObjectEnum.SIGN, new InteractWithPlayerEvent(key, "Hai trovato la chiave!\nSei quasi pronto per la tua\navventura", jacket, "Non e' facile prendere quello che e'\nincastrato nel cartello.\nUna giacca potrebbe aiutarti"),
                 new Point2D(9 * dimension, 7 * dimension), true, new BlockGraphicComponent());
+        final Block npc2 = new Block(BaseObjectEnum.NPC_2, new InteractWithPlayerEvent(key, "Complimenti!\nSei pronto per partire\nper la tua avventura!", key, "Devi prima trovare la chiave!"),
+                new Point2D(13 * dimension, 9 * dimension), true, new BlockGraphicComponent());
 
         final List<Block> transportL1 = new ArrayList<>();
         transportL1.add(new Block(BaseObjectEnum.VOID, new TransportEvent(new Point2D(0 * dimension, 5 * dimension), 1),
@@ -122,6 +124,7 @@ public final class GameFactory {
         maps.get(2).addBlock(box);
         maps.get(3).addBlocks(transportL4);
         maps.get(3).addBlock(chest);
+        maps.get(3).addBlock(npc2);
         return maps;
     }
 

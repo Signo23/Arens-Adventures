@@ -67,7 +67,7 @@ public class GameState {
     }
 
     /**
-     * 
+     * Check if the {@link Player} is interacting and update the input.
      * @param controller
      */
     public void processInput(final InputController controller) {

@@ -9,7 +9,6 @@ import org.junit.jupiter.api.Test;
 import it.aren.common.Direction;
 import it.aren.core.GameFactory;
 import it.aren.model.World;
-import it.aren.model.game.GameMap;
 
 public class Input {
 
