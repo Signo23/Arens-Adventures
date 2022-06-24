@@ -21,8 +21,6 @@ import it.aren.common.PointRange;
  */
 public class MapsLoader implements FileLoader<Map<String, List<PointRange>>> {
 
-    private Gson gson;
-
     /**
      * {@inheritDoc}
      */
@@ -31,10 +29,9 @@ public class MapsLoader implements FileLoader<Map<String, List<PointRange>>> {
         try (Reader reader = new InputStreamReader(this.getClass()
                 .getResourceAsStream("/" + fileName))) {
             final Type type = new TypeToken<Map<String, List<PointRange>>>() { }.getType();
-            this.gson = new GsonBuilder().setPrettyPrinting().create();
+            final Gson gson = new GsonBuilder().setPrettyPrinting().create();
             final Map<String, List<PointRange>> set = gson.fromJson(reader, type);
             reader.close();
-            System.out.println(set);
             return set;
         } catch (IOException e) {
             e.printStackTrace();

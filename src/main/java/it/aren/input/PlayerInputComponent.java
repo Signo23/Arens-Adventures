@@ -4,7 +4,6 @@
 package it.aren.input;
 
 import it.aren.model.BaseEntity;
-import it.aren.model.game.GameMap;
 import it.aren.model.game.Player;
 import it.aren.common.Direction;
 /**

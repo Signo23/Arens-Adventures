@@ -62,7 +62,11 @@ public enum BaseObjectEnum {
     /**
      * Icon type.
      */
-    ICON("icon.png");
+    ICON("icon.png"),
+    /**
+     * Second NPC type.
+     */
+    NPC_2("npc-2.png");
 
     private final BufferedImage texture;
 

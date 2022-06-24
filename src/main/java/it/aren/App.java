@@ -45,6 +45,12 @@ public final class App {
 
     }
 
+    /**
+     * The main function creates a new folder called ".aren" and then creates a new game engine object
+     * and calls the setup and loop functions.
+     * 
+     * @param args The arguments passed to the program.
+     */
     public static void main(final String[] args) {
         if (new File(Constant.MAIN_FOLDER).mkdirs()) {
             System.out.println("Directory created succesfully");
