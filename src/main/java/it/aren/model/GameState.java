@@ -8,7 +8,6 @@ import it.aren.event.EventListener;
 import it.aren.event.TransportEvent;
 import it.aren.input.InputController;
 import it.aren.model.game.Block;
-import it.aren.model.game.GameMap;
 /**
  * The class that manages the state of the game.
  */
@@ -44,8 +43,8 @@ public class GameState {
      */
     public final void update() {
         this.world.updateState();
-        if (this.world.playerCollide().isPresent() && 
-            this.world.playerCollide().get().getEvent() instanceof TransportEvent) {
+        if (this.world.playerCollide().isPresent() 
+                && this.world.playerCollide().get().getEvent() instanceof TransportEvent) {
                 this.eventListener.notifyEvent(this.world.playerCollide().get().getEvent());
         }
     }
@@ -82,7 +81,7 @@ public class GameState {
             world.getPlayer().updateInput(controller);
         }
     }
-    
+
     /**
      * Create the {@link Dialog} to show.
      * @param text the message to display

@@ -16,7 +16,7 @@ public class TransportEvents {
         final int dimension = ratio * Constant.DEFAULT_HITBOX_DIMENSION;
         final GameState gs = new GameState(null);
         final BaseEvent te = new TransportEvent(new Point2D(1 * dimension, 6 * dimension), 1);
-        
+
         te.launch(gs);
         assertEquals(gs.getWorld().getCurrentMap().getType(), BaseLevelEnum.TWO);
         assertEquals(gs.getWorld().getPlayer().getPosition(), new Point2D(1 * dimension, 6 * dimension));

@@ -14,7 +14,7 @@ import it.aren.model.BaseEntity;
 public class Dialog extends BaseEntity {
 
     private String text;
-    
+
     /**
      * Create a dialog.
      * @param position the {@link Point2D} where the dialog is

@@ -36,7 +36,7 @@ public class PointRange {
     }
 
     /**
-     * Get the {@link Point2D} end of the range
+     * Get the {@link Point2D} end of the range.
      * @return end
      */
     public final Point2D getEnd() {
@@ -44,7 +44,7 @@ public class PointRange {
     }
 
     /**
-     * Set the {@link Point2D} end of the range
+     * Set the {@link Point2D} end of the range.
      * @param end
      */
     public final void setEnd(final Point2D end) {

@@ -1,6 +1,3 @@
-/**
- * 
- */
 package it.aren.input;
 /**
  * The input controller for the keyboard.

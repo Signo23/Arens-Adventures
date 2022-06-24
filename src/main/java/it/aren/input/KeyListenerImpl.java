@@ -1,6 +1,3 @@
-/**
- * 
- */
 package it.aren.input;
 
 import java.awt.event.KeyEvent;
