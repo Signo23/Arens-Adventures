@@ -59,7 +59,8 @@ public final class Constant {
     /**
      * Default Dialog position.
      */
-    public static final Point2D DEFAULT_DIALOG_POSITION = new Point2D(1 * DEFAULT_HITBOX_DIMENSION, 8 * DEFAULT_HITBOX_DIMENSION);
+    public static final Point2D DEFAULT_DIALOG_POSITION = new Point2D(1 * DEFAULT_HITBOX_DIMENSION, 
+            8 * DEFAULT_HITBOX_DIMENSION);
     /**
      * Default Text dimension.
      */
