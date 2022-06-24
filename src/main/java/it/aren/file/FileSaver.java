@@ -1,6 +1,3 @@
-/**
- * 
- */
 package it.aren.file;
 
 /**

@@ -1,6 +1,3 @@
-/**
- * 
- */
 package it.aren.file;
 
 import java.io.IOException;
@@ -15,7 +12,7 @@ import it.aren.common.Constant;
 import it.aren.common.Settings;
 
 /**
- * Settings loader.
+ * The file loader for settings.
  * Implements {@link FileLoader}
  */
 public class SettingsLoader implements FileLoader<Settings> {
@@ -24,7 +21,7 @@ public class SettingsLoader implements FileLoader<Settings> {
 
     /**
      * Method to load a file.
-     * @param fileName for the name's file.
+     * @param fileName for the file's name.
      * @return {@link Settings}
      */
     @Override

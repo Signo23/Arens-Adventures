@@ -10,7 +10,7 @@ public enum ApplicationState {
     BOOT,
     MENU,
     /**
-     * 
+     * MENU_SETTINGS state of application.
      */
     MENU_SETTINGS,
     GAME,

@@ -1,6 +1,3 @@
-/**
- * 
- */
 package it.aren.file;
 
 import java.io.FileWriter;
@@ -14,7 +11,7 @@ import it.aren.common.Constant;
 import it.aren.common.Settings;
 
 /**
- * Settings saver.
+ * The file saver for settings.
  * Implements {@link FileSave}
  */
 public class SettingsSaver implements FileSaver<Settings> {
@@ -24,7 +21,7 @@ public class SettingsSaver implements FileSaver<Settings> {
     /**
      * Method to write a file.
      * @param objToSave for the object to save
-     * @param fileName for the name's file.
+     * @param fileName for the file's name.
      */
     @Override
     public void saveFile(final Settings objToSave, final String fileName) {

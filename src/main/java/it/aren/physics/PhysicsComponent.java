@@ -1,6 +1,3 @@
-/**
- * 
- */
 package it.aren.physics;
 
 import it.aren.model.BaseEntity;

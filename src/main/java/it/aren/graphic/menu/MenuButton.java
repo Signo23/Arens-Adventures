@@ -1,6 +1,3 @@
-/**
- * 
- */
 package it.aren.graphic.menu;
 
 import java.awt.Color;
@@ -19,15 +16,19 @@ import it.aren.common.Constant;
 import it.aren.file.SettingsLoader;
 
 /**
- *
+ * Model for menu button.
+ * Extends {@link JButton}
  *
  */
 public class MenuButton extends JButton {
 
     private static final long serialVersionUID = 1L;
     private final BufferedImage texture;
+
     /**
+     * Create menu button.
      * @param texture
+     * @param text
      */
     public MenuButton(final BufferedImage texture, final String text) {
         super(text);
