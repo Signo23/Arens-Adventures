@@ -13,6 +13,7 @@ import it.aren.model.game.Block;
 import it.aren.model.game.Dialog;
 import it.aren.model.game.GameMap;
 import it.aren.model.game.Player;
+
 /**
  * The class that manage the game's world.
  */
@@ -89,6 +90,10 @@ public class World {
         }
     }
 
+    /**
+     * Method to check the player's collision.
+     * @return a {@link Option} of {@link Block}
+     */
     public final Optional<Block> playerCollide() {
         final Direction playerDir = this.player.getLastDirection();
         final Point2D playerPos = this.player.getPosition();

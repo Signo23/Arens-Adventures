@@ -1,6 +1,3 @@
-/**
- * 
- */
 package it.aren.graphic.menu;
 
 import java.awt.Graphics;
@@ -14,14 +11,21 @@ import it.aren.common.Constant;
 import it.aren.common.Settings;
 import it.aren.file.SettingsLoader;
 import it.aren.input.MenuInputController;
+import it.aren.model.BaseEntity;
 
 /**
- *
+ * Model for menu panel.
+ * Extends {@link JPanel} 
  *
  */
 public class MenuPanel extends JPanel {
 
     private static final long serialVersionUID = 1L;
+
+    /**
+     * Create menu panel.
+     * @param controller is a input controller for the menu
+     */
     public MenuPanel(final MenuInputController controller) {
         final Settings settings = SettingsLoader.loadSettings();
         final int dimension = Constant.DEFAULT_HITBOX_DIMENSION * settings.scale();

@@ -13,11 +13,21 @@ import javax.swing.JCheckBox;
 import it.aren.common.BaseActionEnum;
 import it.aren.common.Constant;
 import it.aren.file.SettingsLoader;
+import it.aren.model.BaseEntity;
 
+/**
+ * Model for menu check box.
+ * Extends {@link JCheckBox} 
+ *
+ */
 public class MenuCheckBox extends JCheckBox {
 
     private static final long serialVersionUID = 1L;
 
+    /**
+     * Create menu check box.
+     * @param text
+     */
     public MenuCheckBox(final String text) {
         super(text);
         this.setBackground(Color.YELLOW);

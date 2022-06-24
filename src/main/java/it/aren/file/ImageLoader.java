@@ -1,6 +1,3 @@
-/**
- * 
- */
 package it.aren.file;
 
 import java.awt.geom.AffineTransform;
@@ -13,15 +10,15 @@ import javax.imageio.ImageIO;
 import it.aren.common.Constant;
 
 /**
- * The file load for image.
+ * The file loader for image.
  * Implements {@link FileLoader}
  */
 public class ImageLoader implements FileLoader<BufferedImage> {
-    
-    @Override
-    /**
-     * {@inheritDoc}
+
+     /**
+     * {@inheritDoc} 
      */
+    @Override
     public BufferedImage loadFile(final String fileName) {
         try {
             return ImageIO.read(ImageLoader.class.getResourceAsStream(Constant.TEXTURES_FOLDER + fileName));
@@ -30,12 +27,17 @@ public class ImageLoader implements FileLoader<BufferedImage> {
         }
         return null;
     }
-    
+
+    /**
+     * Method to load a file.
+     * @param fileName for the file's name
+     * @param ratio
+     */
     public static BufferedImage loadImage(final String fileName, final int ratio) {
         final ImageLoader loader = new ImageLoader();
         return loader.transformImage(loader.loadFile(fileName), ratio);
     }
-    
+
     private BufferedImage transformImage(final BufferedImage texture, final int ratio) {
         final int w = texture.getWidth();
         final int h = texture.getHeight();
@@ -43,7 +45,7 @@ public class ImageLoader implements FileLoader<BufferedImage> {
         final AffineTransform at = new AffineTransform();
         at.scale(SettingsLoader.loadSettings().scale(), SettingsLoader.loadSettings().scale());
         final AffineTransformOp ato = new AffineTransformOp(at, AffineTransformOp.TYPE_NEAREST_NEIGHBOR);
-        scaled = ato.filter(texture, scaled);        
+        scaled = ato.filter(texture, scaled);
         return scaled;
     }
 }

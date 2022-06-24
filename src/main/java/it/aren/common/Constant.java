@@ -20,7 +20,7 @@ public final class Constant {
      */
     public static final int DEFAULT_MAP_DIMENSION = 16;
     /**
-     * Default dimension of hitbox.
+     * Default dimension of hit box.
      */
     public static final int DEFAULT_HITBOX_DIMENSION = 32;
     /**
@@ -56,26 +56,23 @@ public final class Constant {
      * Default velocity.
      */
     public static final int DEFAULT_VEL = 2;
-
     /**
      * Default Dialog position.
      */
     public static final Point2D DEFAULT_DIALOG_POSITION = new Point2D(1 * DEFAULT_HITBOX_DIMENSION, 8 * DEFAULT_HITBOX_DIMENSION);
-
     /**
      * Default Text dimension.
      */
     public static final int DEFAULT_TEXT_DIMENSION = 20;
-
     /**
      * Default Dialog size.
      */
     public static final int DEFAULT_DIALOG_SIZE = 14;
-
     /**
      * Default ratio.
      */
     public static final int DEFAULT_RATIO = 1;
+
     private Constant() {
 
     }

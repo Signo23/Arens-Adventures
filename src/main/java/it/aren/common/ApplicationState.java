@@ -13,7 +13,7 @@ public enum ApplicationState {
      */
     MENU,
     /**
-     * 
+     * MENU_SETTINGS state of application.
      */
     MENU_SETTINGS,
     /**

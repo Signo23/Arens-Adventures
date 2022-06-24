@@ -1,6 +1,3 @@
-/**
- * 
- */
 package it.aren.file;
 
 /**
@@ -8,7 +5,7 @@ package it.aren.file;
  * @param <T> is the parameter type for writing files
  */
 public interface FileSaver<T> {
-    
+
     /**
      * Method to write a file.
      * @param objToSave object to save

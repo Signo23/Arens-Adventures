@@ -11,11 +11,20 @@ import javax.swing.JComboBox;
 
 import it.aren.common.Constant;
 import it.aren.file.SettingsLoader;
+import it.aren.model.BaseEntity;
 
+/**
+ * Model for menu combo.
+ * Extends {@link JComboBox} of {@Link ReadableDimension}
+ *
+ */
 public class MenuCombo extends JComboBox<ReadableDimension> {
 
     private static final long serialVersionUID = 1L;
 
+    /**
+     * Create menu combo.
+     */
     public MenuCombo() {
         super();
         this.setBackground(Color.YELLOW);
