@@ -52,7 +52,8 @@ public class GameGraphicController implements GraphicController {
     @Override
     public final void drawBlock(final Block block) {
         if (block.isDrawable()) {
-            g2.drawImage(block.getType().getTexture(), (int) block.getPosition().getX(), (int) block.getPosition().getY(), this.io);
+            g2.drawImage(block.getType().getTexture(), (int) block.getPosition().getX(),
+                    (int) block.getPosition().getY(), this.io);
         }
     }
 
@@ -61,7 +62,8 @@ public class GameGraphicController implements GraphicController {
      */
     @Override
     public final void drawGameMap(final GameMap gameMap) {
-        g2.drawImage(gameMap.getType().getImage(), (int) gameMap.getPosition().getX(), (int) gameMap.getPosition().getY(), this.io);
+        g2.drawImage(gameMap.getType().getImage(), (int) gameMap.getPosition().getX(),
+                (int) gameMap.getPosition().getY(), this.io);
     }
 
     /**
@@ -69,7 +71,8 @@ public class GameGraphicController implements GraphicController {
      */
     @Override
     public final void drawObject(final GameObject obj) {
-        g2.drawImage(obj.getType().getTexture(), (int) obj.getPosition().getX(), (int) obj.getPosition().getY(), this.io);
+        g2.drawImage(obj.getType().getTexture(), (int) obj.getPosition().getX(), (int) obj.getPosition().getY(),
+                this.io);
     }
 
     /**

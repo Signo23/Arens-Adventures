@@ -33,7 +33,8 @@ public class InteractWithPlayerEvent implements BaseEvent {
      * @param requirement the {@link GameObject} required to launch the main event
      * @param alternativeDialog the message to display if the requirement is not respected
      */
-    public InteractWithPlayerEvent(final GameObject object, final String dialog, final GameObject requirement, final String alterantiveDialog) {
+    public InteractWithPlayerEvent(final GameObject object, final String dialog, final GameObject requirement,
+            final String alterantiveDialog) {
         this.object = object;
         this.dialog = dialog;
         this.requirement = requirement == null ? Optional.empty() : Optional.of(requirement);

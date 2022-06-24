@@ -20,7 +20,8 @@ public class GameObject extends BaseEntity {
      * @param drawable if GameObject is drawable
      * @param graphic GameObject's {@link GraphicComponent}
      */
-    public GameObject(final BaseObjectEnum type, final Point2D position, final boolean drawable, final GraphicComponent graphic) {
+    public GameObject(final BaseObjectEnum type, final Point2D position, final boolean drawable,
+            final GraphicComponent graphic) {
         super(position, drawable, graphic);
         this.type = type;
     }

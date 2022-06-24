@@ -22,11 +22,13 @@ public class Block extends GameObject {
      * @param drawable set if the block will be drawn
      * @param graphic for draw the block
      */
-    public Block(final BaseObjectEnum type, final BaseEvent event, final Point2D position, final boolean drawable, final GraphicComponent graphic) {
+    public Block(final BaseObjectEnum type, final BaseEvent event, final Point2D position, final boolean drawable,
+            final GraphicComponent graphic) {
         super(type, position, drawable, graphic);
         final int ratio = SettingsLoader.loadSettings().scale();
         this.event = event;
-        this.getHitBox().setSize(ratio * Constant.DEFAULT_HITBOX_DIMENSION, ratio * Constant.DEFAULT_HITBOX_DIMENSION / 2);
+        this.getHitBox().setSize(ratio * Constant.DEFAULT_HITBOX_DIMENSION,
+                ratio * Constant.DEFAULT_HITBOX_DIMENSION / 2);
     }
 
     /**

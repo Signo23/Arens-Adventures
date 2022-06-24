@@ -31,7 +31,8 @@ public class Player extends BaseEntity {
      * @param input the {@link InputComponent} for listen the input for player
      * @param phy the {@link PhysicsComponent} update position of player
      */
-    public Player(final Point2D position, final GraphicComponent graphic, final InputComponent input, final PhysicsComponent phy) {
+    public Player(final Point2D position, final GraphicComponent graphic, final InputComponent input, 
+            final PhysicsComponent phy) {
         super(position, true, graphic);
         this.lastDirection =  Direction.DOWN;
         this.backPack = new ArrayList<>();

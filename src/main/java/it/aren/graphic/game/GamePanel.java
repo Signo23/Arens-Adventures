@@ -49,9 +49,11 @@ public class GamePanel extends JPanel {
             final Graphics2D g2 = (Graphics2D) g;
 
             g2.setRenderingHint(RenderingHints.KEY_ANTIALIASING,
-                      this.settings.isAntiAliasingOn() ? RenderingHints.VALUE_ANTIALIAS_ON : RenderingHints.VALUE_ANTIALIAS_OFF);
+                      this.settings.isAntiAliasingOn() ? RenderingHints.VALUE_ANTIALIAS_ON 
+                              : RenderingHints.VALUE_ANTIALIAS_OFF);
             g2.setRenderingHint(RenderingHints.KEY_RENDERING,
-                      this.settings.isRenderQuality() ? RenderingHints.VALUE_RENDER_QUALITY : RenderingHints.VALUE_RENDER_SPEED);
+                      this.settings.isRenderQuality() ? RenderingHints.VALUE_RENDER_QUALITY 
+                              : RenderingHints.VALUE_RENDER_SPEED);
             g2.clearRect(0, 0, this.getWidth(), this.getHeight());
 
             final GraphicController controller = new GameGraphicController(g2, this);
