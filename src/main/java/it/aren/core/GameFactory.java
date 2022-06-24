@@ -1,6 +1,3 @@
-/**
- * 
- */
 package it.aren.core;
 
 import java.util.ArrayList;
@@ -72,7 +69,7 @@ public final class GameFactory {
                 new Point2D(11 * dimension, 4 * dimension), true, new BlockGraphicComponent());
         final Block sign = new Block(BaseObjectEnum.SIGN, new InteractWithPlayerEvent(key, "Hai trovato la chiave!\nSei quasi pronto per la tua\navventura", jacket, "Non e' facile prendere quello che e'\nincastrato nel cartello.\nUna giacca potrebbe aiutarti"),
                 new Point2D(9 * dimension, 7 * dimension), true, new BlockGraphicComponent());
-        final Block npc2 = new Block(BaseObjectEnum.NPC_2, new InteractWithPlayerEvent(key, "Complimenti!\nSei pronto per partire\nper la tua avventura!", key, "Devi prima trovare la chiave!"),
+        final Block npc2 = new Block(BaseObjectEnum.NPC_2, new InteractWithPlayerEvent(key, "Ottimo! Vedo che hai la chiave ed\naltri oggetti utili. Ora sei pronto per la\ntua avventura", key, "Se vuoi partire, devi portarmi\nla chiave del cancello della citta'"),
                 new Point2D(13 * dimension, 9 * dimension), true, new BlockGraphicComponent());
 
         final List<Block> transportL1 = new ArrayList<>();
@@ -129,7 +126,7 @@ public final class GameFactory {
     }
 
     /**
-     * Create a {@link Dialog}
+     * Create a {@link Dialog}.
      * @param text the message to display
      * @return a new {@link Dialog}
      */
