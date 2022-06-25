@@ -60,6 +60,8 @@ public final class GameFactory {
                 new GameObjectGraphicComponent());
         final GameObject key = new GameObject(BaseObjectEnum.KEY, new Point2D(14 * dimension, 1 * dimension), true,
                 new GameObjectGraphicComponent());
+        final GameObject voidObject = new GameObject(BaseObjectEnum.VOID, new Point2D(0, 0), false, 
+                new GameObjectGraphicComponent());
 
         final Block box = new Block(BaseObjectEnum.BOX, new InteractWithPlayerEvent(potion, "Hai trovato la pozione!"),
                 new Point2D(13 * dimension, 4 * dimension), true, new BlockGraphicComponent());
@@ -74,7 +76,7 @@ public final class GameFactory {
                 "Hai trovato la chiave!\nSei quasi pronto per la tua\navventura", jacket, 
                 "Non e' facile prendere quello che e'\nincastrato nel cartello.\nUna giacca potrebbe aiutarti"),
                 new Point2D(9 * dimension, 7 * dimension), true, new BlockGraphicComponent());
-        final Block npc2 = new Block(BaseObjectEnum.NPC_2, new InteractWithPlayerEvent(key, 
+        final Block npc2 = new Block(BaseObjectEnum.NPC_2, new InteractWithPlayerEvent(voidObject, 
                 "Ottimo! Vedo che hai la chiave ed\naltri oggetti utili. Ora sei pronto per la\ntua avventura", key, 
                 "Se vuoi partire, devi portarmi\nla chiave del cancello della citta'"),
                 new Point2D(13 * dimension, 9 * dimension), true, new BlockGraphicComponent());
