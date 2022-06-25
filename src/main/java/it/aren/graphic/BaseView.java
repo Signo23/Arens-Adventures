@@ -1,6 +1,3 @@
-/**
- * 
- */
 package it.aren.graphic;
 
 import it.aren.common.ApplicationState;

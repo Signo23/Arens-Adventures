@@ -82,7 +82,8 @@ public class MenuSettingsPanel extends JPanel {
         });
 
         save.addActionListener(a -> {
-            final int userChoice = JOptionPane.showConfirmDialog(this, "Salvare le nuove impostazioni?\n L'applicazione verrà riavviata");
+            final int userChoice = JOptionPane.showConfirmDialog(this, "Salvare le nuove impostazioni?\n"
+                                   + " L'applicazione verrà riavviata");
             switch (userChoice) {
             case 0:
                 final Settings settingsNew = new Settings();

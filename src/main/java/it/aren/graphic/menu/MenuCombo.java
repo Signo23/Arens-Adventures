@@ -30,9 +30,11 @@ public class MenuCombo extends JComboBox<ReadableDimension> {
         this.setBackground(Color.YELLOW);
         this.setBorder(BorderFactory.createLineBorder(Color.BLACK, 2));
         try {
-            Font customFont = Font.createFont(Font.TRUETYPE_FONT, MenuButton.class.getResourceAsStream(Constant.FONT_FOLDER + "Minecraft.ttf"));
+            Font customFont = Font.createFont(Font.TRUETYPE_FONT, MenuButton.class
+                              .getResourceAsStream(Constant.FONT_FOLDER + "Minecraft.ttf"));
             final GraphicsEnvironment ge = GraphicsEnvironment.getLocalGraphicsEnvironment();
-            customFont = customFont.deriveFont(Font.PLAIN, Constant.DEFAULT_TEXT_DIMENSION * SettingsLoader.loadSettings().scale());
+            customFont = customFont.deriveFont(Font.PLAIN, Constant.DEFAULT_TEXT_DIMENSION * SettingsLoader
+                         .loadSettings().scale());
             ge.registerFont(customFont);
             this.setFont(customFont);
         } catch (IOException | FontFormatException e) {

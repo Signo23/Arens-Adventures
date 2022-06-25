@@ -1,6 +1,3 @@
-/**
- * 
- */
 package it.aren.core;
 
 import java.util.ArrayList;
@@ -66,13 +63,20 @@ public final class GameFactory {
 
         final Block box = new Block(BaseObjectEnum.BOX, new InteractWithPlayerEvent(potion, "Hai trovato la pozione!"),
                 new Point2D(13 * dimension, 4 * dimension), true, new BlockGraphicComponent());
-        final Block chest = new Block(BaseObjectEnum.CHEST, new InteractWithPlayerEvent(sword, "Hai trovato la spada!", potion, "Non riesci ad aprire la cassa.\nForse una pozione potrebbe aiutarti!"),
+        final Block chest = new Block(BaseObjectEnum.CHEST, new InteractWithPlayerEvent(sword, "Hai trovato la spada!", 
+                potion, "Non riesci ad aprire la cassa.\nForse una pozione potrebbe aiutarti!"),
                 new Point2D(5 * dimension, 7 * dimension), true, new BlockGraphicComponent());
-        final Block npc = new Block(BaseObjectEnum.NPC, new InteractWithPlayerEvent(jacket, "Ti serve una giacca per proseguire\nla tua avventura?\nEcco puoi prendere la mia!", sword, "Mi dispiace, ma non parlo con\nnessuno che non abbia una spada"),
+        final Block npc = new Block(BaseObjectEnum.NPC, new InteractWithPlayerEvent(jacket, 
+                "Ti serve una giacca per proseguire\nla tua avventura?\nEcco puoi prendere la mia!", sword, 
+                "Mi dispiace, ma non parlo con\nnessuno che non abbia una spada"),
                 new Point2D(11 * dimension, 4 * dimension), true, new BlockGraphicComponent());
-        final Block sign = new Block(BaseObjectEnum.SIGN, new InteractWithPlayerEvent(key, "Hai trovato la chiave!\nSei quasi pronto per la tua\navventura", jacket, "Non e' facile prendere quello che e'\nincastrato nel cartello.\nUna giacca potrebbe aiutarti"),
+        final Block sign = new Block(BaseObjectEnum.SIGN, new InteractWithPlayerEvent(key, 
+                "Hai trovato la chiave!\nSei quasi pronto per la tua\navventura", jacket, 
+                "Non e' facile prendere quello che e'\nincastrato nel cartello.\nUna giacca potrebbe aiutarti"),
                 new Point2D(9 * dimension, 7 * dimension), true, new BlockGraphicComponent());
-        final Block npc2 = new Block(BaseObjectEnum.NPC_2, new InteractWithPlayerEvent(key, "Complimenti!\nSei pronto per partire\nper la tua avventura!", key, "Devi prima trovare la chiave!"),
+        final Block npc2 = new Block(BaseObjectEnum.NPC_2, new InteractWithPlayerEvent(key, 
+                "Ottimo! Vedo che hai la chiave ed\naltri oggetti utili. Ora sei pronto per la\ntua avventura", key, 
+                "Se vuoi partire, devi portarmi\nla chiave del cancello della citta'"),
                 new Point2D(13 * dimension, 9 * dimension), true, new BlockGraphicComponent());
 
         final List<Block> transportL1 = new ArrayList<>();
@@ -129,13 +133,13 @@ public final class GameFactory {
     }
 
     /**
-     * Create a {@link Dialog}
+     * Create a {@link Dialog}.
      * @param text the message to display
      * @return a new {@link Dialog}
      */
     public static Dialog createDialog(final String text) {
         final int ratio = SettingsLoader.loadSettings().scale();
-        return new Dialog(new Point2D(Constant.DEFAULT_DIALOG_POSITION.getX() * ratio, Constant.DEFAULT_DIALOG_POSITION.getY() * ratio), 
-                          true, new DialogGraphicComponent(), text);
+        return new Dialog(new Point2D(Constant.DEFAULT_DIALOG_POSITION.getX() * ratio, 
+                Constant.DEFAULT_DIALOG_POSITION.getY() * ratio), true, new DialogGraphicComponent(), text);
     }
 }

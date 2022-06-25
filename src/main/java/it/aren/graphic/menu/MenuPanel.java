@@ -11,7 +11,6 @@ import it.aren.common.Constant;
 import it.aren.common.Settings;
 import it.aren.file.SettingsLoader;
 import it.aren.input.MenuInputController;
-import it.aren.model.BaseEntity;
 
 /**
  * Model for menu panel.
