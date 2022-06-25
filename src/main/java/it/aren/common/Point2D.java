@@ -1,6 +1,3 @@
-/**
- * 
- */
 package it.aren.common;
 
 import java.util.Objects;
@@ -13,14 +10,14 @@ public class Point2D {
     private float y;
 
     /**
-     * Create a point on the origin
+     * Create a point on the origin.
      */
     public Point2D() {
-        this(0,0);
+        this(0, 0);
     }
-    
+
     /**
-     * Create a point on x, y coordinates
+     * Create a point on x, y coordinates.
      * @param x coordinate
      * @param y coordinate
      */
@@ -61,19 +58,18 @@ public class Point2D {
         this.y = y;
     }
 
-
-    @Override
     /**
      * {@inheritDoc}
      */
+    @Override
     public int hashCode() {
         return Objects.hash(this.x, this.y);
     }
 
-    @Override
     /**
      * {@inheritDoc}
      */
+    @Override
     public boolean equals(final Object obj) {
         if (this == obj) {
             return true;
@@ -89,10 +85,10 @@ public class Point2D {
                 && Float.floatToIntBits(this.y) == Float.floatToIntBits(other.y);
     }
 
-    @Override
     /**
      * {@inheritDoc}
      */
+    @Override
     public final String toString() {
         return "Point2D [x=" + this.x + ", y=" + this.y + "]";
     }

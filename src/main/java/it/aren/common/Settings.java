@@ -8,9 +8,9 @@ public class Settings {
     private boolean antiAliasingOn;
     private boolean renderQuality;
     private Dimension screenSize;
-    
+
     /**
-     * Load default settings from {@link Constant}
+     * Load default settings from {@link Constant}.
      */
     public Settings() {
         this.antiAliasingOn = false;
@@ -26,7 +26,7 @@ public class Settings {
         final int hitbox = this.screenSize.height / Constant.DEAFULT_MAP_HEIGHT;
         return new Dimension(hitbox, hitbox);
     }
-    
+
     /**
      * Calculate the scale for correct sprite load.
      * @return the correct scale for sprite
@@ -34,9 +34,9 @@ public class Settings {
     public int scale() {
         return this.hitboxDimension().height / Constant.DEFAULT_HITBOX_DIMENSION;
     }
-    
+
     /**
-     * Get the status for antialiasing's setting
+     * Get the status for antialiasing's setting.
      * @return the antialiasingOn
      */
     public boolean isAntiAliasingOn() {
@@ -52,7 +52,7 @@ public class Settings {
     }
 
     /**
-     * Get the screen {@link Dimension}
+     * Get the screen {@link Dimension}.
      * @return the screenSize
      */
     public Dimension getScreenSize() {
@@ -60,7 +60,7 @@ public class Settings {
     }
 
     /**
-     * Set the screen {@link Dimension}
+     * Set the screen {@link Dimension}.
      * @param screenSize the screenSize to set
      */
     public void setScreenSize(final Dimension screenSize) {
@@ -82,5 +82,5 @@ public class Settings {
     public void setRenderQuality(final boolean renderQuality) {
         this.renderQuality = renderQuality;
     }
-    
+
 }
