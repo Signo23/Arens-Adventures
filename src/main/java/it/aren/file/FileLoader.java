@@ -1,6 +1,3 @@
-/**
- * 
- */
 package it.aren.file;
 
 /**
@@ -8,7 +5,7 @@ package it.aren.file;
  * @param <T> is the parameter type for loading files
  */
 public interface FileLoader<T> {
-    
+
     /**
      * Method to load a file.
      * @param fileName file’s name to load

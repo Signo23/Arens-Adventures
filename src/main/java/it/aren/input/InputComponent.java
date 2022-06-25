@@ -1,6 +1,3 @@
-/**
- * 
- */
 package it.aren.input;
 
 import it.aren.model.BaseEntity;
@@ -9,9 +6,9 @@ import it.aren.model.BaseEntity;
  */
 public interface InputComponent {
     /**
-     * Update the entity based on the controller.
-     * @param entity to update
-     * @param controller to use for update entity
+     * Update the {@link BaseEntity} based on the {@link InputController}.
+     * @param entity the {@link BaseEntity} to update
+     * @param controller the {@link InputController} to use for update entity
      */
     void update(BaseEntity entity, InputController controller);
 }

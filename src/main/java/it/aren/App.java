@@ -16,7 +16,11 @@ public final class App {
     private App() {
         // the constructor will never be called directly.
     }
-    @SuppressWarnings("PMD.DoNotTerminateVM")
+
+    /**
+     * Method to restart the game.
+     *
+     */
     public static void restart() {
         final String javaBin = System.getProperty("java.home") + File.separator + "bin" + File.separator + "java";
         File currentJar;
@@ -41,6 +45,12 @@ public final class App {
 
     }
 
+    /**
+     * The main function creates a new folder called ".aren" and then creates a new game engine object
+     * and calls the setup and loop functions.
+     * 
+     * @param args The arguments passed to the program.
+     */
     public static void main(final String[] args) {
         if (new File(Constant.MAIN_FOLDER).mkdirs()) {
             System.out.println("Directory created succesfully");

@@ -1,29 +1,18 @@
-/**
- * 
- */
 package it.aren.graphic;
 
 import java.awt.image.BufferedImage;
 
 import it.aren.common.Point2D;
-import it.aren.model.Block;
-import it.aren.model.Dialog;
-import it.aren.model.GameMap;
-import it.aren.model.GameObject;
-import it.aren.model.Player;
+import it.aren.model.game.Block;
+import it.aren.model.game.Dialog;
+import it.aren.model.game.GameMap;
+import it.aren.model.game.GameObject;
 
 /**
  * Interface for drawing entities.
  *
  */
 public interface GraphicController {
-
-    /**
-     * @deprecated
-     * Draw {@link Player}
-     * @param player the {@link Player} to draw
-     */
-    void drawPlayer(Player player);
 
     /**
      * Draw {@link Block}.
@@ -37,6 +26,11 @@ public interface GraphicController {
      */
     void drawGameMap(GameMap gameMap);
 
+    /**
+     * Draw {@link it.aren.model.game.Player}.
+     * @param playerPosition the player's position where to draw 
+     * @param sprite the {@link BufferedImage} to draw
+     */
     void drawPlayer(Point2D playerPosition, BufferedImage sprite);
 
     /**
@@ -45,5 +39,9 @@ public interface GraphicController {
      */
     void drawObject(GameObject obj);
 
+    /**
+     * Draw {@link Dialog}.
+     * @param dialog the {@link Dialog} to draw
+     */
     void drawDialog(Dialog dialog);
 }

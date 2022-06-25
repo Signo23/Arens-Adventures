@@ -1,6 +1,3 @@
-/**
- * 
- */
 package it.aren.common;
 
 import java.awt.Dimension;
@@ -9,21 +6,30 @@ import java.awt.Dimension;
  * Contains the game constant.
  *
  */
-public class Constant {
+public final class Constant {
     /**
-     * Default dimension of the map in hitbox.
+     * Map's default width.
      */
-    public final static int DEFAULT_MAP_WIDTH = 16;
-    public final static int DEAFULT_MAP_HEIGHT = 12;
+    public static final int DEFAULT_MAP_WIDTH = 16;
+    /**
+     * Map's default height.
+     */
+    public static final int DEAFULT_MAP_HEIGHT = 12;
+    /**
+     * Map's default dimension.
+     */
     public static final int DEFAULT_MAP_DIMENSION = 16;
     /**
-     * Default dimension of hitbox.
+     * Default dimension of hit box.
      */
     public static final int DEFAULT_HITBOX_DIMENSION = 32;
     /**
      * Default FPS.
      */
     public static final long DEFAULT_FPS = 16; // 33 =~ 30 frames per second
+    /**
+     * Default screen's dimension.
+     */
     public static final Dimension DEFAULT_SCREEN_DIMENSION  = new Dimension(
             DEFAULT_MAP_WIDTH * DEFAULT_HITBOX_DIMENSION, DEAFULT_MAP_HEIGHT * DEFAULT_HITBOX_DIMENSION);
     /**
@@ -47,47 +53,28 @@ public class Constant {
      */
     public static final String FONT_FOLDER = "/assets/fonts/";
     /**
-     * @deprecated use {@link Direction}
-     * The {@link Point2D} for left
-     */
-    public static final Point2D LEFT = new Point2D(-1, 0);
-    /**
-     * @deprecated use {@link Direction}
-     * The {@link Point2D} for right
-     */
-    public static final Point2D RIGHT = new Point2D(1, 0);
-    /**
-     * @deprecated use {@link Direction}
-     * The {@link Point2D} for up
-     */
-    public static final Point2D UP = new Point2D(0, -1);
-    /**
-     * @deprecated use {@link Direction}
-     * The {@link Point2D} for down
-     */
-    public static final Point2D DOWN = new Point2D(0, 1);
-    /**
      * Default velocity.
      */
     public static final int DEFAULT_VEL = 2;
-
     /**
      * Default Dialog position.
      */
-    public static final Point2D DEFAULT_DIALOG_POSITION = new Point2D(1 * DEFAULT_HITBOX_DIMENSION, 8 * DEFAULT_HITBOX_DIMENSION);
-
+    public static final Point2D DEFAULT_DIALOG_POSITION = new Point2D(1 * DEFAULT_HITBOX_DIMENSION, 
+            8 * DEFAULT_HITBOX_DIMENSION);
     /**
      * Default Text dimension.
      */
     public static final int DEFAULT_TEXT_DIMENSION = 20;
-
     /**
      * Default Dialog size.
      */
     public static final int DEFAULT_DIALOG_SIZE = 14;
-
     /**
      * Default ratio.
      */
     public static final int DEFAULT_RATIO = 1;
+
+    private Constant() {
+
+    }
 }
