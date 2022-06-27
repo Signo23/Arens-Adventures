@@ -32,9 +32,10 @@ public class SettingsLoader implements FileLoader<Settings> {
             reader.close();
             return set;
         } catch (IOException e) {
-            e.printStackTrace();
+            final Settings set = new Settings();
+            SettingsSaver.saveSettings(set);
+            return set;
         }
-        return new Settings();
     }
 
     /**
