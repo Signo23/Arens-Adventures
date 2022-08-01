@@ -12,10 +12,8 @@ import java.io.IOException;
 import it.aren.common.Point2D;
 import it.aren.file.SettingsLoader;
 import it.aren.graphic.GraphicController;
-import it.aren.model.game.Block;
-import it.aren.model.game.Dialog;
-import it.aren.model.game.GameMap;
-import it.aren.model.game.GameObject;
+import it.aren.model.BaseEntity;
+import it.aren.model.game.*;
 import it.aren.common.Constant;
 
 /**
@@ -25,8 +23,9 @@ import it.aren.common.Constant;
 public class GameGraphicController implements GraphicController {
 
     private static final int FONT_DEFAULT_DIMENSION = 24;
-    private final Graphics2D g2;
-    private final ImageObserver io;
+    private Graphics2D g2;
+    private ImageObserver io;
+    private final PlayerAnimation animation;
 
      /**
      * Create a SwingGraphic.
@@ -36,50 +35,46 @@ public class GameGraphicController implements GraphicController {
     public GameGraphicController(final Graphics2D g2, final ImageObserver io) {
         this.g2 = g2;
         this.io = io;
+        this.animation = new PlayerAnimation();
     }
 
-    /**
-     * {@inheritDoc}
-     */
-    @Override
-    public final void drawPlayer(final Point2D playerPosition, final BufferedImage sprite) {
-        g2.drawImage(sprite, (int) playerPosition.getX(), (int) playerPosition.getY(), this.io);
+    public void setG2AndIO(final Graphics2D g2, final ImageObserver io){
+        this.g2 = g2;
+        this.io = io;
     }
 
-    /**
-     * {@inheritDoc}
-     */
     @Override
-    public final void drawBlock(final Block block) {
-        if (block.isDrawable()) {
-            g2.drawImage(block.getType().getTexture(), (int) block.getPosition().getX(),
-                    (int) block.getPosition().getY(), this.io);
+    public void draw(BaseEntity entity) {
+        BufferedImage sprite = null;
+        if(entity instanceof Block) {
+            sprite = ((Block) entity).getType().getTexture();
         }
+        if(entity instanceof GameMap) {
+            sprite = ((GameMap) entity).getType().getImage();
+        }
+        if(entity instanceof GameObject) {
+            sprite = ((GameObject) entity).getType().getTexture();
+        }
+        if(entity instanceof Dialog) {
+            this.drawString((Dialog)entity);
+        }
+        if(entity instanceof Player) {
+            final Player tmpPlayer = (Player) entity;
+            sprite = tmpPlayer.isIdle() ? this.animation.getNextIdle(tmpPlayer.getLastDirection())
+                    : this.animation.getNextWalk(tmpPlayer.getLastDirection());
+            tmpPlayer.getBackPack().forEach(go -> go.updateGraphic(this));
+        }
+        if(sprite != null){
+            this.drawInPosition(entity.getPosition(), sprite);
+        }
+
     }
 
-    /**
-     * {@inheritDoc}
-     */
-    @Override
-    public final void drawGameMap(final GameMap gameMap) {
-        g2.drawImage(gameMap.getType().getImage(), (int) gameMap.getPosition().getX(),
-                (int) gameMap.getPosition().getY(), this.io);
+    private void drawInPosition(final Point2D position, final BufferedImage sprite) {
+        g2.drawImage(sprite, (int) position.getX(), (int) position.getY(), this.io);
     }
 
-    /**
-     * {@inheritDoc}
-     */
-    @Override
-    public final void drawObject(final GameObject obj) {
-        g2.drawImage(obj.getType().getTexture(), (int) obj.getPosition().getX(), (int) obj.getPosition().getY(),
-                this.io);
-    }
-
-    /**
-     * {@inheritDoc}
-     */
-    @Override
-    public final void drawDialog(final Dialog dialog) {
+    private void drawString(final Dialog dialog) {
         final int ratio = SettingsLoader.loadSettings().scale();
         this.g2.setColor(Color.white);
         this.g2.fillRect((int) dialog.getPosition().getX(), (int) dialog.getPosition().getY(), 

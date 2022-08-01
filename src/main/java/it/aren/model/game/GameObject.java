@@ -2,8 +2,8 @@ package it.aren.model.game;
 
 import it.aren.common.BaseObjectEnum;
 import it.aren.common.Point2D;
-import it.aren.graphic.GraphicComponent;
 import it.aren.model.BaseEntity;
+import it.aren.graphic.Component;
 
 /**
  * Model for game object.
@@ -21,7 +21,7 @@ public class GameObject extends BaseEntity {
      * @param graphic GameObject's {@link GraphicComponent}
      */
     public GameObject(final BaseObjectEnum type, final Point2D position, final boolean drawable,
-            final GraphicComponent graphic) {
+            final Component graphic) {
         super(position, drawable, graphic);
         this.type = type;
     }

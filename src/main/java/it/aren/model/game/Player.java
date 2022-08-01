@@ -5,10 +5,10 @@ import java.util.List;
 
 import it.aren.common.Direction;
 import it.aren.common.Point2D;
-import it.aren.graphic.GraphicComponent;
 import it.aren.input.InputComponent;
 import it.aren.input.InputController;
 import it.aren.model.BaseEntity;
+import it.aren.graphic.Component;
 import it.aren.physics.PhysicsComponent;
 
 /**
@@ -31,8 +31,8 @@ public class Player extends BaseEntity {
      * @param input the {@link InputComponent} for listen the input for player
      * @param phy the {@link PhysicsComponent} update position of player
      */
-    public Player(final Point2D position, final GraphicComponent graphic, final InputComponent input, 
-            final PhysicsComponent phy) {
+    public Player(final Point2D position, final Component graphic, final InputComponent input,
+                  final PhysicsComponent phy) {
         super(position, true, graphic);
         this.lastDirection =  Direction.DOWN;
         this.backPack = new ArrayList<>();

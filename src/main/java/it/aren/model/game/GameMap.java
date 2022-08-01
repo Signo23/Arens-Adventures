@@ -11,8 +11,7 @@ import it.aren.common.PointRange;
 import it.aren.event.NullEvent;
 import it.aren.file.SettingsLoader;
 import it.aren.graphic.GraphicController;
-import it.aren.graphic.component.BlockGraphicComponent;
-import it.aren.graphic.component.GameMapGraphicComponent;
+import it.aren.graphic.component.GraphicComponent;
 import it.aren.model.BaseEntity;
 
 /**
@@ -28,7 +27,7 @@ public class GameMap extends BaseEntity {
      * @param type the {@link BaseLevelEnum} type of map
      */
     public GameMap(final BaseLevelEnum type) {
-        super(new Point2D(), true, new GameMapGraphicComponent());
+        super(new Point2D(), true, new GraphicComponent());
         this.blocks = new ArrayList<>();
         this.type = type;
         type.getPoints().forEach(p -> this.addBlocks(createLineBlock(p)));
@@ -58,7 +57,7 @@ public class GameMap extends BaseEntity {
      */
     private static Block createSimpleBlock(final Point2D position) {
         return new Block(BaseObjectEnum.VOID, new NullEvent(), position,
-                true, new BlockGraphicComponent());
+                true, new GraphicComponent());
     }
 
     /**

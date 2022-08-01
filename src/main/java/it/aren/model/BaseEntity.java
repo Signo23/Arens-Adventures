@@ -1,11 +1,13 @@
 package it.aren.model;
 
 import java.awt.Rectangle;
+import java.util.HashMap;
+import java.util.Map;
 
 import it.aren.common.Constant;
 import it.aren.common.Point2D;
 import it.aren.file.SettingsLoader;
-import it.aren.graphic.GraphicComponent;
+import it.aren.graphic.Component;
 import it.aren.graphic.GraphicController;
 /**
  * The main model of the game.
@@ -15,7 +17,7 @@ public class BaseEntity {
     private Point2D position;
     private boolean drawable;
     private Rectangle hitBox;
-    private GraphicComponent graphic;
+    private Map<String, Component> components;
 
     /**
      * Create an Entity.
@@ -23,11 +25,12 @@ public class BaseEntity {
      * @param drawable set if the block will be drawn
      * @param graphic for render the block
      */
-    protected BaseEntity(final Point2D position, final boolean drawable, final GraphicComponent graphic) {
+    protected BaseEntity(final Point2D position, final boolean drawable, final Component graphic) {
         final int size = SettingsLoader.loadSettings().scale();
         this.position = position;
         this.drawable = drawable;
-        this.graphic = graphic;
+        this.components = new HashMap<>();
+        this.components.put("graphic", graphic);
         this.hitBox = new Rectangle(size * Constant.DEFAULT_HITBOX_DIMENSION, size * Constant.DEFAULT_HITBOX_DIMENSION);
         this.hitBox.setLocation((int) this.position.getX(), (int) this.position.getY());
     }
@@ -62,18 +65,18 @@ public class BaseEntity {
         this.drawable = drawable;
     }
     /**
-     * Get Entity's {@link GraphicComponent}.
+     * Get Entity's {@link Component}.
      * @return the graphic
      */
-    public GraphicComponent getGraphic() {
-        return this.graphic;
+    public Map<String, Component> getComponents() {
+        return this.components;
     }
     /**
-     * Set Entity's {@link GraphicComponent}.
-     * @param graphic the graphic to set
+     * Set Entity's {@link Component}.
+     * @param components the graphic to set
      */
-    public void setGraphic(final GraphicComponent graphic) {
-        this.graphic = graphic;
+    public void setComponents(final Map<String, Component> components) {
+        this.components = components;
     }
     /**
      * Get Entity's {@link Rectangle} for hitBox.
@@ -90,12 +93,12 @@ public class BaseEntity {
         this.hitBox = hitBox;
     }
     /**
-     * Update the Entity's {@link GraphicComponent}.
+     * Update the Entity's {@link Component}.
      * @param g {@link GraphicController} that update the entity
      */
     public void updateGraphic(final GraphicController g) {
         if (this.isDrawable()) {
-            this.graphic.update(this, g);
+            this.components.get("graphic").update(this, g);
         }
     }
 

@@ -12,7 +12,7 @@ import it.aren.event.EventListener;
 import it.aren.event.InteractWithPlayerEvent;
 import it.aren.graphic.AppView;
 import it.aren.graphic.BaseView;
-import it.aren.graphic.component.GameObjectGraphicComponent;
+import it.aren.graphic.component.GraphicComponent;
 import it.aren.input.InputController;
 import it.aren.input.KeyboardInputController;
 import it.aren.input.MenuInputController;
@@ -49,13 +49,13 @@ public class GameEngine implements EventListener {
         this.menuController = new MenuInputController();
         this.view = new AppView(this.state.getWorld(), this.controller, this.menuController);
         this.notifyEvent(new InteractWithPlayerEvent(new GameObject(
-                BaseObjectEnum.VOID, new Point2D(), false, new GameObjectGraphicComponent()),
+                BaseObjectEnum.VOID, new Point2D(), false, new GraphicComponent()),
                 "Trova tutti gli oggetti prima di\npartire per la tua avventura"));
     }
 
     /**
      * The main loop of the game.
-     * Call {@link setup()} before this.
+     * Call setup() before this.
      */
     public void loop() {
         while (true) {
@@ -122,7 +122,7 @@ public class GameEngine implements EventListener {
     }
 
     /**
-     * Update the {@link Dialog} state.
+     * Update the Dialog state.
      */
     private void updateHUD() {
         if (this.controller.isOnClose()) {

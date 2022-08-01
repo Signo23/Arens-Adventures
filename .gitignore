@@ -33,3 +33,4 @@ build
 # Ignore Eclipse preferences
 .settings/*
 .classpath
+.idea/*

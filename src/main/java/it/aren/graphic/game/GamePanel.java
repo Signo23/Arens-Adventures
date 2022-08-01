@@ -24,6 +24,7 @@ public class GamePanel extends JPanel {
     private static final long serialVersionUID = 1L;
     private final World world;
     private final Settings settings;
+    private final GraphicController controller;
 
       /**
      * Initialize the panel.
@@ -37,7 +38,8 @@ public class GamePanel extends JPanel {
         this.addKeyListener(new KeyListenerImpl((KeyboardInputController) inputController));
         this.setFocusable(true);
         this.setFocusTraversalKeysEnabled(false);
-        this.requestFocusInWindow(); 
+        this.requestFocusInWindow();
+        controller = new GameGraphicController((Graphics2D) this.getGraphics(), this);
 
     }
 
@@ -56,7 +58,7 @@ public class GamePanel extends JPanel {
                               : RenderingHints.VALUE_RENDER_SPEED);
             g2.clearRect(0, 0, this.getWidth(), this.getHeight());
 
-            final GraphicController controller = new GameGraphicController(g2, this);
+        ((GameGraphicController)controller).setG2AndIO(g2, this);
             this.world.getCurrentMap().updateGraphic(controller);
             this.world.getPlayer().updateGraphic(controller);
             if (this.world.getDialog() != null) {
