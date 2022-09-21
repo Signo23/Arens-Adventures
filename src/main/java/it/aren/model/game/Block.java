@@ -27,8 +27,9 @@ public class Block extends GameObject {
         super(type, position, drawable, graphic);
         final int ratio = SettingsLoader.loadSettings().scale();
         this.event = event;
-        this.getHitBox().setSize(ratio * Constant.DEFAULT_HITBOX_DIMENSION,
-                ratio * Constant.DEFAULT_HITBOX_DIMENSION / 2);
+        float dialogBoxDimension = ratio * Constant.DEFAULT_HITBOX_DIMENSION;
+        this.getHitBox().dimension().setX(dialogBoxDimension);
+        this.getHitBox().dimension().setY(dialogBoxDimension / 2);
     }
 
     /**

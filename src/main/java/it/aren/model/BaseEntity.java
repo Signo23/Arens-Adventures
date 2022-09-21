@@ -1,6 +1,5 @@
 package it.aren.model;
 
-import java.awt.Rectangle;
 import java.util.HashMap;
 import java.util.Map;
 
@@ -9,14 +8,15 @@ import it.aren.common.Point2D;
 import it.aren.file.SettingsLoader;
 import it.aren.graphic.Component;
 import it.aren.graphic.GraphicController;
+import it.aren.model.game.GameHitBox;
+
 /**
  * The main model of the game.
  *
  */
 public class BaseEntity {
-    private Point2D position;
     private boolean drawable;
-    private Rectangle hitBox;
+    private HitBox hitBox;
     private Map<String, Component> components;
 
     /**
@@ -27,12 +27,11 @@ public class BaseEntity {
      */
     protected BaseEntity(final Point2D position, final boolean drawable, final Component graphic) {
         final int size = SettingsLoader.loadSettings().scale();
-        this.position = position;
         this.drawable = drawable;
         this.components = new HashMap<>();
         this.components.put("graphic", graphic);
-        this.hitBox = new Rectangle(size * Constant.DEFAULT_HITBOX_DIMENSION, size * Constant.DEFAULT_HITBOX_DIMENSION);
-        this.hitBox.setLocation((int) this.position.getX(), (int) this.position.getY());
+        this.hitBox = new GameHitBox(position, new Point2D(size * Constant.DEFAULT_HITBOX_DIMENSION,
+                size * Constant.DEFAULT_HITBOX_DIMENSION));
     }
 
     /**
@@ -40,15 +39,15 @@ public class BaseEntity {
      * @return the position
      */
     public Point2D getPosition() {
-        return this.position;
+        return this.hitBox.position();
     }
     /**
      * Set Entity's position.
      * @param position the position to set
      */
     public void setPosition(final Point2D position) {
-        this.position = position;
-        this.hitBox.setLocation((int) position.getX(), (int) position.getY());
+        this.hitBox.position().setX(position.getX());
+        this.hitBox.position().setY(position.getY());
     }
     /**
      * Get if Entity is drawable.
@@ -79,17 +78,17 @@ public class BaseEntity {
         this.components = components;
     }
     /**
-     * Get Entity's {@link Rectangle} for hitBox.
+     * Get Entity's {@link HitBox} for hitBox.
      * @return the hitBox
      */
-    public Rectangle getHitBox() {
+    public HitBox getHitBox() {
         return hitBox;
     }
     /**
-     * Set Entity's {@link Rectangle} for hitBox.
+     * Set Entity's {@link HitBox} for hitBox.
      * @param hitBox the Rectangle to set
      */
-    public void setHitBox(final Rectangle hitBox) {
+    public void setHitBox(final HitBox hitBox) {
         this.hitBox = hitBox;
     }
     /**

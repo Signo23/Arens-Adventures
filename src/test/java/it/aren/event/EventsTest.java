@@ -5,6 +5,7 @@ import static org.junit.jupiter.api.Assertions.assertEquals;
 import java.util.ArrayList;
 import java.util.List;
 
+import it.aren.graphic.component.GraphicComponent;
 import org.junit.jupiter.api.Test;
 
 import it.aren.common.BaseObjectEnum;
@@ -17,8 +18,8 @@ class EventsTest {
 
     @Test void testGiveToPlayerEvent() {
         final GameState gameState = new GameState(eventListener -> { });
-        final GameObject go = new GameObject(BaseObjectEnum.BOX, new Point2D(), false, new GameObjectGraphicComponent());
-        final GameObject go2 = new GameObject(BaseObjectEnum.BOX, new Point2D(), false, new GameObjectGraphicComponent());
+        final GameObject go = new GameObject(BaseObjectEnum.BOX, new Point2D(), false, new GraphicComponent());
+        final GameObject go2 = new GameObject(BaseObjectEnum.BOX, new Point2D(), false, new GraphicComponent());
         final BaseEvent ev = new InteractWithPlayerEvent(go, "Prova");
         final BaseEvent evRequirement = new InteractWithPlayerEvent(go2, "Prova requisiti", go, "Requisiti non rispettati");
         final Block blk = new Block(BaseObjectEnum.VOID, evRequirement, new Point2D(), false, null);

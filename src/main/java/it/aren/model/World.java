@@ -97,38 +97,38 @@ public class World {
     public final Optional<Block> playerCollide() {
         final Direction playerDir = this.player.getLastDirection();
         final Point2D playerPos = this.player.getPosition();
-        final Rectangle playerHitBox = (Rectangle) this.player.getHitBox().clone();
+        final HitBox playerHitBox = this.player.getHitBox().clone();
         List<Block> control = new ArrayList<>();
         switch (playerDir) {
         case UP: 
             control = this.currentMap.getBlocks().stream()
             .filter(b -> b.getPosition().getY() < player.getPosition().getY())
             .collect(Collectors.toList());
-            playerHitBox.setLocation((int) playerPos.getX(), (int) playerPos.getY() - Constant.DEFAULT_VEL);
+            playerHitBox.position().setY(playerPos.getY() - Constant.DEFAULT_VEL);
             break;
         case DOWN: 
             control = this.currentMap.getBlocks().stream()
             .filter(b -> b.getPosition().getY() > player.getPosition().getY())
             .collect(Collectors.toList());
-            playerHitBox.setLocation((int) playerPos.getX(), (int) playerPos.getY() + Constant.DEFAULT_VEL);
+            playerHitBox.position().setY(playerPos.getY() + Constant.DEFAULT_VEL);
             break;
         case LEFT:
             control = this.currentMap.getBlocks().stream()
             .filter(b -> b.getPosition().getX() < player.getPosition().getX())
             .collect(Collectors.toList());
-            playerHitBox.setLocation((int) playerPos.getX() - Constant.DEFAULT_VEL, (int) playerPos.getY());
+            playerHitBox.position().setX(playerPos.getX() - Constant.DEFAULT_VEL);
             break;
         case RIGHT: 
             control = this.currentMap.getBlocks().stream()
             .filter(b -> b.getPosition().getX() > player.getPosition().getX())
             .collect(Collectors.toList());
-            playerHitBox.setLocation((int) playerPos.getX() + Constant.DEFAULT_VEL, (int) playerPos.getY());
+            playerHitBox.position().setX(playerPos.getX() + Constant.DEFAULT_VEL);
             break;
         default: 
             break;
         }
         for (final Block b : control) {
-            if (playerHitBox.intersects(b.getHitBox())) {
+            if (playerHitBox.isColliding(b.getHitBox())) {
                 return Optional.of(b);
             }
         }

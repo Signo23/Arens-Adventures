@@ -25,4 +25,6 @@ public interface HitBox {
      * @return a {@link Point2D} containing the dimension
      */
     Point2D dimension();
+
+    HitBox clone();
 }

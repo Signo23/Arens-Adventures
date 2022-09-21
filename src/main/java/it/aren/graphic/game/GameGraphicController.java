@@ -77,8 +77,8 @@ public class GameGraphicController implements GraphicController {
     private void drawString(final Dialog dialog) {
         final int ratio = SettingsLoader.loadSettings().scale();
         this.g2.setColor(Color.white);
-        this.g2.fillRect((int) dialog.getPosition().getX(), (int) dialog.getPosition().getY(), 
-                dialog.getHitBox().width, dialog.getHitBox().height);
+        this.g2.fillRect((int) dialog.getPosition().getX(), (int) dialog.getPosition().getY(),
+                (int) dialog.getHitBox().dimension().getX(), (int) dialog.getHitBox().dimension().getY());
         try {
             Font customFont = Font.createFont(Font.TRUETYPE_FONT, this.getClass()
                                   .getResourceAsStream(Constant.FONT_FOLDER + "Minecraft.ttf"));

@@ -26,8 +26,8 @@ public class Dialog extends BaseEntity {
         super(position, drawable, graphic);
         this.setText(text);
         final int ratio = SettingsLoader.loadSettings().scale();
-        this.getHitBox().setSize(14 * ratio * Constant.DEFAULT_HITBOX_DIMENSION, 
-                3 * ratio * Constant.DEFAULT_HITBOX_DIMENSION);
+        this.getHitBox().dimension().setX(14 * ratio * Constant.DEFAULT_HITBOX_DIMENSION);
+        this.getHitBox().dimension().setY(3 * ratio * Constant.DEFAULT_HITBOX_DIMENSION);
     }
     /**
      * Return the dialog's text.

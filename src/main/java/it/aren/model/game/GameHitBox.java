@@ -59,4 +59,9 @@ public class GameHitBox implements HitBox {
     public Point2D dimension() {
         return this.dimension;
     }
+
+    @Override
+    public HitBox clone() {
+        return new GameHitBox(this.position.getX(), this.position.getY(), this.dimension.getX(), this.dimension.getY());
+    }
 }
