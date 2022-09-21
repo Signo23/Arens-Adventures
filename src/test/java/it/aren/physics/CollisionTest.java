@@ -17,11 +17,11 @@ class CollisionTest {
         gameState.getWorld().updateState();
 
         System.out.println(gameState.getWorld().getPlayer().getPosition());
-        assertEquals(gameState.getWorld().getPlayer().getPosition(), new Point2D(0, 3));
+        assertEquals(gameState.getWorld().getPlayer().getPosition(), new Point2D(0, 5));
         gameState.getWorld().updateState();
 
         System.out.println(gameState.getWorld().getPlayer().getPosition());
-        assertEquals(gameState.getWorld().getPlayer().getPosition(), new Point2D(0, 5));
+        assertEquals(gameState.getWorld().getPlayer().getPosition(), new Point2D(0, 9));
 
         gameState.getWorld().getPlayer().setLastDirection(Direction.LEFT);
         gameState.getWorld().updateState();
@@ -33,6 +33,6 @@ class CollisionTest {
         gameState.getWorld().updateState();
 
         System.out.println(gameState.getWorld().getPlayer().getPosition());
-        assertEquals(gameState.getWorld().getPlayer().getPosition().getY(), 7);
+        assertEquals(gameState.getWorld().getPlayer().getPosition().getY(), 13);
     }
 }
