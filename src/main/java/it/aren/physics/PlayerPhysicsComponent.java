@@ -2,7 +2,8 @@ package it.aren.physics;
 
 import it.aren.common.Constant;
 import it.aren.common.Direction;
-import it.aren.common.Point2D;
+import it.aren.common.Vector;
+import it.aren.common.Vector2D;
 import it.aren.file.SettingsLoader;
 import it.aren.model.BaseEntity;
 import it.aren.model.game.Player;
@@ -27,19 +28,19 @@ public class PlayerPhysicsComponent implements PhysicsComponent {
         final Player pl = (Player) player;
         if (!pl.isIdle()) {
             final Direction pos = pl.getLastDirection();
-            final Point2D currentPos = pl.getPosition();
+            final Vector currentPos = pl.getPosition();
             switch (pos) {
             case LEFT:
-                pl.setPosition(new Point2D(currentPos.getX() - velocity, currentPos.getY()));
+                pl.setPosition(new Vector2D(currentPos.getX() - velocity, currentPos.getY()));
                 break;
             case RIGHT:
-                pl.setPosition(new Point2D(currentPos.getX() + velocity, currentPos.getY()));
+                pl.setPosition(new Vector2D(currentPos.getX() + velocity, currentPos.getY()));
                 break;
             case UP:
-                pl.setPosition(new Point2D(currentPos.getX(), currentPos.getY() - velocity));
+                pl.setPosition(new Vector2D(currentPos.getX(), currentPos.getY() - velocity));
                 break;
             case DOWN:
-                pl.setPosition(new Point2D(currentPos.getX(), currentPos.getY() + velocity));
+                pl.setPosition(new Vector2D(currentPos.getX(), currentPos.getY() + velocity));
                 break;
             default:
                 break;

@@ -4,7 +4,8 @@ import java.util.HashMap;
 import java.util.Map;
 
 import it.aren.common.Constant;
-import it.aren.common.Point2D;
+import it.aren.common.Vector;
+import it.aren.common.Vector2D;
 import it.aren.file.SettingsLoader;
 import it.aren.graphic.Component;
 import it.aren.graphic.GraphicController;
@@ -19,18 +20,20 @@ public class BaseEntity {
     private HitBox hitBox;
     private Map<String, Component> components;
 
+    private Vector velocity;
+
     /**
      * Create an Entity.
      * @param position where position have to be set
      * @param drawable set if the block will be drawn
      * @param graphic for render the block
      */
-    protected BaseEntity(final Point2D position, final boolean drawable, final Component graphic) {
+    protected BaseEntity(final Vector position, final boolean drawable, final Component graphic) {
         final int size = SettingsLoader.loadSettings().scale();
         this.drawable = drawable;
         this.components = new HashMap<>();
         this.components.put("graphic", graphic);
-        this.hitBox = new GameHitBox(position, new Point2D(size * Constant.DEFAULT_HITBOX_DIMENSION,
+        this.hitBox = new GameHitBox(position, new Vector2D(size * Constant.DEFAULT_HITBOX_DIMENSION,
                 size * Constant.DEFAULT_HITBOX_DIMENSION));
     }
 
@@ -38,14 +41,14 @@ public class BaseEntity {
      * Get Entity's position.
      * @return the position
      */
-    public Point2D getPosition() {
+    public Vector getPosition() {
         return this.hitBox.position();
     }
     /**
      * Set Entity's position.
      * @param position the position to set
      */
-    public void setPosition(final Point2D position) {
+    public void setPosition(final Vector position) {
         this.hitBox.position().setX(position.getX());
         this.hitBox.position().setY(position.getY());
     }

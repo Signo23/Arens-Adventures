@@ -1,7 +1,8 @@
 package it.aren.model.game;
 
 import it.aren.common.BaseObjectEnum;
-import it.aren.common.Point2D;
+import it.aren.common.Vector;
+import it.aren.common.Vector2D;
 import it.aren.model.BaseEntity;
 import it.aren.graphic.Component;
 
@@ -16,12 +17,12 @@ public class GameObject extends BaseEntity {
     /**
      * Create a GameObject.
      * @param type {@link BaseObjectEnum} type of GameObject
-     * @param position the {@link Point2D} where to draw the GameObject
+     * @param position the {@link Vector2D} where to draw the GameObject
      * @param drawable if GameObject is drawable
      * @param graphic GameObject's {@link GraphicComponent}
      */
-    public GameObject(final BaseObjectEnum type, final Point2D position, final boolean drawable,
-            final Component graphic) {
+    public GameObject(final BaseObjectEnum type, final Vector position, final boolean drawable,
+                      final Component graphic) {
         super(position, drawable, graphic);
         this.type = type;
     }

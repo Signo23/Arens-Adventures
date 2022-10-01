@@ -6,7 +6,7 @@ import java.util.List;
 import it.aren.common.BaseLevelEnum;
 import it.aren.common.Constant;
 import it.aren.common.BaseObjectEnum;
-import it.aren.common.Point2D;
+import it.aren.common.Vector2D;
 import it.aren.event.InteractWithPlayerEvent;
 import it.aren.event.TransportEvent;
 import it.aren.file.SettingsLoader;
@@ -35,7 +35,7 @@ public final class GameFactory {
      * @return the new {@link Player}
      */
     public static Player createPlayer() {
-        return new Player(new Point2D(0, 1),
+        return new Player(new Vector2D(0, 1),
                 new GraphicComponent(),
                 new PlayerInputComponent(),
                 new PlayerPhysicsComponent());
@@ -49,70 +49,70 @@ public final class GameFactory {
         final int ratio = SettingsLoader.loadSettings().scale();
         final int dimension = ratio * Constant.DEFAULT_HITBOX_DIMENSION;
 
-        final GameObject potion = new GameObject(BaseObjectEnum.POTION, new Point2D(11 * dimension, 1 * dimension), true,
+        final GameObject potion = new GameObject(BaseObjectEnum.POTION, new Vector2D(11 * dimension, 1 * dimension), true,
                 new GraphicComponent());
-        final GameObject sword = new GameObject(BaseObjectEnum.SWORD, new Point2D(12 * dimension, 1 * dimension), true,
+        final GameObject sword = new GameObject(BaseObjectEnum.SWORD, new Vector2D(12 * dimension, 1 * dimension), true,
                 new GraphicComponent());
-        final GameObject jacket = new GameObject(BaseObjectEnum.JACKET, new Point2D(13 * dimension, 1 * dimension), true,
+        final GameObject jacket = new GameObject(BaseObjectEnum.JACKET, new Vector2D(13 * dimension, 1 * dimension), true,
                 new GraphicComponent());
-        final GameObject key = new GameObject(BaseObjectEnum.KEY, new Point2D(14 * dimension, 1 * dimension), true,
+        final GameObject key = new GameObject(BaseObjectEnum.KEY, new Vector2D(14 * dimension, 1 * dimension), true,
                 new GraphicComponent());
-        final GameObject voidObject = new GameObject(BaseObjectEnum.VOID, new Point2D(0, 0), false, 
+        final GameObject voidObject = new GameObject(BaseObjectEnum.VOID, new Vector2D(0, 0), false,
                 new GraphicComponent());
 
         final Block box = new Block(BaseObjectEnum.BOX, new InteractWithPlayerEvent(potion, "Hai trovato la pozione!"),
-                new Point2D(13 * dimension, 4 * dimension), true, new GraphicComponent());
+                new Vector2D(13 * dimension, 4 * dimension), true, new GraphicComponent());
         final Block chest = new Block(BaseObjectEnum.CHEST, new InteractWithPlayerEvent(sword, "Hai trovato la spada!", 
                 potion, "Non riesci ad aprire la cassa.\nForse una pozione potrebbe aiutarti!"),
-                new Point2D(5 * dimension, 7 * dimension), true, new GraphicComponent());
+                new Vector2D(5 * dimension, 7 * dimension), true, new GraphicComponent());
         final Block npc = new Block(BaseObjectEnum.NPC, new InteractWithPlayerEvent(jacket, 
                 "Ti serve una giacca per proseguire\nla tua avventura?\nEcco puoi prendere la mia!", sword, 
                 "Mi dispiace, ma non parlo con\nnessuno che non abbia una spada"),
-                new Point2D(11 * dimension, 4 * dimension), true, new GraphicComponent());
+                new Vector2D(11 * dimension, 4 * dimension), true, new GraphicComponent());
         final Block sign = new Block(BaseObjectEnum.SIGN, new InteractWithPlayerEvent(key, 
                 "Hai trovato la chiave!\nSei quasi pronto per la tua\navventura", jacket, 
                 "Non e' facile prendere quello che e'\nincastrato nel cartello.\nUna giacca potrebbe aiutarti"),
-                new Point2D(9 * dimension, 7 * dimension), true, new GraphicComponent());
+                new Vector2D(9 * dimension, 7 * dimension), true, new GraphicComponent());
         final Block npc2 = new Block(BaseObjectEnum.NPC_2, new InteractWithPlayerEvent(voidObject, 
                 "Ottimo! Vedo che hai la chiave ed\naltri oggetti utili. Ora sei pronto per la\ntua avventura", key, 
                 "Se vuoi partire, devi portarmi\nla chiave del cancello della citta'"),
-                new Point2D(13 * dimension, 9 * dimension), true, new GraphicComponent());
+                new Vector2D(13 * dimension, 9 * dimension), true, new GraphicComponent());
 
         final List<Block> transportL1 = new ArrayList<>();
-        transportL1.add(new Block(BaseObjectEnum.VOID, new TransportEvent(new Point2D(0 * dimension, 5 * dimension), 1),
-                new Point2D(16 * dimension, 5 * dimension), false, new GraphicComponent()));
-        transportL1.add(new Block(BaseObjectEnum.VOID, new TransportEvent(new Point2D(0 * dimension, 6 * dimension), 1),
-                new Point2D(16 * dimension, 6 * dimension), false, new GraphicComponent()));
-        transportL1.add(new Block(BaseObjectEnum.VOID, new TransportEvent(new Point2D(0 * dimension, 7 * dimension), 1),
-                new Point2D(16 * dimension, 7 * dimension), false, new GraphicComponent()));
+        transportL1.add(new Block(BaseObjectEnum.VOID, new TransportEvent(new Vector2D(0 * dimension, 5 * dimension), 1),
+                new Vector2D(16 * dimension, 5 * dimension), false, new GraphicComponent()));
+        transportL1.add(new Block(BaseObjectEnum.VOID, new TransportEvent(new Vector2D(0 * dimension, 6 * dimension), 1),
+                new Vector2D(16 * dimension, 6 * dimension), false, new GraphicComponent()));
+        transportL1.add(new Block(BaseObjectEnum.VOID, new TransportEvent(new Vector2D(0 * dimension, 7 * dimension), 1),
+                new Vector2D(16 * dimension, 7 * dimension), false, new GraphicComponent()));
 
         final List<Block> transportL2 = new ArrayList<>();
-        transportL2.add(new Block(BaseObjectEnum.VOID, new TransportEvent(new Point2D(15 * dimension, 5 * dimension), 0),
-                new Point2D(-1 * dimension, 5 * dimension), false, new GraphicComponent()));
-        transportL2.add(new Block(BaseObjectEnum.VOID, new TransportEvent(new Point2D(15 * dimension, 6 * dimension), 0),
-                new Point2D(-1 * dimension, 6 * dimension), false, new GraphicComponent()));
-        transportL2.add(new Block(BaseObjectEnum.VOID, new TransportEvent(new Point2D(15 * dimension, 7 * dimension), 0),
-                new Point2D(-1 * dimension, 7 * dimension), false, new GraphicComponent()));
-        transportL2.add(new Block(BaseObjectEnum.VOID, new TransportEvent(new Point2D(6 * dimension, 0 * dimension), 2),
-                new Point2D(6 * dimension, 12 * dimension), false, new GraphicComponent()));
-        transportL2.add(new Block(BaseObjectEnum.VOID, new TransportEvent(new Point2D(7 * dimension, 0 * dimension), 2),
-                new Point2D(7 * dimension, 12 * dimension), false, new GraphicComponent()));
+        transportL2.add(new Block(BaseObjectEnum.VOID, new TransportEvent(new Vector2D(15 * dimension, 5 * dimension), 0),
+                new Vector2D(-1 * dimension, 5 * dimension), false, new GraphicComponent()));
+        transportL2.add(new Block(BaseObjectEnum.VOID, new TransportEvent(new Vector2D(15 * dimension, 6 * dimension), 0),
+                new Vector2D(-1 * dimension, 6 * dimension), false, new GraphicComponent()));
+        transportL2.add(new Block(BaseObjectEnum.VOID, new TransportEvent(new Vector2D(15 * dimension, 7 * dimension), 0),
+                new Vector2D(-1 * dimension, 7 * dimension), false, new GraphicComponent()));
+        transportL2.add(new Block(BaseObjectEnum.VOID, new TransportEvent(new Vector2D(6 * dimension, 0 * dimension), 2),
+                new Vector2D(6 * dimension, 12 * dimension), false, new GraphicComponent()));
+        transportL2.add(new Block(BaseObjectEnum.VOID, new TransportEvent(new Vector2D(7 * dimension, 0 * dimension), 2),
+                new Vector2D(7 * dimension, 12 * dimension), false, new GraphicComponent()));
 
         final List<Block> transportL3 = new ArrayList<>();
-        transportL3.add(new Block(BaseObjectEnum.VOID, new TransportEvent(new Point2D(6 * dimension, 11 * dimension), 1),
-                new Point2D(6 * dimension, -1 * dimension), false, new GraphicComponent()));
-        transportL3.add(new Block(BaseObjectEnum.VOID, new TransportEvent(new Point2D(7 * dimension, 11 * dimension), 1),
-                new Point2D(7 * dimension, -1 * dimension), false, new GraphicComponent()));
-        transportL3.add(new Block(BaseObjectEnum.VOID, new TransportEvent(new Point2D(0 * dimension, 10 * dimension), 3),
-                new Point2D(16 * dimension, 10 * dimension), false, new GraphicComponent()));
-        transportL3.add(new Block(BaseObjectEnum.VOID, new TransportEvent(new Point2D(0 * dimension, 11 * dimension), 3),
-                new Point2D(16 * dimension, 11 * dimension), false, new GraphicComponent()));
+        transportL3.add(new Block(BaseObjectEnum.VOID, new TransportEvent(new Vector2D(6 * dimension, 11 * dimension), 1),
+                new Vector2D(6 * dimension, -1 * dimension), false, new GraphicComponent()));
+        transportL3.add(new Block(BaseObjectEnum.VOID, new TransportEvent(new Vector2D(7 * dimension, 11 * dimension), 1),
+                new Vector2D(7 * dimension, -1 * dimension), false, new GraphicComponent()));
+        transportL3.add(new Block(BaseObjectEnum.VOID, new TransportEvent(new Vector2D(0 * dimension, 10 * dimension), 3),
+                new Vector2D(16 * dimension, 10 * dimension), false, new GraphicComponent()));
+        transportL3.add(new Block(BaseObjectEnum.VOID, new TransportEvent(new Vector2D(0 * dimension, 11 * dimension), 3),
+                new Vector2D(16 * dimension, 11 * dimension), false, new GraphicComponent()));
 
         final List<Block> transportL4 = new ArrayList<>();
-        transportL4.add(new Block(BaseObjectEnum.VOID, new TransportEvent(new Point2D(15 * dimension, 10 * dimension), 2),
-                new Point2D(-1 * dimension, 10 * dimension), false, new GraphicComponent()));
-        transportL4.add(new Block(BaseObjectEnum.VOID, new TransportEvent(new Point2D(15 * dimension, 11 * dimension), 2),
-                new Point2D(-1 * dimension, 11 * dimension), false, new GraphicComponent()));
+        transportL4.add(new Block(BaseObjectEnum.VOID, new TransportEvent(new Vector2D(15 * dimension, 10 * dimension), 2),
+                new Vector2D(-1 * dimension, 10 * dimension), false, new GraphicComponent()));
+        transportL4.add(new Block(BaseObjectEnum.VOID, new TransportEvent(new Vector2D(15 * dimension, 11 * dimension), 2),
+                new Vector2D(-1 * dimension, 11 * dimension), false, new GraphicComponent()));
 
         final List<GameMap> maps = new ArrayList<>();
         maps.add(new GameMap(BaseLevelEnum.ONE));
@@ -138,7 +138,7 @@ public final class GameFactory {
      */
     public static Dialog createDialog(final String text) {
         final int ratio = SettingsLoader.loadSettings().scale();
-        return new Dialog(new Point2D(Constant.DEFAULT_DIALOG_POSITION.getX() * ratio, 
+        return new Dialog(new Vector2D(Constant.DEFAULT_DIALOG_POSITION.getX() * ratio,
                 Constant.DEFAULT_DIALOG_POSITION.getY() * ratio), true, new GraphicComponent(), text);
     }
 }

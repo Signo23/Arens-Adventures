@@ -6,7 +6,7 @@ import java.util.List;
 import it.aren.common.ApplicationState;
 import it.aren.common.BaseObjectEnum;
 import it.aren.common.Constant;
-import it.aren.common.Point2D;
+import it.aren.common.Vector2D;
 import it.aren.event.BaseEvent;
 import it.aren.event.EventListener;
 import it.aren.event.InteractWithPlayerEvent;
@@ -49,7 +49,7 @@ public class GameEngine implements EventListener {
         this.menuController = new MenuInputController();
         this.view = new AppView(this.state.getWorld(), this.controller, this.menuController);
         this.notifyEvent(new InteractWithPlayerEvent(new GameObject(
-                BaseObjectEnum.VOID, new Point2D(), false, new GraphicComponent()),
+                BaseObjectEnum.VOID, new Vector2D(), false, new GraphicComponent()),
                 "Trova tutti gli oggetti prima di\npartire per la tua avventura"));
     }
 

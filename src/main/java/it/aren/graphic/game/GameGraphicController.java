@@ -9,7 +9,7 @@ import java.awt.image.BufferedImage;
 import java.awt.image.ImageObserver;
 import java.io.IOException;
 
-import it.aren.common.Point2D;
+import it.aren.common.Vector;
 import it.aren.file.SettingsLoader;
 import it.aren.graphic.GraphicController;
 import it.aren.model.BaseEntity;
@@ -70,7 +70,7 @@ public class GameGraphicController implements GraphicController {
 
     }
 
-    private void drawInPosition(final Point2D position, final BufferedImage sprite) {
+    private void drawInPosition(final Vector position, final BufferedImage sprite) {
         g2.drawImage(sprite, (int) position.getX(), (int) position.getY(), this.io);
     }
 

@@ -5,42 +5,42 @@ package it.aren.common;
  */
 public enum Direction {
     /**
-     * The {@link Point2D} for left.
+     * The {@link Vector2D} for left.
      */
     LEFT(-1, 0),
     /**
-     * The {@link Point2D} for right.
+     * The {@link Vector2D} for right.
      */
     RIGHT(1, 0),
     /**
-     * The {@link Point2D} for up.
+     * The {@link Vector2D} for up.
      */
     UP(0, -1),
     /**
-     * The {@link Point2D} for down.
+     * The {@link Vector2D} for down.
      */
     DOWN(0, 1);
 
-    private final Point2D vector;
+    private final Vector vector;
 
     Direction(final int x, final int y) {
-        this.vector = new Point2D(x, y);
+        this.vector = new Vector2D(x, y);
     }
 
     /**
      * Get the vector of direction.
-     * @return a {@link Point2D} representing the vector
+     * @return a {@link Vector2D} representing the vector
      */
-    public Point2D getVector() {
+    public Vector getVector() {
         return this.vector;
     }
 
     /**
      * Returns the enum constant of this type with the most similar point.
-     * @param point the {@link Point2D} of the enum constant to be returned.
+     * @param point the {@link Vector2D} of the enum constant to be returned.
      * @return the enum constant with the similar point
      */
-    public static Direction valueOfPoint2D(final Point2D point) {
+    public static Direction valueOfPoint2D(final Vector point) {
         final int x = (int) point.getX();
         final int y = (int) point.getY();
         final int xAbs = Math.abs(x);

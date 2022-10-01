@@ -4,7 +4,7 @@ import java.util.Objects;
 /**
  * A point in 2 dimension.
  */
-public class Point2D {
+public class Vector2D implements Vector {
 
     private float x;
     private float y;
@@ -12,7 +12,7 @@ public class Point2D {
     /**
      * Create a point on the origin.
      */
-    public Point2D() {
+    public Vector2D() {
         this(0, 0);
     }
 
@@ -21,39 +21,27 @@ public class Point2D {
      * @param x coordinate
      * @param y coordinate
      */
-    public Point2D(final float x, final float y) {
+    public Vector2D(final float x, final float y) {
         this.x = x;
         this.y = y;
     }
 
-    /**
-     * Get Point2D's x.
-     * @return the x
-     */
+    @Override
     public float getX() {
         return this.x;
     }
 
-    /**
-     * Set Point2D's x.
-     * @param x the x to set
-     */
+    @Override
     public void setX(final float x) {
         this.x = x;
     }
 
-    /**
-     * Get Point2D's y.
-     * @return the y
-     */
+    @Override
     public float getY() {
         return this.y;
     }
 
-    /**
-     * Set Point2D's y.
-     * @param y the y to set
-     */
+    @Override
     public void setY(final float y) {
         this.y = y;
     }
@@ -80,7 +68,7 @@ public class Point2D {
         if (getClass() != obj.getClass()) {
             return false;
         }
-        final Point2D other = (Point2D) obj;
+        final Vector2D other = (Vector2D) obj;
         return Float.floatToIntBits(this.x) == Float.floatToIntBits(other.x)
                 && Float.floatToIntBits(this.y) == Float.floatToIntBits(other.y);
     }

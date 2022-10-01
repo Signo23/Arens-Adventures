@@ -1,6 +1,7 @@
 package it.aren.model;
 
-import it.aren.common.Point2D;
+import it.aren.common.Vector;
+import it.aren.common.Vector2D;
 
 public interface HitBox {
     /**
@@ -16,15 +17,15 @@ public interface HitBox {
 
     /**
      * Determinate the position of the hit box.
-     * @return a {@link Point2D} containg the position
+     * @return a {@link Vector} containg the position
      */
-    Point2D position();
+    Vector position();
 
     /**
      * Determinate the dimension of the hit box.
-     * @return a {@link Point2D} containing the dimension
+     * @return a {@link Vector} containing the dimension
      */
-    Point2D dimension();
+    Vector dimension();
 
     HitBox clone();
 }

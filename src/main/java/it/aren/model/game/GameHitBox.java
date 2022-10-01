@@ -1,20 +1,21 @@
 package it.aren.model.game;
 
-import it.aren.common.Point2D;
+import it.aren.common.Vector;
+import it.aren.common.Vector2D;
 import it.aren.model.HitBox;
 
 public class GameHitBox implements HitBox {
 
-    private Point2D position;
-    private Point2D dimension;
+    private Vector position;
+    private Vector dimension;
 
-    public GameHitBox (final Point2D position, final Point2D dimension){
+    public GameHitBox (final Vector position, final Vector dimension){
         this.dimension = dimension;
         this.position = position;
     }
 
     public GameHitBox(final float x, final float y, final float width, final float height){
-        this(new Point2D(x, y), new Point2D(width, height));
+        this(new Vector2D(x, y), new Vector2D(width, height));
     }
 
     /**
@@ -48,7 +49,7 @@ public class GameHitBox implements HitBox {
      * {@inheritDoc}
      */
     @Override
-    public Point2D position() {
+    public Vector position() {
         return this.position;
     }
 
@@ -56,7 +57,7 @@ public class GameHitBox implements HitBox {
      * {@inheritDoc}
      */
     @Override
-    public Point2D dimension() {
+    public Vector dimension() {
         return this.dimension;
     }
 

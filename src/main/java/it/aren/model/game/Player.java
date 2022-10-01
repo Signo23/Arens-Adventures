@@ -4,7 +4,8 @@ import java.util.ArrayList;
 import java.util.List;
 
 import it.aren.common.Direction;
-import it.aren.common.Point2D;
+import it.aren.common.Vector;
+import it.aren.common.Vector2D;
 import it.aren.input.InputComponent;
 import it.aren.input.InputController;
 import it.aren.model.BaseEntity;
@@ -26,12 +27,12 @@ public class Player extends BaseEntity {
 
     /**
      * Create a player.
-     * @param position the {@link Point2D} where the player is
+     * @param position the {@link Vector2D} where the player is
      * @param graphic the {@link GraphicComponent} for draw the player
      * @param input the {@link InputComponent} for listen the input for player
      * @param phy the {@link PhysicsComponent} update position of player
      */
-    public Player(final Point2D position, final Component graphic, final InputComponent input,
+    public Player(final Vector position, final Component graphic, final InputComponent input,
                   final PhysicsComponent phy) {
         super(position, true, graphic);
         this.lastDirection =  Direction.DOWN;

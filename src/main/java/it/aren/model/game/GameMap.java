@@ -3,11 +3,7 @@ package it.aren.model.game;
 import java.util.ArrayList;
 import java.util.List;
 
-import it.aren.common.BaseLevelEnum;
-import it.aren.common.Constant;
-import it.aren.common.BaseObjectEnum;
-import it.aren.common.Point2D;
-import it.aren.common.PointRange;
+import it.aren.common.*;
 import it.aren.event.NullEvent;
 import it.aren.file.SettingsLoader;
 import it.aren.graphic.GraphicController;
@@ -27,7 +23,7 @@ public class GameMap extends BaseEntity {
      * @param type the {@link BaseLevelEnum} type of map
      */
     public GameMap(final BaseLevelEnum type) {
-        super(new Point2D(), true, new GraphicComponent());
+        super(new Vector2D(), true, new GraphicComponent());
         this.blocks = new ArrayList<>();
         this.type = type;
         type.getPoints().forEach(p -> this.addBlocks(createLineBlock(p)));
@@ -44,7 +40,7 @@ public class GameMap extends BaseEntity {
         final List<Block> blocks = new ArrayList<>();
         for (int i = (int) range.getStart().getX(); i <= (int) range.getEnd().getX(); i++) {
             for (int j = (int) range.getStart().getY(); j <= (int) range.getEnd().getY(); j++) {
-                blocks.add(createSimpleBlock(new Point2D(i * dimension, j * dimension)));
+                blocks.add(createSimpleBlock(new Vector2D(i * dimension, j * dimension)));
             }
         }
         return blocks;
@@ -52,10 +48,10 @@ public class GameMap extends BaseEntity {
 
     /**
      * Create a new {@link Block}.
-     * @param position the {@link Point2D} where the block is
+     * @param position the {@link Vector2D} where the block is
      * @return the new {@link Block}
      */
-    private static Block createSimpleBlock(final Point2D position) {
+    private static Block createSimpleBlock(final Vector position) {
         return new Block(BaseObjectEnum.VOID, new NullEvent(), position,
                 true, new GraphicComponent());
     }

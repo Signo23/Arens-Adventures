@@ -9,7 +9,7 @@ import it.aren.graphic.component.GraphicComponent;
 import org.junit.jupiter.api.Test;
 
 import it.aren.common.BaseObjectEnum;
-import it.aren.common.Point2D;
+import it.aren.common.Vector2D;
 import it.aren.model.GameState;
 import it.aren.model.game.Block;
 import it.aren.model.game.GameObject;
@@ -17,13 +17,15 @@ import it.aren.model.game.GameObject;
 class EventsTest {
 
     @Test void testGiveToPlayerEvent() {
-        final GameState gameState = new GameState(eventListener -> { });
-        final GameObject go = new GameObject(BaseObjectEnum.BOX, new Point2D(), false, new GraphicComponent());
-        final GameObject go2 = new GameObject(BaseObjectEnum.BOX, new Point2D(), false, new GraphicComponent());
+        final GameState gameState = new GameState(eventListener -> {
+            System.out.println("Event");
+        });
+        final GameObject go = new GameObject(BaseObjectEnum.BOX, new Vector2D(), false, new GraphicComponent());
+        final GameObject go2 = new GameObject(BaseObjectEnum.BOX, new Vector2D(), false, new GraphicComponent());
         final BaseEvent ev = new InteractWithPlayerEvent(go, "Prova");
         final BaseEvent evRequirement = new InteractWithPlayerEvent(go2, "Prova requisiti", go, "Requisiti non rispettati");
-        final Block blk = new Block(BaseObjectEnum.VOID, evRequirement, new Point2D(), false, null);
-        final Block blkReq = new Block(BaseObjectEnum.VOID, ev, new Point2D(), false, null);
+        final Block blk = new Block(BaseObjectEnum.VOID, evRequirement, new Vector2D(), false, null);
+        final Block blkReq = new Block(BaseObjectEnum.VOID, ev, new Vector2D(), false, null);
         final List<BaseEvent> listEvent = new ArrayList<>();
 
 

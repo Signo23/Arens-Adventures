@@ -1,6 +1,5 @@
 package it.aren.model;
 
-import java.awt.Rectangle;
 import java.util.ArrayList;
 import java.util.List;
 import java.util.Optional;
@@ -8,7 +7,7 @@ import java.util.stream.Collectors;
 
 import it.aren.common.Constant;
 import it.aren.common.Direction;
-import it.aren.common.Point2D;
+import it.aren.common.Vector;
 import it.aren.model.game.Block;
 import it.aren.model.game.Dialog;
 import it.aren.model.game.GameMap;
@@ -96,7 +95,7 @@ public class World {
      */
     public final Optional<Block> playerCollide() {
         final Direction playerDir = this.player.getLastDirection();
-        final Point2D playerPos = this.player.getPosition();
+        final Vector playerPos = this.player.getPosition();
         final HitBox playerHitBox = this.player.getHitBox().clone();
         List<Block> control = new ArrayList<>();
         switch (playerDir) {
