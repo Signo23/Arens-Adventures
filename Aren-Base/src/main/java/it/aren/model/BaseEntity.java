@@ -1,0 +1,63 @@
+package it.aren.model;
+
+import java.util.Map;
+
+public interface BaseEntity {
+    /**
+     * Get Entity's position.
+     *
+     * @return the position
+     */
+    Vector getPosition();
+
+    /**
+     * Set Entity's position.
+     *
+     * @param position the position to set
+     */
+    void setPosition(Vector position);
+
+    /**
+     * Get if Entity is drawable.
+     *
+     * @return the drawable
+     */
+    boolean isDrawable();
+
+    /**
+     * Set if Entity is drawable.
+     *
+     * @param drawable the drawable to set
+     */
+    void setDrawable(boolean drawable);
+
+    /**
+     * Get Entity's {@link Component}.
+     *
+     * @return the graphic
+     */
+    Map<String, Component> getComponents();
+
+    /**
+     * Set Entity's {@link Component}.
+     *
+     * @param components the graphic to set
+     */
+    void setComponents(Map<String, Component> components);
+
+    /**
+     * Get Entity's {@link HitBox} for hitBox.
+     *
+     * @return the hitBox
+     */
+    HitBox getHitBox();
+
+    /**
+     * Set Entity's {@link HitBox} for hitBox.
+     *
+     * @param hitBox the Rectangle to set
+     */
+    void setHitBox(HitBox hitBox);
+
+    void update(String componentName, Controller componentController);
+}

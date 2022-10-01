@@ -5,8 +5,8 @@ import it.aren.common.Direction;
 import it.aren.common.Vector2D;
 import it.aren.file.SettingsLoader;
 import it.aren.model.BaseEntity;
+import it.aren.model.Vector;
 import it.aren.model.game.Player;
-import it.aren.common.Vector;
 
 /**
  * The physics component for {@link Player}.

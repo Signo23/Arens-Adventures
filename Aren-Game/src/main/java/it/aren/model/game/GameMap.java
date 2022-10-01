@@ -3,18 +3,23 @@ package it.aren.model.game;
 import java.util.ArrayList;
 import java.util.List;
 
+import it.aren.common.BaseLevelEnum;
+import it.aren.common.BaseObjectEnum;
+import it.aren.common.Constant;
+import it.aren.common.Vector2D;
 import it.aren.graphic.GraphicController;
 import it.aren.graphic.component.GraphicComponent;
-import it.aren.common.*;
 import it.aren.event.NullEvent;
 import it.aren.file.SettingsLoader;
-import it.aren.model.BaseEntity;
+import it.aren.model.GameEntity;
+import it.aren.model.Range;
+import it.aren.model.Vector;
 
 /**
  * Represent a map of game.
  *
  */
-public class GameMap extends BaseEntity {
+public class GameMap extends GameEntity {
     private List<Block> blocks;
     private final BaseLevelEnum type;
 

@@ -2,7 +2,7 @@ package it.aren.graphic.component;
 
 import it.aren.graphic.GraphicController;
 import it.aren.model.BaseEntity;
-import it.aren.graphic.Component;
+import it.aren.model.Component;
 
 public class GraphicComponent implements Component<GraphicController> {
     @Override

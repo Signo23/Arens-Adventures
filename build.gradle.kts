@@ -29,6 +29,8 @@ dependencies {
     // implementation("com.google.guava:guava:28.1-jre")
     implementation ("com.google.code.gson:gson:2.9.0")
     implementation(project(":Aren-Game"))
+    implementation(project(":Aren-Base"))
+
 
     // JUnit API and testing engine
     testImplementation("org.junit.jupiter:junit-jupiter-api:$jUnitVersion")

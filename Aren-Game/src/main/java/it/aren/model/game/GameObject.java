@@ -2,16 +2,16 @@ package it.aren.model.game;
 
 import it.aren.common.BaseObjectEnum;
 import it.aren.common.Vector2D;
-import it.aren.graphic.Component;
-import it.aren.common.Vector;
-import it.aren.model.BaseEntity;
+import it.aren.model.Component;
+import it.aren.model.Vector;
+import it.aren.model.GameEntity;
 
 /**
  * Model for game object.
- * Extends {@link BaseEntity} 
+ * Extends {@link GameEntity}
  *
  */
-public class GameObject extends BaseEntity {
+public class GameObject extends GameEntity {
 
     private final BaseObjectEnum type;
     /**

@@ -9,10 +9,10 @@ import java.awt.image.BufferedImage;
 import java.awt.image.ImageObserver;
 import java.io.IOException;
 
-import it.aren.common.Vector;
 import it.aren.file.SettingsLoader;
 import it.aren.graphic.GraphicController;
 import it.aren.model.BaseEntity;
+import it.aren.model.Vector;
 import it.aren.model.game.*;
 import it.aren.common.Constant;
 

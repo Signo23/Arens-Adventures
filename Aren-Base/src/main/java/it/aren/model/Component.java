@@ -1,4 +1,4 @@
-package it.aren.graphic;
+package it.aren.model;
 
 import it.aren.model.BaseEntity;
 

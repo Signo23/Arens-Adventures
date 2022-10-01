@@ -2,7 +2,7 @@ package it.aren.event;
 
 import it.aren.common.Vector2D;
 import it.aren.model.GameState;
-import it.aren.common.Vector;
+import it.aren.model.Vector;
 
 /**
  * A class for switch from one {@link GameMap} to another.

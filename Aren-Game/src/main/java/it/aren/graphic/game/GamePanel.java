@@ -7,7 +7,7 @@ import java.awt.RenderingHints;
 import javax.swing.JPanel;
 
 import it.aren.common.Settings;
-import it.aren.model.BaseEntity;
+import it.aren.model.GameEntity;
 import it.aren.file.SettingsLoader;
 import it.aren.graphic.GraphicController;
 import it.aren.input.InputController;
@@ -16,7 +16,7 @@ import it.aren.input.KeyboardInputController;
 import it.aren.model.World;
 /**
  * This is an extension of JPanel.
- * Every {@link BaseEntity} is rendered there
+ * Every {@link GameEntity} is rendered there
  *
  */
 public class GamePanel extends JPanel {

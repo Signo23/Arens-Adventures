@@ -1,5 +1,7 @@
 package it.aren.common;
 
+import it.aren.model.Vector;
+
 /**
  * Direction's vectors.
  */

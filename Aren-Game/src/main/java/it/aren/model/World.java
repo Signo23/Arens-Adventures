@@ -11,7 +11,6 @@ import it.aren.model.game.Block;
 import it.aren.model.game.Dialog;
 import it.aren.model.game.GameMap;
 import it.aren.model.game.Player;
-import it.aren.common.Vector;
 
 /**
  * The class that manage the game's world.

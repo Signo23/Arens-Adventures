@@ -3,10 +3,10 @@ package it.aren.model.game;
 import it.aren.common.BaseObjectEnum;
 import it.aren.common.Constant;
 import it.aren.common.Vector2D;
-import it.aren.graphic.Component;
-import it.aren.common.Vector;
 import it.aren.event.BaseEvent;
 import it.aren.file.SettingsLoader;
+import it.aren.model.Component;
+import it.aren.model.Vector;
 
 /**
  * Model for every block.

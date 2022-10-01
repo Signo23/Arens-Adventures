@@ -5,19 +5,19 @@ import java.util.List;
 
 import it.aren.common.Direction;
 import it.aren.common.Vector2D;
-import it.aren.graphic.Component;
-import it.aren.common.Vector;
 import it.aren.input.InputComponent;
 import it.aren.input.InputController;
-import it.aren.model.BaseEntity;
+import it.aren.model.Component;
+import it.aren.model.GameEntity;
+import it.aren.model.Vector;
 import it.aren.physics.PhysicsComponent;
 
 /**
  * Model for the player.
- * Extends {@link BaseEntity}
+ * Extends {@link GameEntity}
  *
  */
-public class Player extends BaseEntity {
+public class Player extends GameEntity {
 
     private Direction lastDirection;
     private List<GameObject> backPack;

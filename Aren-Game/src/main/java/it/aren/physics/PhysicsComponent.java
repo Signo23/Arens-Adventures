@@ -1,5 +1,6 @@
 package it.aren.physics;
 
+import it.aren.model.GameEntity;
 import it.aren.model.BaseEntity;
 
 /**
@@ -9,8 +10,8 @@ import it.aren.model.BaseEntity;
 public interface PhysicsComponent {
 
     /**
-     * Update the {@link BaseEntity}.
-     * @param entity {@link BaseEntity} to update
+     * Update the {@link GameEntity}.
+     * @param entity {@link GameEntity} to update
      */
     void update(BaseEntity entity);
 }

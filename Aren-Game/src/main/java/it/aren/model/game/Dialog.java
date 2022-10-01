@@ -2,17 +2,17 @@ package it.aren.model.game;
 
 import it.aren.common.Constant;
 import it.aren.common.Vector2D;
-import it.aren.graphic.Component;
-import it.aren.common.Vector;
 import it.aren.file.SettingsLoader;
-import it.aren.model.BaseEntity;
+import it.aren.model.Component;
+import it.aren.model.GameEntity;
+import it.aren.model.Vector;
 
 /**
  * Model for the dialog.
- * Extends {@link BaseEntity}
+ * Extends {@link GameEntity}
  *
  */
-public class Dialog extends BaseEntity {
+public class Dialog extends GameEntity {
 
     private String text;
 

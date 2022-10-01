@@ -1,5 +1,7 @@
 package it.aren.common;
 
+import it.aren.model.Vector;
+
 import java.util.Objects;
 /**
  * A point in 2 dimension.
