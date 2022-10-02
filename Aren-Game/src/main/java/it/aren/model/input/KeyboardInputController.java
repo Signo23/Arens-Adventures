@@ -1,7 +1,4 @@
-package it.aren.input;
-
-import it.aren.common.Direction;
-import it.aren.model.BaseEntity;
+package it.aren.model.input;
 
 /**
  * The input controller for the keyboard.

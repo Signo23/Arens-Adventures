@@ -1,8 +1,8 @@
 package it.aren.physics;
 
 import it.aren.common.Constant;
-import it.aren.common.Direction;
-import it.aren.common.Vector2D;
+import it.aren.model.Direction;
+import it.aren.model.Vector2D;
 import it.aren.file.SettingsLoader;
 import it.aren.model.BaseEntity;
 import it.aren.model.Vector;
@@ -26,7 +26,7 @@ public class PlayerPhysicsComponent implements PhysicsComponent {
     @Override
     public void update(final BaseEntity player) {
         final Player pl = (Player) player;
-        if (!pl.isIdle()) {
+        if (!pl.getVelocity().equals(Direction.NO_DIRECTION)) {
             final Direction pos = pl.getLastDirection();
             final Vector currentPos = pl.getPosition();
             switch (pos) {

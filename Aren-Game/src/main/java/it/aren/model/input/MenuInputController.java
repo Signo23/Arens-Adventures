@@ -1,4 +1,4 @@
-package it.aren.input;
+package it.aren.model.input;
 
 /**
  * The input controller for the menu.

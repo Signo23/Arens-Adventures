@@ -7,15 +7,12 @@ import java.awt.RenderingHints;
 import javax.swing.JPanel;
 
 import it.aren.common.Settings;
-import it.aren.model.BaseEntity;
-import it.aren.model.Controller;
-import it.aren.model.GameEntity;
+import it.aren.model.*;
 import it.aren.file.SettingsLoader;
-import it.aren.graphic.GraphicController;
-import it.aren.input.InputController;
-import it.aren.input.KeyListenerImpl;
-import it.aren.input.KeyboardInputController;
-import it.aren.model.World;
+import it.aren.model.input.InputController;
+import it.aren.model.input.KeyListenerImpl;
+import it.aren.model.input.KeyboardInputController;
+
 /**
  * This is an extension of JPanel.
  * Every {@link GameEntity} is rendered there
@@ -62,10 +59,11 @@ public class GamePanel extends JPanel {
             g2.clearRect(0, 0, this.getWidth(), this.getHeight());
 
         ((GameGraphicController)controller).setG2AndIO(g2, this);
-            this.world.getCurrentMap().updateGraphic((Controller<BaseEntity>) controller);
-            this.world.getPlayer().updateGraphic((Controller<BaseEntity>) controller);
+            this.world.getCurrentMap().update(GameComponent.GRAPHIC, controller);
+            this.world.getCurrentMap().getBlocks().forEach(bl -> bl.update(GameComponent.GRAPHIC, controller));
+            this.world.getPlayer().update(GameComponent.GRAPHIC, controller);
             if (this.world.getDialog() != null) {
-                this.world.getDialog().updateGraphic((Controller<BaseEntity>) controller);
+                this.world.getDialog().update(GameComponent.GRAPHIC, controller);
             }
     }
 

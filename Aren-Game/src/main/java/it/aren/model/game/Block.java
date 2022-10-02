@@ -2,7 +2,7 @@ package it.aren.model.game;
 
 import it.aren.common.BaseObjectEnum;
 import it.aren.common.Constant;
-import it.aren.common.Vector2D;
+import it.aren.model.Vector2D;
 import it.aren.event.BaseEvent;
 import it.aren.file.SettingsLoader;
 import it.aren.model.Component;

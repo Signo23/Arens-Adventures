@@ -6,11 +6,12 @@ import java.util.List;
 import it.aren.common.BaseLevelEnum;
 import it.aren.common.BaseObjectEnum;
 import it.aren.common.Constant;
-import it.aren.common.Vector2D;
+import it.aren.model.GameComponent;
+import it.aren.model.Vector2D;
 import it.aren.event.InteractWithPlayerEvent;
 import it.aren.event.TransportEvent;
 import it.aren.graphic.component.GraphicComponent;
-import it.aren.input.PlayerInputComponent;
+import it.aren.model.input.PlayerInputComponent;
 import it.aren.file.SettingsLoader;
 import it.aren.model.game.Block;
 import it.aren.model.game.Dialog;
@@ -37,9 +38,9 @@ public final class GameFactory {
      */
     public static Player createPlayer() {
          final Player player = new Player(new Vector2D(0, 1),
-                new GraphicComponent(),
                 new PlayerPhysicsComponent());
-         player.addComponent("input", new PlayerInputComponent());
+         player.addComponent(GameComponent.INPUT, new PlayerInputComponent());
+         player.addComponent(GameComponent.GRAPHIC, new GraphicComponent());
          return player;
     }
 
@@ -64,18 +65,18 @@ public final class GameFactory {
 
         final Block box = new Block(BaseObjectEnum.BOX, new InteractWithPlayerEvent(potion, "Hai trovato la pozione!"),
                 new Vector2D(13 * dimension, 4 * dimension), true, new GraphicComponent());
-        final Block chest = new Block(BaseObjectEnum.CHEST, new InteractWithPlayerEvent(sword, "Hai trovato la spada!", 
+        final Block chest = new Block(BaseObjectEnum.CHEST, new InteractWithPlayerEvent(sword, "Hai trovato la spada!",
                 potion, "Non riesci ad aprire la cassa.\nForse una pozione potrebbe aiutarti!"),
                 new Vector2D(5 * dimension, 7 * dimension), true, new GraphicComponent());
-        final Block npc = new Block(BaseObjectEnum.NPC, new InteractWithPlayerEvent(jacket, 
+        final Block npc = new Block(BaseObjectEnum.NPC, new InteractWithPlayerEvent(jacket,
                 "Ti serve una giacca per proseguire\nla tua avventura?\nEcco puoi prendere la mia!", sword, 
                 "Mi dispiace, ma non parlo con\nnessuno che non abbia una spada"),
                 new Vector2D(11 * dimension, 4 * dimension), true, new GraphicComponent());
-        final Block sign = new Block(BaseObjectEnum.SIGN, new InteractWithPlayerEvent(key, 
+        final Block sign = new Block(BaseObjectEnum.SIGN, new InteractWithPlayerEvent(key,
                 "Hai trovato la chiave!\nSei quasi pronto per la tua\navventura", jacket, 
                 "Non e' facile prendere quello che e'\nincastrato nel cartello.\nUna giacca potrebbe aiutarti"),
                 new Vector2D(9 * dimension, 7 * dimension), true, new GraphicComponent());
-        final Block npc2 = new Block(BaseObjectEnum.NPC_2, new InteractWithPlayerEvent(voidObject, 
+        final Block npc2 = new Block(BaseObjectEnum.NPC_2, new InteractWithPlayerEvent(voidObject,
                 "Ottimo! Vedo che hai la chiave ed\naltri oggetti utili. Ora sei pronto per la\ntua avventura", key, 
                 "Se vuoi partire, devi portarmi\nla chiave del cancello della citta'"),
                 new Vector2D(13 * dimension, 9 * dimension), true, new GraphicComponent());
@@ -123,13 +124,17 @@ public final class GameFactory {
         maps.add(new GameMap(BaseLevelEnum.FOUR));
         maps.get(0).addBlocks(transportL1);
         maps.get(0).addBlock(sign);
+        maps.get(0).addComponent(GameComponent.GRAPHIC, new GraphicComponent());
         maps.get(1).addBlocks(transportL2);
         maps.get(1).addBlock(npc);
+        maps.get(1).addComponent(GameComponent.GRAPHIC, new GraphicComponent());
         maps.get(2).addBlocks(transportL3);
         maps.get(2).addBlock(box);
+        maps.get(2).addComponent(GameComponent.GRAPHIC, new GraphicComponent());
         maps.get(3).addBlocks(transportL4);
         maps.get(3).addBlock(chest);
         maps.get(3).addBlock(npc2);
+        maps.get(3).addComponent(GameComponent.GRAPHIC, new GraphicComponent());
         return maps;
     }
 

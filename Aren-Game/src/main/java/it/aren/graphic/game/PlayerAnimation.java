@@ -8,7 +8,7 @@ import java.util.Map;
 import it.aren.model.game.Player;
 import it.aren.common.BaseObjectEnum;
 import it.aren.common.Constant;
-import it.aren.common.Direction;
+import it.aren.model.Direction;
 import it.aren.file.SettingsLoader;
 
 /**

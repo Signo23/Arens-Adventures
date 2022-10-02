@@ -1,16 +1,16 @@
-package it.aren.input;
+package it.aren.model.input;
 
-import it.aren.common.Direction;
+import it.aren.model.Direction;
 import it.aren.model.BaseEntity;
-import it.aren.model.Component;
 import it.aren.model.Controller;
+import it.aren.model.GameComponent;
 import it.aren.model.game.Player;
 
 /**
  * The input component for the {@link Player}.
  * Implements {@link InputComponent}
  */
-public class PlayerInputComponent implements Component {
+public class PlayerInputComponent extends GameComponent {
 
     @Override
     public <T, C extends Controller<T>> void update(BaseEntity entity, C controller) {
@@ -18,18 +18,18 @@ public class PlayerInputComponent implements Component {
             final String action = ((InputController)controller).getAction();
             if (action.equals(InputController.UP)) {
                 ((Player) entity).setLastDirection(Direction.UP);
-                ((Player) entity).setIdle(false);
+                entity.setVelocity(Direction.UP);
             } else if (action.equals(InputController.DOWN)) {
                 ((Player) entity).setLastDirection(Direction.DOWN);
-                ((Player) entity).setIdle(false);
+                entity.setVelocity(Direction.DOWN);
             } else if (action.equals(InputController.LEFT)) {
                 ((Player) entity).setLastDirection(Direction.LEFT);
-                ((Player) entity).setIdle(false);
+                entity.setVelocity(Direction.LEFT);
             } else if (action.equals(InputController.RIGHT)) {
                 ((Player) entity).setLastDirection(Direction.RIGHT);
-                ((Player) entity).setIdle(false);
+                entity.setVelocity(Direction.RIGHT);
             } else {
-                ((Player) entity).setIdle(true);
+                entity.setVelocity(Direction.NO_DIRECTION);
             }
         }
     }

@@ -1,6 +1,6 @@
 package it.aren.event;
 
-import it.aren.common.Vector2D;
+import it.aren.model.Vector2D;
 import it.aren.model.GameState;
 import it.aren.model.Vector;
 

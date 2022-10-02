@@ -11,9 +11,7 @@ import java.io.IOException;
 
 import it.aren.file.SettingsLoader;
 import it.aren.graphic.GraphicController;
-import it.aren.model.BaseEntity;
-import it.aren.model.Controller;
-import it.aren.model.Vector;
+import it.aren.model.*;
 import it.aren.model.game.*;
 import it.aren.common.Constant;
 
@@ -46,27 +44,30 @@ public class GameGraphicController implements Controller<BaseEntity> {
 
     @Override
     public void update(BaseEntity entity) {
-        BufferedImage sprite = null;
-        if(entity instanceof Block) {
-            sprite = ((Block) entity).getType().getTexture();
-        }
-        if(entity instanceof GameMap) {
-            sprite = ((GameMap) entity).getType().getImage();
-        }
-        if(entity instanceof GameObject) {
-            sprite = ((GameObject) entity).getType().getTexture();
-        }
-        if(entity instanceof Dialog) {
-            this.drawString((Dialog)entity);
-        }
-        if(entity instanceof Player) {
-            final Player tmpPlayer = (Player) entity;
-            sprite = tmpPlayer.isIdle() ? this.animation.getNextIdle(tmpPlayer.getLastDirection())
-                    : this.animation.getNextWalk(tmpPlayer.getLastDirection());
-            tmpPlayer.getBackPack().forEach(go -> go.updateGraphic(this));
-        }
-        if(sprite != null){
-            this.drawInPosition(entity.getPosition(), sprite);
+        if(entity.isDrawable()){
+            BufferedImage sprite = null;
+            if(entity instanceof Block) {
+                sprite = ((Block) entity).getType().getTexture();
+            }
+            if(entity instanceof GameMap) {
+                sprite = ((GameMap) entity).getType().getImage();
+            }
+            if(entity instanceof GameObject) {
+                sprite = ((GameObject) entity).getType().getTexture();
+            }
+            if(entity instanceof Dialog) {
+                this.drawString((Dialog)entity);
+            }
+            if(entity instanceof Player) {
+                final Player tmpPlayer = (Player) entity;
+                sprite = tmpPlayer.getVelocity().equals(Direction.NO_DIRECTION) ?
+                        this.animation.getNextIdle(tmpPlayer.getLastDirection())
+                        : this.animation.getNextWalk(tmpPlayer.getLastDirection());
+                tmpPlayer.getBackPack().forEach(go -> go.update(GameComponent.GRAPHIC, this));
+            }
+            if(sprite != null){
+                this.drawInPosition(entity.getPosition(), sprite);
+            }
         }
 
     }

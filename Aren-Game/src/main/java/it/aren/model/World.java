@@ -6,7 +6,6 @@ import java.util.Optional;
 import java.util.stream.Collectors;
 
 import it.aren.common.Constant;
-import it.aren.common.Direction;
 import it.aren.model.game.Block;
 import it.aren.model.game.Dialog;
 import it.aren.model.game.GameMap;

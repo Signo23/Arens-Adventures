@@ -1,10 +1,7 @@
 package it.aren.model.game;
 
 import it.aren.common.BaseObjectEnum;
-import it.aren.common.Vector2D;
-import it.aren.model.Component;
-import it.aren.model.Vector;
-import it.aren.model.GameEntity;
+import it.aren.model.*;
 
 /**
  * Model for game object.
@@ -23,8 +20,9 @@ public class GameObject extends GameEntity {
      */
     public GameObject(final BaseObjectEnum type, final Vector position, final boolean drawable,
                       final Component graphic) {
-        super(position, drawable, graphic);
+        super(position, drawable);
         this.type = type;
+        this.addComponent(GameComponent.GRAPHIC, graphic);
     }
 
     /**

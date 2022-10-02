@@ -1,4 +1,4 @@
-package it.aren.input;
+package it.aren.model.input;
 
 import java.awt.event.KeyEvent;
 import java.awt.event.KeyListener;

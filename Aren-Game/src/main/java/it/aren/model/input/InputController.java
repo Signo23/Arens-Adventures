@@ -1,6 +1,5 @@
-package it.aren.input;
+package it.aren.model.input;
 
-import it.aren.common.Direction;
 import it.aren.model.Controller;
 
 /**

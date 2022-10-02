@@ -7,7 +7,7 @@ import it.aren.model.game.Block;
 import it.aren.core.GameFactory;
 import it.aren.event.EventListener;
 import it.aren.event.TransportEvent;
-import it.aren.input.InputController;
+import it.aren.model.input.InputController;
 
 /**
  * The class that manages the state of the game.
@@ -79,7 +79,7 @@ public class GameState {
             }
 
         } else {
-            world.getPlayer().update("input",controller);
+            world.getPlayer().update(GameComponent.INPUT,controller);
         }
     }
 

@@ -5,7 +5,7 @@ import org.junit.jupiter.api.Test;
 
 import it.aren.common.BaseLevelEnum;
 import it.aren.common.Constant;
-import it.aren.common.Vector2D;
+import it.aren.model.Vector2D;
 import it.aren.file.SettingsLoader;
 import it.aren.model.GameState;
 

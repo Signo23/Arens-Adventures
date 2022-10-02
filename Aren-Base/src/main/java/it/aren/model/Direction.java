@@ -1,6 +1,4 @@
-package it.aren.common;
-
-import it.aren.model.Vector;
+package it.aren.model;
 
 /**
  * Direction's vectors.
@@ -21,7 +19,8 @@ public enum Direction {
     /**
      * The {@link Vector2D} for down.
      */
-    DOWN(0, 1);
+    DOWN(0, 1),
+    NO_DIRECTION(0,0);
 
     private final Vector vector;
 
@@ -47,6 +46,6 @@ public enum Direction {
         final int y = (int) point.getY();
         final int xAbs = Math.abs(x);
         final int yAbs = Math.abs(y);
-        return xAbs > yAbs ? x > 0 ? RIGHT : LEFT : y > 0 ? DOWN : UP;
+        return xAbs == yAbs ? NO_DIRECTION : xAbs > yAbs ? x > 0 ? RIGHT : LEFT : y > 0 ? DOWN : UP;
     }
 }

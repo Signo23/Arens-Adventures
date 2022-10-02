@@ -1,7 +1,5 @@
 package it.aren.model;
 
-import java.util.Map;
-
 public interface BaseEntity {
     /**
      * Get Entity's position.
@@ -49,4 +47,7 @@ public interface BaseEntity {
     void setHitBox(HitBox hitBox);
 
     abstract <T> void update(String componentName, Controller<T> componentController);
+
+    void setVelocity(Direction velocity);
+    Direction getVelocity();
 }

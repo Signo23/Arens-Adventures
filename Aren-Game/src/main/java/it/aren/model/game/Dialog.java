@@ -1,7 +1,7 @@
 package it.aren.model.game;
 
 import it.aren.common.Constant;
-import it.aren.common.Vector2D;
+import it.aren.model.Vector2D;
 import it.aren.file.SettingsLoader;
 import it.aren.model.Component;
 import it.aren.model.GameEntity;
@@ -24,7 +24,7 @@ public class Dialog extends GameEntity {
      * @param text the message to display
      */
     public Dialog(final Vector position, final boolean drawable, final Component graphic, final String text) {
-        super(position, drawable, graphic);
+        super(position, drawable);
         this.setText(text);
         final int ratio = SettingsLoader.loadSettings().scale();
         this.getHitBox().dimension().setX(14 * ratio * Constant.DEFAULT_HITBOX_DIMENSION);

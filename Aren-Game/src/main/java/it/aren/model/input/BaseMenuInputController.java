@@ -1,4 +1,4 @@
-package it.aren.input;
+package it.aren.model.input;
 
 /**
  * The menu input controller interface to set interact with the game and settings.

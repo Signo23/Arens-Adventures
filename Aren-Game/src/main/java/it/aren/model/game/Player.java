@@ -3,10 +3,8 @@ package it.aren.model.game;
 import java.util.ArrayList;
 import java.util.List;
 
-import it.aren.common.Direction;
-import it.aren.common.Vector2D;
-import it.aren.input.InputController;
-import it.aren.model.Component;
+import it.aren.model.Direction;
+import it.aren.model.Vector2D;
 import it.aren.model.GameEntity;
 import it.aren.model.Vector;
 import it.aren.physics.PhysicsComponent;
@@ -20,21 +18,17 @@ public class Player extends GameEntity {
 
     private Direction lastDirection;
     private List<GameObject> backPack;
-    private boolean idle;
     private PhysicsComponent phy;
     /**
      * Create a player.
      * @param position the {@link Vector2D} where the player is
-     * @param graphic the {@link GraphicComponent} for draw the player
-     * @param input the {@link InputComponent} for listen the input for player
      * @param phy the {@link PhysicsComponent} update position of player
      */
-    public Player(final Vector position, final Component graphic,
-                  final PhysicsComponent phy) {
-        super(position, true, graphic);
+    public Player(final Vector position, final PhysicsComponent phy) {
+        super(position, true);
         this.lastDirection =  Direction.DOWN;
+        this.setVelocity(Direction.NO_DIRECTION);
         this.backPack = new ArrayList<>();
-        this.idle = false;
         this.phy = phy;
     }
 
@@ -75,22 +69,6 @@ public class Player extends GameEntity {
      */
     public void setBackPack(final List<GameObject> backPack) {
         this.backPack = backPack;
-    }
-
-    /**
-     * Check if Player is idle.
-     * @return true if player is idle, false otherwise
-     */
-    public boolean isIdle() {
-        return this.idle;
-    }
-
-    /**
-     * Set if the Player is idle.
-     * @param idle a boolean for set if player is idle
-     */
-    public void setIdle(final boolean idle) {
-        this.idle = idle;
     }
 
     /**

@@ -1,6 +1,7 @@
 package it.aren.common;
 
 import it.aren.model.Range;
+import it.aren.model.Vector2D;
 
 /**
  * A range delimited by two {@link Vector2D}.

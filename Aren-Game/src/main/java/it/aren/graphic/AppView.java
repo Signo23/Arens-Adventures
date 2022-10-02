@@ -7,10 +7,10 @@ import it.aren.graphic.menu.MenuPanel;
 import it.aren.graphic.menu.MenuSettingsPanel;
 import it.aren.common.ApplicationState;
 import it.aren.common.BaseObjectEnum;
-import it.aren.input.InputController;
-import it.aren.input.KeyListenerImpl;
-import it.aren.input.KeyboardInputController;
-import it.aren.input.MenuInputController;
+import it.aren.model.input.InputController;
+import it.aren.model.input.KeyListenerImpl;
+import it.aren.model.input.KeyboardInputController;
+import it.aren.model.input.MenuInputController;
 import it.aren.model.World;
 
 /**

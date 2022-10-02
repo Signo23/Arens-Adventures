@@ -1,6 +1,6 @@
 package it.aren.model.game;
 
-import it.aren.common.Vector2D;
+import it.aren.model.Vector2D;
 import it.aren.model.HitBox;
 import it.aren.model.Vector;
 

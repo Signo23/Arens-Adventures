@@ -6,8 +6,7 @@ import java.util.List;
 import it.aren.common.BaseLevelEnum;
 import it.aren.common.BaseObjectEnum;
 import it.aren.common.Constant;
-import it.aren.common.Vector2D;
-import it.aren.graphic.GraphicController;
+import it.aren.model.Vector2D;
 import it.aren.graphic.component.GraphicComponent;
 import it.aren.event.NullEvent;
 import it.aren.file.SettingsLoader;
@@ -26,7 +25,7 @@ public class GameMap extends GameEntity {
      * @param type the {@link BaseLevelEnum} type of map
      */
     public GameMap(final BaseLevelEnum type) {
-        super(new Vector2D(), true, new GraphicComponent());
+        super(new Vector2D(), true);
         this.blocks = new ArrayList<>();
         this.type = type;
         type.getPoints().forEach(p -> this.addBlocks(createLineBlock(p)));
@@ -73,15 +72,6 @@ public class GameMap extends GameEntity {
      */ 
     public void addBlocks(final List<Block> blocks) {
         this.blocks.addAll(blocks);
-    }
-
-    /**
-     * {@inheritDoc}
-     */
-    @Override
-    public final void updateGraphic(final Controller<BaseEntity> g) {
-        super.updateGraphic(g);
-        this.blocks.forEach(b -> b.updateGraphic(g));
     }
 
     /**

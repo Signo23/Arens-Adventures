@@ -4,7 +4,6 @@ import java.util.HashMap;
 import java.util.Map;
 
 import it.aren.common.Constant;
-import it.aren.common.Vector2D;
 
 import it.aren.file.SettingsLoader;
 import it.aren.model.game.GameHitBox;
@@ -18,7 +17,7 @@ public class GameEntity implements BaseEntity {
     private HitBox hitBox;
     private final Map<String, Component> components;
 
-    private Vector velocity;
+    private Direction velocity;
 
     /**
      * Create an Entity.
@@ -26,11 +25,10 @@ public class GameEntity implements BaseEntity {
      * @param drawable set if the block will be drawn
      * @param graphic for render the block
      */
-    protected GameEntity(final Vector position, final boolean drawable, final Component graphic) {
+    protected GameEntity(final Vector position, final boolean drawable) {
         final int size = SettingsLoader.loadSettings().scale();
         this.drawable = drawable;
         this.components = new HashMap<>();
-        this.components.put("graphic", graphic);
         this.hitBox = new GameHitBox(position, new Vector2D(size * Constant.DEFAULT_HITBOX_DIMENSION,
                 size * Constant.DEFAULT_HITBOX_DIMENSION));
     }
@@ -79,10 +77,14 @@ public class GameEntity implements BaseEntity {
 
     }
 
-    public void updateGraphic(final Controller<BaseEntity> g) {
-        if (this.isDrawable() && this.components.containsKey("graphic")) {
-            this.components.get("graphic").update(this, g);
-        }
+    @Override
+    public void setVelocity(Direction direction) {
+        this.velocity = direction;
+    }
+
+    @Override
+    public Direction getVelocity() {
+        return this.velocity;
     }
 
 }
