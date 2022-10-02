@@ -80,7 +80,7 @@ public class GameEntity implements BaseEntity {
     }
 
     public void updateGraphic(final Controller<BaseEntity> g) {
-        if (this.isDrawable() && this.components.containsKey("graphics")) {
+        if (this.isDrawable() && this.components.containsKey("graphic")) {
             this.components.get("graphic").update(this, g);
         }
     }

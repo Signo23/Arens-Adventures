@@ -62,7 +62,7 @@ public class GamePanel extends JPanel {
             g2.clearRect(0, 0, this.getWidth(), this.getHeight());
 
         ((GameGraphicController)controller).setG2AndIO(g2, this);
-            this.world.getCurrentMap().updateGraphic((Controller) controller);
+            this.world.getCurrentMap().updateGraphic((Controller<BaseEntity>) controller);
             this.world.getPlayer().updateGraphic((Controller<BaseEntity>) controller);
             if (this.world.getDialog() != null) {
                 this.world.getDialog().updateGraphic((Controller<BaseEntity>) controller);
