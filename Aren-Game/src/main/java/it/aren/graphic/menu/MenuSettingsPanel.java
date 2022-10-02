@@ -48,8 +48,8 @@ public class MenuSettingsPanel extends JPanel {
      * @param inputController for listen the input
      */
     public MenuSettingsPanel(final MenuInputController menuController) {
-
-        this.settings = SettingsLoader.loadSettings();
+        final SettingsLoader settingsLoader = new SettingsLoader();
+        this.settings = settingsLoader.loadFile(Constant.SETTINGS_FILE);
         final int dimension = Constant.DEFAULT_HITBOX_DIMENSION * this.settings.scale();
         this.setPreferredSize(this.settings.getScreenSize());
         this.setLayout(null);
@@ -89,7 +89,8 @@ public class MenuSettingsPanel extends JPanel {
                 settingsNew.setAntiAliasingOn(antiAliasing.isSelected());
                 settingsNew.setRenderQuality("Rendering: Quality".equals(renderButton.getText()));
                 settingsNew.setScreenSize((ReadableDimension) comboDimension.getSelectedItem());
-                SettingsSaver.saveSettings(settingsNew);
+                final SettingsSaver settingsSaver = new SettingsSaver();
+                settingsSaver.saveFile(settingsNew, Constant.SETTINGS_FILE);
                 //App.restart();
                 break;
             case CONTROLLER_START_X:

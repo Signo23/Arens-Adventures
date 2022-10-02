@@ -1,6 +1,6 @@
 package it.aren.model;
 
-public interface BaseEntity {
+public interface Entity {
     /**
      * Get Entity's position.
      *

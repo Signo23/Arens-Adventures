@@ -19,7 +19,7 @@ import it.aren.common.Constant;
  * Class for draw entities with Swing.
  * Implements {@link GraphicController}.
  */
-public class GameGraphicController implements Controller<BaseEntity> {
+public class GameGraphicController implements Controller<Entity> {
 
     private static final int FONT_DEFAULT_DIMENSION = 24;
     private Graphics2D g2;
@@ -43,7 +43,7 @@ public class GameGraphicController implements Controller<BaseEntity> {
     }
 
     @Override
-    public void update(BaseEntity entity) {
+    public void update(Entity entity) {
         if(entity.isDrawable()){
             BufferedImage sprite = null;
             if(entity instanceof Block) {
@@ -77,7 +77,8 @@ public class GameGraphicController implements Controller<BaseEntity> {
     }
 
     private void drawString(final Dialog dialog) {
-        final int ratio = SettingsLoader.loadSettings().scale();
+        final SettingsLoader settingsLoader = new SettingsLoader();
+        final int ratio = settingsLoader.loadFile(Constant.SETTINGS_FILE).scale();
         this.g2.setColor(Color.white);
         this.g2.fillRect((int) dialog.getPosition().getX(), (int) dialog.getPosition().getY(),
                 (int) dialog.getHitBox().dimension().getX(), (int) dialog.getHitBox().dimension().getY());

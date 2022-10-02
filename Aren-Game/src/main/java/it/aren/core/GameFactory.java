@@ -18,7 +18,7 @@ import it.aren.model.game.Dialog;
 import it.aren.model.game.GameMap;
 import it.aren.model.game.GameObject;
 import it.aren.model.game.Player;
-import it.aren.physics.PlayerPhysicsComponent;
+import it.aren.model.physics.PlayerPhysicsComponent;
 
 /**
  * The main factory.
@@ -49,7 +49,8 @@ public final class GameFactory {
      * @return maps a {@link List} of {@link GameMap}
      */
     public static List<GameMap> loadMaps() {
-        final int ratio = SettingsLoader.loadSettings().scale();
+        final SettingsLoader settingsLoader = new SettingsLoader();
+        final int ratio = settingsLoader.loadFile(Constant.SETTINGS_FILE).scale();
         final int dimension = ratio * Constant.DEFAULT_HITBOX_DIMENSION;
 
         final GameObject potion = new GameObject(BaseObjectEnum.POTION, new Vector2D(11 * dimension, 1 * dimension), true,
@@ -144,7 +145,8 @@ public final class GameFactory {
      * @return a new {@link Dialog}
      */
     public static Dialog createDialog(final String text) {
-        final int ratio = SettingsLoader.loadSettings().scale();
+        final SettingsLoader settingsLoader = new SettingsLoader();
+        final int ratio = settingsLoader.loadFile(Constant.SETTINGS_FILE).scale();
         return new Dialog(new Vector2D(Constant.DEFAULT_DIALOG_POSITION.getX() * ratio,
                 Constant.DEFAULT_DIALOG_POSITION.getY() * ratio), true, new GraphicComponent(), text);
     }

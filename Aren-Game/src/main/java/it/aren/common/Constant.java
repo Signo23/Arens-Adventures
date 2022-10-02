@@ -77,6 +77,9 @@ public final class Constant {
      */
     public static final int DEFAULT_RATIO = 1;
 
+    public static final String SETTINGS_FILE = "settings.json";
+    public static final String MAPS_FILE = "maps.json";
+
     private Constant() {
 
     }

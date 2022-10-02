@@ -37,7 +37,8 @@ public class GameMap extends GameEntity {
      * @return blocks the aligned blocks
      */
     private static List<Block> createLineBlock(final Range range) {
-        final int ratio = SettingsLoader.loadSettings().scale();
+        final SettingsLoader settingsLoader = new SettingsLoader();
+        final int ratio = settingsLoader.loadFile(Constant.SETTINGS_FILE).scale();
         final int dimension = ratio * Constant.DEFAULT_HITBOX_DIMENSION;
         final List<Block> blocks = new ArrayList<>();
         for (int i = (int) range.getStart().getX(); i <= (int) range.getEnd().getX(); i++) {

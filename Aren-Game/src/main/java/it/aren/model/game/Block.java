@@ -26,7 +26,8 @@ public class Block extends GameObject {
     public Block(final BaseObjectEnum type, final BaseEvent event, final Vector position, final boolean drawable,
                  final Component graphic) {
         super(type, position, drawable, graphic);
-        final int ratio = SettingsLoader.loadSettings().scale();
+        final SettingsLoader settingsLoader = new SettingsLoader();
+        final int ratio = settingsLoader.loadFile(Constant.SETTINGS_FILE).scale();
         this.event = event;
         float dialogBoxDimension = ratio * Constant.DEFAULT_HITBOX_DIMENSION;
         this.getHitBox().dimension().setX(dialogBoxDimension);

@@ -1,7 +1,7 @@
 package it.aren.model.input;
 
 import it.aren.model.Direction;
-import it.aren.model.BaseEntity;
+import it.aren.model.Entity;
 import it.aren.model.Controller;
 import it.aren.model.GameComponent;
 import it.aren.model.game.Player;
@@ -13,7 +13,7 @@ import it.aren.model.game.Player;
 public class PlayerInputComponent extends GameComponent {
 
     @Override
-    public <T, C extends Controller<T>> void update(BaseEntity entity, C controller) {
+    public <T, C extends Controller<T>> void update(Entity entity, C controller) {
         if(controller instanceof InputController) {
             final String action = ((InputController)controller).getAction();
             if (action.equals(InputController.UP)) {

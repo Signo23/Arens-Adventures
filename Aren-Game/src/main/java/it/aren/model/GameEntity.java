@@ -12,7 +12,7 @@ import it.aren.model.game.GameHitBox;
  * The main model of the game.
  *
  */
-public class GameEntity implements BaseEntity {
+public class GameEntity implements Entity {
     private boolean drawable;
     private HitBox hitBox;
     private final Map<String, Component> components;
@@ -26,7 +26,8 @@ public class GameEntity implements BaseEntity {
      * @param graphic for render the block
      */
     protected GameEntity(final Vector position, final boolean drawable) {
-        final int size = SettingsLoader.loadSettings().scale();
+        final SettingsLoader settingsLoader = new SettingsLoader();
+        final int size = settingsLoader.loadFile(Constant.SETTINGS_FILE).scale();
         this.drawable = drawable;
         this.components = new HashMap<>();
         this.hitBox = new GameHitBox(position, new Vector2D(size * Constant.DEFAULT_HITBOX_DIMENSION,

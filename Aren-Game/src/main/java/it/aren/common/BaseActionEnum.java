@@ -37,7 +37,8 @@ public enum BaseActionEnum {
     private final BufferedImage texture;
 
     BaseActionEnum(final String fileName) {
-        this.texture = ImageLoader.loadImage(fileName, SettingsLoader.loadSettings().scale());
+        final ImageLoader imageLoader = new ImageLoader();
+        this.texture = imageLoader.loadFile(fileName);
     }
 
     /**

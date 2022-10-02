@@ -1,4 +1,4 @@
-package it.aren.file;
+package it.aren.model;
 
 /**
  * The file saver interface to write file.

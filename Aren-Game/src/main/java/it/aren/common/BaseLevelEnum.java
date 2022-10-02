@@ -33,8 +33,10 @@ public enum BaseLevelEnum {
     private List<PointRange> points;
 
     BaseLevelEnum(final String level, final String levelTexture) {
-        this.image = ImageLoader.loadImage(levelTexture, SettingsLoader.loadSettings().scale());
-        points = MapsLoader.loadMaps("maps.json").get(level);
+        final ImageLoader imageLoader = new ImageLoader();
+        final MapsLoader mapsLoader = new MapsLoader();
+        this.image = imageLoader.loadFile(levelTexture);
+        points = mapsLoader.loadFile(Constant.MAPS_FILE).get(level);
     }
 
     /**

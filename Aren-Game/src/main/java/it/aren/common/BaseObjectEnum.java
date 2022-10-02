@@ -71,7 +71,8 @@ public enum BaseObjectEnum {
     private final BufferedImage texture;
 
     BaseObjectEnum(final String image) {
-        this.texture = ImageLoader.loadImage(image, SettingsLoader.loadSettings().scale());
+        final ImageLoader imageLoader = new ImageLoader();
+        this.texture = imageLoader.loadFile(image);
     }
 
     BaseObjectEnum() {

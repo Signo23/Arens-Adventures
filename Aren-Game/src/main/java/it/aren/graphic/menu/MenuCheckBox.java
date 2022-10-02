@@ -12,6 +12,7 @@ import javax.swing.JCheckBox;
 
 import it.aren.common.BaseActionEnum;
 import it.aren.common.Constant;
+import it.aren.common.Settings;
 import it.aren.file.SettingsLoader;
 
 /**
@@ -37,8 +38,10 @@ public class MenuCheckBox extends JCheckBox {
             Font customFont = Font.createFont(Font.TRUETYPE_FONT, MenuButton.class
                               .getResourceAsStream(Constant.FONT_FOLDER + "Minecraft.ttf"));
             final GraphicsEnvironment ge = GraphicsEnvironment.getLocalGraphicsEnvironment();
-            customFont = customFont.deriveFont(Font.PLAIN, Constant.DEFAULT_TEXT_DIMENSION * SettingsLoader.loadSettings()
-                         .scale());
+
+            final SettingsLoader settingsLoader = new SettingsLoader();
+            final Settings settings = settingsLoader.loadFile(Constant.SETTINGS_FILE);
+            customFont = customFont.deriveFont(Font.PLAIN, Constant.DEFAULT_TEXT_DIMENSION * settings.scale());
             ge.registerFont(customFont);
             this.setFont(customFont);
         } catch (IOException | FontFormatException e) {

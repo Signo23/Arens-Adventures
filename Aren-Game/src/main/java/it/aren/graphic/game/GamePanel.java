@@ -6,7 +6,9 @@ import java.awt.RenderingHints;
 
 import javax.swing.JPanel;
 
+import it.aren.common.Constant;
 import it.aren.common.Settings;
+import it.aren.file.SettingsSaver;
 import it.aren.model.*;
 import it.aren.file.SettingsLoader;
 import it.aren.model.input.InputController;
@@ -24,7 +26,7 @@ public class GamePanel extends JPanel {
     private static final long serialVersionUID = 1L;
     private final World world;
     private final Settings settings;
-    private final Controller<BaseEntity> controller;
+    private final Controller<Entity> controller;
 
       /**
      * Initialize the panel.
@@ -32,8 +34,9 @@ public class GamePanel extends JPanel {
      * @param inputController for listen the input
      */
     public GamePanel(final World world, final InputController inputController) {
+        final SettingsLoader settingsLoader = new SettingsLoader();
         this.world = world;
-        this.settings = SettingsLoader.loadSettings();
+        this.settings = settingsLoader.loadFile(Constant.SETTINGS_FILE);
         this.setPreferredSize(this.settings.getScreenSize());
         this.addKeyListener(new KeyListenerImpl((KeyboardInputController) inputController));
         this.setFocusable(true);

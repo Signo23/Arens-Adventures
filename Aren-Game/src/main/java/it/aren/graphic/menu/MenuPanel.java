@@ -26,7 +26,8 @@ public class MenuPanel extends JPanel {
      * @param controller is a input controller for the menu
      */
     public MenuPanel(final MenuInputController controller) {
-        final Settings settings = SettingsLoader.loadSettings();
+        final SettingsLoader settingsLoader = new SettingsLoader();
+        final Settings settings = settingsLoader.loadFile(Constant.SETTINGS_FILE);
         final int dimension = Constant.DEFAULT_HITBOX_DIMENSION * settings.scale();
         final MenuButton playButton = new MenuButton(BaseActionEnum.PLAY.getTexture(), "Gioca");
         final MenuButton settingsButton = new MenuButton(BaseActionEnum.SETTINGS.getTexture(), "Impostazioni");

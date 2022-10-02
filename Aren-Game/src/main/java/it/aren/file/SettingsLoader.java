@@ -9,6 +9,7 @@ import it.aren.common.Constant;
 import it.aren.common.Settings;
 import com.google.gson.Gson;
 import com.google.gson.GsonBuilder;
+import it.aren.model.FileLoader;
 
 /**
  * The file loader for settings.
@@ -32,17 +33,9 @@ public class SettingsLoader implements FileLoader<Settings> {
             return set;
         } catch (IOException e) {
             final Settings set = new Settings();
-            SettingsSaver.saveSettings(set);
+            final SettingsSaver settingsSaver = new SettingsSaver();
+            settingsSaver.saveFile(set, Constant.SETTINGS_FILE);
             return set;
         }
-    }
-
-    /**
-     * Create a {@link SettingsLoader}.
-     * @return the loaded file
-     */
-    public static Settings loadSettings() {
-        final SettingsLoader loader = new SettingsLoader();
-        return loader.loadFile("settings.json");
     }
 }

@@ -8,6 +8,7 @@ import it.aren.common.Constant;
 import it.aren.common.Settings;
 import com.google.gson.Gson;
 import com.google.gson.GsonBuilder;
+import it.aren.model.FileSaver;
 
 /**
  * The file saver for settings.
@@ -30,15 +31,5 @@ public class SettingsSaver implements FileSaver<Settings> {
         } catch (IOException e) {
             e.printStackTrace();
         }
-    }
-
-    /**
-    * Create a {@link SettingsSaver} for the object to save.
-    * @param objToSave for the object to save
-    * @return the saved file
-    */
-    public static void saveSettings(final Settings objToSave) {
-        final SettingsSaver saver = new SettingsSaver();
-        saver.saveFile(objToSave, "settings.json");
     }
 }

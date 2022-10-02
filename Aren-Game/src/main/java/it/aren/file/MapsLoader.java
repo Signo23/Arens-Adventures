@@ -13,6 +13,7 @@ import it.aren.common.PointRange;
 import com.google.gson.Gson;
 import com.google.gson.GsonBuilder;
 import com.google.gson.reflect.TypeToken;
+import it.aren.model.FileLoader;
 
 /**
  * The loader for the game map's blocks.
@@ -37,16 +38,6 @@ public class MapsLoader implements FileLoader<Map<String, List<PointRange>>> {
             e.printStackTrace();
         }
         return new HashMap<>();
-    }
-
-    /**
-     * Create a {@link MapsLoader} by the file's name.
-     * @param fileName the file's name to load
-     * @return the loaded file
-     */
-    public static Map<String, List<PointRange>> loadMaps(final String fileName) {
-        final MapsLoader loader = new MapsLoader();
-        return loader.loadFile(fileName);
     }
 
 }

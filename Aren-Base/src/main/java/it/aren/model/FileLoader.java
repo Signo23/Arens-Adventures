@@ -1,4 +1,4 @@
-package it.aren.file;
+package it.aren.model;
 
 /**
  * The file loader interface to loading file.

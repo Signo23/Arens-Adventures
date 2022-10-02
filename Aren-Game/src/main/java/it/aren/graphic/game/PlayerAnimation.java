@@ -26,9 +26,11 @@ public class PlayerAnimation {
      * Load all the sprite.
      */
     public PlayerAnimation() {
+        final SettingsLoader settingsLoader = new SettingsLoader();
         this.idleSprite = new HashMap<>();
         this.walkSprite = new HashMap<>();
-        this.spriteDimension = SettingsLoader.loadSettings().scale() * Constant.DEFAULT_HITBOX_DIMENSION;
+        this.spriteDimension = settingsLoader.loadFile(Constant.SETTINGS_FILE).scale() *
+                Constant.DEFAULT_HITBOX_DIMENSION;
 
         this.idleSprite.put(Direction.UP, new LinkedList<>());
         this.idleSprite.put(Direction.DOWN, new LinkedList<>());
