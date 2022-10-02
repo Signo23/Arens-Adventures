@@ -89,8 +89,7 @@ public class MenuSettingsPanel extends JPanel {
                 settingsNew.setAntiAliasingOn(antiAliasing.isSelected());
                 settingsNew.setRenderQuality("Rendering: Quality".equals(renderButton.getText()));
                 settingsNew.setScreenSize((ReadableDimension) comboDimension.getSelectedItem());
-                final SettingsSaver settingsSaver = new SettingsSaver();
-                settingsSaver.saveFile(settingsNew, Constant.SETTINGS_FILE);
+                GameFactory.saveSettings(settingsNew);
                 //App.restart();
                 break;
             case CONTROLLER_START_X:

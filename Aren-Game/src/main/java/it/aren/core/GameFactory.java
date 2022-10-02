@@ -7,6 +7,7 @@ import it.aren.common.BaseLevelEnum;
 import it.aren.common.BaseObjectEnum;
 import it.aren.common.Constant;
 import it.aren.common.Settings;
+import it.aren.file.SettingsSaver;
 import it.aren.model.GameComponent;
 import it.aren.geom.Vector2D;
 import it.aren.event.InteractWithPlayerEvent;
@@ -154,5 +155,10 @@ public final class GameFactory {
     public static Settings loadSettings(){
         final SettingsLoader settingsLoader = new SettingsLoader();
         return settingsLoader.loadFile(Constant.SETTINGS_FILE);
+    }
+
+    public static void saveSettings(final Settings settings){
+        final SettingsSaver settingsSaver = new SettingsSaver();
+        settingsSaver.saveFile(settings, Constant.SETTINGS_FILE);
     }
 }

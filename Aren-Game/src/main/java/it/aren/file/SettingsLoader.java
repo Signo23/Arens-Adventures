@@ -9,6 +9,7 @@ import it.aren.common.Constant;
 import it.aren.common.Settings;
 import com.google.gson.Gson;
 import com.google.gson.GsonBuilder;
+import it.aren.core.GameFactory;
 import it.aren.io.FileLoader;
 
 /**
@@ -33,8 +34,7 @@ public class SettingsLoader implements FileLoader<Settings> {
             return set;
         } catch (IOException e) {
             final Settings set = new Settings();
-            final SettingsSaver settingsSaver = new SettingsSaver();
-            settingsSaver.saveFile(set, Constant.SETTINGS_FILE);
+            GameFactory.saveSettings(set);
             return set;
         }
     }
