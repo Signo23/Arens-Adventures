@@ -71,7 +71,7 @@ public class GameState {
      * @param controller
      */
     public void processInput(final InputController controller) {
-        if (controller.isInteract()) {
+        if (controller.getAction().equals(InputController.INTERACT)) {
             final Optional<Block> block = this.getWorld().playerCollide();
             if (!block.isEmpty() && !block.get().getEvent().isAlreadyLunch()) {
                 this.eventListener.notifyEvent(block.get().getEvent());
@@ -79,7 +79,7 @@ public class GameState {
             }
 
         } else {
-            world.getPlayer().updateInput(controller);
+            world.getPlayer().update("input",controller);
         }
     }
 

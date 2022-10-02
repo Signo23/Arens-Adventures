@@ -31,19 +31,8 @@ public interface BaseEntity {
      */
     void setDrawable(boolean drawable);
 
-    /**
-     * Get Entity's {@link Component}.
-     *
-     * @return the graphic
-     */
-    Map<String, Component> getComponents();
-
-    /**
-     * Set Entity's {@link Component}.
-     *
-     * @param components the graphic to set
-     */
-    void setComponents(Map<String, Component> components);
+    void addComponent(String code, Component component);
+    Component component(String code);
 
     /**
      * Get Entity's {@link HitBox} for hitBox.
@@ -59,5 +48,5 @@ public interface BaseEntity {
      */
     void setHitBox(HitBox hitBox);
 
-    void update(String componentName, Controller componentController);
+    abstract <T> void update(String componentName, Controller<T> componentController);
 }

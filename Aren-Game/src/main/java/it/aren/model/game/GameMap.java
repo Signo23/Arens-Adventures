@@ -11,6 +11,7 @@ import it.aren.graphic.GraphicController;
 import it.aren.graphic.component.GraphicComponent;
 import it.aren.event.NullEvent;
 import it.aren.file.SettingsLoader;
+import it.aren.model.Controller;
 import it.aren.model.GameEntity;
 import it.aren.model.Range;
 import it.aren.model.Vector;
@@ -81,7 +82,7 @@ public class GameMap extends GameEntity {
      * {@inheritDoc}
      */
     @Override
-    public final void updateGraphic(final GraphicController g) {
+    public final void updateGraphic(final Controller g) {
         super.updateGraphic(g);
         this.blocks.forEach(b -> b.updateGraphic(g));
     }

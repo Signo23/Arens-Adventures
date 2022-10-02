@@ -12,6 +12,7 @@ import java.io.IOException;
 import it.aren.file.SettingsLoader;
 import it.aren.graphic.GraphicController;
 import it.aren.model.BaseEntity;
+import it.aren.model.Controller;
 import it.aren.model.Vector;
 import it.aren.model.game.*;
 import it.aren.common.Constant;
@@ -20,7 +21,7 @@ import it.aren.common.Constant;
  * Class for draw entities with Swing.
  * Implements {@link GraphicController}.
  */
-public class GameGraphicController implements GraphicController {
+public class GameGraphicController implements Controller<BaseEntity> {
 
     private static final int FONT_DEFAULT_DIMENSION = 24;
     private Graphics2D g2;
@@ -44,7 +45,7 @@ public class GameGraphicController implements GraphicController {
     }
 
     @Override
-    public void draw(BaseEntity entity) {
+    public void update(BaseEntity entity) {
         BufferedImage sprite = null;
         if(entity instanceof Block) {
             sprite = ((Block) entity).getType().getTexture();

@@ -5,7 +5,6 @@ import java.util.List;
 
 import it.aren.common.Direction;
 import it.aren.common.Vector2D;
-import it.aren.input.InputComponent;
 import it.aren.input.InputController;
 import it.aren.model.Component;
 import it.aren.model.GameEntity;
@@ -23,8 +22,6 @@ public class Player extends GameEntity {
     private List<GameObject> backPack;
     private boolean idle;
     private PhysicsComponent phy;
-    private InputComponent input;
-
     /**
      * Create a player.
      * @param position the {@link Vector2D} where the player is
@@ -32,22 +29,13 @@ public class Player extends GameEntity {
      * @param input the {@link InputComponent} for listen the input for player
      * @param phy the {@link PhysicsComponent} update position of player
      */
-    public Player(final Vector position, final Component graphic, final InputComponent input,
+    public Player(final Vector position, final Component graphic,
                   final PhysicsComponent phy) {
         super(position, true, graphic);
         this.lastDirection =  Direction.DOWN;
         this.backPack = new ArrayList<>();
         this.idle = false;
         this.phy = phy;
-        this.input = input;
-    }
-
-    /**
-     * Update the player's {@link InputComponent}.
-     * @param i the {@link InputController} to use for update input state
-     */
-    public void updateInput(final InputController i) {
-        this.input.update(this, i);
     }
 
     /**
@@ -119,21 +107,5 @@ public class Player extends GameEntity {
      */
     public void setPhysic(final PhysicsComponent physic) {
         this.phy = physic;
-    }
-
-    /**
-     * Set Player's input component.
-     * @return player's {@link InputComponent}
-     */
-    public final InputComponent getInput() {
-        return input;
-    }
-
-    /**
-     * Get Player's InputComponent.
-     * @param input the {@link InputComponent} to set as player's input component
-     */
-    public final void setInput(final InputComponent input) {
-        this.input = input;
     }
 }

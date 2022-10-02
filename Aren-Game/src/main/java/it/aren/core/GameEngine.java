@@ -125,7 +125,7 @@ public class GameEngine implements EventListener {
      * Update the Dialog state.
      */
     private void updateHUD() {
-        if (this.controller.isOnClose()) {
+        if (this.controller.getAction().equals(InputController.ON_CLOSE_DIALOG)) {
             this.state.getWorld().setDialog(null);
             this.state.setState(ApplicationState.GAME);
         }

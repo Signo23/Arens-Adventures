@@ -6,7 +6,6 @@ import java.util.Map;
 import it.aren.common.Constant;
 import it.aren.common.Vector2D;
 
-import it.aren.graphic.GraphicController;
 import it.aren.file.SettingsLoader;
 import it.aren.model.game.GameHitBox;
 
@@ -17,7 +16,7 @@ import it.aren.model.game.GameHitBox;
 public class GameEntity implements BaseEntity {
     private boolean drawable;
     private HitBox hitBox;
-    private Map<String, Component> components;
+    private final Map<String, Component> components;
 
     private Vector velocity;
 
@@ -53,13 +52,15 @@ public class GameEntity implements BaseEntity {
     public void setDrawable(final boolean drawable) {
         this.drawable = drawable;
     }
+
     @Override
-    public Map<String, Component> getComponents() {
-        return this.components;
+    public void addComponent(String code, Component component) {
+        this.components.put(code, component);
     }
+
     @Override
-    public void setComponents(final Map<String, Component> components) {
-        this.components = components;
+    public Component component(String code) {
+        return this.components.getOrDefault(code, null);
     }
     @Override
     public HitBox getHitBox() {
@@ -71,12 +72,15 @@ public class GameEntity implements BaseEntity {
     }
 
     @Override
-    public void update(String componentName, Controller componentController) {
+    public <T> void update(String componentName, Controller<T> componentController) {
+        if(this.components.containsKey(componentName)){
+            this.components.get(componentName).update(this, componentController);
+        }
 
     }
 
-    public void updateGraphic(final GraphicController g) {
-        if (this.isDrawable()) {
+    public void updateGraphic(final Controller<BaseEntity> g) {
+        if (this.isDrawable() && this.components.containsKey("graphics")) {
             this.components.get("graphic").update(this, g);
         }
     }

@@ -19,31 +19,33 @@ public class Input {
         world.addMaps(GameFactory.loadMaps());
         world.setCurrentMap(0);
 
-        ctrl.notifyMoveUp();
-        world.getPlayer().updateInput(ctrl);
+        ctrl.update(InputController.UP);
+        world.getPlayer().update("input",ctrl);
         assertEquals(world.getPlayer().getLastDirection(), Direction.UP);
         assertFalse(world.getPlayer().isIdle());
-        ctrl.notifyNoMoreMoveUp();
+        ctrl.update(InputController.NO_ACTION);
 
-        ctrl.notifyMoveDown();
-        world.getPlayer().updateInput(ctrl);
+        ctrl.update(InputController.DOWN);
+        System.out.println(world.getPlayer());
+        world.getPlayer().update("input",ctrl);
+        System.out.println(world.getPlayer());
         assertEquals(world.getPlayer().getLastDirection(), Direction.DOWN);
         assertFalse(world.getPlayer().isIdle());
-        ctrl.notifyNoMoreMoveDown();
+        ctrl.update(InputController.NO_ACTION);
 
-        ctrl.notifyMoveLeft();
-        world.getPlayer().updateInput(ctrl);
+        ctrl.update(InputController.LEFT);
+        world.getPlayer().update("input",ctrl);
         assertEquals(world.getPlayer().getLastDirection(), Direction.LEFT);
         assertFalse(world.getPlayer().isIdle());
-        ctrl.notifyNoMoreMoveLeft();
+        ctrl.update(InputController.NO_ACTION);
 
-        ctrl.notifyMoveRight();
-        world.getPlayer().updateInput(ctrl);
+        ctrl.update(InputController.RIGHT);
+        world.getPlayer().update("input",ctrl);
         assertEquals(world.getPlayer().getLastDirection(), Direction.RIGHT);
         assertFalse(world.getPlayer().isIdle());
-        ctrl.notifyNoMoreMoveRight();
+        ctrl.update(InputController.NO_ACTION);
 
-        world.getPlayer().updateInput(ctrl);
+        world.getPlayer().update("input",ctrl);
         assertTrue(world.getPlayer().isIdle());
 
     }

@@ -36,10 +36,11 @@ public final class GameFactory {
      * @return the new {@link Player}
      */
     public static Player createPlayer() {
-        return new Player(new Vector2D(0, 1),
+         final Player player = new Player(new Vector2D(0, 1),
                 new GraphicComponent(),
-                new PlayerInputComponent(),
                 new PlayerPhysicsComponent());
+         player.addComponent("input", new PlayerInputComponent());
+         return player;
     }
 
     /**

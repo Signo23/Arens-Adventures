@@ -7,6 +7,8 @@ import java.awt.RenderingHints;
 import javax.swing.JPanel;
 
 import it.aren.common.Settings;
+import it.aren.model.BaseEntity;
+import it.aren.model.Controller;
 import it.aren.model.GameEntity;
 import it.aren.file.SettingsLoader;
 import it.aren.graphic.GraphicController;
@@ -25,7 +27,7 @@ public class GamePanel extends JPanel {
     private static final long serialVersionUID = 1L;
     private final World world;
     private final Settings settings;
-    private final GraphicController controller;
+    private final Controller<BaseEntity> controller;
 
       /**
      * Initialize the panel.
@@ -60,10 +62,10 @@ public class GamePanel extends JPanel {
             g2.clearRect(0, 0, this.getWidth(), this.getHeight());
 
         ((GameGraphicController)controller).setG2AndIO(g2, this);
-            this.world.getCurrentMap().updateGraphic(controller);
-            this.world.getPlayer().updateGraphic(controller);
+            this.world.getCurrentMap().updateGraphic((Controller) controller);
+            this.world.getPlayer().updateGraphic((Controller<BaseEntity>) controller);
             if (this.world.getDialog() != null) {
-                this.world.getDialog().updateGraphic(controller);
+                this.world.getDialog().updateGraphic((Controller<BaseEntity>) controller);
             }
     }
 

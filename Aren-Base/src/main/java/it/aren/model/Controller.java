@@ -1,6 +1,6 @@
 package it.aren.model;
 
-public interface Controller {
+public interface Controller<T> {
 
-    void update(BaseEntity entity);
+    void update(T toUpdate);
 }

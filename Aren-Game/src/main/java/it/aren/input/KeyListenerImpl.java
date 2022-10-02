@@ -31,22 +31,22 @@ public class KeyListenerImpl implements KeyListener {
     public final void keyPressed(final KeyEvent e) {
         switch (e.getKeyCode()) {
             case KeyEvent.VK_W:
-                this.controller.notifyMoveUp();
+                this.controller.update(InputController.UP);
                 break;
             case KeyEvent.VK_S:
-                this.controller.notifyMoveDown();
+                this.controller.update(InputController.DOWN);
                 break;
             case KeyEvent.VK_A:
-                this.controller.notifyMoveLeft();
+                this.controller.update(InputController.LEFT);
                 break;
             case KeyEvent.VK_D:
-                this.controller.notifyMoveRight();
+                this.controller.update(InputController.RIGHT);
                 break;
             case KeyEvent.VK_SPACE:
-                this.controller.notifyInteract();
+                this.controller.update(InputController.INTERACT);
                 break;
             case KeyEvent.VK_ENTER:
-                this.controller.notifyOnClose();
+                this.controller.update(InputController.ON_CLOSE_DIALOG);
                 break;
             default:
                 break;
@@ -58,27 +58,6 @@ public class KeyListenerImpl implements KeyListener {
      * {@inheritDoc}
      */
     public final void keyReleased(final KeyEvent e) {
-        switch (e.getKeyCode()) {
-            case KeyEvent.VK_W:
-                this.controller.notifyNoMoreMoveUp();
-                break;
-            case KeyEvent.VK_S:
-                this.controller.notifyNoMoreMoveDown();
-                break;
-            case KeyEvent.VK_A:
-                this.controller.notifyNoMoreMoveLeft();
-                break;
-            case KeyEvent.VK_D:
-                this.controller.notifyNoMoreMoveRight();
-                break;
-            case KeyEvent.VK_SPACE:
-                this.controller.notifyNoMoreInteract();
-                break;
-            case KeyEvent.VK_ENTER:
-                this.controller.notifyNoMoreOnClose();
-                break;
-            default:
-                break;
-        }
+        this.controller.update(InputController.NO_ACTION);
     }
 }
