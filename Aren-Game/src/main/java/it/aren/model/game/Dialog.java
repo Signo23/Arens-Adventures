@@ -1,11 +1,8 @@
 package it.aren.model.game;
 
 import it.aren.common.Constant;
-import it.aren.model.Vector2D;
+import it.aren.model.*;
 import it.aren.file.SettingsLoader;
-import it.aren.model.Component;
-import it.aren.model.GameEntity;
-import it.aren.model.Vector;
 
 /**
  * Model for the dialog.
@@ -29,6 +26,7 @@ public class Dialog extends GameEntity {
         final int ratio = SettingsLoader.loadSettings().scale();
         this.getHitBox().dimension().setX(14 * ratio * Constant.DEFAULT_HITBOX_DIMENSION);
         this.getHitBox().dimension().setY(3 * ratio * Constant.DEFAULT_HITBOX_DIMENSION);
+        this.addComponent(GameComponent.GRAPHIC, graphic);
     }
     /**
      * Return the dialog's text.
