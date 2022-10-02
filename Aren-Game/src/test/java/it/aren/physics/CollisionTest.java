@@ -4,8 +4,8 @@ import static org.junit.jupiter.api.Assertions.assertEquals;
 
 import org.junit.jupiter.api.Test;
 
-import it.aren.model.Direction;
-import it.aren.model.Vector2D;
+import it.aren.Direction;
+import it.aren.geom.Vector2D;
 import it.aren.model.GameState;
 
 class CollisionTest {

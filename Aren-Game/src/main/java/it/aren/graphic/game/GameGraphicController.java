@@ -9,6 +9,11 @@ import java.awt.image.BufferedImage;
 import java.awt.image.ImageObserver;
 import java.io.IOException;
 
+import it.aren.Controller;
+import it.aren.Direction;
+import it.aren.Entity;
+import it.aren.Vector;
+import it.aren.core.GameFactory;
 import it.aren.file.SettingsLoader;
 import it.aren.graphic.GraphicController;
 import it.aren.model.*;
@@ -77,8 +82,7 @@ public class GameGraphicController implements Controller<Entity> {
     }
 
     private void drawString(final Dialog dialog) {
-        final SettingsLoader settingsLoader = new SettingsLoader();
-        final int ratio = settingsLoader.loadFile(Constant.SETTINGS_FILE).scale();
+        final int ratio = GameFactory.loadSettings().scale();
         this.g2.setColor(Color.white);
         this.g2.fillRect((int) dialog.getPosition().getX(), (int) dialog.getPosition().getY(),
                 (int) dialog.getHitBox().dimension().getX(), (int) dialog.getHitBox().dimension().getY());

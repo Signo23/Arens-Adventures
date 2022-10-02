@@ -5,6 +5,9 @@ import java.util.List;
 import java.util.Optional;
 import java.util.stream.Collectors;
 
+import it.aren.Direction;
+import it.aren.HitBox;
+import it.aren.Vector;
 import it.aren.common.Constant;
 import it.aren.model.game.Block;
 import it.aren.model.game.Dialog;

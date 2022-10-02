@@ -1,8 +1,8 @@
 package it.aren.model.input;
 
-import it.aren.model.Direction;
-import it.aren.model.Entity;
-import it.aren.model.Controller;
+import it.aren.Direction;
+import it.aren.Entity;
+import it.aren.Controller;
 import it.aren.model.GameComponent;
 import it.aren.model.game.Player;
 

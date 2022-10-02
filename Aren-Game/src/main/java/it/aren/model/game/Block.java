@@ -2,11 +2,12 @@ package it.aren.model.game;
 
 import it.aren.common.BaseObjectEnum;
 import it.aren.common.Constant;
-import it.aren.model.Vector2D;
+import it.aren.core.GameFactory;
+import it.aren.geom.Vector2D;
 import it.aren.event.BaseEvent;
 import it.aren.file.SettingsLoader;
-import it.aren.model.Component;
-import it.aren.model.Vector;
+import it.aren.Component;
+import it.aren.Vector;
 
 /**
  * Model for every block.
@@ -26,8 +27,7 @@ public class Block extends GameObject {
     public Block(final BaseObjectEnum type, final BaseEvent event, final Vector position, final boolean drawable,
                  final Component graphic) {
         super(type, position, drawable, graphic);
-        final SettingsLoader settingsLoader = new SettingsLoader();
-        final int ratio = settingsLoader.loadFile(Constant.SETTINGS_FILE).scale();
+        final int ratio = GameFactory.loadSettings().scale();
         this.event = event;
         float dialogBoxDimension = ratio * Constant.DEFAULT_HITBOX_DIMENSION;
         this.getHitBox().dimension().setX(dialogBoxDimension);

@@ -9,6 +9,7 @@ import it.aren.common.BaseActionEnum;
 import it.aren.common.BaseObjectEnum;
 import it.aren.common.Constant;
 import it.aren.common.Settings;
+import it.aren.core.GameFactory;
 import it.aren.file.SettingsLoader;
 import it.aren.model.input.MenuInputController;
 
@@ -26,8 +27,7 @@ public class MenuPanel extends JPanel {
      * @param controller is a input controller for the menu
      */
     public MenuPanel(final MenuInputController controller) {
-        final SettingsLoader settingsLoader = new SettingsLoader();
-        final Settings settings = settingsLoader.loadFile(Constant.SETTINGS_FILE);
+        final Settings settings = GameFactory.loadSettings();
         final int dimension = Constant.DEFAULT_HITBOX_DIMENSION * settings.scale();
         final MenuButton playButton = new MenuButton(BaseActionEnum.PLAY.getTexture(), "Gioca");
         final MenuButton settingsButton = new MenuButton(BaseActionEnum.SETTINGS.getTexture(), "Impostazioni");

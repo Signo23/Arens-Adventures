@@ -5,10 +5,11 @@ import java.util.HashMap;
 import java.util.LinkedList;
 import java.util.Map;
 
+import it.aren.core.GameFactory;
 import it.aren.model.game.Player;
 import it.aren.common.BaseObjectEnum;
 import it.aren.common.Constant;
-import it.aren.model.Direction;
+import it.aren.Direction;
 import it.aren.file.SettingsLoader;
 
 /**
@@ -29,8 +30,7 @@ public class PlayerAnimation {
         final SettingsLoader settingsLoader = new SettingsLoader();
         this.idleSprite = new HashMap<>();
         this.walkSprite = new HashMap<>();
-        this.spriteDimension = settingsLoader.loadFile(Constant.SETTINGS_FILE).scale() *
-                Constant.DEFAULT_HITBOX_DIMENSION;
+        this.spriteDimension = GameFactory.loadSettings().scale() * Constant.DEFAULT_HITBOX_DIMENSION;
 
         this.idleSprite.put(Direction.UP, new LinkedList<>());
         this.idleSprite.put(Direction.DOWN, new LinkedList<>());

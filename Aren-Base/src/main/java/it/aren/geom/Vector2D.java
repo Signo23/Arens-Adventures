@@ -1,4 +1,6 @@
-package it.aren.model;
+package it.aren.geom;
+
+import it.aren.Vector;
 
 import java.util.Objects;
 /**

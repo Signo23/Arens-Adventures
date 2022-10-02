@@ -1,4 +1,4 @@
-package it.aren.model;
+package it.aren;
 
 public interface Vector {
     /**

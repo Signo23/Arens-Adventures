@@ -9,7 +9,7 @@ import it.aren.graphic.component.GraphicComponent;
 import org.junit.jupiter.api.Test;
 
 import it.aren.common.BaseObjectEnum;
-import it.aren.model.Vector2D;
+import it.aren.geom.Vector2D;
 import it.aren.model.GameState;
 import it.aren.model.game.Block;
 import it.aren.model.game.GameObject;

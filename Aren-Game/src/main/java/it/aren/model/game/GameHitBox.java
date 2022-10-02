@@ -1,8 +1,8 @@
 package it.aren.model.game;
 
-import it.aren.model.Vector2D;
-import it.aren.model.HitBox;
-import it.aren.model.Vector;
+import it.aren.geom.Vector2D;
+import it.aren.HitBox;
+import it.aren.Vector;
 
 public class GameHitBox implements HitBox {
 

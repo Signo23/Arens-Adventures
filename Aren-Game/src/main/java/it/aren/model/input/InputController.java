@@ -1,6 +1,6 @@
 package it.aren.model.input;
 
-import it.aren.model.Controller;
+import it.aren.Controller;
 
 /**
  * The controller for the input.

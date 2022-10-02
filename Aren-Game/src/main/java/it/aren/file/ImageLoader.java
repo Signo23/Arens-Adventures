@@ -9,7 +9,8 @@ import java.util.Objects;
 import javax.imageio.ImageIO;
 
 import it.aren.common.Constant;
-import it.aren.model.FileLoader;
+import it.aren.core.GameFactory;
+import it.aren.io.FileLoader;
 
 /**
  * The file loader for image.
@@ -32,8 +33,7 @@ public class ImageLoader implements FileLoader<BufferedImage> {
     }
 
     private BufferedImage transformImage(final BufferedImage texture) {
-        final SettingsLoader settingsLoader = new SettingsLoader();
-        final int ratio = settingsLoader.loadFile(Constant.SETTINGS_FILE).scale();
+        final int ratio = GameFactory.loadSettings().scale();
         final int w = texture.getWidth();
         final int h = texture.getHeight();
         BufferedImage scaled = new BufferedImage(w * ratio, h * ratio, BufferedImage.TYPE_INT_ARGB);

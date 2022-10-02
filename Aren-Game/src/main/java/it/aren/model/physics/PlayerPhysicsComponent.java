@@ -1,9 +1,11 @@
 package it.aren.model.physics;
 
+import it.aren.*;
 import it.aren.common.Constant;
 import it.aren.common.Settings;
-import it.aren.model.*;
+import it.aren.core.GameFactory;
 import it.aren.file.SettingsLoader;
+import it.aren.geom.Vector2D;
 import it.aren.model.game.Player;
 
 /**
@@ -15,9 +17,7 @@ public class PlayerPhysicsComponent implements Component {
     private final int velocity;
 
     public PlayerPhysicsComponent() {
-        final SettingsLoader settingsLoader = new SettingsLoader();
-        final Settings settings = settingsLoader.loadFile(Constant.SETTINGS_FILE);
-        this.velocity = settings.scale() * Constant.DEFAULT_VEL;
+        this.velocity = GameFactory.loadSettings().scale() * Constant.DEFAULT_VEL;
     }
 
     /**

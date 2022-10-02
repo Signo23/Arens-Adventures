@@ -8,7 +8,7 @@ import it.aren.common.Constant;
 import it.aren.common.Settings;
 import com.google.gson.Gson;
 import com.google.gson.GsonBuilder;
-import it.aren.model.FileSaver;
+import it.aren.io.FileSaver;
 
 /**
  * The file saver for settings.

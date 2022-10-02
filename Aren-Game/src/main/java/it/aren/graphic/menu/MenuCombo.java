@@ -11,6 +11,7 @@ import javax.swing.JComboBox;
 
 import it.aren.common.Constant;
 import it.aren.common.Settings;
+import it.aren.core.GameFactory;
 import it.aren.file.SettingsLoader;
 
 /**
@@ -33,9 +34,8 @@ public class MenuCombo extends JComboBox<ReadableDimension> {
             Font customFont = Font.createFont(Font.TRUETYPE_FONT, MenuButton.class
                               .getResourceAsStream(Constant.FONT_FOLDER + "Minecraft.ttf"));
             final GraphicsEnvironment ge = GraphicsEnvironment.getLocalGraphicsEnvironment();
-            final SettingsLoader settingsLoader = new SettingsLoader();
-            final Settings settings = settingsLoader.loadFile(Constant.SETTINGS_FILE);
-            customFont = customFont.deriveFont(Font.PLAIN, Constant.DEFAULT_TEXT_DIMENSION * settings.scale());
+            customFont = customFont.deriveFont(Font.PLAIN, Constant.DEFAULT_TEXT_DIMENSION * GameFactory
+                    .loadSettings().scale());
             ge.registerFont(customFont);
             this.setFont(customFont);
         } catch (IOException | FontFormatException e) {

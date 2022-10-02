@@ -1,8 +1,8 @@
 package it.aren.graphic.component;
 
-import it.aren.model.Entity;
-import it.aren.model.Component;
-import it.aren.model.Controller;
+import it.aren.Entity;
+import it.aren.Component;
+import it.aren.Controller;
 
 public class GraphicComponent implements Component {
 

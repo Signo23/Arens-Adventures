@@ -1,7 +1,7 @@
 package it.aren.common;
 
-import it.aren.model.Vector;
-import it.aren.model.Vector2D;
+import it.aren.Vector;
+import it.aren.geom.Vector2D;
 
 import java.awt.Dimension;
 

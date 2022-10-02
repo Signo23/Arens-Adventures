@@ -6,8 +6,9 @@ import java.util.List;
 import it.aren.common.BaseLevelEnum;
 import it.aren.common.BaseObjectEnum;
 import it.aren.common.Constant;
+import it.aren.common.Settings;
 import it.aren.model.GameComponent;
-import it.aren.model.Vector2D;
+import it.aren.geom.Vector2D;
 import it.aren.event.InteractWithPlayerEvent;
 import it.aren.event.TransportEvent;
 import it.aren.graphic.component.GraphicComponent;
@@ -49,8 +50,7 @@ public final class GameFactory {
      * @return maps a {@link List} of {@link GameMap}
      */
     public static List<GameMap> loadMaps() {
-        final SettingsLoader settingsLoader = new SettingsLoader();
-        final int ratio = settingsLoader.loadFile(Constant.SETTINGS_FILE).scale();
+        final int ratio = GameFactory.loadSettings().scale();
         final int dimension = ratio * Constant.DEFAULT_HITBOX_DIMENSION;
 
         final GameObject potion = new GameObject(BaseObjectEnum.POTION, new Vector2D(11 * dimension, 1 * dimension), true,
@@ -146,8 +146,13 @@ public final class GameFactory {
      */
     public static Dialog createDialog(final String text) {
         final SettingsLoader settingsLoader = new SettingsLoader();
-        final int ratio = settingsLoader.loadFile(Constant.SETTINGS_FILE).scale();
+        final int ratio = GameFactory.loadSettings().scale();
         return new Dialog(new Vector2D(Constant.DEFAULT_DIALOG_POSITION.getX() * ratio,
                 Constant.DEFAULT_DIALOG_POSITION.getY() * ratio), true, new GraphicComponent(), text);
+    }
+
+    public static Settings loadSettings(){
+        final SettingsLoader settingsLoader = new SettingsLoader();
+        return settingsLoader.loadFile(Constant.SETTINGS_FILE);
     }
 }

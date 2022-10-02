@@ -3,10 +3,13 @@ package it.aren.model.game;
 import java.util.ArrayList;
 import java.util.List;
 
+import it.aren.Range;
+import it.aren.Vector;
 import it.aren.common.BaseLevelEnum;
 import it.aren.common.BaseObjectEnum;
 import it.aren.common.Constant;
-import it.aren.model.Vector2D;
+import it.aren.core.GameFactory;
+import it.aren.geom.Vector2D;
 import it.aren.graphic.component.GraphicComponent;
 import it.aren.event.NullEvent;
 import it.aren.file.SettingsLoader;
@@ -37,8 +40,7 @@ public class GameMap extends GameEntity {
      * @return blocks the aligned blocks
      */
     private static List<Block> createLineBlock(final Range range) {
-        final SettingsLoader settingsLoader = new SettingsLoader();
-        final int ratio = settingsLoader.loadFile(Constant.SETTINGS_FILE).scale();
+        final int ratio = GameFactory.loadSettings().scale();
         final int dimension = ratio * Constant.DEFAULT_HITBOX_DIMENSION;
         final List<Block> blocks = new ArrayList<>();
         for (int i = (int) range.getStart().getX(); i <= (int) range.getEnd().getX(); i++) {

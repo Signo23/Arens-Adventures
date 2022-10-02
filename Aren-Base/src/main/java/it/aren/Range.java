@@ -1,4 +1,6 @@
-package it.aren.model;
+package it.aren;
+
+import it.aren.geom.Vector2D;
 
 public interface Range<T extends Vector> {
     /**

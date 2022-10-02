@@ -6,7 +6,7 @@ import java.util.List;
 import it.aren.common.ApplicationState;
 import it.aren.common.BaseObjectEnum;
 import it.aren.common.Constant;
-import it.aren.model.Vector2D;
+import it.aren.geom.Vector2D;
 import it.aren.event.BaseEvent;
 import it.aren.event.EventListener;
 import it.aren.event.InteractWithPlayerEvent;

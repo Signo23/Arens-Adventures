@@ -10,6 +10,7 @@ import it.aren.common.BaseActionEnum;
 import it.aren.common.BaseObjectEnum;
 import it.aren.common.Constant;
 import it.aren.common.Settings;
+import it.aren.core.GameFactory;
 import it.aren.file.SettingsLoader;
 import it.aren.file.SettingsSaver;
 import it.aren.model.input.MenuInputController;
@@ -48,8 +49,7 @@ public class MenuSettingsPanel extends JPanel {
      * @param inputController for listen the input
      */
     public MenuSettingsPanel(final MenuInputController menuController) {
-        final SettingsLoader settingsLoader = new SettingsLoader();
-        this.settings = settingsLoader.loadFile(Constant.SETTINGS_FILE);
+        this.settings = GameFactory.loadSettings();
         final int dimension = Constant.DEFAULT_HITBOX_DIMENSION * this.settings.scale();
         this.setPreferredSize(this.settings.getScreenSize());
         this.setLayout(null);

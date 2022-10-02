@@ -9,7 +9,7 @@ import it.aren.common.Constant;
 import it.aren.common.Settings;
 import com.google.gson.Gson;
 import com.google.gson.GsonBuilder;
-import it.aren.model.FileLoader;
+import it.aren.io.FileLoader;
 
 /**
  * The file loader for settings.

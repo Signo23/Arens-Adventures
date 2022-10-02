@@ -3,6 +3,9 @@ package it.aren.model.game;
 import java.util.ArrayList;
 import java.util.List;
 
+import it.aren.Direction;
+import it.aren.Vector;
+import it.aren.geom.Vector2D;
 import it.aren.model.*;
 
 /**

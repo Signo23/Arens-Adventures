@@ -3,9 +3,12 @@ package it.aren.model;
 import java.util.HashMap;
 import java.util.Map;
 
+import it.aren.*;
 import it.aren.common.Constant;
 
+import it.aren.core.GameFactory;
 import it.aren.file.SettingsLoader;
+import it.aren.geom.Vector2D;
 import it.aren.model.game.GameHitBox;
 
 /**
@@ -26,8 +29,7 @@ public class GameEntity implements Entity {
      * @param graphic for render the block
      */
     protected GameEntity(final Vector position, final boolean drawable) {
-        final SettingsLoader settingsLoader = new SettingsLoader();
-        final int size = settingsLoader.loadFile(Constant.SETTINGS_FILE).scale();
+        final int size = GameFactory.loadSettings().scale();
         this.drawable = drawable;
         this.components = new HashMap<>();
         this.hitBox = new GameHitBox(position, new Vector2D(size * Constant.DEFAULT_HITBOX_DIMENSION,

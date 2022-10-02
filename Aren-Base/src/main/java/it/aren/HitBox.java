@@ -1,6 +1,4 @@
-package it.aren.model;
-
-import it.aren.model.Vector;
+package it.aren;
 
 public interface HitBox {
     /**

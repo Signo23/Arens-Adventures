@@ -9,7 +9,7 @@ import it.aren.model.input.InputController;
 import it.aren.model.input.KeyboardInputController;
 import org.junit.jupiter.api.Test;
 
-import it.aren.model.Direction;
+import it.aren.Direction;
 import it.aren.core.GameFactory;
 import it.aren.model.World;
 

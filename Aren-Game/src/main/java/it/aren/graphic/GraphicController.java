@@ -1,6 +1,6 @@
 package it.aren.graphic;
 
-import it.aren.model.Entity;
+import it.aren.Entity;
 
 /**
  * Interface for drawing entities.

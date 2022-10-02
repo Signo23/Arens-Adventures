@@ -1,5 +1,8 @@
 package it.aren.model.game;
 
+import it.aren.Component;
+import it.aren.Vector;
+import it.aren.geom.Vector2D;
 import it.aren.common.BaseObjectEnum;
 import it.aren.model.*;
 
