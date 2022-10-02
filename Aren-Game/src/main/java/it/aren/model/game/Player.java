@@ -3,11 +3,7 @@ package it.aren.model.game;
 import java.util.ArrayList;
 import java.util.List;
 
-import it.aren.model.Direction;
-import it.aren.model.Vector2D;
-import it.aren.model.GameEntity;
-import it.aren.model.Vector;
-import it.aren.physics.PhysicsComponent;
+import it.aren.model.*;
 
 /**
  * Model for the player.
@@ -18,25 +14,23 @@ public class Player extends GameEntity {
 
     private Direction lastDirection;
     private List<GameObject> backPack;
-    private PhysicsComponent phy;
     /**
      * Create a player.
      * @param position the {@link Vector2D} where the player is
      * @param phy the {@link PhysicsComponent} update position of player
      */
-    public Player(final Vector position, final PhysicsComponent phy) {
+    public Player(final Vector position) {
         super(position, true);
         this.lastDirection =  Direction.DOWN;
         this.setVelocity(Direction.NO_DIRECTION);
         this.backPack = new ArrayList<>();
-        this.phy = phy;
     }
 
     /**
      * Update the player's {@link PhysicsComponent}.
      */
     public void updateState() {
-        this.phy.update(this);
+        this.component(GameComponent.PHYSIC).update(this, null);
     }
 
     /**
@@ -69,21 +63,5 @@ public class Player extends GameEntity {
      */
     public void setBackPack(final List<GameObject> backPack) {
         this.backPack = backPack;
-    }
-
-    /**
-     * Get Player's physic component.
-     * @return the Player's {@link PhysicComponent}
-     */
-    public PhysicsComponent getPhysic() {
-        return this.phy;
-    }
-
-    /**
-     * Set Player's PhysicComponent.
-     * @param physic the {@link PhysicComponent} to set as player's physic component
-     */
-    public void setPhysic(final PhysicsComponent physic) {
-        this.phy = physic;
     }
 }

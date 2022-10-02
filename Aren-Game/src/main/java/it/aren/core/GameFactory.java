@@ -37,10 +37,10 @@ public final class GameFactory {
      * @return the new {@link Player}
      */
     public static Player createPlayer() {
-         final Player player = new Player(new Vector2D(0, 1),
-                new PlayerPhysicsComponent());
+         final Player player = new Player(new Vector2D(0, 1));
          player.addComponent(GameComponent.INPUT, new PlayerInputComponent());
          player.addComponent(GameComponent.GRAPHIC, new GraphicComponent());
+         player.addComponent(GameComponent.PHYSIC, new PlayerPhysicsComponent());
          return player;
     }
 
