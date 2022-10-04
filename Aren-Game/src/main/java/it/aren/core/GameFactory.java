@@ -2,11 +2,10 @@ package it.aren.core;
 
 import java.util.ArrayList;
 import java.util.List;
+import java.util.Map;
 
-import it.aren.common.BaseLevelEnum;
-import it.aren.common.BaseObjectEnum;
-import it.aren.common.Constant;
-import it.aren.common.Settings;
+import it.aren.common.*;
+import it.aren.file.MapsLoader;
 import it.aren.file.SettingsSaver;
 import it.aren.model.GameComponent;
 import it.aren.geom.Vector2D;
@@ -160,5 +159,10 @@ public final class GameFactory {
     public static void saveSettings(final Settings settings){
         final SettingsSaver settingsSaver = new SettingsSaver();
         settingsSaver.saveFile(settings, Constant.SETTINGS_FILE);
+    }
+
+    public static Map<String, List<PointRange>> loadMapsBlocks(){
+        final MapsLoader mapsLoader = new MapsLoader();
+        return mapsLoader.loadFile(Constant.MAPS_FILE);
     }
 }

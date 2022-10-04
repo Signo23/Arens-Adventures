@@ -3,6 +3,7 @@ package it.aren.common;
 import java.awt.image.BufferedImage;
 import java.util.List;
 
+import it.aren.core.GameFactory;
 import it.aren.file.ImageLoader;
 import it.aren.file.MapsLoader;
 import it.aren.file.SettingsLoader;
@@ -34,9 +35,9 @@ public enum BaseLevelEnum {
 
     BaseLevelEnum(final String level, final String levelTexture) {
         final ImageLoader imageLoader = new ImageLoader();
-        final MapsLoader mapsLoader = new MapsLoader();
-        this.image = imageLoader.loadFile(levelTexture);
-        points = mapsLoader.loadFile(Constant.MAPS_FILE).get(level);
+        points = GameFactory.loadMapsBlocks().get(level);
+        image = imageLoader.loadFile(levelTexture);
+
     }
 
     /**
