@@ -29,8 +29,8 @@ public interface Entity {
      */
     void setDrawable(boolean drawable);
 
-    void addComponent(String code, Component component);
-    Component component(String code);
+    void addComponent(String code, Command component);
+    Command component(String code);
 
     /**
      * Get Entity's {@link HitBox} for hitBox.
@@ -50,4 +50,6 @@ public interface Entity {
 
     void setVelocity(Direction velocity);
     Direction getVelocity();
+    void addVar(String code, Object var);
+    Object var(String code);
 }

@@ -5,8 +5,7 @@ import it.aren.common.Constant;
 import it.aren.core.GameFactory;
 import it.aren.geom.Vector2D;
 import it.aren.event.BaseEvent;
-import it.aren.file.SettingsLoader;
-import it.aren.Component;
+import it.aren.Command;
 import it.aren.Vector;
 
 /**
@@ -25,7 +24,7 @@ public class Block extends GameObject {
      * @param graphic for draw the block
      */
     public Block(final BaseObjectEnum type, final BaseEvent event, final Vector position, final boolean drawable,
-                 final Component graphic) {
+                 final Command graphic) {
         super(type, position, drawable, graphic);
         final int ratio = GameFactory.loadSettings().scale();
         this.event = event;

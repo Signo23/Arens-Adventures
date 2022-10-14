@@ -1,5 +1,5 @@
 package it.aren;
 
-public interface Component {
+public interface Command {
     <T, C extends Controller<T>> void update(Entity entity, C controller);
 }

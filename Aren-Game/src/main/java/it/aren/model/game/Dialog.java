@@ -1,12 +1,11 @@
 package it.aren.model.game;
 
-import it.aren.Component;
+import it.aren.Command;
 import it.aren.Vector;
 import it.aren.core.GameFactory;
 import it.aren.geom.Vector2D;
 import it.aren.common.Constant;
 import it.aren.model.*;
-import it.aren.file.SettingsLoader;
 
 /**
  * Model for the dialog.
@@ -24,7 +23,7 @@ public class Dialog extends GameEntity {
      * @param graphic the {@link GraphicCopmonent} for draw the dialog
      * @param text the message to display
      */
-    public Dialog(final Vector position, final boolean drawable, final Component graphic, final String text) {
+    public Dialog(final Vector position, final boolean drawable, final Command graphic, final String text) {
         super(position, drawable);
         this.setText(text);
         final int ratio = GameFactory.loadSettings().scale();

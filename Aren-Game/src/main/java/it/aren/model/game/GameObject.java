@@ -1,6 +1,6 @@
 package it.aren.model.game;
 
-import it.aren.Component;
+import it.aren.Command;
 import it.aren.Vector;
 import it.aren.geom.Vector2D;
 import it.aren.common.BaseObjectEnum;
@@ -22,7 +22,7 @@ public class GameObject extends GameEntity {
      * @param graphic GameObject's {@link GraphicComponent}
      */
     public GameObject(final BaseObjectEnum type, final Vector position, final boolean drawable,
-                      final Component graphic) {
+                      final Command graphic) {
         super(position, drawable);
         this.type = type;
         this.addComponent(GameComponent.GRAPHIC, graphic);

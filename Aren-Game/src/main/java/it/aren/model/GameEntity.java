@@ -7,7 +7,6 @@ import it.aren.*;
 import it.aren.common.Constant;
 
 import it.aren.core.GameFactory;
-import it.aren.file.SettingsLoader;
 import it.aren.geom.Vector2D;
 import it.aren.model.game.GameHitBox;
 
@@ -18,9 +17,9 @@ import it.aren.model.game.GameHitBox;
 public class GameEntity implements Entity {
     private boolean drawable;
     private HitBox hitBox;
-    private final Map<String, Component> components;
-
+    private final Map<String, Command> components;
     private Direction velocity;
+    private Map<String, Object> entityVar;
 
     /**
      * Create an Entity.
@@ -34,6 +33,7 @@ public class GameEntity implements Entity {
         this.components = new HashMap<>();
         this.hitBox = new GameHitBox(position, new Vector2D(size * Constant.DEFAULT_HITBOX_DIMENSION,
                 size * Constant.DEFAULT_HITBOX_DIMENSION));
+        this.entityVar = new HashMap<>();
     }
 
     @Override
@@ -55,12 +55,12 @@ public class GameEntity implements Entity {
     }
 
     @Override
-    public void addComponent(String code, Component component) {
+    public void addComponent(String code, Command component) {
         this.components.put(code, component);
     }
 
     @Override
-    public Component component(String code) {
+    public Command component(String code) {
         return this.components.getOrDefault(code, null);
     }
     @Override
@@ -77,7 +77,6 @@ public class GameEntity implements Entity {
         if(this.components.containsKey(componentName)){
             this.components.get(componentName).update(this, componentController);
         }
-
     }
 
     @Override
@@ -90,4 +89,13 @@ public class GameEntity implements Entity {
         return this.velocity;
     }
 
+    @Override
+    public void addVar(String code, Object var) {
+        this.entityVar.put(code, var);
+    }
+
+    @Override
+    public Object var(String code) {
+        return this.entityVar.get(code);
+    }
 }
