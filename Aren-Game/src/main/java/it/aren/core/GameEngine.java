@@ -1,54 +1,42 @@
 package it.aren.core;
 
-import java.util.LinkedList;
-import java.util.List;
+import java.util.HashSet;
+import java.util.Set;
 
+import it.aren.Observer;
 import it.aren.common.ApplicationState;
 import it.aren.common.BaseObjectEnum;
 import it.aren.common.Constant;
 import it.aren.geom.Vector2D;
-import it.aren.event.BaseEvent;
-import it.aren.event.EventListener;
-import it.aren.event.InteractWithPlayerEvent;
-import it.aren.graphic.AppView;
-import it.aren.graphic.BaseView;
+import it.aren.model.event.EventObservable;
+import it.aren.model.event.InteractWithPlayerEvent;
 import it.aren.graphic.component.GraphicComponent;
-import it.aren.model.input.InputController;
-import it.aren.model.input.KeyboardInputController;
 import it.aren.model.input.MenuInputController;
-import it.aren.model.GameState;
 import it.aren.model.game.GameObject;
 
 /**
  * This class contain the main loop.
  * This is the main controller.
- * Implements {@link EventListener}
+ * Implements {@link EventObservable}
  *
  */
-public class GameEngine implements EventListener {
-    private BaseView view;
-    private GameState state;
-    private InputController controller;
-    private MenuInputController menuController;
-
-    private final List<BaseEvent> eventList;
+public class GameEngine extends EventObservable {
+    private final Set<Observer> observers;
+    private final MenuInputController menuController;
 
     /**
      * Constructor for GameEngine.
      */
-    public GameEngine() {
-        this.eventList = new LinkedList<>();
+    public GameEngine(final MenuInputController menuController) {
+        this.menuController = menuController;
+        this.observers = new HashSet<>();
     }
 
     /**
      * Setup the game.
      */
     public void setup() {
-        this.state = new GameState(this);
-        this.controller = new KeyboardInputController();
-        this.menuController = new MenuInputController();
-        this.view = new AppView(this.state.getWorld(), this.controller, this.menuController);
-        this.notifyEvent(new InteractWithPlayerEvent(new GameObject(
+        this.notify(new InteractWithPlayerEvent(new GameObject(
                 BaseObjectEnum.VOID, new Vector2D(), false, new GraphicComponent()),
                 "Trova tutti gli oggetti prima di\npartire per la tua avventura"));
     }
@@ -60,7 +48,7 @@ public class GameEngine implements EventListener {
     public void loop() {
         while (true) {
             final long current = System.currentTimeMillis();
-            switch (this.state.getState()) {
+            switch (this.getState()) {
             case BOOT:
                 this.changeStates(ApplicationState.MENU);
                 break;
@@ -73,23 +61,17 @@ public class GameEngine implements EventListener {
                     this.menuController.notifyNoMoreIsSettings();
                     this.changeStates(ApplicationState.MENU_SETTINGS);
                 }
-                this.render();
+                this.updateGame();
                 break;
             case MENU_SETTINGS:
                 if (this.menuController.isInteract()) {
                     this.menuController.notifyNoMoreIsInteract();
                     this.changeStates(ApplicationState.MENU);
                 }
-                this.render();
                 break;
             case GAME:
-                this.processInput();
-                this.updateGame();
-                this.render();
-                break;
             case GAME_DIALOG:
-                this.updateHUD();
-                this.render();
+                    this.updateGame();
                 break;
             default:
                 break;
@@ -99,36 +81,10 @@ public class GameEngine implements EventListener {
     }
 
     private void changeStates(final ApplicationState newState) {
-        this.state.setState(newState);
-        this.view.changeState(newState);
+        this.setState(newState);
     }
-
-    private void processInput() {
-        this.state.processInput(this.controller);
-    }
-
     private void updateGame() {
-        this.state.update();
-        this.launchEvent();
-    }
-
-    private void launchEvent() {
-        this.eventList.stream().forEach(e -> e.launch(this.state));
-        this.eventList.clear();
-    }
-
-    private void render() {
-        this.view.render();
-    }
-
-    /**
-     * Update the Dialog state.
-     */
-    private void updateHUD() {
-        if (this.controller.getAction().equals(InputController.ON_CLOSE_DIALOG)) {
-            this.state.getWorld().setDialog(null);
-            this.state.setState(ApplicationState.GAME);
-        }
+        this.observers.forEach(Observer::update);
     }
 
     private void waitNextFrame(final long current) {
@@ -142,11 +98,13 @@ public class GameEngine implements EventListener {
         }
     }
 
-    /**
-     * {@inheritDoc}
-     */
     @Override
-    public final void notifyEvent(final BaseEvent event) {
-        this.eventList.add(event);
+    public void attach(final Observer observer) {
+        this.observers.add(observer);
+    }
+
+    @Override
+    public void detach(final Observer observer) {
+        this.observers.remove(observer);
     }
 }

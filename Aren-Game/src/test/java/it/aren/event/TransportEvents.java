@@ -2,14 +2,14 @@ package it.aren.event;
 
 import static org.junit.jupiter.api.Assertions.assertEquals;
 
-import it.aren.common.Settings;
 import it.aren.core.GameFactory;
+import it.aren.model.event.BaseEvent;
+import it.aren.model.event.TransportEvent;
 import org.junit.jupiter.api.Test;
 
 import it.aren.common.BaseLevelEnum;
 import it.aren.common.Constant;
 import it.aren.geom.Vector2D;
-import it.aren.file.SettingsLoader;
 import it.aren.model.GameState;
 
 public class TransportEvents {

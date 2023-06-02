@@ -4,7 +4,7 @@ import it.aren.common.BaseObjectEnum;
 import it.aren.common.Constant;
 import it.aren.core.GameFactory;
 import it.aren.geom.Vector2D;
-import it.aren.event.BaseEvent;
+import it.aren.model.event.BaseEvent;
 import it.aren.Command;
 import it.aren.Vector;
 

@@ -11,8 +11,7 @@ import it.aren.common.Constant;
 import it.aren.core.GameFactory;
 import it.aren.geom.Vector2D;
 import it.aren.graphic.component.GraphicComponent;
-import it.aren.event.NullEvent;
-import it.aren.file.SettingsLoader;
+import it.aren.model.event.NullEvent;
 import it.aren.model.*;
 
 /**
