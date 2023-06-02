@@ -1,4 +1,4 @@
-package it.aren.event;
+package it.aren.model.event;
 
 import it.aren.geom.Vector2D;
 import it.aren.model.GameState;

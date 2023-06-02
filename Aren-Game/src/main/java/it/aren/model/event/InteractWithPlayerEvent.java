@@ -1,4 +1,4 @@
-package it.aren.event;
+package it.aren.model.event;
 
 import java.util.Optional;
 
@@ -32,7 +32,7 @@ public class InteractWithPlayerEvent implements BaseEvent {
      * @param object the {@link GameObject} to give to {@link Player}
      * @param dialog the message to display 
      * @param requirement the {@link GameObject} required to launch the main event
-     * @param alternativeDialog the message to display if the requirement is not respected
+     * @param alterantiveDialog the message to display if the requirement is not respected
      */
     public InteractWithPlayerEvent(final GameObject object, final String dialog, final GameObject requirement,
             final String alterantiveDialog) {
@@ -47,7 +47,7 @@ public class InteractWithPlayerEvent implements BaseEvent {
      * {@inheritDoc}
      */
     @Override
-    public void launch(final GameState state) {
+    public void launch(GameState state) {
         if (!state.getState().equals(ApplicationState.GAME_DIALOG)) {
             state.setState(ApplicationState.GAME_DIALOG);
         }
