@@ -22,27 +22,11 @@ public class PlayerPhysicsComponent implements Command {
      * {@inheritDoc}
      */
     @Override
-    public <T, C extends Controller<T>> void update(Entity entity, C controller) {
+    public <T, C extends Controller<T, K>, K> void update(Entity entity, C controller, K value) {
         final Player pl = (Player) entity;
-        if (!pl.getVelocity().equals(Direction.NO_DIRECTION)) {
-            final Direction pos = pl.getLastDirection();
+        if (!pl.getVelocity().equals(Direction.NO_DIRECTION.getVector())) {
             final Vector currentPos = pl.getPosition();
-            switch (pos) {
-                case LEFT:
-                    pl.setPosition(new Vector2D(currentPos.getX() - velocity, currentPos.getY()));
-                    break;
-                case RIGHT:
-                    pl.setPosition(new Vector2D(currentPos.getX() + velocity, currentPos.getY()));
-                    break;
-                case UP:
-                    pl.setPosition(new Vector2D(currentPos.getX(), currentPos.getY() - velocity));
-                    break;
-                case DOWN:
-                    pl.setPosition(new Vector2D(currentPos.getX(), currentPos.getY() + velocity));
-                    break;
-                default:
-                    break;
-            }
+            pl.setPosition(currentPos.sum(pl.getLastDirection().mul(velocity)));
         }
     }
 }

@@ -15,7 +15,7 @@ import it.aren.model.*;
  */
 public class Player extends GameEntity {
 
-    private Direction lastDirection;
+    private Vector lastDirection;
     private List<GameObject> backPack;
     /**
      * Create a player.
@@ -24,8 +24,8 @@ public class Player extends GameEntity {
      */
     public Player(final Vector position) {
         super(position, true);
-        this.lastDirection =  Direction.DOWN;
-        this.setVelocity(Direction.NO_DIRECTION);
+        this.lastDirection = Direction.DOWN.getVector();
+        this.setVelocity(Direction.NO_DIRECTION.getVector());
         this.backPack = new ArrayList<>();
     }
 
@@ -33,14 +33,15 @@ public class Player extends GameEntity {
      * Update the player's {@link PhysicsComponent}.
      */
     public void updateState() {
-        this.component(GameComponent.PHYSIC).update(this, null);
+        this.component(GameComponent.PHYSIC).update(this, null, null);
     }
 
     /**
      * Get Player's last direction.
+     *
      * @return the {@link Direction} that represent the last direction
      */
-    public Direction getLastDirection() {
+    public Vector getLastDirection() {
         return this.lastDirection;
     }
 
@@ -48,7 +49,7 @@ public class Player extends GameEntity {
      * Set Player's last direction.
      * @param lastDirection the {@link Direction} to set  player's last direction
      */
-    public void setLastDirection(final Direction lastDirection) {
+    public void setLastDirection(final Vector lastDirection) {
         this.lastDirection = lastDirection;
     }
 

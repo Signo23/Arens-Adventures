@@ -7,7 +7,25 @@ package it.aren.model.input;
 public class KeyboardInputController extends InputController {
 
     @Override
-    public void update(String action) {
-        this.action = action;
+    public void update(String action, Boolean value) {
+        switch (action){
+            case UP:
+                up = value;
+                break;
+            case DOWN:
+                down = value;
+                break;
+            case LEFT:
+                left = value;
+                break;
+            case RIGHT:
+                right = value;
+                break;
+            case INTERACT:
+                interact = !interact;
+                break;
+            default:
+                break;
+        }
     }
 }

@@ -28,7 +28,7 @@ public class GamePanel extends JPanel {
     private static final long serialVersionUID = 1L;
     private final World world;
     private final Settings settings;
-    private final Controller<Entity> controller;
+    private final Controller<Entity, Object> controller;
 
       /**
      * Initialize the panel.

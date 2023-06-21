@@ -5,18 +5,35 @@ import it.aren.Controller;
 /**
  * The controller for the input.
  */
-public abstract class InputController implements Controller<String> {
+public abstract class InputController implements Controller<String, Boolean> {
 
-    protected String action = "";
     public static final String UP = "u";
     public static final String DOWN = "d";
     public static final String LEFT = "l";
     public static final String RIGHT = "r";
     public static final String NO_ACTION = "n";
     public static final String INTERACT = "i";
-    public static final String ON_CLOSE_DIALOG = "c";
 
-    public String getAction(){
-        return this.action;
+    protected boolean up;
+    protected boolean down;
+    protected boolean left;
+    protected boolean right;
+    protected boolean interact;
+
+    public boolean getAction(String action){
+        switch (action){
+            case UP:
+                return up;
+            case DOWN:
+                return down;
+            case LEFT:
+                return left;
+            case RIGHT:
+                return right;
+            case INTERACT:
+                return interact;
+            default:
+                return false;
+        }
     }
 }

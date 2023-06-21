@@ -28,4 +28,8 @@ public interface Vector {
      * @param y the y to set
      */
     void setY(float y);
+
+    Vector sum(float x, float y);
+    Vector sum(Vector vectorToSum);
+    Vector mul(float value);
 }

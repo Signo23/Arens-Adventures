@@ -48,6 +48,6 @@ public enum Direction {
         final int y = (int) point.getY();
         final int xAbs = Math.abs(x);
         final int yAbs = Math.abs(y);
-        return xAbs == yAbs ? NO_DIRECTION : xAbs > yAbs ? x > 0 ? RIGHT : LEFT : y > 0 ? DOWN : UP;
+        return (xAbs == 0 && yAbs == 0) ? NO_DIRECTION : xAbs > yAbs ? x > 0 ? RIGHT : LEFT : y > 0 ? DOWN : UP;
     }
 }

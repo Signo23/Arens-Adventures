@@ -46,10 +46,10 @@ public interface Entity {
      */
     void setHitBox(HitBox hitBox);
 
-    abstract <T> void update(String componentName, Controller<T> componentController);
+    abstract <T, K> void update(String componentName, Controller<T, K> componentController);
 
-    void setVelocity(Direction velocity);
-    Direction getVelocity();
+    void setVelocity(Vector velocity);
+    Vector getVelocity();
     void addVar(String code, Object var);
     Object var(String code);
 }

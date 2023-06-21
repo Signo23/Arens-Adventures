@@ -95,7 +95,7 @@ public class World {
      * @return a {@link Option} of {@link Block}
      */
     public final Optional<Block> playerCollide() {
-        final Direction playerDir = this.player.getLastDirection();
+        final Direction playerDir = Direction.valueOfPoint2D(this.player.getLastDirection());
         final Vector playerPos = this.player.getPosition();
         final HitBox playerHitBox = this.player.getHitBox().clone();
         List<Block> control = new ArrayList<>();

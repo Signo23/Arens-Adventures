@@ -8,6 +8,7 @@ import java.awt.GraphicsEnvironment;
 import java.awt.image.BufferedImage;
 import java.awt.image.ImageObserver;
 import java.io.IOException;
+import java.util.Objects;
 
 import it.aren.Controller;
 import it.aren.Direction;
@@ -24,7 +25,7 @@ import it.aren.common.Constant;
  * Class for draw entities with Swing.
  * Implements {@link GraphicController}.
  */
-public class GameGraphicController implements Controller<Entity> {
+public class GameGraphicController implements Controller<Entity, Object> {
 
     private static final int FONT_DEFAULT_DIMENSION = 24;
     private Graphics2D g2;
@@ -48,7 +49,7 @@ public class GameGraphicController implements Controller<Entity> {
     }
 
     @Override
-    public void update(Entity entity) {
+    public void update(Entity entity, Object value) {
         if(entity.isDrawable()){
             BufferedImage sprite = null;
             if(entity instanceof Block) {
@@ -65,9 +66,9 @@ public class GameGraphicController implements Controller<Entity> {
             }
             if(entity instanceof Player) {
                 final Player tmpPlayer = (Player) entity;
-                sprite = tmpPlayer.getVelocity().equals(Direction.NO_DIRECTION) ?
-                        this.animation.getNextIdle(tmpPlayer.getLastDirection())
-                        : this.animation.getNextWalk(tmpPlayer.getLastDirection());
+                sprite = tmpPlayer.getVelocity().equals(Direction.NO_DIRECTION.getVector()) ?
+                        this.animation.getNextIdle(Direction.valueOfPoint2D(tmpPlayer.getLastDirection()))
+                        : this.animation.getNextWalk(Direction.valueOfPoint2D(tmpPlayer.getLastDirection()));
                 tmpPlayer.getBackPack().forEach(go -> go.update(GameComponent.GRAPHIC, this));
             }
             if(sprite != null){
@@ -87,8 +88,8 @@ public class GameGraphicController implements Controller<Entity> {
         this.g2.fillRect((int) dialog.getPosition().getX(), (int) dialog.getPosition().getY(),
                 (int) dialog.getHitBox().dimension().getX(), (int) dialog.getHitBox().dimension().getY());
         try {
-            Font customFont = Font.createFont(Font.TRUETYPE_FONT, this.getClass()
-                                  .getResourceAsStream(Constant.FONT_FOLDER + "Minecraft.ttf"));
+            Font customFont = Font.createFont(Font.TRUETYPE_FONT, Objects.requireNonNull(this.getClass()
+                    .getResourceAsStream(Constant.FONT_FOLDER + "Minecraft.ttf")));
             final GraphicsEnvironment ge = GraphicsEnvironment.getLocalGraphicsEnvironment();
             customFont = customFont.deriveFont(Font.PLAIN, FONT_DEFAULT_DIMENSION * ratio);
             ge.registerFont(customFont);

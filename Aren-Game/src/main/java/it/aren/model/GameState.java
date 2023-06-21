@@ -25,7 +25,7 @@ public class GameState implements Observer{
     public GameState(final EventObservable observable) {
         this(observable, new InputController() {
             @Override
-            public void update(String toUpdate) {
+            public void update(String toUpdate, Boolean value) {
 
             }
         });
@@ -62,10 +62,7 @@ public class GameState implements Observer{
                 }
                 break;
             case GAME_DIALOG:
-                if (this.controller.getAction().equals(InputController.ON_CLOSE_DIALOG)) {
-                    this.world.setDialog(null);
-                    this.eventObservable.setState(ApplicationState.GAME);
-                }
+                processDialogInput();
                 break;
             default:
                 break;
@@ -78,14 +75,20 @@ public class GameState implements Observer{
      * @param controller
      */
     public void processInput() {
-        if (controller.getAction().equals(InputController.INTERACT)) {
+        if (controller.getAction(InputController.INTERACT)) {
             final Optional<Block> block = this.getWorld().playerCollide();
             if (block.isPresent() && !block.get().getEvent().isAlreadyLunch()) {
                 block.get().getEvent().launch(this);
-                this.eventObservable.setState(ApplicationState.GAME_DIALOG);
             }
         } else {
             world.getPlayer().update(GameComponent.INPUT,controller);
+        }
+    }
+
+    public void processDialogInput(){
+        if (!controller.getAction(InputController.INTERACT)) {
+            getWorld().setDialog(null);
+            eventObservable.setState(ApplicationState.GAME);
         }
     }
 

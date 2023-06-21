@@ -75,6 +75,25 @@ public class Vector2D implements Vector {
                 && Float.floatToIntBits(this.y) == Float.floatToIntBits(other.y);
     }
 
+    @Override
+    public Vector sum(float x, float y) {
+        this.x += x;
+        this.y += y;
+        return this;
+    }
+
+    @Override
+    public Vector sum(Vector vectorToSum){
+        return sum(vectorToSum.getX(), vectorToSum.getY());
+    }
+
+    @Override
+    public Vector mul(float value){
+        x *= value;
+        y *= value;
+        return this;
+    }
+
     /**
      * {@inheritDoc}
      */

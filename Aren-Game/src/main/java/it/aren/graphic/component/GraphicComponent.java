@@ -7,7 +7,7 @@ import it.aren.Controller;
 public class GraphicComponent implements Command {
 
     @Override
-    public <T, C extends Controller<T>>void update(Entity entity, C controller) {
-            controller.update((T) entity);
+    public <T, C extends Controller<T, K>, K>void update(Entity entity, C controller, K value) {
+            controller.update((T) entity, value);
     }
 }

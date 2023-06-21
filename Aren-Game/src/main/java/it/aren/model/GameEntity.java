@@ -18,7 +18,7 @@ public class GameEntity implements Entity {
     private boolean drawable;
     private HitBox hitBox;
     private final Map<String, Command> components;
-    private Direction velocity;
+    private Vector velocity;
     private Map<String, Object> entityVar;
 
     /**
@@ -73,19 +73,19 @@ public class GameEntity implements Entity {
     }
 
     @Override
-    public <T> void update(String componentName, Controller<T> componentController) {
+    public <T, K> void update(String componentName, Controller<T, K> componentController) {
         if(this.components.containsKey(componentName)){
-            this.components.get(componentName).update(this, componentController);
+            this.components.get(componentName).update(this, componentController, null);
         }
     }
 
     @Override
-    public void setVelocity(Direction direction) {
+    public void setVelocity(Vector direction) {
         this.velocity = direction;
     }
 
     @Override
-    public Direction getVelocity() {
+    public Vector getVelocity() {
         return this.velocity;
     }
 
