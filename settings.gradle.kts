@@ -8,3 +8,5 @@
  */
 
 rootProject.name = "OOP20-aren-adv"
+include("Aren-Base")
+include("Aren-Game")

@@ -8,6 +8,12 @@ import java.util.List;
 
 import it.aren.common.Constant;
 import it.aren.core.GameEngine;
+import it.aren.graphic.AppView;
+import it.aren.model.GameState;
+import it.aren.model.input.InputController;
+import it.aren.model.input.KeyboardInputController;
+import it.aren.model.input.MenuInputController;
+
 /**
  * The main class of the game. This starts the game
  *
@@ -55,7 +61,13 @@ public final class App {
         if (new File(Constant.MAIN_FOLDER).mkdirs()) {
             System.out.println("Directory created succesfully");
         }
-        final GameEngine game = new GameEngine();
+        final InputController inputController = new KeyboardInputController();
+        final MenuInputController menuController = new MenuInputController();
+        final GameEngine game = new GameEngine(menuController);
+        final GameState gameState = new GameState(game, inputController);
+        final AppView view = new AppView(gameState.getWorld(), inputController, menuController, game);
+        game.attach(gameState);
+        game.attach(view);
         game.setup();
         game.loop();
     }

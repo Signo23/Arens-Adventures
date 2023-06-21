@@ -22,12 +22,15 @@ repositories {
 val supportedPlatforms = listOf("linux", "mac", "win") // All required for OOP
 
 
-val jUnitVersion = "5.7.1"
+val jUnitVersion = "5.8.2"
 
 dependencies {
     // Example library: Guava. Add what you need (and remove Guava if you don't use it)
     // implementation("com.google.guava:guava:28.1-jre")
-    implementation ("com.google.code.gson:gson:2.8.6")
+    implementation("com.google.code.gson:gson:2.9.0")
+    implementation(project(":Aren-Game"))
+    implementation(project(":Aren-Base"))
+
 
     // JUnit API and testing engine
     testImplementation("org.junit.jupiter:junit-jupiter-api:$jUnitVersion")
