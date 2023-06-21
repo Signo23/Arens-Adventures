@@ -1,3 +1,5 @@
+[![Java CI with Gradle](https://github.com/Signo23/OOP21-aren-adv/actions/workflows/gradle.yml/badge.svg?branch=main)](https://github.com/Signo23/OOP21-aren-adv/actions/workflows/gradle.yml)
+[![Gradle Package](https://github.com/Signo23/OOP21-aren-adv/actions/workflows/gradle-publish.yml/badge.svg)](https://github.com/Signo23/OOP21-aren-adv/actions/workflows/gradle-publish.yml)
 # OOP21-aren-adv
 Aren's Adventures is a RPG game inspired by [The Legend of Zelda](https://en.wikipedia.org/wiki/The_Legend_of_Zelda).
 
