@@ -79,10 +79,11 @@ public class GameState implements Observer{
             final Optional<Block> block = this.getWorld().playerCollide();
             if (block.isPresent() && !block.get().getEvent().isAlreadyLunch()) {
                 block.get().getEvent().launch(this);
+            } else {
+                controller.update(InputController.INTERACT, false);
             }
-        } else {
-            world.getPlayer().update(GameComponent.INPUT,controller);
         }
+        world.getPlayer().update(GameComponent.INPUT,controller);
     }
 
     public void processDialogInput(){

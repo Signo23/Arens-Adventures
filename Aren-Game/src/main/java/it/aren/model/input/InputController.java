@@ -11,7 +11,6 @@ public abstract class InputController implements Controller<String, Boolean> {
     public static final String DOWN = "d";
     public static final String LEFT = "l";
     public static final String RIGHT = "r";
-    public static final String NO_ACTION = "n";
     public static final String INTERACT = "i";
 
     protected boolean up;
@@ -19,7 +18,6 @@ public abstract class InputController implements Controller<String, Boolean> {
     protected boolean left;
     protected boolean right;
     protected boolean interact;
-
     public boolean getAction(String action){
         switch (action){
             case UP:
