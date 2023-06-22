@@ -31,9 +31,6 @@ public class PlayerInputComponent extends GameComponent {
             if(c.getAction(InputController.RIGHT)) {
                 newDirection.sum(Direction.RIGHT.getVector());
             }
-            if(c.getAction(InputController.NO_ACTION)) {
-                newDirection = (Vector2D) Direction.NO_DIRECTION.getVector();
-            }
             entity.setVelocity(newDirection);
             if(!newDirection.equals(Direction.NO_DIRECTION.getVector())){
                 ((Player) entity).setLastDirection(newDirection);

@@ -23,6 +23,8 @@ public class KeyListenerImpl implements KeyListener {
      * {@inheritDoc}
      */
     public final void keyTyped(final KeyEvent e) {
+        System.out.println("TYPE" + e.getKeyChar());
+
         if(KeyEvent.VK_SPACE == e.getExtendedKeyCode()){
             this.controller.update(InputController.INTERACT, true);
         }
@@ -33,7 +35,6 @@ public class KeyListenerImpl implements KeyListener {
      * {@inheritDoc}
      */
     public final void keyPressed(final KeyEvent e) {
-        System.out.println("PRESS" + e.getKeyChar());
         handleKeyEvent(e, true);
     }
 
@@ -61,7 +62,6 @@ public class KeyListenerImpl implements KeyListener {
      * {@inheritDoc}
      */
     public final void keyReleased(final KeyEvent e) {
-        System.out.println("STOP" + e.getKeyChar());
         handleKeyEvent(e, false);
     }
 }
