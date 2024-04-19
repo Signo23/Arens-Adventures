@@ -10,7 +10,6 @@ import it.aren.common.BaseObjectEnum;
 import it.aren.common.Constant;
 import it.aren.common.Settings;
 import it.aren.core.GameFactory;
-import it.aren.file.SettingsLoader;
 import it.aren.model.input.MenuInputController;
 
 /**
@@ -34,8 +33,8 @@ public class MenuPanel extends JPanel {
         this.setPreferredSize(settings.getScreenSize());
         this.setLayout(null);
 
-        playButton.setBounds(4 * dimension, 6 * dimension, 8 * dimension, 1 * dimension);
-        settingsButton.setBounds(4 * dimension, (int)(7.5 * dimension), 8 * dimension, 1 * dimension);
+        playButton.setBounds(4 * dimension, 6 * dimension, 8 * dimension, dimension);
+        settingsButton.setBounds(4 * dimension, (int)(7.5 * dimension), 8 * dimension, dimension);
 
         playButton.addActionListener(a -> {
             controller.notifyIsInteract();

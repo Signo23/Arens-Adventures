@@ -23,5 +23,6 @@ public enum ApplicationState {
     /**
      * GAME_DIALOG state of application.
      */
-    GAME_DIALOG;
+    GAME_DIALOG,
+    CLOSE;
 }

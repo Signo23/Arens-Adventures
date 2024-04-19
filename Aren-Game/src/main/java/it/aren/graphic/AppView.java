@@ -8,7 +8,6 @@ import it.aren.graphic.menu.MenuPanel;
 import it.aren.graphic.menu.MenuSettingsPanel;
 import it.aren.common.ApplicationState;
 import it.aren.common.BaseObjectEnum;
-import it.aren.model.event.EventObservable;
 import it.aren.model.input.InputController;
 import it.aren.model.input.KeyListenerImpl;
 import it.aren.model.input.KeyboardInputController;
@@ -17,15 +16,14 @@ import it.aren.model.World;
 
 /**
  * This class is the main view of the game using Java Swing.
- * Implements {@link BaseView}
+ * Implements {@link Observer}
  *
  */
-public class AppView implements Observer {
+public class AppView implements Observer<ApplicationState> {
     private final JFrame frame;
     private final GamePanel gamePanel;
     private final MenuPanel menuPanel;
     private final MenuSettingsPanel settingsPanel;
-    private final EventObservable eventObservable;
     private ApplicationState lastState;
 
 
@@ -35,11 +33,8 @@ public class AppView implements Observer {
      * @param world           to render
      * @param controller      the game's input controller
      * @param menuController  the menu's input controller
-     * @param eventObservable
      */
-    public AppView(final World world, final InputController controller, final MenuInputController menuController,
-                   final EventObservable eventObservable) {
-        this.eventObservable = eventObservable;
+    public AppView(final World world, final InputController controller, final MenuInputController menuController) {
         this.frame = new JFrame("Aren's Adventures");
         this.gamePanel = new GamePanel(world, controller);
         this.menuPanel = new MenuPanel(menuController);
@@ -60,21 +55,21 @@ public class AppView implements Observer {
      * {@inheritDoc}
      */
     @Override
-    public void update() {
-        changeState();
+    public void update(ApplicationState state) {
+        changeState(state);
         frame.repaint();
     }
 
-    public void changeState() {
-        if (this.lastState != eventObservable.getState()) {
-            switch (eventObservable.getState()) {
+    public void changeState(ApplicationState state) {
+        if (this.lastState != state) {
+            switch (state) {
             case MENU:
                 this.frame.getContentPane().removeAll();
                 this.frame.getContentPane().add(this.menuPanel);
                 this.frame.requestFocusInWindow();
                 this.frame.pack();
                 this.frame.setVisible(true);
-                this.lastState = eventObservable.getState();
+                this.lastState = state;
                 break;
             case MENU_SETTINGS:
                 this.frame.getContentPane().removeAll();
@@ -83,7 +78,7 @@ public class AppView implements Observer {
                 this.frame.requestFocusInWindow();
                 this.frame.pack();
                 this.frame.setVisible(true);
-                this.lastState = eventObservable.getState();
+                this.lastState = state;
                 break;
             case GAME:
                 this.frame.getContentPane().removeAll();
@@ -91,7 +86,7 @@ public class AppView implements Observer {
                 this.frame.requestFocusInWindow();
                 this.frame.pack();
                 this.frame.setVisible(true);
-                this.lastState = eventObservable.getState();
+                this.lastState = state;
                 break;
             default:
                 break;

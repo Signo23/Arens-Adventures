@@ -2,9 +2,8 @@ package it.aren.model;
 
 import java.util.Optional;
 
-import it.aren.Observer;
+import it.aren.Observable;
 import it.aren.common.ApplicationState;
-import it.aren.model.event.EventObservable;
 import it.aren.model.game.Block;
 import it.aren.core.GameFactory;
 import it.aren.model.event.TransportEvent;
@@ -13,26 +12,12 @@ import it.aren.model.input.InputController;
 /**
  * The class that manages the state of the game.
  */
-public class GameState implements Observer{
+public class GameState extends Observable<ApplicationState>{
     private final World world;
-    private final EventObservable eventObservable;
     private final InputController controller;
 
-    /**
-     * Creates a new {@link World} object, the {@link Player} and loads the {@link GameMap}.
-     * @param observable
-     */
-    public GameState(final EventObservable observable) {
-        this(observable, new InputController() {
-            @Override
-            public void update(String toUpdate, Boolean value) {
-
-            }
-        });
-    }
-
-    public GameState(final EventObservable observable, final InputController inputController) {
-        this.eventObservable = observable;
+    public GameState(final InputController inputController) {
+        super();
         this.controller = inputController;
         this.world = new World();
         this.world.setPlayer(GameFactory.createPlayer());
@@ -51,8 +36,9 @@ public class GameState implements Observer{
     /**
      * Update the world's state.
      */
-    public final void update() {
-        switch (this.eventObservable.getState()){
+    public void next(ApplicationState state) {
+        super.next(state);
+        switch (state){
             case GAME:
                 this.processInput();
                 this.world.updateState();
@@ -67,14 +53,13 @@ public class GameState implements Observer{
             default:
                 break;
         }
-
     }
 
     /**
      * Check if the {@link Player} is interacting and update the input.
      * @param controller
      */
-    public void processInput() {
+    private void processInput() {
         if (controller.getAction(InputController.INTERACT)) {
             final Optional<Block> block = this.getWorld().playerCollide();
             if (block.isPresent() && !block.get().getEvent().isAlreadyLunch()) {
@@ -86,10 +71,10 @@ public class GameState implements Observer{
         world.getPlayer().update(GameComponent.INPUT,controller);
     }
 
-    public void processDialogInput(){
+    private void processDialogInput(){
         if (!controller.getAction(InputController.INTERACT)) {
             getWorld().setDialog(null);
-            eventObservable.setState(ApplicationState.GAME);
+            next(ApplicationState.GAME);
         }
     }
 
@@ -99,13 +84,5 @@ public class GameState implements Observer{
      */
     public final void addDialog(final String text) {
         this.world.setDialog(GameFactory.createDialog(text));
-    }
-
-    public ApplicationState getState() {
-        return this.eventObservable.getState();
-    }
-
-    public void setState(ApplicationState gameDialog) {
-        this.eventObservable.setState(gameDialog);
     }
 }

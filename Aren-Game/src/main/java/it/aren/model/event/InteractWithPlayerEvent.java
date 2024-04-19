@@ -49,7 +49,7 @@ public class InteractWithPlayerEvent implements BaseEvent {
     @Override
     public void launch(GameState state) {
         if (!state.getState().equals(ApplicationState.GAME_DIALOG)) {
-            state.setState(ApplicationState.GAME_DIALOG);
+            state.next(ApplicationState.GAME_DIALOG);
         }
         if (this.requirement.isPresent()) {
             if (state.getWorld().getPlayer().getBackPack().contains(this.requirement.get())) {
