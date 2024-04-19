@@ -29,9 +29,7 @@ public final class GameFactory {
     /**
      * The GameFactory constructor.
      */
-    private GameFactory() {
-
-    }
+    private GameFactory() {}
 
     /**
      * Creates a new {@link Player}.

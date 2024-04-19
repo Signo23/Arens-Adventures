@@ -1,7 +1,7 @@
 package it.aren.common;
 
 /**
- * Games's states.
+ * Game's states.
  */
 public enum ApplicationState {
     /**
@@ -24,5 +24,5 @@ public enum ApplicationState {
      * GAME_DIALOG state of application.
      */
     GAME_DIALOG,
-    CLOSE;
+    CLOSE
 }

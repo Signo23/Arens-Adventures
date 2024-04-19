@@ -6,9 +6,6 @@ import it.aren.common.Constant;
 import it.aren.io.Logger;
 import it.aren.model.input.MenuInputController;
 
-import static it.aren.common.ApplicationState.BOOT;
-import static it.aren.common.ApplicationState.MENU;
-
 /**
  * This class contain the main loop.
  * This is the main controller.
@@ -31,7 +28,7 @@ public class GameEngine {
      * Setup the game.
      */
     public void setup() {
-        gameState.next(BOOT);
+        gameState.next(ApplicationState.BOOT);
         /*this.notify(new InteractWithPlayerEvent(new GameObject(
                 BaseObjectEnum.VOID, new Vector2D(), false, new GraphicComponent()),
                 "Trova tutti gli oggetti prima di\npartire per la tua avventura"));*/
@@ -46,7 +43,7 @@ public class GameEngine {
             final long current = System.currentTimeMillis();
             switch (gameState.getState()) {
             case BOOT:
-                gameState.next(MENU);
+                gameState.next(ApplicationState.MENU);
                 break;
             case MENU:
                 if (this.menuController.isInteract()) {
@@ -61,7 +58,7 @@ public class GameEngine {
             case MENU_SETTINGS:
                 if (this.menuController.isInteract()) {
                     this.menuController.notifyNoMoreIsInteract();
-                    gameState.next(MENU);
+                    gameState.next(ApplicationState.MENU);
                 }
                 break;
             case GAME:
