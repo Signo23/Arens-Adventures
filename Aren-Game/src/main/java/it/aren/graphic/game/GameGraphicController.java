@@ -15,7 +15,6 @@ import it.aren.Direction;
 import it.aren.Entity;
 import it.aren.Vector;
 import it.aren.core.GameFactory;
-import it.aren.file.SettingsLoader;
 import it.aren.graphic.GraphicController;
 import it.aren.model.*;
 import it.aren.model.game.*;
@@ -70,6 +69,7 @@ public class GameGraphicController implements Controller<Entity, Object> {
                         this.animation.getNextIdle(Direction.valueOfPoint2D(tmpPlayer.getLastDirection()))
                         : this.animation.getNextWalk(Direction.valueOfPoint2D(tmpPlayer.getLastDirection()));
                 tmpPlayer.getBackPack().forEach(go -> go.update(GameComponent.GRAPHIC, this));
+                this.drawLog(entity.getPosition().toString());
             }
             if(sprite != null){
                 this.drawInPosition(entity.getPosition(), sprite);
@@ -80,6 +80,21 @@ public class GameGraphicController implements Controller<Entity, Object> {
 
     private void drawInPosition(final Vector position, final BufferedImage sprite) {
         g2.drawImage(sprite, (int) position.getX(), (int) position.getY(), this.io);
+    }
+
+    private void drawLog(final String log){
+        this.g2.setColor(Color.white);
+        try {
+            Font customFont = Font.createFont(Font.TRUETYPE_FONT, Objects.requireNonNull(this.getClass()
+                    .getResourceAsStream(Constant.FONT_FOLDER + "Minecraft.ttf")));
+            final GraphicsEnvironment ge = GraphicsEnvironment.getLocalGraphicsEnvironment();
+            customFont = customFont.deriveFont(Font.PLAIN, FONT_DEFAULT_DIMENSION);
+            ge.registerFont(customFont);
+            this.g2.setFont(customFont);
+        } catch (IOException | FontFormatException e) {
+            e.printStackTrace();
+        }
+        g2.drawString(log, 20 ,20 );
     }
 
     private void drawString(final Dialog dialog) {

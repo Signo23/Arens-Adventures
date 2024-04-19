@@ -1,5 +1,7 @@
 package it.aren.model.input;
 
+import it.aren.io.Logger;
+
 import java.awt.event.KeyEvent;
 import java.awt.event.KeyListener;
 /**
@@ -23,7 +25,7 @@ public class KeyListenerImpl implements KeyListener {
      * {@inheritDoc}
      */
     public final void keyTyped(final KeyEvent e) {
-        System.out.println("TYPE" + e.getKeyChar());
+        Logger.debug("TYPE" + e.getKeyChar());
 
         if(KeyEvent.VK_SPACE == e.getExtendedKeyCode()){
             this.controller.update(InputController.INTERACT, true);

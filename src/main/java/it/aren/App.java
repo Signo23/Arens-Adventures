@@ -6,9 +6,11 @@ import java.net.URISyntaxException;
 import java.util.ArrayList;
 import java.util.List;
 
+import it.aren.common.ApplicationState;
 import it.aren.common.Constant;
 import it.aren.core.GameEngine;
 import it.aren.graphic.AppView;
+import it.aren.io.Logger;
 import it.aren.model.GameState;
 import it.aren.model.input.InputController;
 import it.aren.model.input.KeyboardInputController;
@@ -46,7 +48,7 @@ public final class App {
             builder.start();
             System.exit(0); //NOPMD: this is the only method we found for restart the application
         } catch (URISyntaxException | IOException e) {
-            e.printStackTrace();
+            Logger.error(e.getLocalizedMessage());
         }
 
     }
@@ -59,16 +61,18 @@ public final class App {
      */
     public static void main(final String[] args) {
         if (new File(Constant.MAIN_FOLDER).mkdirs()) {
-            System.out.println("Directory created succesfully");
+            Logger.debug("Directory created successfully");
         }
         final InputController inputController = new KeyboardInputController();
         final MenuInputController menuController = new MenuInputController();
-        final GameEngine game = new GameEngine(menuController);
-        final GameState gameState = new GameState(game, inputController);
-        final AppView view = new AppView(gameState.getWorld(), inputController, menuController, game);
-        game.attach(gameState);
-        game.attach(view);
+        final Observable<ApplicationState> state = new Observable<>();
+        final GameState gameState = new GameState(inputController, state);
+        final GameEngine game = new GameEngine(menuController, state);
+        final AppView view = new AppView(gameState.getWorld(), inputController, menuController);
+        state.attach(gameState);
+        state.attach(view);
         game.setup();
         game.loop();
+        System.exit(0);
     }
 }

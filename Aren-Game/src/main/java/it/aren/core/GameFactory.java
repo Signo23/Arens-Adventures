@@ -29,9 +29,7 @@ public final class GameFactory {
     /**
      * The GameFactory constructor.
      */
-    private GameFactory() {
-
-    }
+    private GameFactory() {}
 
     /**
      * Creates a new {@link Player}.
@@ -145,15 +143,13 @@ public final class GameFactory {
      * @return a new {@link Dialog}
      */
     public static Dialog createDialog(final String text) {
-        final SettingsLoader settingsLoader = new SettingsLoader();
         final int ratio = GameFactory.loadSettings().scale();
         return new Dialog(new Vector2D(Constant.DEFAULT_DIALOG_POSITION.getX() * ratio,
                 Constant.DEFAULT_DIALOG_POSITION.getY() * ratio), true, new GraphicComponent(), text);
     }
 
     public static Settings loadSettings(){
-        final SettingsLoader settingsLoader = new SettingsLoader();
-        return settingsLoader.loadFile(Constant.SETTINGS_FILE);
+        return SettingsLoader.getSettingsLoader().loadFile(Constant.SETTINGS_FILE);
     }
 
     public static void saveSettings(final Settings settings){

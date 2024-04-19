@@ -1,5 +1,5 @@
 package it.aren;
 
-public interface Observer {
-    void update();
+public interface Observer<T> {
+    void update(T newState);
 }
