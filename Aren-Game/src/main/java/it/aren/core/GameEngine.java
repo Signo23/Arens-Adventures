@@ -3,6 +3,7 @@ package it.aren.core;
 import it.aren.Observable;
 import it.aren.common.ApplicationState;
 import it.aren.common.Constant;
+import it.aren.io.Logger;
 import it.aren.model.input.MenuInputController;
 
 import static it.aren.common.ApplicationState.BOOT;
@@ -80,7 +81,7 @@ public class GameEngine {
             try {
                 Thread.sleep(Constant.DEFAULT_FPS - dt);
             } catch (InterruptedException e) {
-                System.err.println(e.getMessage());
+                Logger.error(e.getMessage());
             }
         }
     }

@@ -4,6 +4,7 @@ import java.util.Optional;
 
 import it.aren.Observable;
 import it.aren.common.ApplicationState;
+import it.aren.io.Logger;
 import it.aren.model.game.Block;
 import it.aren.core.GameFactory;
 import it.aren.model.event.TransportEvent;
@@ -38,6 +39,7 @@ public class GameState extends Observable<ApplicationState>{
      */
     public void next(ApplicationState state) {
         super.next(state);
+        Logger.debug("Updating game state " + state);
         switch (state){
             case GAME:
                 this.processInput();
