@@ -65,10 +65,12 @@ public final class App {
         }
         final InputController inputController = new KeyboardInputController();
         final MenuInputController menuController = new MenuInputController();
-        final GameState gameState = new GameState(inputController);
-        final GameEngine game = new GameEngine(menuController, gameState);
+        final Observable<ApplicationState> state = new Observable<>();
+        final GameState gameState = new GameState(inputController, state);
+        final GameEngine game = new GameEngine(menuController, state);
         final AppView view = new AppView(gameState.getWorld(), inputController, menuController);
-        gameState.attach(view);
+        state.attach(gameState);
+        state.attach(view);
         game.setup();
         game.loop();
         System.exit(0);

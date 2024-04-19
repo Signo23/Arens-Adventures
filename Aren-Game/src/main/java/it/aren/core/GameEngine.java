@@ -62,8 +62,10 @@ public class GameEngine {
                 }
                 break;
             case GAME:
+                gameState.next(ApplicationState.GAME);
+                break;
             case GAME_DIALOG:
-                    gameState.next(ApplicationState.GAME_DIALOG);
+                gameState.next(ApplicationState.GAME_DIALOG);
                 break;
             default:
                 break;

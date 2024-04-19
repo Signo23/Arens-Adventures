@@ -3,6 +3,7 @@ package it.aren.model;
 import java.util.Optional;
 
 import it.aren.Observable;
+import it.aren.Observer;
 import it.aren.common.ApplicationState;
 import it.aren.io.Logger;
 import it.aren.model.game.Block;
@@ -13,13 +14,14 @@ import it.aren.model.input.InputController;
 /**
  * The class that manages the state of the game.
  */
-public class GameState extends Observable<ApplicationState>{
+public class GameState implements Observer<ApplicationState> {
     private final World world;
     private final InputController controller;
+    private final Observable<ApplicationState> observable;
 
-    public GameState(final InputController inputController) {
-        super();
+    public GameState(final InputController inputController, final Observable<ApplicationState> observable) {
         this.controller = inputController;
+        this.observable = observable;
         this.world = new World();
         this.world.setPlayer(GameFactory.createPlayer());
         this.world.addMaps(GameFactory.loadMaps());
@@ -37,8 +39,7 @@ public class GameState extends Observable<ApplicationState>{
     /**
      * Update the world's state.
      */
-    public void next(ApplicationState state) {
-        super.next(state);
+    public void update(ApplicationState state) {
         Logger.debug("Updating game state " + state);
         switch (state){
             case GAME:
@@ -76,7 +77,7 @@ public class GameState extends Observable<ApplicationState>{
     private void processDialogInput(){
         if (!controller.getAction(InputController.INTERACT)) {
             getWorld().setDialog(null);
-            next(ApplicationState.GAME);
+            observable.next(ApplicationState.GAME);
         }
     }
 
@@ -86,5 +87,9 @@ public class GameState extends Observable<ApplicationState>{
      */
     public final void addDialog(final String text) {
         this.world.setDialog(GameFactory.createDialog(text));
+    }
+
+    public Observable<ApplicationState> getObservable() {
+        return this.observable;
     }
 }
