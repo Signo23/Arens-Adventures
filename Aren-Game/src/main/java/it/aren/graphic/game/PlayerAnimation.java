@@ -10,7 +10,6 @@ import it.aren.model.game.Player;
 import it.aren.common.BaseObjectEnum;
 import it.aren.common.Constant;
 import it.aren.Direction;
-import it.aren.file.SettingsLoader;
 
 /**
  * Contain the {@link BufferedImage}s for {@link Player} animation.
@@ -27,7 +26,6 @@ public class PlayerAnimation {
      * Load all the sprite.
      */
     public PlayerAnimation() {
-        final SettingsLoader settingsLoader = new SettingsLoader();
         this.idleSprite = new HashMap<>();
         this.walkSprite = new HashMap<>();
         this.spriteDimension = GameFactory.loadSettings().scale() * Constant.DEFAULT_HITBOX_DIMENSION;
