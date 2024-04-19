@@ -18,7 +18,17 @@ import it.aren.io.FileLoader;
  */
 public class SettingsLoader implements FileLoader<Settings> {
 
-    private static Gson gson;
+    private static Settings settings;
+    private static SettingsLoader settingsLoader;
+
+    private SettingsLoader() {}
+
+    public static SettingsLoader getSettingsLoader(){
+        if(settingsLoader == null){
+            settingsLoader = new SettingsLoader();
+        }
+        return settingsLoader;
+    }
 
     /**
      * Method to load a file.
@@ -27,15 +37,15 @@ public class SettingsLoader implements FileLoader<Settings> {
      */
     @Override
     public Settings loadFile(final String fileName) {
-        try (Reader reader = Files.newBufferedReader(Paths.get(Constant.MAIN_FOLDER + Constant.SEP + fileName))) {
-            gson = new GsonBuilder().setPrettyPrinting().create();
-            final Settings set = gson.fromJson(reader, Settings.class);
-            reader.close();
-            return set;
-        } catch (IOException e) {
-            final Settings set = new Settings();
-            GameFactory.saveSettings(set);
-            return set;
+        if(settings == null) {
+            try (Reader reader = Files.newBufferedReader(Paths.get(Constant.MAIN_FOLDER + Constant.SEP + fileName))) {
+                Gson gson = new GsonBuilder().setPrettyPrinting().create();
+                settings = gson.fromJson(reader, Settings.class);
+            } catch (IOException e) {
+                settings = new Settings();
+                GameFactory.saveSettings(settings);
+            }
         }
+        return settings;
     }
 }
